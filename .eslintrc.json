@@ -16,12 +16,12 @@
     "plugin:react/recommended"
   ],
   "rules": {
-    "no-console": 0,
+    "no-console": 2,
     "prettier/prettier": "error",
     "@typescript-eslint/no-var-requires": 0,
     "@typescript-eslint/indent": 0,
     "react/jsx-filename-extension": [
-      1,
+      0,
       {
         "extensions": [".ts", ".tsx", ".js", ".jsx"]
       }
