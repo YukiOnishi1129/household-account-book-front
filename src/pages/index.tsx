@@ -1,6 +1,6 @@
-import React, { FC } from 'react';
-import Head from 'next/head';
-import Link from 'next/link';
+import React, { FC } from 'react'
+import Head from 'next/head'
+import Link from 'next/link'
 
 const Home: FC = () => (
   <div>
@@ -22,6 +22,6 @@ const Home: FC = () => (
       </li>
     </ul>
   </div>
-);
+)
 
-export default Home;
+export default Home
