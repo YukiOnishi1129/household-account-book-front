@@ -1,6 +1,8 @@
 import React, { FC } from 'react'
 import Head from 'next/head'
 
+const test = 1
+
 const Home: FC = () => (
   <div>
     <Head>

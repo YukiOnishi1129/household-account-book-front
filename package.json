@@ -8,6 +8,14 @@
     "build": "next build",
     "start": "next start"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": "eslint --max-warnings=0 --ext .tsx --ext .ts --fix"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -22,6 +30,8 @@
     "eslint": "^7.6.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.4",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.11",
     "prettier": "^2.0.5",
     "typescript": "^3.9.7"
   }
