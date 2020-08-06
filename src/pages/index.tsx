@@ -2,6 +2,7 @@ import React, { FC } from 'react'
 import Head from 'next/head'
 
 const test = 'aa'
+console.log('aaa')
 
 const Home: FC = () => (
   <div>
