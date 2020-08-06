@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import Head from 'next/head'
 
-const test = 12
+const test = 22
 
 const Home: FC = () => (
   <div>
