@@ -1,14 +1,14 @@
 import React, { FC } from 'react'
 import Head from 'next/head'
 
-const Home: FC = () => (
+const App: FC = () => (
   <div>
     <Head>
       <title>Home</title>
       <link rel="icon" href="/favicon.ico" />
     </Head>
-    <div>Home</div>
+    <h1>Home</h1>
   </div>
 )
 
-export default Home
+export default App
