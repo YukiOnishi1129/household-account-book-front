@@ -20,3 +20,11 @@ https://qiita.com/jonakp/items/7d9f47c613c16cbf95aa#vscode%E6%8B%A1%E5%BC%B5%E6%
 ※ターミナルから開いた source tree 出ないと commit 時に lint チェックされないので注意
 (pre-commit ができない)
 https://qiita.com/kanari3/items/5f6d1073d56921168b44
+
+### jest&&enzyme の設定
+
+基本はこれ
+https://typescript-jp.gitbook.io/deep-dive/intro-1/jest
+
+※「@types/enzyme-adapter-react-16」をインストールしないと shallow でエラーになる
+※ tsconfig.json の「"jsx": "react",」と記載しないと shallow(jsx 記載)でエラーになる
