@@ -24,12 +24,21 @@ workflows:
   all-check:
     jobs:
       - package-install-and-lint
+      - build:
+          requires:
+            - package-install-and-lint
       - test:
           requires:
             - package-install-and-lint
       - e2e:
           requires:
             - package-install-and-lint
+            - build
+          record: true
+          parallel: true
+          parallelism: 4
+          group: 'all tests'
+          start: 'yarn start'
 
 jobs:
   package-install-and-lint:
@@ -40,6 +49,13 @@ jobs:
       - run: yarn install
       - *save_node_modules
       - run: yarn lint
+  build:
+    executor: frontend-executor
+    steps:
+      - checkout
+      - *restore_node_modules
+      - *save_node_modules
+      - run: yarn build
   test:
     executor: frontend-executor
     steps:
