@@ -1,8 +1,12 @@
-import React, { FC, ReactElement } from 'react'
+import React from 'react'
 import SampleButton from './SampleButton'
+import { text } from '@storybook/addon-knobs'
+import { storiesOf } from '@storybook/react'
 
 export default {
   title: 'SampleButton',
 }
 
-export const showSampleButton: FC = (): ReactElement => <SampleButton />
+storiesOf('Button', module).add('showSampleButton', () => (
+  <SampleButton label={text('テキスト', 'ああああ')} />
+))
