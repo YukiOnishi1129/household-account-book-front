@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  cypress: cypress-io/cypress@1
+
 executors:
   frontend-executor:
     docker:
@@ -64,9 +67,5 @@ jobs:
       - checkout
       - *restore_node_modules
       - *save_node_modules
-      - record: true
-      - parallel: true
-      - parallelism: 4
-      - group: 'all tests'
-      - start: 'yarn start'
+      - run: yarn start
       - run: yarn cy:run
