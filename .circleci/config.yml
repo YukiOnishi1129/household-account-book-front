@@ -27,6 +27,9 @@ workflows:
       - test:
           requires:
             - package-install-and-lint
+      - e2e:
+          requires:
+            - package-install-and-lint
 
 jobs:
   package-install-and-lint:
@@ -44,3 +47,10 @@ jobs:
       - *restore_node_modules
       - *save_node_modules
       - run: yarn test
+  e2e:
+    executor: frontend-executor
+    steps:
+      - checkout
+      - *restore_node_modules
+      - *save_node_modules
+      - run: yarn cy:run
