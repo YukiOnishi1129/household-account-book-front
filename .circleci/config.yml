@@ -1,49 +1,46 @@
-varsion: 2.1
+version: 2.1
 
 executors:
-  default:
+  frontend-executor:
     docker:
-      - image: circleci/node:12.16.1
-    working_directory: ~/repo
+      - image: circleci/node:12.13-stretch-browsers
 
-##
-# commands
-##
-
-commands:
-  restore_npm:
-    steps:
-      - restore_cache:
-          keys:
-            - yarn-packages-{{ checksum "yarn.lock" }}
-  save_npm:
-    steps:
-      - save_cache:
-          paths:
-            - ~/.cache/yarn
-          key: yarn-packages-{{ checksum "yarn.lock" }}
-
-##
-# jobs
-##
-
-jobs:
-  test-lint:
-    executor:
-      name: default
-    steps:
-      - checkout
-      - restore_npm
-      - run: yarn install --frozen-lockfile
-      - save_npm
-      - run: yarn lint
-      - run: yarn test
-
-##
-# workflows
-##
+#  アンカーの定義
+references:
+  cache_key: &cache_key v1-dependencies-{{ checksum "yarn.lock" }}
+  save_node_modules: &save_node_modules
+    save_cache:
+      paths:
+        - node_modules
+      key: *cache_key
+  restore_node_modules: &restore_node_modules
+    restore_cache:
+      keys:
+        - *cache_key
+        - v1-dependencies-
 
 workflows:
-  test_my_app:
+  version: 2
+  all-check:
     jobs:
-      - test-lint
+      - package-install-and-lint
+      - test:
+          requires:
+            - package-install-and-lint
+
+jobs:
+  package-install-and-lint:
+    executor: frontend-executor
+    steps:
+      - checkout
+      - *restore_node_modules
+      - run: yarn install
+      - *save_node_modules
+      - run: yarn lint
+  test:
+    executor: frontend-executor
+    steps:
+      - checkout
+      - *restore_node_modules
+      - *save_node_modules
+      - run: yarn test
