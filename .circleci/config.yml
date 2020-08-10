@@ -34,11 +34,6 @@ workflows:
           requires:
             - package-install-and-lint
             - build
-          record: true
-          parallel: true
-          parallelism: 4
-          group: 'all tests'
-          start: 'yarn start'
 
 jobs:
   package-install-and-lint:
@@ -69,4 +64,9 @@ jobs:
       - checkout
       - *restore_node_modules
       - *save_node_modules
+      - record: true
+      - parallel: true
+      - parallelism: 4
+      - group: 'all tests'
+      - start: 'yarn start'
       - run: yarn cy:run
