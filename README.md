@@ -51,3 +51,15 @@ https://dev.classmethod.jp/articles/pre-commit/
 
 こちらを参考
 https://qiita.com/kasaharu/items/bfeb2a41b9d636388531
+
+### storybook
+
+こちらを参考
+https://qiita.com/keitakn/items/982d7e6cdfc294c82a95
+※記事に載っていない追加するプラグイン
+babel-loader, babel-preset-react-app
+
+### \_app.tsx について
+
+こちらを参考
+https://www.kohei.dev/posts/7-tips-of-next-js-9-with-typescript?hl=ja-JP
