@@ -11,9 +11,10 @@ executors:
 
 commands:
   restore_npm:
-    - restore_cache:
-        keys:
-          - yarn-packages-{{ checksum "yarn.lock" }}
+    steps:
+      - restore_cache:
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
   save_npm:
     steps:
       - save_cache:
