@@ -61,6 +61,12 @@ babel-loader, babel-preset-react-app
 
 https://qiita.com/otanu/items/dd06d6702f673268c74e
 
+addDecorator(withInfo)の記載はこちらが正
+https://blog.deltabox.site/post/2019/02/cra_and_ts_and_storybook/
+
+- storybook の addon 一覧
+  https://iwb.jp/storybook-for-html-css-js-style-guide-tool-addons/
+
 ### \_app.tsx について
 
 こちらを参考
