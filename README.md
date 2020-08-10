@@ -29,6 +29,18 @@ https://typescript-jp.gitbook.io/deep-dive/intro-1/jest
 ※「@types/enzyme-adapter-react-16」をインストールしないと shallow でエラーになる
 ※ tsconfig.json の「"jsx": "react",」と記載しないと shallow(jsx 記載)でエラーになる
 
+### E2E (Cypress)の設定
+
+こちらを参考
+https://microcms.io/blog/cypress-react-e2e/
+
+※TypeScript で Cypress を実施する場合
+
+- 「cypress」ディレクトリ直下に tsconfig を作成する
+  https://docs.cypress.io/guides/tooling/typescript-support.html#Configure-tsconfig-json
+- cypress」ディレクトリ直下の tsconfig に「"skipLibCheck": true」を追記
+  https://qiita.com/yasuhiro-yamada/items/3c151f271e1df9523f15
+
 ### git commit 時の自動テスト
 
 こちらを参考
