@@ -33,7 +33,6 @@ workflows:
       - e2e:
           requires:
             - package-install-and-lint
-            - build
 
 jobs:
   package-install-and-lint:
@@ -64,5 +63,5 @@ jobs:
       - checkout
       - *restore_node_modules
       - *save_node_modules
-      - run: yarn start
+      - run: yarn dev
       - run: yarn cy:run
