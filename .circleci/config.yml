@@ -31,7 +31,7 @@ jobs:
       name: default
     steps:
       - checkout
-      -restore_npm
+      - restore_npm
       - run: yarn install --frozen-lockfile
       - save_npm
       - run: yarn lint
