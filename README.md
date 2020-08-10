@@ -38,8 +38,9 @@ https://microcms.io/blog/cypress-react-e2e/
 
 - 「cypress」ディレクトリ直下に tsconfig を作成する
   https://docs.cypress.io/guides/tooling/typescript-support.html#Configure-tsconfig-json
-- cypress」ディレクトリ直下の tsconfig に「"skipLibCheck": true」を追記
+- 「cypress」ディレクトリ直下の tsconfig に「"skipLibCheck": true」を追記
   https://qiita.com/yasuhiro-yamada/items/3c151f271e1df9523f15
+  tsconfig.json の「type」に"node"を設定しないと、ts ファイルのテストコードでエラーが発生する
 
 ### git commit 時の自動テスト
 
