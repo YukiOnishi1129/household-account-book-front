@@ -20,6 +20,6 @@
     "types": ["jest"],
     "typeRoots": ["node_modules/@types", "node_modules/jest-enzyme"]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts"],
   "exclude": ["node_modules", "jest", "src/setupEnzyme.ts"]
 }
