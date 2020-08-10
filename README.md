@@ -59,6 +59,8 @@ https://qiita.com/keitakn/items/982d7e6cdfc294c82a95
 ※記事に載っていない追加するプラグイン
 babel-loader, babel-preset-react-app
 
+https://qiita.com/otanu/items/dd06d6702f673268c74e
+
 ### \_app.tsx について
 
 こちらを参考
