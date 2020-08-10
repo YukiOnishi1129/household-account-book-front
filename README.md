@@ -29,6 +29,11 @@ https://typescript-jp.gitbook.io/deep-dive/intro-1/jest
 ※「@types/enzyme-adapter-react-16」をインストールしないと shallow でエラーになる
 ※ tsconfig.json の「"jsx": "react",」と記載しないと shallow(jsx 記載)でエラーになる
 
+### git commit 時の自動テスト
+
+こちらを参考
+https://dev.classmethod.jp/articles/pre-commit/
+
 ### Circle CI
 
 こちらを参考
