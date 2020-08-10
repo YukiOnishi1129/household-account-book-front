@@ -28,3 +28,8 @@ https://typescript-jp.gitbook.io/deep-dive/intro-1/jest
 
 ※「@types/enzyme-adapter-react-16」をインストールしないと shallow でエラーになる
 ※ tsconfig.json の「"jsx": "react",」と記載しないと shallow(jsx 記載)でエラーになる
+
+### Circle CI
+
+こちらを参考
+https://qiita.com/kasaharu/items/bfeb2a41b9d636388531
