@@ -1,8 +1,5 @@
 version: 2.1
 
-orbs:
-  cypress: cypress-io/cypress@1
-
 executors:
   frontend-executor:
     docker:
