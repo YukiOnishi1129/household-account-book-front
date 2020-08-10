@@ -29,6 +29,13 @@ https://typescript-jp.gitbook.io/deep-dive/intro-1/jest
 ※「@types/enzyme-adapter-react-16」をインストールしないと shallow でエラーになる
 ※ tsconfig.json の「"jsx": "react",」と記載しないと shallow(jsx 記載)でエラーになる
 
+- jest && enzyme の使い方
+  https://mae.chab.in/archives/60066#post60066-7
+- jest mock の使い方
+  https://qiita.com/yuma-ito-bd/items/38c929eb5cccf7ce501e
+- jest 全般の使い方
+  https://tech.bitbank.cc/lets-test-by-jest/
+
 ### E2E (Cypress)の設定
 
 こちらを参考
