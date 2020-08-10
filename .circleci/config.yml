@@ -2,7 +2,8 @@ varsion: 2.1
 
 executors:
   default:
-    - image: circleci/node:12.16.1
+    docker:
+      - image: circleci/node:12.16.1
   working_directory: ~/repo
 
 ##
