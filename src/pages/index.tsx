@@ -16,6 +16,7 @@ const App: FC = () => (
 )
 const H1 = styled.h1`
   color: ${(props) => props.theme.main};
+  font-size: 20px;
 `
 
 export default App

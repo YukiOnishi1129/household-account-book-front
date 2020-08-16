@@ -10,6 +10,7 @@
     "storybook": "start-storybook -p 6006 -s public",
     "build:storybook": "build-storybook -s public",
     "lint": "eslint src --max-warnings=0 --ext .ts,.tsx --fix --ignore-path .eslintignore .",
+    "lint:css": "stylelint './src/**/*.tsx'",
     "test": "jest",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
@@ -18,7 +19,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged && yarn test"
+      "pre-commit": "lint-staged && yarn lint:css && yarn test"
     }
   },
   "lint-staged": {
@@ -76,6 +77,10 @@
     "react-docgen-typescript-webpack-plugin": "^1.1.0",
     "react-test-renderer": "^16.13.1",
     "require-context.macro": "^1.2.2",
+    "stylelint": "^13.6.1",
+    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.10.0",
     "ts-jest": "^26.1.4",
     "typescript": "^3.9.7"
   }
