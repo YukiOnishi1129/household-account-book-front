@@ -76,5 +76,19 @@ https://blog.deltabox.site/post/2019/02/cra_and_ts_and_storybook/
 
 ### \_app.tsx について
 
-こちらを参考
-https://www.kohei.dev/posts/7-tips-of-next-js-9-with-typescript?hl=ja-JP
+- こちらを参考
+  https://www.kohei.dev/posts/7-tips-of-next-js-9-with-typescript?hl=ja-JP
+  https://nextjs.org/docs/advanced-features/custom-app
+- \_app.js と\_document.js
+  https://qiita.com/tetsutaroendo/items/c7171286137d963cdecf
+
+### \_document.tsx について
+
+- こちらを参考
+  https://nextjs.org/docs/advanced-features/custom-document
+  https://code-log.hatenablog.com/entry/2020/01/26/200134
+
+### styled-components
+
+- 参考
+  https://code-log.hatenablog.com/entry/2020/01/26/200134
