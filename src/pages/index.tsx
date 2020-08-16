@@ -1,5 +1,7 @@
 import React, { FC } from 'react'
 import Head from 'next/head'
+import Layout from '../components/Layout'
+import styled from 'styled-components'
 
 const App: FC = () => (
   <div>
@@ -7,9 +9,14 @@ const App: FC = () => (
       <title>Home</title>
       <link rel="icon" href="/favicon.ico" />
     </Head>
-    <h1>Home</h1>
-    <p>indexです。</p>
+    <Layout>
+      <H1>Home</H1>
+    </Layout>
   </div>
 )
+const H1 = styled.h1`
+  color: ${(props) => props.theme.main};
+  font-size: 20px;
+`
 
 export default App
