@@ -1041,7 +1041,7 @@ export const CategoryApiAxiosParamCreator = function (
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    categoryGet: async (options: any = {}): Promise<RequestArgs> => {
+    getCategories: async (options: any = {}): Promise<RequestArgs> => {
       const localVarPath = `/category`
       const localVarUrlObj = globalImportUrl.parse(localVarPath, true)
       let baseOptions
@@ -1182,17 +1182,17 @@ export const CategoryApiFp = function (configuration?: Configuration) {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async categoryGet(
+    async getCategories(
       options?: any
     ): Promise<
       (
         axios?: AxiosInstance,
         basePath?: string
-      ) => AxiosPromise<Array<Categories>>
+      ) => AxiosPromise<Array<Category>>
     > {
       const localVarAxiosArgs = await CategoryApiAxiosParamCreator(
         configuration
-      ).categoryGet(options)
+      ).getCategories(options)
       return (
         axios: AxiosInstance = globalAxios,
         basePath: string = BASE_PATH
@@ -1270,9 +1270,9 @@ export const CategoryApiFactory = function (
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    categoryGet(options?: any): AxiosPromise<Array<Categories>> {
+    getCategories(options?: any): AxiosPromise<Array<Category>> {
       return CategoryApiFp(configuration)
-        .categoryGet(options)
+        .getCategories(options)
         .then((request) => request(axios, basePath))
     },
   }
@@ -1339,9 +1339,9 @@ export class CategoryApi extends BaseAPI {
    * @throws {RequiredError}
    * @memberof CategoryApi
    */
-  public categoryGet(options?: any) {
+  public getCategories(options?: any) {
     return CategoryApiFp(this.configuration)
-      .categoryGet(options)
+      .getCategories(options)
       .then((request) => request(this.axios, this.basePath))
   }
 }
