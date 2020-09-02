@@ -103,19 +103,6 @@ export interface CalendarSumDateMoney {
 /**
  *
  * @export
- * @interface Categories
- */
-export interface Categories {
-  /**
-   *
-   * @type {Category}
-   * @memberof Categories
-   */
-  data?: Category
-}
-/**
- *
- * @export
  * @interface Category
  */
 export interface Category {
@@ -174,19 +161,6 @@ export interface Detail {
    * @memberof Detail
    */
   category_name: string
-}
-/**
- *
- * @export
- * @interface Details
- */
-export interface Details {
-  /**
-   *
-   * @type {Detail}
-   * @memberof Details
-   */
-  data?: Detail
 }
 /**
  *
@@ -857,13 +831,68 @@ export const CategoryApiAxiosParamCreator = function (
 ) {
   return {
     /**
+     * カテゴリ新規登録
+     * @summary No.16 カテゴリ新規登録
+     * @param {InlineObject5} [inlineObject5]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    addCategory: async (
+      inlineObject5?: InlineObject5,
+      options: any = {}
+    ): Promise<RequestArgs> => {
+      const localVarPath = `/category/create`
+      const localVarUrlObj = globalImportUrl.parse(localVarPath, true)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication CookieAuth required
+
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
+      localVarUrlObj.query = {
+        ...localVarUrlObj.query,
+        ...localVarQueryParameter,
+        ...options.query,
+      }
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      delete localVarUrlObj.search
+      const headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+      const needsSerialization =
+        typeof inlineObject5 !== 'string' ||
+        localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.data = needsSerialization
+        ? JSON.stringify(inlineObject5 !== undefined ? inlineObject5 : {})
+        : inlineObject5 || ''
+
+      return {
+        url: globalImportUrl.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      * カテゴリ情報削除
      * @summary No.18 カテゴリ情報削除
      * @param {number} categoryId カテゴリID
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    categoryCategoryIdDelete: async (
+    deleteCategory: async (
       categoryId: number,
       options: any = {}
     ): Promise<RequestArgs> => {
@@ -871,7 +900,7 @@ export const CategoryApiAxiosParamCreator = function (
       if (categoryId === null || categoryId === undefined) {
         throw new RequiredError(
           'categoryId',
-          'Required parameter categoryId was null or undefined when calling categoryCategoryIdDelete.'
+          'Required parameter categoryId was null or undefined when calling deleteCategory.'
         )
       }
       const localVarPath = `/category/{category_id}`.replace(
@@ -921,7 +950,7 @@ export const CategoryApiAxiosParamCreator = function (
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    categoryCategoryIdPut: async (
+    editCategory: async (
       categoryId: number,
       inlineObject6?: InlineObject6,
       options: any = {}
@@ -930,7 +959,7 @@ export const CategoryApiAxiosParamCreator = function (
       if (categoryId === null || categoryId === undefined) {
         throw new RequiredError(
           'categoryId',
-          'Required parameter categoryId was null or undefined when calling categoryCategoryIdPut.'
+          'Required parameter categoryId was null or undefined when calling editCategory.'
         )
       }
       const localVarPath = `/category/{category_id}`.replace(
@@ -974,61 +1003,6 @@ export const CategoryApiAxiosParamCreator = function (
       localVarRequestOptions.data = needsSerialization
         ? JSON.stringify(inlineObject6 !== undefined ? inlineObject6 : {})
         : inlineObject6 || ''
-
-      return {
-        url: globalImportUrl.format(localVarUrlObj),
-        options: localVarRequestOptions,
-      }
-    },
-    /**
-     * カテゴリ新規登録
-     * @summary No.16 カテゴリ新規登録
-     * @param {InlineObject5} [inlineObject5]
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    categoryCreatePost: async (
-      inlineObject5?: InlineObject5,
-      options: any = {}
-    ): Promise<RequestArgs> => {
-      const localVarPath = `/category/create`
-      const localVarUrlObj = globalImportUrl.parse(localVarPath, true)
-      let baseOptions
-      if (configuration) {
-        baseOptions = configuration.baseOptions
-      }
-      const localVarRequestOptions = {
-        method: 'POST',
-        ...baseOptions,
-        ...options,
-      }
-      const localVarHeaderParameter = {} as any
-      const localVarQueryParameter = {} as any
-
-      // authentication CookieAuth required
-
-      localVarHeaderParameter['Content-Type'] = 'application/json'
-
-      localVarUrlObj.query = {
-        ...localVarUrlObj.query,
-        ...localVarQueryParameter,
-        ...options.query,
-      }
-      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      delete localVarUrlObj.search
-      const headersFromBaseOptions =
-        baseOptions && baseOptions.headers ? baseOptions.headers : {}
-      localVarRequestOptions.headers = {
-        ...localVarHeaderParameter,
-        ...headersFromBaseOptions,
-        ...options.headers,
-      }
-      const needsSerialization =
-        typeof inlineObject5 !== 'string' ||
-        localVarRequestOptions.headers['Content-Type'] === 'application/json'
-      localVarRequestOptions.data = needsSerialization
-        ? JSON.stringify(inlineObject5 !== undefined ? inlineObject5 : {})
-        : inlineObject5 || ''
 
       return {
         url: globalImportUrl.format(localVarUrlObj),
@@ -1088,13 +1062,43 @@ export const CategoryApiAxiosParamCreator = function (
 export const CategoryApiFp = function (configuration?: Configuration) {
   return {
     /**
+     * カテゴリ新規登録
+     * @summary No.16 カテゴリ新規登録
+     * @param {InlineObject5} [inlineObject5]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async addCategory(
+      inlineObject5?: InlineObject5,
+      options?: any
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string
+      ) => AxiosPromise<Array<Category>>
+    > {
+      const localVarAxiosArgs = await CategoryApiAxiosParamCreator(
+        configuration
+      ).addCategory(inlineObject5, options)
+      return (
+        axios: AxiosInstance = globalAxios,
+        basePath: string = BASE_PATH
+      ) => {
+        const axiosRequestArgs = {
+          ...localVarAxiosArgs.options,
+          url: basePath + localVarAxiosArgs.url,
+        }
+        return axios.request(axiosRequestArgs)
+      }
+    },
+    /**
      * カテゴリ情報削除
      * @summary No.18 カテゴリ情報削除
      * @param {number} categoryId カテゴリID
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async categoryCategoryIdDelete(
+    async deleteCategory(
       categoryId: number,
       options?: any
     ): Promise<
@@ -1102,7 +1106,7 @@ export const CategoryApiFp = function (configuration?: Configuration) {
     > {
       const localVarAxiosArgs = await CategoryApiAxiosParamCreator(
         configuration
-      ).categoryCategoryIdDelete(categoryId, options)
+      ).deleteCategory(categoryId, options)
       return (
         axios: AxiosInstance = globalAxios,
         basePath: string = BASE_PATH
@@ -1122,7 +1126,7 @@ export const CategoryApiFp = function (configuration?: Configuration) {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async categoryCategoryIdPut(
+    async editCategory(
       categoryId: number,
       inlineObject6?: InlineObject6,
       options?: any
@@ -1134,37 +1138,7 @@ export const CategoryApiFp = function (configuration?: Configuration) {
     > {
       const localVarAxiosArgs = await CategoryApiAxiosParamCreator(
         configuration
-      ).categoryCategoryIdPut(categoryId, inlineObject6, options)
-      return (
-        axios: AxiosInstance = globalAxios,
-        basePath: string = BASE_PATH
-      ) => {
-        const axiosRequestArgs = {
-          ...localVarAxiosArgs.options,
-          url: basePath + localVarAxiosArgs.url,
-        }
-        return axios.request(axiosRequestArgs)
-      }
-    },
-    /**
-     * カテゴリ新規登録
-     * @summary No.16 カテゴリ新規登録
-     * @param {InlineObject5} [inlineObject5]
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async categoryCreatePost(
-      inlineObject5?: InlineObject5,
-      options?: any
-    ): Promise<
-      (
-        axios?: AxiosInstance,
-        basePath?: string
-      ) => AxiosPromise<Array<Category>>
-    > {
-      const localVarAxiosArgs = await CategoryApiAxiosParamCreator(
-        configuration
-      ).categoryCreatePost(inlineObject5, options)
+      ).editCategory(categoryId, inlineObject6, options)
       return (
         axios: AxiosInstance = globalAxios,
         basePath: string = BASE_PATH
@@ -1218,18 +1192,30 @@ export const CategoryApiFactory = function (
 ) {
   return {
     /**
+     * カテゴリ新規登録
+     * @summary No.16 カテゴリ新規登録
+     * @param {InlineObject5} [inlineObject5]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    addCategory(
+      inlineObject5?: InlineObject5,
+      options?: any
+    ): AxiosPromise<Array<Category>> {
+      return CategoryApiFp(configuration)
+        .addCategory(inlineObject5, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
      * カテゴリ情報削除
      * @summary No.18 カテゴリ情報削除
      * @param {number} categoryId カテゴリID
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    categoryCategoryIdDelete(
-      categoryId: number,
-      options?: any
-    ): AxiosPromise<void> {
+    deleteCategory(categoryId: number, options?: any): AxiosPromise<void> {
       return CategoryApiFp(configuration)
-        .categoryCategoryIdDelete(categoryId, options)
+        .deleteCategory(categoryId, options)
         .then((request) => request(axios, basePath))
     },
     /**
@@ -1240,28 +1226,13 @@ export const CategoryApiFactory = function (
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    categoryCategoryIdPut(
+    editCategory(
       categoryId: number,
       inlineObject6?: InlineObject6,
       options?: any
     ): AxiosPromise<Array<Category>> {
       return CategoryApiFp(configuration)
-        .categoryCategoryIdPut(categoryId, inlineObject6, options)
-        .then((request) => request(axios, basePath))
-    },
-    /**
-     * カテゴリ新規登録
-     * @summary No.16 カテゴリ新規登録
-     * @param {InlineObject5} [inlineObject5]
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    categoryCreatePost(
-      inlineObject5?: InlineObject5,
-      options?: any
-    ): AxiosPromise<Array<Category>> {
-      return CategoryApiFp(configuration)
-        .categoryCreatePost(inlineObject5, options)
+        .editCategory(categoryId, inlineObject6, options)
         .then((request) => request(axios, basePath))
     },
     /**
@@ -1286,6 +1257,20 @@ export const CategoryApiFactory = function (
  */
 export class CategoryApi extends BaseAPI {
   /**
+   * カテゴリ新規登録
+   * @summary No.16 カテゴリ新規登録
+   * @param {InlineObject5} [inlineObject5]
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof CategoryApi
+   */
+  public addCategory(inlineObject5?: InlineObject5, options?: any) {
+    return CategoryApiFp(this.configuration)
+      .addCategory(inlineObject5, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
    * カテゴリ情報削除
    * @summary No.18 カテゴリ情報削除
    * @param {number} categoryId カテゴリID
@@ -1293,9 +1278,9 @@ export class CategoryApi extends BaseAPI {
    * @throws {RequiredError}
    * @memberof CategoryApi
    */
-  public categoryCategoryIdDelete(categoryId: number, options?: any) {
+  public deleteCategory(categoryId: number, options?: any) {
     return CategoryApiFp(this.configuration)
-      .categoryCategoryIdDelete(categoryId, options)
+      .deleteCategory(categoryId, options)
       .then((request) => request(this.axios, this.basePath))
   }
 
@@ -1308,27 +1293,13 @@ export class CategoryApi extends BaseAPI {
    * @throws {RequiredError}
    * @memberof CategoryApi
    */
-  public categoryCategoryIdPut(
+  public editCategory(
     categoryId: number,
     inlineObject6?: InlineObject6,
     options?: any
   ) {
     return CategoryApiFp(this.configuration)
-      .categoryCategoryIdPut(categoryId, inlineObject6, options)
-      .then((request) => request(this.axios, this.basePath))
-  }
-
-  /**
-   * カテゴリ新規登録
-   * @summary No.16 カテゴリ新規登録
-   * @param {InlineObject5} [inlineObject5]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof CategoryApi
-   */
-  public categoryCreatePost(inlineObject5?: InlineObject5, options?: any) {
-    return CategoryApiFp(this.configuration)
-      .categoryCreatePost(inlineObject5, options)
+      .editCategory(categoryId, inlineObject6, options)
       .then((request) => request(this.axios, this.basePath))
   }
 
@@ -1361,7 +1332,7 @@ export const DetailApiAxiosParamCreator = function (
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    detailCreatePost: async (
+    addDetail: async (
       inlineObject3?: InlineObject3,
       options: any = {}
     ): Promise<RequestArgs> => {
@@ -1410,70 +1381,13 @@ export const DetailApiAxiosParamCreator = function (
       }
     },
     /**
-     * 日別の金額情報取得
-     * @summary No.11 日別の金額情報取得
-     * @param {string} date date
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    detailDateGet: async (
-      date: string,
-      options: any = {}
-    ): Promise<RequestArgs> => {
-      // verify required parameter 'date' is not null or undefined
-      if (date === null || date === undefined) {
-        throw new RequiredError(
-          'date',
-          'Required parameter date was null or undefined when calling detailDateGet.'
-        )
-      }
-      const localVarPath = `/detail/{date}`.replace(
-        `{${'date'}}`,
-        encodeURIComponent(String(date))
-      )
-      const localVarUrlObj = globalImportUrl.parse(localVarPath, true)
-      let baseOptions
-      if (configuration) {
-        baseOptions = configuration.baseOptions
-      }
-      const localVarRequestOptions = {
-        method: 'GET',
-        ...baseOptions,
-        ...options,
-      }
-      const localVarHeaderParameter = {} as any
-      const localVarQueryParameter = {} as any
-
-      // authentication CookieAuth required
-
-      localVarUrlObj.query = {
-        ...localVarUrlObj.query,
-        ...localVarQueryParameter,
-        ...options.query,
-      }
-      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      delete localVarUrlObj.search
-      const headersFromBaseOptions =
-        baseOptions && baseOptions.headers ? baseOptions.headers : {}
-      localVarRequestOptions.headers = {
-        ...localVarHeaderParameter,
-        ...headersFromBaseOptions,
-        ...options.headers,
-      }
-
-      return {
-        url: globalImportUrl.format(localVarUrlObj),
-        options: localVarRequestOptions,
-      }
-    },
-    /**
      * 金額削除
      * @summary No.14 金額情報削除
      * @param {number} moneyId money_id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    detailMoneyIdDelete: async (
+    deleteDetail: async (
       moneyId: number,
       options: any = {}
     ): Promise<RequestArgs> => {
@@ -1481,7 +1395,7 @@ export const DetailApiAxiosParamCreator = function (
       if (moneyId === null || moneyId === undefined) {
         throw new RequiredError(
           'moneyId',
-          'Required parameter moneyId was null or undefined when calling detailMoneyIdDelete.'
+          'Required parameter moneyId was null or undefined when calling deleteDetail.'
         )
       }
       const localVarPath = `/detail/{money_id}`.replace(
@@ -1531,7 +1445,7 @@ export const DetailApiAxiosParamCreator = function (
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    detailMoneyIdPut: async (
+    editDetail: async (
       moneyId: number,
       inlineObject4?: InlineObject4,
       options: any = {}
@@ -1540,7 +1454,7 @@ export const DetailApiAxiosParamCreator = function (
       if (moneyId === null || moneyId === undefined) {
         throw new RequiredError(
           'moneyId',
-          'Required parameter moneyId was null or undefined when calling detailMoneyIdPut.'
+          'Required parameter moneyId was null or undefined when calling editDetail.'
         )
       }
       const localVarPath = `/detail/{money_id}`.replace(
@@ -1590,6 +1504,63 @@ export const DetailApiAxiosParamCreator = function (
         options: localVarRequestOptions,
       }
     },
+    /**
+     * 日別の金額情報取得
+     * @summary No.11 日別の金額情報取得
+     * @param {string} date date
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getDetails: async (
+      date: string,
+      options: any = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'date' is not null or undefined
+      if (date === null || date === undefined) {
+        throw new RequiredError(
+          'date',
+          'Required parameter date was null or undefined when calling getDetails.'
+        )
+      }
+      const localVarPath = `/detail/{date}`.replace(
+        `{${'date'}}`,
+        encodeURIComponent(String(date))
+      )
+      const localVarUrlObj = globalImportUrl.parse(localVarPath, true)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+      const localVarRequestOptions = {
+        method: 'GET',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication CookieAuth required
+
+      localVarUrlObj.query = {
+        ...localVarUrlObj.query,
+        ...localVarQueryParameter,
+        ...options.query,
+      }
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      delete localVarUrlObj.search
+      const headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+
+      return {
+        url: globalImportUrl.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
   }
 }
 
@@ -1606,7 +1577,7 @@ export const DetailApiFp = function (configuration?: Configuration) {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async detailCreatePost(
+    async addDetail(
       inlineObject3?: InlineObject3,
       options?: any
     ): Promise<
@@ -1614,34 +1585,7 @@ export const DetailApiFp = function (configuration?: Configuration) {
     > {
       const localVarAxiosArgs = await DetailApiAxiosParamCreator(
         configuration
-      ).detailCreatePost(inlineObject3, options)
-      return (
-        axios: AxiosInstance = globalAxios,
-        basePath: string = BASE_PATH
-      ) => {
-        const axiosRequestArgs = {
-          ...localVarAxiosArgs.options,
-          url: basePath + localVarAxiosArgs.url,
-        }
-        return axios.request(axiosRequestArgs)
-      }
-    },
-    /**
-     * 日別の金額情報取得
-     * @summary No.11 日別の金額情報取得
-     * @param {string} date date
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async detailDateGet(
-      date: string,
-      options?: any
-    ): Promise<
-      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Details>>
-    > {
-      const localVarAxiosArgs = await DetailApiAxiosParamCreator(
-        configuration
-      ).detailDateGet(date, options)
+      ).addDetail(inlineObject3, options)
       return (
         axios: AxiosInstance = globalAxios,
         basePath: string = BASE_PATH
@@ -1660,7 +1604,7 @@ export const DetailApiFp = function (configuration?: Configuration) {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async detailMoneyIdDelete(
+    async deleteDetail(
       moneyId: number,
       options?: any
     ): Promise<
@@ -1668,7 +1612,7 @@ export const DetailApiFp = function (configuration?: Configuration) {
     > {
       const localVarAxiosArgs = await DetailApiAxiosParamCreator(
         configuration
-      ).detailMoneyIdDelete(moneyId, options)
+      ).deleteDetail(moneyId, options)
       return (
         axios: AxiosInstance = globalAxios,
         basePath: string = BASE_PATH
@@ -1688,7 +1632,7 @@ export const DetailApiFp = function (configuration?: Configuration) {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async detailMoneyIdPut(
+    async editDetail(
       moneyId: number,
       inlineObject4?: InlineObject4,
       options?: any
@@ -1697,7 +1641,34 @@ export const DetailApiFp = function (configuration?: Configuration) {
     > {
       const localVarAxiosArgs = await DetailApiAxiosParamCreator(
         configuration
-      ).detailMoneyIdPut(moneyId, inlineObject4, options)
+      ).editDetail(moneyId, inlineObject4, options)
+      return (
+        axios: AxiosInstance = globalAxios,
+        basePath: string = BASE_PATH
+      ) => {
+        const axiosRequestArgs = {
+          ...localVarAxiosArgs.options,
+          url: basePath + localVarAxiosArgs.url,
+        }
+        return axios.request(axiosRequestArgs)
+      }
+    },
+    /**
+     * 日別の金額情報取得
+     * @summary No.11 日別の金額情報取得
+     * @param {string} date date
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getDetails(
+      date: string,
+      options?: any
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Detail>>
+    > {
+      const localVarAxiosArgs = await DetailApiAxiosParamCreator(
+        configuration
+      ).getDetails(date, options)
       return (
         axios: AxiosInstance = globalAxios,
         basePath: string = BASE_PATH
@@ -1729,24 +1700,12 @@ export const DetailApiFactory = function (
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    detailCreatePost(
+    addDetail(
       inlineObject3?: InlineObject3,
       options?: any
     ): AxiosPromise<Array<Detail>> {
       return DetailApiFp(configuration)
-        .detailCreatePost(inlineObject3, options)
-        .then((request) => request(axios, basePath))
-    },
-    /**
-     * 日別の金額情報取得
-     * @summary No.11 日別の金額情報取得
-     * @param {string} date date
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    detailDateGet(date: string, options?: any): AxiosPromise<Array<Details>> {
-      return DetailApiFp(configuration)
-        .detailDateGet(date, options)
+        .addDetail(inlineObject3, options)
         .then((request) => request(axios, basePath))
     },
     /**
@@ -1756,9 +1715,9 @@ export const DetailApiFactory = function (
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    detailMoneyIdDelete(moneyId: number, options?: any): AxiosPromise<void> {
+    deleteDetail(moneyId: number, options?: any): AxiosPromise<void> {
       return DetailApiFp(configuration)
-        .detailMoneyIdDelete(moneyId, options)
+        .deleteDetail(moneyId, options)
         .then((request) => request(axios, basePath))
     },
     /**
@@ -1769,13 +1728,25 @@ export const DetailApiFactory = function (
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    detailMoneyIdPut(
+    editDetail(
       moneyId: number,
       inlineObject4?: InlineObject4,
       options?: any
     ): AxiosPromise<Array<Detail>> {
       return DetailApiFp(configuration)
-        .detailMoneyIdPut(moneyId, inlineObject4, options)
+        .editDetail(moneyId, inlineObject4, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
+     * 日別の金額情報取得
+     * @summary No.11 日別の金額情報取得
+     * @param {string} date date
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getDetails(date: string, options?: any): AxiosPromise<Array<Detail>> {
+      return DetailApiFp(configuration)
+        .getDetails(date, options)
         .then((request) => request(axios, basePath))
     },
   }
@@ -1796,23 +1767,9 @@ export class DetailApi extends BaseAPI {
    * @throws {RequiredError}
    * @memberof DetailApi
    */
-  public detailCreatePost(inlineObject3?: InlineObject3, options?: any) {
+  public addDetail(inlineObject3?: InlineObject3, options?: any) {
     return DetailApiFp(this.configuration)
-      .detailCreatePost(inlineObject3, options)
-      .then((request) => request(this.axios, this.basePath))
-  }
-
-  /**
-   * 日別の金額情報取得
-   * @summary No.11 日別の金額情報取得
-   * @param {string} date date
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof DetailApi
-   */
-  public detailDateGet(date: string, options?: any) {
-    return DetailApiFp(this.configuration)
-      .detailDateGet(date, options)
+      .addDetail(inlineObject3, options)
       .then((request) => request(this.axios, this.basePath))
   }
 
@@ -1824,9 +1781,9 @@ export class DetailApi extends BaseAPI {
    * @throws {RequiredError}
    * @memberof DetailApi
    */
-  public detailMoneyIdDelete(moneyId: number, options?: any) {
+  public deleteDetail(moneyId: number, options?: any) {
     return DetailApiFp(this.configuration)
-      .detailMoneyIdDelete(moneyId, options)
+      .deleteDetail(moneyId, options)
       .then((request) => request(this.axios, this.basePath))
   }
 
@@ -1839,13 +1796,27 @@ export class DetailApi extends BaseAPI {
    * @throws {RequiredError}
    * @memberof DetailApi
    */
-  public detailMoneyIdPut(
+  public editDetail(
     moneyId: number,
     inlineObject4?: InlineObject4,
     options?: any
   ) {
     return DetailApiFp(this.configuration)
-      .detailMoneyIdPut(moneyId, inlineObject4, options)
+      .editDetail(moneyId, inlineObject4, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * 日別の金額情報取得
+   * @summary No.11 日別の金額情報取得
+   * @param {string} date date
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DetailApi
+   */
+  public getDetails(date: string, options?: any) {
+    return DetailApiFp(this.configuration)
+      .getDetails(date, options)
       .then((request) => request(this.axios, this.basePath))
   }
 }
