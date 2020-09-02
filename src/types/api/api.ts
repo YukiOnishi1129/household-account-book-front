@@ -32,27 +32,14 @@ import {
 export interface AnnualChange {
   /**
    *
-   * @type {AnnualChangeData}
-   * @memberof AnnualChange
-   */
-  data: AnnualChangeData
-}
-/**
- *
- * @export
- * @interface AnnualChangeData
- */
-export interface AnnualChangeData {
-  /**
-   *
    * @type {string}
-   * @memberof AnnualChangeData
+   * @memberof AnnualChange
    */
   month: string
   /**
    *
    * @type {number}
-   * @memberof AnnualChangeData
+   * @memberof AnnualChange
    */
   sum_money: number
 }
@@ -76,29 +63,10 @@ export interface Calendar {
   sum_month_money: number
   /**
    *
-   * @type {CalendarSumDateMoney}
+   * @type {Array<SumDateMoney>}
    * @memberof Calendar
    */
-  sum_date_money: CalendarSumDateMoney
-}
-/**
- *
- * @export
- * @interface CalendarSumDateMoney
- */
-export interface CalendarSumDateMoney {
-  /**
-   *
-   * @type {string}
-   * @memberof CalendarSumDateMoney
-   */
-  date: string
-  /**
-   *
-   * @type {number}
-   * @memberof CalendarSumDateMoney
-   */
-  money: number
+  sum_date_money: Array<SumDateMoney>
 }
 /**
  *
@@ -173,7 +141,25 @@ export interface InlineObject {
    * @type {number}
    * @memberof InlineObject
    */
-  email?: number
+  category_id?: number
+  /**
+   *
+   * @type {number}
+   * @memberof InlineObject
+   */
+  money?: number
+  /**
+   *
+   * @type {string}
+   * @memberof InlineObject
+   */
+  img_file?: string
+  /**
+   *
+   * @type {string}
+   * @memberof InlineObject
+   */
+  date?: string
 }
 /**
  *
@@ -186,13 +172,25 @@ export interface InlineObject1 {
    * @type {number}
    * @memberof InlineObject1
    */
-  id?: number
+  money?: number
+  /**
+   *
+   * @type {number}
+   * @memberof InlineObject1
+   */
+  catgory_id?: number
   /**
    *
    * @type {string}
    * @memberof InlineObject1
    */
-  auth_key?: string
+  img_file?: string
+  /**
+   *
+   * @type {string}
+   * @memberof InlineObject1
+   */
+  date?: string
 }
 /**
  *
@@ -205,7 +203,13 @@ export interface InlineObject2 {
    * @type {string}
    * @memberof InlineObject2
    */
-  password?: string
+  category_name?: string
+  /**
+   *
+   * @type {number}
+   * @memberof InlineObject2
+   */
+  color_type?: number
 }
 /**
  *
@@ -218,25 +222,19 @@ export interface InlineObject3 {
    * @type {number}
    * @memberof InlineObject3
    */
-  category_id?: number
+  id?: number
+  /**
+   *
+   * @type {string}
+   * @memberof InlineObject3
+   */
+  category_name?: string
   /**
    *
    * @type {number}
    * @memberof InlineObject3
    */
-  money?: number
-  /**
-   *
-   * @type {string}
-   * @memberof InlineObject3
-   */
-  img_file?: string
-  /**
-   *
-   * @type {string}
-   * @memberof InlineObject3
-   */
-  date?: string
+  color_type?: number
 }
 /**
  *
@@ -249,113 +247,19 @@ export interface InlineObject4 {
    * @type {number}
    * @memberof InlineObject4
    */
-  money?: number
-  /**
-   *
-   * @type {number}
-   * @memberof InlineObject4
-   */
-  catgory_id?: number
-  /**
-   *
-   * @type {string}
-   * @memberof InlineObject4
-   */
-  img_file?: string
-  /**
-   *
-   * @type {string}
-   * @memberof InlineObject4
-   */
-  date?: string
-}
-/**
- *
- * @export
- * @interface InlineObject5
- */
-export interface InlineObject5 {
-  /**
-   *
-   * @type {string}
-   * @memberof InlineObject5
-   */
-  category_name?: string
-  /**
-   *
-   * @type {number}
-   * @memberof InlineObject5
-   */
-  color_type?: number
-}
-/**
- *
- * @export
- * @interface InlineObject6
- */
-export interface InlineObject6 {
-  /**
-   *
-   * @type {number}
-   * @memberof InlineObject6
-   */
-  id?: number
-  /**
-   *
-   * @type {string}
-   * @memberof InlineObject6
-   */
-  category_name?: string
-  /**
-   *
-   * @type {number}
-   * @memberof InlineObject6
-   */
-  color_type?: number
-}
-/**
- *
- * @export
- * @interface InlineObject7
- */
-export interface InlineObject7 {
-  /**
-   *
-   * @type {number}
-   * @memberof InlineObject7
-   */
   user_id?: number
   /**
    *
    * @type {string}
-   * @memberof InlineObject7
+   * @memberof InlineObject4
    */
   name?: string
   /**
    *
    * @type {string}
-   * @memberof InlineObject7
+   * @memberof InlineObject4
    */
   email?: string
-}
-/**
- * ログイン時のリクエストデータ
- * @export
- * @interface Login
- */
-export interface Login {
-  /**
-   *
-   * @type {string}
-   * @memberof Login
-   */
-  email: string
-  /**
-   *
-   * @type {string}
-   * @memberof Login
-   */
-  password: string
 }
 /**
  *
@@ -365,39 +269,26 @@ export interface Login {
 export interface MonthRate {
   /**
    *
-   * @type {MonthRateData}
-   * @memberof MonthRate
-   */
-  data: MonthRateData
-}
-/**
- *
- * @export
- * @interface MonthRateData
- */
-export interface MonthRateData {
-  /**
-   *
    * @type {number}
-   * @memberof MonthRateData
+   * @memberof MonthRate
    */
   category_id: number
   /**
    *
    * @type {string}
-   * @memberof MonthRateData
+   * @memberof MonthRate
    */
   category_name: string
   /**
    *
    * @type {number}
-   * @memberof MonthRateData
+   * @memberof MonthRate
    */
   color_type: number
   /**
    *
    * @type {number}
-   * @memberof MonthRateData
+   * @memberof MonthRate
    */
   money: number
 }
@@ -427,42 +318,106 @@ export interface Partner {
   email: string
 }
 /**
- *
+ * パパスワード変更のリクエストデータ
  * @export
- * @interface Partners
+ * @interface RequestChangePassword
  */
-export interface Partners {
+export interface RequestChangePassword {
   /**
    *
-   * @type {Partner}
-   * @memberof Partners
+   * @type {string}
+   * @memberof RequestChangePassword
    */
-  data?: Partner
+  password: string
 }
 /**
- * 会員登録時のリクエストデータ
+ * ログイン時のリクエストデータ
  * @export
- * @interface Register
+ * @interface RequestLogin
  */
-export interface Register {
+export interface RequestLogin {
   /**
    *
    * @type {string}
-   * @memberof Register
-   */
-  name: string
-  /**
-   *
-   * @type {string}
-   * @memberof Register
+   * @memberof RequestLogin
    */
   email: string
   /**
    *
    * @type {string}
-   * @memberof Register
+   * @memberof RequestLogin
    */
   password: string
+}
+/**
+ * 会員登録時のリクエストデータ
+ * @export
+ * @interface RequestRegister
+ */
+export interface RequestRegister {
+  /**
+   *
+   * @type {string}
+   * @memberof RequestRegister
+   */
+  name: string
+  /**
+   *
+   * @type {string}
+   * @memberof RequestRegister
+   */
+  email: string
+  /**
+   *
+   * @type {string}
+   * @memberof RequestRegister
+   */
+  password: string
+}
+/**
+ * パスワードリマインド(キー送信)のリクエストデータ
+ * @export
+ * @interface RequestRemindKey
+ */
+export interface RequestRemindKey {
+  /**
+   *
+   * @type {string}
+   * @memberof RequestRemindKey
+   */
+  auth_key: string
+}
+/**
+ * パスワードリマインド(アドレス送信)のリクエストデータ
+ * @export
+ * @interface RequestRemindMail
+ */
+export interface RequestRemindMail {
+  /**
+   *
+   * @type {string}
+   * @memberof RequestRemindMail
+   */
+  email: string
+}
+/**
+ *
+ * @export
+ * @interface SumDateMoney
+ */
+export interface SumDateMoney {
+  /**
+   *
+   * @type {string}
+   * @memberof SumDateMoney
+   */
+  date: string
+  /**
+   *
+   * @type {number}
+   * @memberof SumDateMoney
+   */
+  money: number
 }
 /**
  * ユーザー情報
@@ -488,12 +443,6 @@ export interface User {
    * @memberof User
    */
   email?: string
-  /**
-   *
-   * @type {string}
-   * @memberof User
-   */
-  password?: string
   /**
    *
    * @type {number}
@@ -523,7 +472,7 @@ export const AnnualChangeApiAxiosParamCreator = function (
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    annualChangeDateGet: async (
+    getAnnualChange: async (
       date: string,
       options: any = {}
     ): Promise<RequestArgs> => {
@@ -531,7 +480,7 @@ export const AnnualChangeApiAxiosParamCreator = function (
       if (date === null || date === undefined) {
         throw new RequiredError(
           'date',
-          'Required parameter date was null or undefined when calling annualChangeDateGet.'
+          'Required parameter date was null or undefined when calling getAnnualChange.'
         )
       }
       const localVarPath = `/annual_change/{date}`.replace(
@@ -589,7 +538,7 @@ export const AnnualChangeApiFp = function (configuration?: Configuration) {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async annualChangeDateGet(
+    async getAnnualChange(
       date: string,
       options?: any
     ): Promise<
@@ -600,7 +549,7 @@ export const AnnualChangeApiFp = function (configuration?: Configuration) {
     > {
       const localVarAxiosArgs = await AnnualChangeApiAxiosParamCreator(
         configuration
-      ).annualChangeDateGet(date, options)
+      ).getAnnualChange(date, options)
       return (
         axios: AxiosInstance = globalAxios,
         basePath: string = BASE_PATH
@@ -632,12 +581,12 @@ export const AnnualChangeApiFactory = function (
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    annualChangeDateGet(
+    getAnnualChange(
       date: string,
       options?: any
     ): AxiosPromise<Array<AnnualChange>> {
       return AnnualChangeApiFp(configuration)
-        .annualChangeDateGet(date, options)
+        .getAnnualChange(date, options)
         .then((request) => request(axios, basePath))
     },
   }
@@ -658,9 +607,9 @@ export class AnnualChangeApi extends BaseAPI {
    * @throws {RequiredError}
    * @memberof AnnualChangeApi
    */
-  public annualChangeDateGet(date: string, options?: any) {
+  public getAnnualChange(date: string, options?: any) {
     return AnnualChangeApiFp(this.configuration)
-      .annualChangeDateGet(date, options)
+      .getAnnualChange(date, options)
       .then((request) => request(this.axios, this.basePath))
   }
 }
@@ -680,7 +629,7 @@ export const CalendarApiAxiosParamCreator = function (
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    calendarYearAndMonthGet: async (
+    getCalender: async (
       yearAndMonth: string,
       options: any = {}
     ): Promise<RequestArgs> => {
@@ -688,7 +637,7 @@ export const CalendarApiAxiosParamCreator = function (
       if (yearAndMonth === null || yearAndMonth === undefined) {
         throw new RequiredError(
           'yearAndMonth',
-          'Required parameter yearAndMonth was null or undefined when calling calendarYearAndMonthGet.'
+          'Required parameter yearAndMonth was null or undefined when calling getCalender.'
         )
       }
       const localVarPath = `/calendar/{year_and_month}`.replace(
@@ -746,18 +695,15 @@ export const CalendarApiFp = function (configuration?: Configuration) {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async calendarYearAndMonthGet(
+    async getCalender(
       yearAndMonth: string,
       options?: any
     ): Promise<
-      (
-        axios?: AxiosInstance,
-        basePath?: string
-      ) => AxiosPromise<Array<Calendar>>
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Calendar>
     > {
       const localVarAxiosArgs = await CalendarApiAxiosParamCreator(
         configuration
-      ).calendarYearAndMonthGet(yearAndMonth, options)
+      ).getCalender(yearAndMonth, options)
       return (
         axios: AxiosInstance = globalAxios,
         basePath: string = BASE_PATH
@@ -789,12 +735,9 @@ export const CalendarApiFactory = function (
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    calendarYearAndMonthGet(
-      yearAndMonth: string,
-      options?: any
-    ): AxiosPromise<Array<Calendar>> {
+    getCalender(yearAndMonth: string, options?: any): AxiosPromise<Calendar> {
       return CalendarApiFp(configuration)
-        .calendarYearAndMonthGet(yearAndMonth, options)
+        .getCalender(yearAndMonth, options)
         .then((request) => request(axios, basePath))
     },
   }
@@ -815,9 +758,9 @@ export class CalendarApi extends BaseAPI {
    * @throws {RequiredError}
    * @memberof CalendarApi
    */
-  public calendarYearAndMonthGet(yearAndMonth: string, options?: any) {
+  public getCalender(yearAndMonth: string, options?: any) {
     return CalendarApiFp(this.configuration)
-      .calendarYearAndMonthGet(yearAndMonth, options)
+      .getCalender(yearAndMonth, options)
       .then((request) => request(this.axios, this.basePath))
   }
 }
@@ -833,12 +776,12 @@ export const CategoryApiAxiosParamCreator = function (
     /**
      * カテゴリ新規登録
      * @summary No.16 カテゴリ新規登録
-     * @param {InlineObject5} [inlineObject5]
+     * @param {InlineObject2} [inlineObject2]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     addCategory: async (
-      inlineObject5?: InlineObject5,
+      inlineObject2?: InlineObject2,
       options: any = {}
     ): Promise<RequestArgs> => {
       const localVarPath = `/category/create`
@@ -874,11 +817,11 @@ export const CategoryApiAxiosParamCreator = function (
         ...options.headers,
       }
       const needsSerialization =
-        typeof inlineObject5 !== 'string' ||
+        typeof inlineObject2 !== 'string' ||
         localVarRequestOptions.headers['Content-Type'] === 'application/json'
       localVarRequestOptions.data = needsSerialization
-        ? JSON.stringify(inlineObject5 !== undefined ? inlineObject5 : {})
-        : inlineObject5 || ''
+        ? JSON.stringify(inlineObject2 !== undefined ? inlineObject2 : {})
+        : inlineObject2 || ''
 
       return {
         url: globalImportUrl.format(localVarUrlObj),
@@ -946,13 +889,13 @@ export const CategoryApiAxiosParamCreator = function (
      * カテゴリ情報編集
      * @summary No.17 カテゴリ情報編集
      * @param {number} categoryId カテゴリID
-     * @param {InlineObject6} [inlineObject6]
+     * @param {InlineObject3} [inlineObject3]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     editCategory: async (
       categoryId: number,
-      inlineObject6?: InlineObject6,
+      inlineObject3?: InlineObject3,
       options: any = {}
     ): Promise<RequestArgs> => {
       // verify required parameter 'categoryId' is not null or undefined
@@ -998,11 +941,11 @@ export const CategoryApiAxiosParamCreator = function (
         ...options.headers,
       }
       const needsSerialization =
-        typeof inlineObject6 !== 'string' ||
+        typeof inlineObject3 !== 'string' ||
         localVarRequestOptions.headers['Content-Type'] === 'application/json'
       localVarRequestOptions.data = needsSerialization
-        ? JSON.stringify(inlineObject6 !== undefined ? inlineObject6 : {})
-        : inlineObject6 || ''
+        ? JSON.stringify(inlineObject3 !== undefined ? inlineObject3 : {})
+        : inlineObject3 || ''
 
       return {
         url: globalImportUrl.format(localVarUrlObj),
@@ -1064,12 +1007,12 @@ export const CategoryApiFp = function (configuration?: Configuration) {
     /**
      * カテゴリ新規登録
      * @summary No.16 カテゴリ新規登録
-     * @param {InlineObject5} [inlineObject5]
+     * @param {InlineObject2} [inlineObject2]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async addCategory(
-      inlineObject5?: InlineObject5,
+      inlineObject2?: InlineObject2,
       options?: any
     ): Promise<
       (
@@ -1079,7 +1022,7 @@ export const CategoryApiFp = function (configuration?: Configuration) {
     > {
       const localVarAxiosArgs = await CategoryApiAxiosParamCreator(
         configuration
-      ).addCategory(inlineObject5, options)
+      ).addCategory(inlineObject2, options)
       return (
         axios: AxiosInstance = globalAxios,
         basePath: string = BASE_PATH
@@ -1122,13 +1065,13 @@ export const CategoryApiFp = function (configuration?: Configuration) {
      * カテゴリ情報編集
      * @summary No.17 カテゴリ情報編集
      * @param {number} categoryId カテゴリID
-     * @param {InlineObject6} [inlineObject6]
+     * @param {InlineObject3} [inlineObject3]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async editCategory(
       categoryId: number,
-      inlineObject6?: InlineObject6,
+      inlineObject3?: InlineObject3,
       options?: any
     ): Promise<
       (
@@ -1138,7 +1081,7 @@ export const CategoryApiFp = function (configuration?: Configuration) {
     > {
       const localVarAxiosArgs = await CategoryApiAxiosParamCreator(
         configuration
-      ).editCategory(categoryId, inlineObject6, options)
+      ).editCategory(categoryId, inlineObject3, options)
       return (
         axios: AxiosInstance = globalAxios,
         basePath: string = BASE_PATH
@@ -1194,16 +1137,16 @@ export const CategoryApiFactory = function (
     /**
      * カテゴリ新規登録
      * @summary No.16 カテゴリ新規登録
-     * @param {InlineObject5} [inlineObject5]
+     * @param {InlineObject2} [inlineObject2]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     addCategory(
-      inlineObject5?: InlineObject5,
+      inlineObject2?: InlineObject2,
       options?: any
     ): AxiosPromise<Array<Category>> {
       return CategoryApiFp(configuration)
-        .addCategory(inlineObject5, options)
+        .addCategory(inlineObject2, options)
         .then((request) => request(axios, basePath))
     },
     /**
@@ -1222,17 +1165,17 @@ export const CategoryApiFactory = function (
      * カテゴリ情報編集
      * @summary No.17 カテゴリ情報編集
      * @param {number} categoryId カテゴリID
-     * @param {InlineObject6} [inlineObject6]
+     * @param {InlineObject3} [inlineObject3]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     editCategory(
       categoryId: number,
-      inlineObject6?: InlineObject6,
+      inlineObject3?: InlineObject3,
       options?: any
     ): AxiosPromise<Array<Category>> {
       return CategoryApiFp(configuration)
-        .editCategory(categoryId, inlineObject6, options)
+        .editCategory(categoryId, inlineObject3, options)
         .then((request) => request(axios, basePath))
     },
     /**
@@ -1259,14 +1202,14 @@ export class CategoryApi extends BaseAPI {
   /**
    * カテゴリ新規登録
    * @summary No.16 カテゴリ新規登録
-   * @param {InlineObject5} [inlineObject5]
+   * @param {InlineObject2} [inlineObject2]
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof CategoryApi
    */
-  public addCategory(inlineObject5?: InlineObject5, options?: any) {
+  public addCategory(inlineObject2?: InlineObject2, options?: any) {
     return CategoryApiFp(this.configuration)
-      .addCategory(inlineObject5, options)
+      .addCategory(inlineObject2, options)
       .then((request) => request(this.axios, this.basePath))
   }
 
@@ -1288,18 +1231,18 @@ export class CategoryApi extends BaseAPI {
    * カテゴリ情報編集
    * @summary No.17 カテゴリ情報編集
    * @param {number} categoryId カテゴリID
-   * @param {InlineObject6} [inlineObject6]
+   * @param {InlineObject3} [inlineObject3]
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof CategoryApi
    */
   public editCategory(
     categoryId: number,
-    inlineObject6?: InlineObject6,
+    inlineObject3?: InlineObject3,
     options?: any
   ) {
     return CategoryApiFp(this.configuration)
-      .editCategory(categoryId, inlineObject6, options)
+      .editCategory(categoryId, inlineObject3, options)
       .then((request) => request(this.axios, this.basePath))
   }
 
@@ -1328,12 +1271,12 @@ export const DetailApiAxiosParamCreator = function (
     /**
      * 金額入力
      * @summary No.12 金額情報新規登録
-     * @param {InlineObject3} [inlineObject3]
+     * @param {InlineObject} [inlineObject]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     addDetail: async (
-      inlineObject3?: InlineObject3,
+      inlineObject?: InlineObject,
       options: any = {}
     ): Promise<RequestArgs> => {
       const localVarPath = `/detail/create`
@@ -1369,11 +1312,11 @@ export const DetailApiAxiosParamCreator = function (
         ...options.headers,
       }
       const needsSerialization =
-        typeof inlineObject3 !== 'string' ||
+        typeof inlineObject !== 'string' ||
         localVarRequestOptions.headers['Content-Type'] === 'application/json'
       localVarRequestOptions.data = needsSerialization
-        ? JSON.stringify(inlineObject3 !== undefined ? inlineObject3 : {})
-        : inlineObject3 || ''
+        ? JSON.stringify(inlineObject !== undefined ? inlineObject : {})
+        : inlineObject || ''
 
       return {
         url: globalImportUrl.format(localVarUrlObj),
@@ -1441,13 +1384,13 @@ export const DetailApiAxiosParamCreator = function (
      * 金額編集
      * @summary No.13 金額情報編集
      * @param {number} moneyId money_id
-     * @param {InlineObject4} [inlineObject4]
+     * @param {InlineObject1} [inlineObject1]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     editDetail: async (
       moneyId: number,
-      inlineObject4?: InlineObject4,
+      inlineObject1?: InlineObject1,
       options: any = {}
     ): Promise<RequestArgs> => {
       // verify required parameter 'moneyId' is not null or undefined
@@ -1493,11 +1436,11 @@ export const DetailApiAxiosParamCreator = function (
         ...options.headers,
       }
       const needsSerialization =
-        typeof inlineObject4 !== 'string' ||
+        typeof inlineObject1 !== 'string' ||
         localVarRequestOptions.headers['Content-Type'] === 'application/json'
       localVarRequestOptions.data = needsSerialization
-        ? JSON.stringify(inlineObject4 !== undefined ? inlineObject4 : {})
-        : inlineObject4 || ''
+        ? JSON.stringify(inlineObject1 !== undefined ? inlineObject1 : {})
+        : inlineObject1 || ''
 
       return {
         url: globalImportUrl.format(localVarUrlObj),
@@ -1573,19 +1516,19 @@ export const DetailApiFp = function (configuration?: Configuration) {
     /**
      * 金額入力
      * @summary No.12 金額情報新規登録
-     * @param {InlineObject3} [inlineObject3]
+     * @param {InlineObject} [inlineObject]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async addDetail(
-      inlineObject3?: InlineObject3,
+      inlineObject?: InlineObject,
       options?: any
     ): Promise<
       (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Detail>>
     > {
       const localVarAxiosArgs = await DetailApiAxiosParamCreator(
         configuration
-      ).addDetail(inlineObject3, options)
+      ).addDetail(inlineObject, options)
       return (
         axios: AxiosInstance = globalAxios,
         basePath: string = BASE_PATH
@@ -1628,20 +1571,20 @@ export const DetailApiFp = function (configuration?: Configuration) {
      * 金額編集
      * @summary No.13 金額情報編集
      * @param {number} moneyId money_id
-     * @param {InlineObject4} [inlineObject4]
+     * @param {InlineObject1} [inlineObject1]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async editDetail(
       moneyId: number,
-      inlineObject4?: InlineObject4,
+      inlineObject1?: InlineObject1,
       options?: any
     ): Promise<
       (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Detail>>
     > {
       const localVarAxiosArgs = await DetailApiAxiosParamCreator(
         configuration
-      ).editDetail(moneyId, inlineObject4, options)
+      ).editDetail(moneyId, inlineObject1, options)
       return (
         axios: AxiosInstance = globalAxios,
         basePath: string = BASE_PATH
@@ -1696,16 +1639,16 @@ export const DetailApiFactory = function (
     /**
      * 金額入力
      * @summary No.12 金額情報新規登録
-     * @param {InlineObject3} [inlineObject3]
+     * @param {InlineObject} [inlineObject]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     addDetail(
-      inlineObject3?: InlineObject3,
+      inlineObject?: InlineObject,
       options?: any
     ): AxiosPromise<Array<Detail>> {
       return DetailApiFp(configuration)
-        .addDetail(inlineObject3, options)
+        .addDetail(inlineObject, options)
         .then((request) => request(axios, basePath))
     },
     /**
@@ -1724,17 +1667,17 @@ export const DetailApiFactory = function (
      * 金額編集
      * @summary No.13 金額情報編集
      * @param {number} moneyId money_id
-     * @param {InlineObject4} [inlineObject4]
+     * @param {InlineObject1} [inlineObject1]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     editDetail(
       moneyId: number,
-      inlineObject4?: InlineObject4,
+      inlineObject1?: InlineObject1,
       options?: any
     ): AxiosPromise<Array<Detail>> {
       return DetailApiFp(configuration)
-        .editDetail(moneyId, inlineObject4, options)
+        .editDetail(moneyId, inlineObject1, options)
         .then((request) => request(axios, basePath))
     },
     /**
@@ -1762,14 +1705,14 @@ export class DetailApi extends BaseAPI {
   /**
    * 金額入力
    * @summary No.12 金額情報新規登録
-   * @param {InlineObject3} [inlineObject3]
+   * @param {InlineObject} [inlineObject]
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof DetailApi
    */
-  public addDetail(inlineObject3?: InlineObject3, options?: any) {
+  public addDetail(inlineObject?: InlineObject, options?: any) {
     return DetailApiFp(this.configuration)
-      .addDetail(inlineObject3, options)
+      .addDetail(inlineObject, options)
       .then((request) => request(this.axios, this.basePath))
   }
 
@@ -1791,18 +1734,18 @@ export class DetailApi extends BaseAPI {
    * 金額編集
    * @summary No.13 金額情報編集
    * @param {number} moneyId money_id
-   * @param {InlineObject4} [inlineObject4]
+   * @param {InlineObject1} [inlineObject1]
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof DetailApi
    */
   public editDetail(
     moneyId: number,
-    inlineObject4?: InlineObject4,
+    inlineObject1?: InlineObject1,
     options?: any
   ) {
     return DetailApiFp(this.configuration)
-      .editDetail(moneyId, inlineObject4, options)
+      .editDetail(moneyId, inlineObject1, options)
       .then((request) => request(this.axios, this.basePath))
   }
 
@@ -1836,7 +1779,7 @@ export const MonthRateApiAxiosParamCreator = function (
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    monthRateMonthGet: async (
+    getMonthRate: async (
       month: string,
       options: any = {}
     ): Promise<RequestArgs> => {
@@ -1844,7 +1787,7 @@ export const MonthRateApiAxiosParamCreator = function (
       if (month === null || month === undefined) {
         throw new RequiredError(
           'month',
-          'Required parameter month was null or undefined when calling monthRateMonthGet.'
+          'Required parameter month was null or undefined when calling getMonthRate.'
         )
       }
       const localVarPath = `/month-rate/{month}`.replace(
@@ -1902,7 +1845,7 @@ export const MonthRateApiFp = function (configuration?: Configuration) {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async monthRateMonthGet(
+    async getMonthRate(
       month: string,
       options?: any
     ): Promise<
@@ -1913,7 +1856,7 @@ export const MonthRateApiFp = function (configuration?: Configuration) {
     > {
       const localVarAxiosArgs = await MonthRateApiAxiosParamCreator(
         configuration
-      ).monthRateMonthGet(month, options)
+      ).getMonthRate(month, options)
       return (
         axios: AxiosInstance = globalAxios,
         basePath: string = BASE_PATH
@@ -1945,12 +1888,9 @@ export const MonthRateApiFactory = function (
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    monthRateMonthGet(
-      month: string,
-      options?: any
-    ): AxiosPromise<Array<MonthRate>> {
+    getMonthRate(month: string, options?: any): AxiosPromise<Array<MonthRate>> {
       return MonthRateApiFp(configuration)
-        .monthRateMonthGet(month, options)
+        .getMonthRate(month, options)
         .then((request) => request(axios, basePath))
     },
   }
@@ -1971,9 +1911,9 @@ export class MonthRateApi extends BaseAPI {
    * @throws {RequiredError}
    * @memberof MonthRateApi
    */
-  public monthRateMonthGet(month: string, options?: any) {
+  public getMonthRate(month: string, options?: any) {
     return MonthRateApiFp(this.configuration)
-      .monthRateMonthGet(month, options)
+      .getMonthRate(month, options)
       .then((request) => request(this.axios, this.basePath))
   }
 }
@@ -1989,12 +1929,12 @@ export const PartnerApiAxiosParamCreator = function (
     /**
      * パートナーユーザー登録
      * @summary No.22 パートナーユーザー登録
-     * @param {InlineObject7} [inlineObject7]
+     * @param {InlineObject4} [inlineObject4]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    partnerCreatePost: async (
-      inlineObject7?: InlineObject7,
+    addPartner: async (
+      inlineObject4?: InlineObject4,
       options: any = {}
     ): Promise<RequestArgs> => {
       const localVarPath = `/partner/create`
@@ -2030,52 +1970,11 @@ export const PartnerApiAxiosParamCreator = function (
         ...options.headers,
       }
       const needsSerialization =
-        typeof inlineObject7 !== 'string' ||
+        typeof inlineObject4 !== 'string' ||
         localVarRequestOptions.headers['Content-Type'] === 'application/json'
       localVarRequestOptions.data = needsSerialization
-        ? JSON.stringify(inlineObject7 !== undefined ? inlineObject7 : {})
-        : inlineObject7 || ''
-
-      return {
-        url: globalImportUrl.format(localVarUrlObj),
-        options: localVarRequestOptions,
-      }
-    },
-    /**
-     * パートナーユーザー取得
-     * @summary No.21 パートナーユーザー取得
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    partnerGet: async (options: any = {}): Promise<RequestArgs> => {
-      const localVarPath = `/partner`
-      const localVarUrlObj = globalImportUrl.parse(localVarPath, true)
-      let baseOptions
-      if (configuration) {
-        baseOptions = configuration.baseOptions
-      }
-      const localVarRequestOptions = {
-        method: 'GET',
-        ...baseOptions,
-        ...options,
-      }
-      const localVarHeaderParameter = {} as any
-      const localVarQueryParameter = {} as any
-
-      localVarUrlObj.query = {
-        ...localVarUrlObj.query,
-        ...localVarQueryParameter,
-        ...options.query,
-      }
-      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      delete localVarUrlObj.search
-      const headersFromBaseOptions =
-        baseOptions && baseOptions.headers ? baseOptions.headers : {}
-      localVarRequestOptions.headers = {
-        ...localVarHeaderParameter,
-        ...headersFromBaseOptions,
-        ...options.headers,
-      }
+        ? JSON.stringify(inlineObject4 !== undefined ? inlineObject4 : {})
+        : inlineObject4 || ''
 
       return {
         url: globalImportUrl.format(localVarUrlObj),
@@ -2089,7 +1988,7 @@ export const PartnerApiAxiosParamCreator = function (
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    partnerUserIdDelete: async (
+    deletePartner: async (
       userId: number,
       options: any = {}
     ): Promise<RequestArgs> => {
@@ -2097,7 +1996,7 @@ export const PartnerApiAxiosParamCreator = function (
       if (userId === null || userId === undefined) {
         throw new RequiredError(
           'userId',
-          'Required parameter userId was null or undefined when calling partnerUserIdDelete.'
+          'Required parameter userId was null or undefined when calling deletePartner.'
         )
       }
       const localVarPath = `/partner/{user_id}`.replace(
@@ -2139,6 +2038,49 @@ export const PartnerApiAxiosParamCreator = function (
         options: localVarRequestOptions,
       }
     },
+    /**
+     * パートナーユーザー取得
+     * @summary No.21 パートナーユーザー取得
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getPartners: async (options: any = {}): Promise<RequestArgs> => {
+      const localVarPath = `/partner`
+      const localVarUrlObj = globalImportUrl.parse(localVarPath, true)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+      const localVarRequestOptions = {
+        method: 'GET',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication CookieAuth required
+
+      localVarUrlObj.query = {
+        ...localVarUrlObj.query,
+        ...localVarQueryParameter,
+        ...options.query,
+      }
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      delete localVarUrlObj.search
+      const headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+
+      return {
+        url: globalImportUrl.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
   }
 }
 
@@ -2151,47 +2093,19 @@ export const PartnerApiFp = function (configuration?: Configuration) {
     /**
      * パートナーユーザー登録
      * @summary No.22 パートナーユーザー登録
-     * @param {InlineObject7} [inlineObject7]
+     * @param {InlineObject4} [inlineObject4]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async partnerCreatePost(
-      inlineObject7?: InlineObject7,
+    async addPartner(
+      inlineObject4?: InlineObject4,
       options?: any
     ): Promise<
       (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Partner>>
     > {
       const localVarAxiosArgs = await PartnerApiAxiosParamCreator(
         configuration
-      ).partnerCreatePost(inlineObject7, options)
-      return (
-        axios: AxiosInstance = globalAxios,
-        basePath: string = BASE_PATH
-      ) => {
-        const axiosRequestArgs = {
-          ...localVarAxiosArgs.options,
-          url: basePath + localVarAxiosArgs.url,
-        }
-        return axios.request(axiosRequestArgs)
-      }
-    },
-    /**
-     * パートナーユーザー取得
-     * @summary No.21 パートナーユーザー取得
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async partnerGet(
-      options?: any
-    ): Promise<
-      (
-        axios?: AxiosInstance,
-        basePath?: string
-      ) => AxiosPromise<Array<Partners>>
-    > {
-      const localVarAxiosArgs = await PartnerApiAxiosParamCreator(
-        configuration
-      ).partnerGet(options)
+      ).addPartner(inlineObject4, options)
       return (
         axios: AxiosInstance = globalAxios,
         basePath: string = BASE_PATH
@@ -2210,7 +2124,7 @@ export const PartnerApiFp = function (configuration?: Configuration) {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async partnerUserIdDelete(
+    async deletePartner(
       userId: number,
       options?: any
     ): Promise<
@@ -2218,7 +2132,32 @@ export const PartnerApiFp = function (configuration?: Configuration) {
     > {
       const localVarAxiosArgs = await PartnerApiAxiosParamCreator(
         configuration
-      ).partnerUserIdDelete(userId, options)
+      ).deletePartner(userId, options)
+      return (
+        axios: AxiosInstance = globalAxios,
+        basePath: string = BASE_PATH
+      ) => {
+        const axiosRequestArgs = {
+          ...localVarAxiosArgs.options,
+          url: basePath + localVarAxiosArgs.url,
+        }
+        return axios.request(axiosRequestArgs)
+      }
+    },
+    /**
+     * パートナーユーザー取得
+     * @summary No.21 パートナーユーザー取得
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getPartners(
+      options?: any
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Partner>>
+    > {
+      const localVarAxiosArgs = await PartnerApiAxiosParamCreator(
+        configuration
+      ).getPartners(options)
       return (
         axios: AxiosInstance = globalAxios,
         basePath: string = BASE_PATH
@@ -2246,27 +2185,16 @@ export const PartnerApiFactory = function (
     /**
      * パートナーユーザー登録
      * @summary No.22 パートナーユーザー登録
-     * @param {InlineObject7} [inlineObject7]
+     * @param {InlineObject4} [inlineObject4]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    partnerCreatePost(
-      inlineObject7?: InlineObject7,
+    addPartner(
+      inlineObject4?: InlineObject4,
       options?: any
     ): AxiosPromise<Array<Partner>> {
       return PartnerApiFp(configuration)
-        .partnerCreatePost(inlineObject7, options)
-        .then((request) => request(axios, basePath))
-    },
-    /**
-     * パートナーユーザー取得
-     * @summary No.21 パートナーユーザー取得
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    partnerGet(options?: any): AxiosPromise<Array<Partners>> {
-      return PartnerApiFp(configuration)
-        .partnerGet(options)
+        .addPartner(inlineObject4, options)
         .then((request) => request(axios, basePath))
     },
     /**
@@ -2276,9 +2204,20 @@ export const PartnerApiFactory = function (
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    partnerUserIdDelete(userId: number, options?: any): AxiosPromise<void> {
+    deletePartner(userId: number, options?: any): AxiosPromise<void> {
       return PartnerApiFp(configuration)
-        .partnerUserIdDelete(userId, options)
+        .deletePartner(userId, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
+     * パートナーユーザー取得
+     * @summary No.21 パートナーユーザー取得
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getPartners(options?: any): AxiosPromise<Array<Partner>> {
+      return PartnerApiFp(configuration)
+        .getPartners(options)
         .then((request) => request(axios, basePath))
     },
   }
@@ -2294,27 +2233,14 @@ export class PartnerApi extends BaseAPI {
   /**
    * パートナーユーザー登録
    * @summary No.22 パートナーユーザー登録
-   * @param {InlineObject7} [inlineObject7]
+   * @param {InlineObject4} [inlineObject4]
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof PartnerApi
    */
-  public partnerCreatePost(inlineObject7?: InlineObject7, options?: any) {
+  public addPartner(inlineObject4?: InlineObject4, options?: any) {
     return PartnerApiFp(this.configuration)
-      .partnerCreatePost(inlineObject7, options)
-      .then((request) => request(this.axios, this.basePath))
-  }
-
-  /**
-   * パートナーユーザー取得
-   * @summary No.21 パートナーユーザー取得
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof PartnerApi
-   */
-  public partnerGet(options?: any) {
-    return PartnerApiFp(this.configuration)
-      .partnerGet(options)
+      .addPartner(inlineObject4, options)
       .then((request) => request(this.axios, this.basePath))
   }
 
@@ -2326,9 +2252,22 @@ export class PartnerApi extends BaseAPI {
    * @throws {RequiredError}
    * @memberof PartnerApi
    */
-  public partnerUserIdDelete(userId: number, options?: any) {
+  public deletePartner(userId: number, options?: any) {
     return PartnerApiFp(this.configuration)
-      .partnerUserIdDelete(userId, options)
+      .deletePartner(userId, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * パートナーユーザー取得
+   * @summary No.21 パートナーユーザー取得
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof PartnerApi
+   */
+  public getPartners(options?: any) {
+    return PartnerApiFp(this.configuration)
+      .getPartners(options)
       .then((request) => request(this.axios, this.basePath))
   }
 }
@@ -2347,7 +2286,7 @@ export const UsersApiAxiosParamCreator = function (
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    authGet: async (options: any = {}): Promise<RequestArgs> => {
+    authRooting: async (options: any = {}): Promise<RequestArgs> => {
       const localVarPath = `/auth`
       const localVarUrlObj = globalImportUrl.parse(localVarPath, true)
       let baseOptions
@@ -2387,12 +2326,12 @@ export const UsersApiAxiosParamCreator = function (
     /**
      * パスワード変更処理
      * @summary No.9 パスワード変更
-     * @param {InlineObject2} [inlineObject2]
+     * @param {RequestRemindKey} [requestRemindKey] リクエストパラメータ
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    changePasswordPost: async (
-      inlineObject2?: InlineObject2,
+    changePassword: async (
+      requestRemindKey?: RequestRemindKey,
       options: any = {}
     ): Promise<RequestArgs> => {
       const localVarPath = `/change-password`
@@ -2408,6 +2347,8 @@ export const UsersApiAxiosParamCreator = function (
       }
       const localVarHeaderParameter = {} as any
       const localVarQueryParameter = {} as any
+
+      // authentication CookieAuth required
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
 
@@ -2426,11 +2367,11 @@ export const UsersApiAxiosParamCreator = function (
         ...options.headers,
       }
       const needsSerialization =
-        typeof inlineObject2 !== 'string' ||
+        typeof requestRemindKey !== 'string' ||
         localVarRequestOptions.headers['Content-Type'] === 'application/json'
       localVarRequestOptions.data = needsSerialization
-        ? JSON.stringify(inlineObject2 !== undefined ? inlineObject2 : {})
-        : inlineObject2 || ''
+        ? JSON.stringify(requestRemindKey !== undefined ? requestRemindKey : {})
+        : requestRemindKey || ''
 
       return {
         url: globalImportUrl.format(localVarUrlObj),
@@ -2440,12 +2381,12 @@ export const UsersApiAxiosParamCreator = function (
     /**
      * ログイン処理
      * @summary No.1 ログイン
-     * @param {Login} [login] リクエストパラメータ
+     * @param {RequestLogin} [requestLogin] リクエストパラメータ
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    loginPost: async (
-      login?: Login,
+    login: async (
+      requestLogin?: RequestLogin,
       options: any = {}
     ): Promise<RequestArgs> => {
       const localVarPath = `/login`
@@ -2479,11 +2420,11 @@ export const UsersApiAxiosParamCreator = function (
         ...options.headers,
       }
       const needsSerialization =
-        typeof login !== 'string' ||
+        typeof requestLogin !== 'string' ||
         localVarRequestOptions.headers['Content-Type'] === 'application/json'
       localVarRequestOptions.data = needsSerialization
-        ? JSON.stringify(login !== undefined ? login : {})
-        : login || ''
+        ? JSON.stringify(requestLogin !== undefined ? requestLogin : {})
+        : requestLogin || ''
 
       return {
         url: globalImportUrl.format(localVarUrlObj),
@@ -2496,7 +2437,7 @@ export const UsersApiAxiosParamCreator = function (
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    logoutDelete: async (options: any = {}): Promise<RequestArgs> => {
+    logout: async (options: any = {}): Promise<RequestArgs> => {
       const localVarPath = `/logout`
       const localVarUrlObj = globalImportUrl.parse(localVarPath, true)
       let baseOptions
@@ -2534,12 +2475,12 @@ export const UsersApiAxiosParamCreator = function (
     /**
      * パートナーユーザーによるログイン処理
      * @summary No.3 パートナーログイン
-     * @param {Login} [login] リクエストパラメータ
+     * @param {RequestLogin} [requestLogin] リクエストパラメータ
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    partnerLoginPost: async (
-      login?: Login,
+    partnerLogin: async (
+      requestLogin?: RequestLogin,
       options: any = {}
     ): Promise<RequestArgs> => {
       const localVarPath = `/partner-login`
@@ -2573,11 +2514,11 @@ export const UsersApiAxiosParamCreator = function (
         ...options.headers,
       }
       const needsSerialization =
-        typeof login !== 'string' ||
+        typeof requestLogin !== 'string' ||
         localVarRequestOptions.headers['Content-Type'] === 'application/json'
       localVarRequestOptions.data = needsSerialization
-        ? JSON.stringify(login !== undefined ? login : {})
-        : login || ''
+        ? JSON.stringify(requestLogin !== undefined ? requestLogin : {})
+        : requestLogin || ''
 
       return {
         url: globalImportUrl.format(localVarUrlObj),
@@ -2587,12 +2528,12 @@ export const UsersApiAxiosParamCreator = function (
     /**
      * 会員登録処理
      * @summary No.2 会員登録
-     * @param {Register} [register] リクエストパラメータ
+     * @param {RequestRegister} [requestRegister] リクエストパラメータ
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    registerPost: async (
-      register?: Register,
+    register: async (
+      requestRegister?: RequestRegister,
       options: any = {}
     ): Promise<RequestArgs> => {
       const localVarPath = `/register`
@@ -2626,64 +2567,11 @@ export const UsersApiAxiosParamCreator = function (
         ...options.headers,
       }
       const needsSerialization =
-        typeof register !== 'string' ||
+        typeof requestRegister !== 'string' ||
         localVarRequestOptions.headers['Content-Type'] === 'application/json'
       localVarRequestOptions.data = needsSerialization
-        ? JSON.stringify(register !== undefined ? register : {})
-        : register || ''
-
-      return {
-        url: globalImportUrl.format(localVarUrlObj),
-        options: localVarRequestOptions,
-      }
-    },
-    /**
-     * パスワードリマインド キー送信
-     * @summary No.8 パスワードリマインド(キー送信)
-     * @param {InlineObject1} [inlineObject1]
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    remaindKeyPost: async (
-      inlineObject1?: InlineObject1,
-      options: any = {}
-    ): Promise<RequestArgs> => {
-      const localVarPath = `/remaind-key`
-      const localVarUrlObj = globalImportUrl.parse(localVarPath, true)
-      let baseOptions
-      if (configuration) {
-        baseOptions = configuration.baseOptions
-      }
-      const localVarRequestOptions = {
-        method: 'POST',
-        ...baseOptions,
-        ...options,
-      }
-      const localVarHeaderParameter = {} as any
-      const localVarQueryParameter = {} as any
-
-      localVarHeaderParameter['Content-Type'] = 'application/json'
-
-      localVarUrlObj.query = {
-        ...localVarUrlObj.query,
-        ...localVarQueryParameter,
-        ...options.query,
-      }
-      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      delete localVarUrlObj.search
-      const headersFromBaseOptions =
-        baseOptions && baseOptions.headers ? baseOptions.headers : {}
-      localVarRequestOptions.headers = {
-        ...localVarHeaderParameter,
-        ...headersFromBaseOptions,
-        ...options.headers,
-      }
-      const needsSerialization =
-        typeof inlineObject1 !== 'string' ||
-        localVarRequestOptions.headers['Content-Type'] === 'application/json'
-      localVarRequestOptions.data = needsSerialization
-        ? JSON.stringify(inlineObject1 !== undefined ? inlineObject1 : {})
-        : inlineObject1 || ''
+        ? JSON.stringify(requestRegister !== undefined ? requestRegister : {})
+        : requestRegister || ''
 
       return {
         url: globalImportUrl.format(localVarUrlObj),
@@ -2693,15 +2581,15 @@ export const UsersApiAxiosParamCreator = function (
     /**
      * パスワードリマインド アドレス送信
      * @summary No.7 パスワードリマインド(アドレス送信)
-     * @param {InlineObject} [inlineObject]
+     * @param {RequestRemindMail} [requestRemindMail] リクエストパラメータ
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    remaindMailPost: async (
-      inlineObject?: InlineObject,
+    remindEmail: async (
+      requestRemindMail?: RequestRemindMail,
       options: any = {}
     ): Promise<RequestArgs> => {
-      const localVarPath = `/remaind-mail`
+      const localVarPath = `/remind-mail`
       const localVarUrlObj = globalImportUrl.parse(localVarPath, true)
       let baseOptions
       if (configuration) {
@@ -2732,11 +2620,68 @@ export const UsersApiAxiosParamCreator = function (
         ...options.headers,
       }
       const needsSerialization =
-        typeof inlineObject !== 'string' ||
+        typeof requestRemindMail !== 'string' ||
         localVarRequestOptions.headers['Content-Type'] === 'application/json'
       localVarRequestOptions.data = needsSerialization
-        ? JSON.stringify(inlineObject !== undefined ? inlineObject : {})
-        : inlineObject || ''
+        ? JSON.stringify(
+            requestRemindMail !== undefined ? requestRemindMail : {}
+          )
+        : requestRemindMail || ''
+
+      return {
+        url: globalImportUrl.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * パスワードリマインド キー送信
+     * @summary No.8 パスワードリマインド(キー送信)
+     * @param {RequestRemindMail} [requestRemindMail] リクエストパラメータ
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    remindKey: async (
+      requestRemindMail?: RequestRemindMail,
+      options: any = {}
+    ): Promise<RequestArgs> => {
+      const localVarPath = `/remind-key`
+      const localVarUrlObj = globalImportUrl.parse(localVarPath, true)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
+      localVarUrlObj.query = {
+        ...localVarUrlObj.query,
+        ...localVarQueryParameter,
+        ...options.query,
+      }
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      delete localVarUrlObj.search
+      const headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+      const needsSerialization =
+        typeof requestRemindMail !== 'string' ||
+        localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.data = needsSerialization
+        ? JSON.stringify(
+            requestRemindMail !== undefined ? requestRemindMail : {}
+          )
+        : requestRemindMail || ''
 
       return {
         url: globalImportUrl.format(localVarUrlObj),
@@ -2746,12 +2691,12 @@ export const UsersApiAxiosParamCreator = function (
     /**
      * お試しユーザーによるログイン処理
      * @summary No.4 お試しログイン
-     * @param {Login} [login] リクエストパラメータ
+     * @param {RequestLogin} [requestLogin] リクエストパラメータ
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    trialLoginPost: async (
-      login?: Login,
+    tryLogin: async (
+      requestLogin?: RequestLogin,
       options: any = {}
     ): Promise<RequestArgs> => {
       const localVarPath = `/trial-login`
@@ -2785,11 +2730,11 @@ export const UsersApiAxiosParamCreator = function (
         ...options.headers,
       }
       const needsSerialization =
-        typeof login !== 'string' ||
+        typeof requestLogin !== 'string' ||
         localVarRequestOptions.headers['Content-Type'] === 'application/json'
       localVarRequestOptions.data = needsSerialization
-        ? JSON.stringify(login !== undefined ? login : {})
-        : login || ''
+        ? JSON.stringify(requestLogin !== undefined ? requestLogin : {})
+        : requestLogin || ''
 
       return {
         url: globalImportUrl.format(localVarUrlObj),
@@ -2811,14 +2756,14 @@ export const UsersApiFp = function (configuration?: Configuration) {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async authGet(
+    async authRooting(
       options?: any
     ): Promise<
-      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<User>>
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>
     > {
       const localVarAxiosArgs = await UsersApiAxiosParamCreator(
         configuration
-      ).authGet(options)
+      ).authRooting(options)
       return (
         axios: AxiosInstance = globalAxios,
         basePath: string = BASE_PATH
@@ -2833,19 +2778,19 @@ export const UsersApiFp = function (configuration?: Configuration) {
     /**
      * パスワード変更処理
      * @summary No.9 パスワード変更
-     * @param {InlineObject2} [inlineObject2]
+     * @param {RequestRemindKey} [requestRemindKey] リクエストパラメータ
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async changePasswordPost(
-      inlineObject2?: InlineObject2,
+    async changePassword(
+      requestRemindKey?: RequestRemindKey,
       options?: any
     ): Promise<
       (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
     > {
       const localVarAxiosArgs = await UsersApiAxiosParamCreator(
         configuration
-      ).changePasswordPost(inlineObject2, options)
+      ).changePassword(requestRemindKey, options)
       return (
         axios: AxiosInstance = globalAxios,
         basePath: string = BASE_PATH
@@ -2860,19 +2805,19 @@ export const UsersApiFp = function (configuration?: Configuration) {
     /**
      * ログイン処理
      * @summary No.1 ログイン
-     * @param {Login} [login] リクエストパラメータ
+     * @param {RequestLogin} [requestLogin] リクエストパラメータ
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async loginPost(
-      login?: Login,
+    async login(
+      requestLogin?: RequestLogin,
       options?: any
     ): Promise<
-      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<User>>
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>
     > {
       const localVarAxiosArgs = await UsersApiAxiosParamCreator(
         configuration
-      ).loginPost(login, options)
+      ).login(requestLogin, options)
       return (
         axios: AxiosInstance = globalAxios,
         basePath: string = BASE_PATH
@@ -2890,14 +2835,14 @@ export const UsersApiFp = function (configuration?: Configuration) {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async logoutDelete(
+    async logout(
       options?: any
     ): Promise<
       (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
     > {
       const localVarAxiosArgs = await UsersApiAxiosParamCreator(
         configuration
-      ).logoutDelete(options)
+      ).logout(options)
       return (
         axios: AxiosInstance = globalAxios,
         basePath: string = BASE_PATH
@@ -2912,19 +2857,19 @@ export const UsersApiFp = function (configuration?: Configuration) {
     /**
      * パートナーユーザーによるログイン処理
      * @summary No.3 パートナーログイン
-     * @param {Login} [login] リクエストパラメータ
+     * @param {RequestLogin} [requestLogin] リクエストパラメータ
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async partnerLoginPost(
-      login?: Login,
+    async partnerLogin(
+      requestLogin?: RequestLogin,
       options?: any
     ): Promise<
-      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<User>>
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>
     > {
       const localVarAxiosArgs = await UsersApiAxiosParamCreator(
         configuration
-      ).partnerLoginPost(login, options)
+      ).partnerLogin(requestLogin, options)
       return (
         axios: AxiosInstance = globalAxios,
         basePath: string = BASE_PATH
@@ -2939,46 +2884,19 @@ export const UsersApiFp = function (configuration?: Configuration) {
     /**
      * 会員登録処理
      * @summary No.2 会員登録
-     * @param {Register} [register] リクエストパラメータ
+     * @param {RequestRegister} [requestRegister] リクエストパラメータ
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async registerPost(
-      register?: Register,
+    async register(
+      requestRegister?: RequestRegister,
       options?: any
     ): Promise<
-      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<User>>
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>
     > {
       const localVarAxiosArgs = await UsersApiAxiosParamCreator(
         configuration
-      ).registerPost(register, options)
-      return (
-        axios: AxiosInstance = globalAxios,
-        basePath: string = BASE_PATH
-      ) => {
-        const axiosRequestArgs = {
-          ...localVarAxiosArgs.options,
-          url: basePath + localVarAxiosArgs.url,
-        }
-        return axios.request(axiosRequestArgs)
-      }
-    },
-    /**
-     * パスワードリマインド キー送信
-     * @summary No.8 パスワードリマインド(キー送信)
-     * @param {InlineObject1} [inlineObject1]
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async remaindKeyPost(
-      inlineObject1?: InlineObject1,
-      options?: any
-    ): Promise<
-      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<User>>
-    > {
-      const localVarAxiosArgs = await UsersApiAxiosParamCreator(
-        configuration
-      ).remaindKeyPost(inlineObject1, options)
+      ).register(requestRegister, options)
       return (
         axios: AxiosInstance = globalAxios,
         basePath: string = BASE_PATH
@@ -2993,19 +2911,46 @@ export const UsersApiFp = function (configuration?: Configuration) {
     /**
      * パスワードリマインド アドレス送信
      * @summary No.7 パスワードリマインド(アドレス送信)
-     * @param {InlineObject} [inlineObject]
+     * @param {RequestRemindMail} [requestRemindMail] リクエストパラメータ
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async remaindMailPost(
-      inlineObject?: InlineObject,
+    async remindEmail(
+      requestRemindMail?: RequestRemindMail,
       options?: any
     ): Promise<
       (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
     > {
       const localVarAxiosArgs = await UsersApiAxiosParamCreator(
         configuration
-      ).remaindMailPost(inlineObject, options)
+      ).remindEmail(requestRemindMail, options)
+      return (
+        axios: AxiosInstance = globalAxios,
+        basePath: string = BASE_PATH
+      ) => {
+        const axiosRequestArgs = {
+          ...localVarAxiosArgs.options,
+          url: basePath + localVarAxiosArgs.url,
+        }
+        return axios.request(axiosRequestArgs)
+      }
+    },
+    /**
+     * パスワードリマインド キー送信
+     * @summary No.8 パスワードリマインド(キー送信)
+     * @param {RequestRemindMail} [requestRemindMail] リクエストパラメータ
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async remindKey(
+      requestRemindMail?: RequestRemindMail,
+      options?: any
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>
+    > {
+      const localVarAxiosArgs = await UsersApiAxiosParamCreator(
+        configuration
+      ).remindKey(requestRemindMail, options)
       return (
         axios: AxiosInstance = globalAxios,
         basePath: string = BASE_PATH
@@ -3020,19 +2965,19 @@ export const UsersApiFp = function (configuration?: Configuration) {
     /**
      * お試しユーザーによるログイン処理
      * @summary No.4 お試しログイン
-     * @param {Login} [login] リクエストパラメータ
+     * @param {RequestLogin} [requestLogin] リクエストパラメータ
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async trialLoginPost(
-      login?: Login,
+    async tryLogin(
+      requestLogin?: RequestLogin,
       options?: any
     ): Promise<
-      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<User>>
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>
     > {
       const localVarAxiosArgs = await UsersApiAxiosParamCreator(
         configuration
-      ).trialLoginPost(login, options)
+      ).tryLogin(requestLogin, options)
       return (
         axios: AxiosInstance = globalAxios,
         basePath: string = BASE_PATH
@@ -3063,36 +3008,36 @@ export const UsersApiFactory = function (
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    authGet(options?: any): AxiosPromise<Array<User>> {
+    authRooting(options?: any): AxiosPromise<User> {
       return UsersApiFp(configuration)
-        .authGet(options)
+        .authRooting(options)
         .then((request) => request(axios, basePath))
     },
     /**
      * パスワード変更処理
      * @summary No.9 パスワード変更
-     * @param {InlineObject2} [inlineObject2]
+     * @param {RequestRemindKey} [requestRemindKey] リクエストパラメータ
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    changePasswordPost(
-      inlineObject2?: InlineObject2,
+    changePassword(
+      requestRemindKey?: RequestRemindKey,
       options?: any
     ): AxiosPromise<void> {
       return UsersApiFp(configuration)
-        .changePasswordPost(inlineObject2, options)
+        .changePassword(requestRemindKey, options)
         .then((request) => request(axios, basePath))
     },
     /**
      * ログイン処理
      * @summary No.1 ログイン
-     * @param {Login} [login] リクエストパラメータ
+     * @param {RequestLogin} [requestLogin] リクエストパラメータ
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    loginPost(login?: Login, options?: any): AxiosPromise<Array<User>> {
+    login(requestLogin?: RequestLogin, options?: any): AxiosPromise<User> {
       return UsersApiFp(configuration)
-        .loginPost(login, options)
+        .login(requestLogin, options)
         .then((request) => request(axios, basePath))
     },
     /**
@@ -3101,78 +3046,81 @@ export const UsersApiFactory = function (
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    logoutDelete(options?: any): AxiosPromise<void> {
+    logout(options?: any): AxiosPromise<void> {
       return UsersApiFp(configuration)
-        .logoutDelete(options)
+        .logout(options)
         .then((request) => request(axios, basePath))
     },
     /**
      * パートナーユーザーによるログイン処理
      * @summary No.3 パートナーログイン
-     * @param {Login} [login] リクエストパラメータ
+     * @param {RequestLogin} [requestLogin] リクエストパラメータ
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    partnerLoginPost(login?: Login, options?: any): AxiosPromise<Array<User>> {
+    partnerLogin(
+      requestLogin?: RequestLogin,
+      options?: any
+    ): AxiosPromise<User> {
       return UsersApiFp(configuration)
-        .partnerLoginPost(login, options)
+        .partnerLogin(requestLogin, options)
         .then((request) => request(axios, basePath))
     },
     /**
      * 会員登録処理
      * @summary No.2 会員登録
-     * @param {Register} [register] リクエストパラメータ
+     * @param {RequestRegister} [requestRegister] リクエストパラメータ
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    registerPost(
-      register?: Register,
+    register(
+      requestRegister?: RequestRegister,
       options?: any
-    ): AxiosPromise<Array<User>> {
+    ): AxiosPromise<User> {
       return UsersApiFp(configuration)
-        .registerPost(register, options)
-        .then((request) => request(axios, basePath))
-    },
-    /**
-     * パスワードリマインド キー送信
-     * @summary No.8 パスワードリマインド(キー送信)
-     * @param {InlineObject1} [inlineObject1]
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    remaindKeyPost(
-      inlineObject1?: InlineObject1,
-      options?: any
-    ): AxiosPromise<Array<User>> {
-      return UsersApiFp(configuration)
-        .remaindKeyPost(inlineObject1, options)
+        .register(requestRegister, options)
         .then((request) => request(axios, basePath))
     },
     /**
      * パスワードリマインド アドレス送信
      * @summary No.7 パスワードリマインド(アドレス送信)
-     * @param {InlineObject} [inlineObject]
+     * @param {RequestRemindMail} [requestRemindMail] リクエストパラメータ
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    remaindMailPost(
-      inlineObject?: InlineObject,
+    remindEmail(
+      requestRemindMail?: RequestRemindMail,
       options?: any
     ): AxiosPromise<void> {
       return UsersApiFp(configuration)
-        .remaindMailPost(inlineObject, options)
+        .remindEmail(requestRemindMail, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
+     * パスワードリマインド キー送信
+     * @summary No.8 パスワードリマインド(キー送信)
+     * @param {RequestRemindMail} [requestRemindMail] リクエストパラメータ
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    remindKey(
+      requestRemindMail?: RequestRemindMail,
+      options?: any
+    ): AxiosPromise<User> {
+      return UsersApiFp(configuration)
+        .remindKey(requestRemindMail, options)
         .then((request) => request(axios, basePath))
     },
     /**
      * お試しユーザーによるログイン処理
      * @summary No.4 お試しログイン
-     * @param {Login} [login] リクエストパラメータ
+     * @param {RequestLogin} [requestLogin] リクエストパラメータ
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    trialLoginPost(login?: Login, options?: any): AxiosPromise<Array<User>> {
+    tryLogin(requestLogin?: RequestLogin, options?: any): AxiosPromise<User> {
       return UsersApiFp(configuration)
-        .trialLoginPost(login, options)
+        .tryLogin(requestLogin, options)
         .then((request) => request(axios, basePath))
     },
   }
@@ -3192,37 +3140,37 @@ export class UsersApi extends BaseAPI {
    * @throws {RequiredError}
    * @memberof UsersApi
    */
-  public authGet(options?: any) {
+  public authRooting(options?: any) {
     return UsersApiFp(this.configuration)
-      .authGet(options)
+      .authRooting(options)
       .then((request) => request(this.axios, this.basePath))
   }
 
   /**
    * パスワード変更処理
    * @summary No.9 パスワード変更
-   * @param {InlineObject2} [inlineObject2]
+   * @param {RequestRemindKey} [requestRemindKey] リクエストパラメータ
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof UsersApi
    */
-  public changePasswordPost(inlineObject2?: InlineObject2, options?: any) {
+  public changePassword(requestRemindKey?: RequestRemindKey, options?: any) {
     return UsersApiFp(this.configuration)
-      .changePasswordPost(inlineObject2, options)
+      .changePassword(requestRemindKey, options)
       .then((request) => request(this.axios, this.basePath))
   }
 
   /**
    * ログイン処理
    * @summary No.1 ログイン
-   * @param {Login} [login] リクエストパラメータ
+   * @param {RequestLogin} [requestLogin] リクエストパラメータ
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof UsersApi
    */
-  public loginPost(login?: Login, options?: any) {
+  public login(requestLogin?: RequestLogin, options?: any) {
     return UsersApiFp(this.configuration)
-      .loginPost(login, options)
+      .login(requestLogin, options)
       .then((request) => request(this.axios, this.basePath))
   }
 
@@ -3233,79 +3181,79 @@ export class UsersApi extends BaseAPI {
    * @throws {RequiredError}
    * @memberof UsersApi
    */
-  public logoutDelete(options?: any) {
+  public logout(options?: any) {
     return UsersApiFp(this.configuration)
-      .logoutDelete(options)
+      .logout(options)
       .then((request) => request(this.axios, this.basePath))
   }
 
   /**
    * パートナーユーザーによるログイン処理
    * @summary No.3 パートナーログイン
-   * @param {Login} [login] リクエストパラメータ
+   * @param {RequestLogin} [requestLogin] リクエストパラメータ
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof UsersApi
    */
-  public partnerLoginPost(login?: Login, options?: any) {
+  public partnerLogin(requestLogin?: RequestLogin, options?: any) {
     return UsersApiFp(this.configuration)
-      .partnerLoginPost(login, options)
+      .partnerLogin(requestLogin, options)
       .then((request) => request(this.axios, this.basePath))
   }
 
   /**
    * 会員登録処理
    * @summary No.2 会員登録
-   * @param {Register} [register] リクエストパラメータ
+   * @param {RequestRegister} [requestRegister] リクエストパラメータ
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof UsersApi
    */
-  public registerPost(register?: Register, options?: any) {
+  public register(requestRegister?: RequestRegister, options?: any) {
     return UsersApiFp(this.configuration)
-      .registerPost(register, options)
-      .then((request) => request(this.axios, this.basePath))
-  }
-
-  /**
-   * パスワードリマインド キー送信
-   * @summary No.8 パスワードリマインド(キー送信)
-   * @param {InlineObject1} [inlineObject1]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof UsersApi
-   */
-  public remaindKeyPost(inlineObject1?: InlineObject1, options?: any) {
-    return UsersApiFp(this.configuration)
-      .remaindKeyPost(inlineObject1, options)
+      .register(requestRegister, options)
       .then((request) => request(this.axios, this.basePath))
   }
 
   /**
    * パスワードリマインド アドレス送信
    * @summary No.7 パスワードリマインド(アドレス送信)
-   * @param {InlineObject} [inlineObject]
+   * @param {RequestRemindMail} [requestRemindMail] リクエストパラメータ
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof UsersApi
    */
-  public remaindMailPost(inlineObject?: InlineObject, options?: any) {
+  public remindEmail(requestRemindMail?: RequestRemindMail, options?: any) {
     return UsersApiFp(this.configuration)
-      .remaindMailPost(inlineObject, options)
+      .remindEmail(requestRemindMail, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * パスワードリマインド キー送信
+   * @summary No.8 パスワードリマインド(キー送信)
+   * @param {RequestRemindMail} [requestRemindMail] リクエストパラメータ
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof UsersApi
+   */
+  public remindKey(requestRemindMail?: RequestRemindMail, options?: any) {
+    return UsersApiFp(this.configuration)
+      .remindKey(requestRemindMail, options)
       .then((request) => request(this.axios, this.basePath))
   }
 
   /**
    * お試しユーザーによるログイン処理
    * @summary No.4 お試しログイン
-   * @param {Login} [login] リクエストパラメータ
+   * @param {RequestLogin} [requestLogin] リクエストパラメータ
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof UsersApi
    */
-  public trialLoginPost(login?: Login, options?: any) {
+  public tryLogin(requestLogin?: RequestLogin, options?: any) {
     return UsersApiFp(this.configuration)
-      .trialLoginPost(login, options)
+      .tryLogin(requestLogin, options)
       .then((request) => request(this.axios, this.basePath))
   }
 }
