@@ -8,8 +8,12 @@ const CalendarSample: FC = () => {
 
   useEffect(() => {
     const calendarFunc = async () => {
-      const res = await ApiClient.calender.getCalender('20200501')
-      setCalendar(res.data)
+      try {
+        const res = await ApiClient.calender.getCalender('2020-05-01')
+        setCalendar(res.data)
+      } catch (error) {
+        console.log(error.response.status)
+      }
     }
     calendarFunc()
   }, [])

@@ -11,11 +11,11 @@ const GraphSample: FC = () => {
 
   useEffect(() => {
     const monthRateFunc = async () => {
-      const res = await ApiClient.monthRate.getMonthRate('20200501')
+      const res = await ApiClient.monthRate.getMonthRate('2020-05-01')
       setMonthRate(res.data)
     }
     const annualChangeFunc = async () => {
-      const res = await ApiClient.annualChange.getAnnualChange('20200501')
+      const res = await ApiClient.annualChange.getAnnualChange('2020-05-01')
       setAnnualChange(res.data)
     }
     monthRateFunc()
@@ -54,7 +54,7 @@ export const initailMonthRate: MonthRate[] = [
 
 export const initailAnnualChange: AnnualChange[] = [
   {
-    month: '20000101',
+    month: '2000-01-01',
     sum_money: 0,
   },
 ]

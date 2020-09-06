@@ -13,7 +13,7 @@ const DetailSample: FC = () => {
   const [deleteDetailStatus, setDeleteDetailStatus] = useState(0)
   useEffect(() => {
     const getDetailFunc = async () => {
-      const res = await ApiClient.detail.getDetails('20200501')
+      const res = await ApiClient.detail.getDetails('2020-05-01')
       setGetDetail(res.data)
     }
     const addDetailFunc = async () => {
@@ -77,7 +77,7 @@ export const requestDetailParameter: RequestDetail = {
   category_id: 1,
   money: 2000,
   img_file: 'xxx.png',
-  date: '20200501',
+  date: '2020-05-01',
 }
 
 export const DetailsDiv = styled.div`

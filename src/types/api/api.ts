@@ -126,6 +126,32 @@ export interface Detail {
     category_name: string;
 }
 /**
+ * エラーレスポンス
+ * @export
+ * @interface ErrorResponse
+ */
+export interface ErrorResponse {
+    /**
+     * 
+     * @type {Array<ModelError>}
+     * @memberof ErrorResponse
+     */
+    errors: Array<ModelError>;
+}
+/**
+ * エラー
+ * @export
+ * @interface ModelError
+ */
+export interface ModelError {
+    /**
+     * エラーメッセージ
+     * @type {string}
+     * @memberof ModelError
+     */
+    message: string;
+}
+/**
  * 
  * @export
  * @interface MonthRate
@@ -425,7 +451,7 @@ export const AnnualChangeApiAxiosParamCreator = function (configuration?: Config
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication CookieAuth required
+            // authentication cookieAuth required
 
 
     
@@ -536,7 +562,7 @@ export const CalendarApiAxiosParamCreator = function (configuration?: Configurat
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication CookieAuth required
+            // authentication cookieAuth required
 
 
     
@@ -646,7 +672,7 @@ export const CategoryApiAxiosParamCreator = function (configuration?: Configurat
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication CookieAuth required
+            // authentication cookieAuth required
 
 
     
@@ -688,7 +714,7 @@ export const CategoryApiAxiosParamCreator = function (configuration?: Configurat
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication CookieAuth required
+            // authentication cookieAuth required
 
 
     
@@ -731,7 +757,7 @@ export const CategoryApiAxiosParamCreator = function (configuration?: Configurat
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication CookieAuth required
+            // authentication cookieAuth required
 
 
     
@@ -767,7 +793,7 @@ export const CategoryApiAxiosParamCreator = function (configuration?: Configurat
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication CookieAuth required
+            // authentication cookieAuth required
 
 
     
@@ -985,7 +1011,7 @@ export const DetailApiAxiosParamCreator = function (configuration?: Configuratio
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication CookieAuth required
+            // authentication cookieAuth required
 
 
     
@@ -1027,7 +1053,7 @@ export const DetailApiAxiosParamCreator = function (configuration?: Configuratio
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication CookieAuth required
+            // authentication cookieAuth required
 
 
     
@@ -1070,7 +1096,7 @@ export const DetailApiAxiosParamCreator = function (configuration?: Configuratio
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication CookieAuth required
+            // authentication cookieAuth required
 
 
     
@@ -1112,7 +1138,7 @@ export const DetailApiAxiosParamCreator = function (configuration?: Configuratio
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication CookieAuth required
+            // authentication cookieAuth required
 
 
     
@@ -1334,7 +1360,7 @@ export const MonthRateApiAxiosParamCreator = function (configuration?: Configura
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication CookieAuth required
+            // authentication cookieAuth required
 
 
     
@@ -1444,7 +1470,7 @@ export const PartnerApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication CookieAuth required
+            // authentication cookieAuth required
 
 
     
@@ -1486,7 +1512,7 @@ export const PartnerApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication CookieAuth required
+            // authentication cookieAuth required
 
 
     
@@ -1518,7 +1544,7 @@ export const PartnerApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication CookieAuth required
+            // authentication cookieAuth required
 
 
     
@@ -1692,7 +1718,7 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication CookieAuth required
+            // authentication cookieAuth required
 
 
     
@@ -1729,7 +1755,7 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication CookieAuth required
+            // authentication cookieAuth required
 
 
     
@@ -1803,6 +1829,8 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication cookieAuth required
 
 
     
