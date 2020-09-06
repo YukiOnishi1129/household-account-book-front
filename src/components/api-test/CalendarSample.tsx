@@ -17,7 +17,7 @@ const CalendarSample: FC = () => {
   return (
     <>
       <h1>CalendarSample</h1>
-      <h2>No.10: カレンダー情報取得</h2>
+      <h2>No.10: get calendar</h2>
       {calendar && <CalendarList calendar={calendar} />}
     </>
   )
