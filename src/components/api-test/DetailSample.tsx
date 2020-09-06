@@ -37,17 +37,17 @@ const DetailSample: FC = () => {
   return (
     <>
       <h1>DetailSample</h1>
-      <h2>No.11: 日別の金額情報取得</h2>
+      <h2>No.11: get detail</h2>
       <DetailsDiv>
         {getDetails.map((detail, index) => {
           return <DetailList key={index} detail={detail} />
         })}
       </DetailsDiv>
-      <h2>No.12: 金額情報新規登録</h2>
+      <h2>No.12: add detail</h2>
       {addDetail && <DetailList detail={addDetail} />}
-      <h2>No.13: 金額情報編集</h2>
+      <h2>No.13: edit detail</h2>
       {edittDetail && <DetailList detail={edittDetail} />}
-      <h2>No.14: 金額情報削除</h2>
+      <h2>No.14: delete detail status</h2>
       <StatusCode code={deleteDetailStatus} />
     </>
   )

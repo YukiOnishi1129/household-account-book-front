@@ -48,7 +48,7 @@ const CategorySample: FC = () => {
       {addCategory && <CategoryList category={addCategory} />}
       <h2>No.17: edit category</h2>
       {editCategory && <CategoryList category={editCategory} />}
-      <h2>No.18: delete category</h2>
+      <h2>No.18: delete category status</h2>
       <StatusCode code={deleteCategoryStatus} />
     </>
   )
