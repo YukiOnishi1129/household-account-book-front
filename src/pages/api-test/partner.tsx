@@ -2,14 +2,14 @@ import React, { FC } from 'react'
 import Layout from '../../components/Layout'
 import RouteButton from '../../components/api-test/RouteButton'
 import styled from 'styled-components'
-import DetailSample from '../../components/api-test/DetailSample'
+import PartnerSample from '../../components/api-test/PartnerSample'
 
-const DetailPage: FC = () => (
+const PartnerPage: FC = () => (
   <div>
     <Layout>
-      <H1>detail-sample</H1>
+      <H1>partner-sample</H1>
       <RouteButton />
-      <DetailSample />
+      <PartnerSample />
     </Layout>
   </div>
 )
@@ -18,4 +18,4 @@ const H1 = styled.h1`
   font-size: 20px;
 `
 
-export default DetailPage
+export default PartnerPage

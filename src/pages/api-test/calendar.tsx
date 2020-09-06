@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
 import Layout from '../../components/Layout'
+import RouteButton from '../../components/api-test/RouteButton'
 import styled from 'styled-components'
 import CalendarSample from '../../components/api-test/CalendarSample'
 
@@ -7,6 +8,7 @@ const CalendarPage: FC = () => (
   <div>
     <Layout>
       <H1>calendar-sample</H1>
+      <RouteButton />
       <CalendarSample />
     </Layout>
   </div>
