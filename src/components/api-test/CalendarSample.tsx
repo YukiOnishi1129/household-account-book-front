@@ -1,5 +1,5 @@
 import React, { FC, useState, useEffect } from 'react'
-import { Calendar, SumDateMoney } from '../../types/api/api'
+import { Calendar, SumDateMoney } from '../../types/api'
 import CalendarList from './CalendarList'
 import ApiClient from '../../network/ApiClient'
 
