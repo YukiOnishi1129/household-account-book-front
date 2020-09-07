@@ -41,7 +41,6 @@ const UserSample: FC = () => {
     }
     const authLoginFunc = async () => {
       const res = await ApiClient.user.authRooting()
-      console.log(res)
       setAuthLoginUser(res.data)
     }
     const logoutFunc = async () => {
