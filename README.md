@@ -125,3 +125,13 @@ storybook の addon 一覧
 参考
 
 - https://github.com/styled-components/stylelint-processor-styled-components
+
+### Next.js
+
+next.js の基礎
+
+- https://programmagick.com/sections/nextjs_tutorial/basis
+
+認証ルーティングとか
+
+- https://www.mikealche.com/software-development/how-to-implement-authentication-in-next-js-without-third-party-libraries

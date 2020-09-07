@@ -1,4 +1,5 @@
 import React, { FC, useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
 import { MonthRate, AnnualChange } from '../../types/api'
 import ApiClient from '../../network/ApiClient'
 import styled from 'styled-components'
@@ -8,15 +9,24 @@ import AnnualChangeList from './AnnualChangeList'
 const GraphSample: FC = () => {
   const [monthRate, setMonthRate] = useState(initailMonthRate)
   const [annualChange, setAnnualChange] = useState(initailAnnualChange)
+  const router = useRouter()
 
   useEffect(() => {
     const monthRateFunc = async () => {
-      const res = await ApiClient.monthRate.getMonthRate('20200501')
-      setMonthRate(res.data)
+      try {
+        const res = await ApiClient.monthRate.getMonthRate('2020-05-01')
+        setMonthRate(res.data)
+      } catch (error) {
+        router.push('/api-test')
+      }
     }
     const annualChangeFunc = async () => {
-      const res = await ApiClient.annualChange.getAnnualChange('20200501')
-      setAnnualChange(res.data)
+      try {
+        const res = await ApiClient.annualChange.getAnnualChange('2020-05-01')
+        setAnnualChange(res.data)
+      } catch (error) {
+        router.push('/api-test')
+      }
     }
     monthRateFunc()
     annualChangeFunc()
@@ -54,7 +64,7 @@ export const initailMonthRate: MonthRate[] = [
 
 export const initailAnnualChange: AnnualChange[] = [
   {
-    month: '20000101',
+    month: '2000-01-01',
     sum_money: 0,
   },
 ]

@@ -1,4 +1,5 @@
 import React, { FC, useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
 import { Partner, RequestPartner } from '../../types/api'
 import ApiClient from '../../network/ApiClient'
 import styled from 'styled-components'
@@ -9,18 +10,32 @@ const PartnerSample: FC = () => {
   const [getPartners, setGetPartners] = useState(initialPartners)
   const [addPartner, setAddPartner] = useState(initialPatner)
   const [deletePatnerStatus, setDeletePatnerStatus] = useState(0)
+  const router = useRouter()
+
   useEffect(() => {
     const getPartnerFunc = async () => {
-      const res = await ApiClient.partner.getPartners()
-      setGetPartners(res.data)
+      try {
+        const res = await ApiClient.partner.getPartners()
+        setGetPartners(res.data)
+      } catch (error) {
+        router.push('/api-test')
+      }
     }
     const addPartnerFunc = async () => {
-      const res = await ApiClient.partner.addPartner(requestPartnerParameter)
-      setAddPartner(res.data)
+      try {
+        const res = await ApiClient.partner.addPartner(requestPartnerParameter)
+        setAddPartner(res.data)
+      } catch (error) {
+        router.push('/api-test')
+      }
     }
     const deletePartnerFunc = async () => {
-      const res = await ApiClient.partner.deletePartner(1)
-      setDeletePatnerStatus(res.status)
+      try {
+        const res = await ApiClient.partner.deletePartner(1)
+        setDeletePatnerStatus(res.status)
+      } catch (error) {
+        router.push('/api-test')
+      }
     }
     getPartnerFunc()
     addPartnerFunc()

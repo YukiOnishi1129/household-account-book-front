@@ -1,4 +1,5 @@
 import React, { FC, useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
 import { Category, RequestCategory } from '../../types/api'
 import ApiClient from '../../network/ApiClient'
 import styled from 'styled-components'
@@ -10,25 +11,44 @@ const CategorySample: FC = () => {
   const [addCategory, setAddCategory] = useState(initialCategory)
   const [editCategory, setEditCategory] = useState(initialCategory)
   const [deleteCategoryStatus, setDeleteCategoryStatus] = useState(0)
+  const router = useRouter()
   useEffect(() => {
     const getCategoryFunc = async () => {
-      const res = await ApiClient.category.getCategories()
-      setGetCategories(res.data)
+      try {
+        const res = await ApiClient.category.getCategories()
+        setGetCategories(res.data)
+      } catch (error) {
+        router.push('/api-test')
+      }
     }
     const addCategoryFunc = async () => {
-      const res = await ApiClient.category.addCategory(requestCategoryParameter)
-      setAddCategory(res.data)
+      try {
+        const res = await ApiClient.category.addCategory(
+          requestCategoryParameter
+        )
+        setAddCategory(res.data)
+      } catch (error) {
+        router.push('/api-test')
+      }
     }
     const editCategoryFunc = async () => {
-      const res = await ApiClient.category.editCategory(
-        1,
-        requestCategoryParameter
-      )
-      setEditCategory(res.data)
+      try {
+        const res = await ApiClient.category.editCategory(
+          1,
+          requestCategoryParameter
+        )
+        setEditCategory(res.data)
+      } catch (error) {
+        router.push('/api-test')
+      }
     }
     const deleteCategoryFunc = async () => {
-      const res = await ApiClient.category.deleteCategory(1)
-      setDeleteCategoryStatus(res.status)
+      try {
+        const res = await ApiClient.category.deleteCategory(1)
+        setDeleteCategoryStatus(res.status)
+      } catch (error) {
+        router.push('/api-test')
+      }
     }
     getCategoryFunc()
     addCategoryFunc()

@@ -1,4 +1,5 @@
 import React, { FC, useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
 import {
   User,
   RequestLogin,
@@ -21,6 +22,7 @@ const UserSample: FC = () => {
   const [remindMailStatus, setRemindMailStatus] = useState(0)
   const [remindKeyUser, setRemindKeySUser] = useState(initialUser)
   const [changePasswordStatus, setChangePasswordStatus] = useState(0)
+  const router = useRouter()
 
   useEffect(() => {
     const loginFunc = async () => {
@@ -40,12 +42,20 @@ const UserSample: FC = () => {
       setTryLoginUser(res.data)
     }
     const authLoginFunc = async () => {
-      const res = await ApiClient.user.authRooting()
-      setAuthLoginUser(res.data)
+      try {
+        const res = await ApiClient.user.authRooting()
+        setAuthLoginUser(res.data)
+      } catch (error) {
+        router.push('/api-test')
+      }
     }
     const logoutFunc = async () => {
-      const res = await ApiClient.user.logout()
-      setLogoutStatus(res.status)
+      try {
+        const res = await ApiClient.user.logout()
+        setLogoutStatus(res.status)
+      } catch (error) {
+        router.push('/api-test')
+      }
     }
     const remindMailFunc = async () => {
       const res = await ApiClient.user.remindEmail(requestRemindMailParameter)
@@ -56,8 +66,12 @@ const UserSample: FC = () => {
       setRemindKeySUser(res.data)
     }
     const changePasswordFunc = async () => {
-      const res = await ApiClient.user.changePassword(changePasswordParameter)
-      setChangePasswordStatus(res.status)
+      try {
+        const res = await ApiClient.user.changePassword(changePasswordParameter)
+        setChangePasswordStatus(res.status)
+      } catch (error) {
+        router.push('/api-test')
+      }
     }
 
     loginFunc()

@@ -1,9 +1,9 @@
 import React, { FC, useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
 import { Detail, RequestDetail } from '../../types/api'
 import ApiClient from '../../network/ApiClient'
 import styled from 'styled-components'
 import DetailList from './DetailList'
-
 import StatusCode from './StatusCode'
 
 const DetailSample: FC = () => {
@@ -11,22 +11,40 @@ const DetailSample: FC = () => {
   const [addDetail, setAddDetail] = useState(initailDetail)
   const [edittDetail, setEditGetDetail] = useState(initailDetail)
   const [deleteDetailStatus, setDeleteDetailStatus] = useState(0)
+  const router = useRouter()
+
   useEffect(() => {
     const getDetailFunc = async () => {
-      const res = await ApiClient.detail.getDetails('20200501')
-      setGetDetail(res.data)
+      try {
+        const res = await ApiClient.detail.getDetails('2020-05-01')
+        setGetDetail(res.data)
+      } catch (error) {
+        router.push('/api-test')
+      }
     }
     const addDetailFunc = async () => {
-      const res = await ApiClient.detail.addDetail(requestDetailParameter)
-      setAddDetail(res.data)
+      try {
+        const res = await ApiClient.detail.addDetail(requestDetailParameter)
+        setAddDetail(res.data)
+      } catch (error) {
+        router.push('/api-test')
+      }
     }
     const editDetailFunc = async () => {
-      const res = await ApiClient.detail.editDetail(1, requestDetailParameter)
-      setEditGetDetail(res.data)
+      try {
+        const res = await ApiClient.detail.editDetail(1, requestDetailParameter)
+        setEditGetDetail(res.data)
+      } catch (error) {
+        router.push('/api-test')
+      }
     }
     const deleteDetailFunc = async () => {
-      const res = await ApiClient.detail.deleteDetail(1)
-      setDeleteDetailStatus(res.status)
+      try {
+        const res = await ApiClient.detail.deleteDetail(1)
+        setDeleteDetailStatus(res.status)
+      } catch (error) {
+        router.push('/api-test')
+      }
     }
     getDetailFunc()
     addDetailFunc()
@@ -77,7 +95,7 @@ export const requestDetailParameter: RequestDetail = {
   category_id: 1,
   money: 2000,
   img_file: 'xxx.png',
-  date: '20200501',
+  date: '2020-05-01',
 }
 
 export const DetailsDiv = styled.div`
