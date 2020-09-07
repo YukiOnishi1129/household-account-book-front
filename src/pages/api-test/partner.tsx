@@ -5,13 +5,11 @@ import styled from 'styled-components'
 import PartnerSample from '../../components/api-test/PartnerSample'
 
 const PartnerPage: FC = () => (
-  <div>
-    <Layout>
-      <H1>partner-sample</H1>
-      <RouteButton />
-      <PartnerSample />
-    </Layout>
-  </div>
+  <Layout>
+    <H1>partner-sample</H1>
+    <RouteButton />
+    <PartnerSample />
+  </Layout>
 )
 const H1 = styled.h1`
   color: ${(props) => props.theme.main};
