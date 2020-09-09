@@ -1,5 +1,4 @@
 import React, { FC, useState, useEffect } from 'react'
-import { useRouter } from 'next/router'
 import { Detail, RequestDetail } from '../../types/api'
 import ApiClient from '../../network/ApiClient'
 import styled from 'styled-components'
@@ -11,45 +10,40 @@ const DetailSample: FC = () => {
   const [addDetail, setAddDetail] = useState(initailDetail)
   const [edittDetail, setEditGetDetail] = useState(initailDetail)
   const [deleteDetailStatus, setDeleteDetailStatus] = useState(0)
-  const router = useRouter()
 
   useEffect(() => {
+    let unmounted = false
     const getDetailFunc = async () => {
-      try {
-        const res = await ApiClient.detail.getDetails('2020-05-01')
+      const res = await ApiClient.detail.getDetails('2020-05-01')
+      if (!unmounted) {
         setGetDetail(res.data)
-      } catch (error) {
-        router.push('/api-test')
       }
     }
     const addDetailFunc = async () => {
-      try {
-        const res = await ApiClient.detail.addDetail(requestDetailParameter)
+      const res = await ApiClient.detail.addDetail(requestDetailParameter)
+      if (!unmounted) {
         setAddDetail(res.data)
-      } catch (error) {
-        router.push('/api-test')
       }
     }
     const editDetailFunc = async () => {
-      try {
-        const res = await ApiClient.detail.editDetail(1, requestDetailParameter)
+      const res = await ApiClient.detail.editDetail(1, requestDetailParameter)
+      if (!unmounted) {
         setEditGetDetail(res.data)
-      } catch (error) {
-        router.push('/api-test')
       }
     }
     const deleteDetailFunc = async () => {
-      try {
-        const res = await ApiClient.detail.deleteDetail(1)
+      const res = await ApiClient.detail.deleteDetail(1)
+      if (!unmounted) {
         setDeleteDetailStatus(res.status)
-      } catch (error) {
-        router.push('/api-test')
       }
     }
     getDetailFunc()
     addDetailFunc()
     editDetailFunc()
     deleteDetailFunc()
+    return () => {
+      unmounted = true
+    }
   }, [])
 
   return (
@@ -57,9 +51,10 @@ const DetailSample: FC = () => {
       <h1>DetailSample</h1>
       <h2>No.11: get detail</h2>
       <DetailsDiv>
-        {getDetails.map((detail, index) => {
-          return <DetailList key={index} detail={detail} />
-        })}
+        {getDetails &&
+          getDetails.map((detail, index) => {
+            return <DetailList key={index} detail={detail} />
+          })}
       </DetailsDiv>
       <h2>No.12: add detail</h2>
       {addDetail && <DetailList detail={addDetail} />}

@@ -1,23 +1,23 @@
 import React, { FC, useState, useEffect } from 'react'
-import { useRouter } from 'next/router'
 import { Calendar, SumDateMoney } from '../../types/api'
 import CalendarList from './CalendarList'
 import ApiClient from '../../network/ApiClient'
 
 const CalendarSample: FC = () => {
   const [calendar, setCalendar] = useState(initialCalendar)
-  const router = useRouter()
 
   useEffect(() => {
+    let unmounted = false
     const calendarFunc = async () => {
-      try {
-        const res = await ApiClient.calender.getCalender('2020-05-01')
+      const res = await ApiClient.calender.getCalender('2020-05-01')
+      if (!unmounted) {
         setCalendar(res.data)
-      } catch (error) {
-        router.push('/api-test')
       }
     }
     calendarFunc()
+    return () => {
+      unmounted = true
+    }
   }, [])
 
   return (
@@ -25,7 +25,6 @@ const CalendarSample: FC = () => {
       <h1>CalendarSample</h1>
       <h2>No.10: get calendar</h2>
       {calendar && <CalendarList calendar={calendar} />}
-      {/* {errorCarendar === 401 && <StatusCode code={errorCarendar} />} */}
     </>
   )
 }

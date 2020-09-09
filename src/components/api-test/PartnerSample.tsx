@@ -1,5 +1,4 @@
 import React, { FC, useState, useEffect } from 'react'
-import { useRouter } from 'next/router'
 import { Partner, RequestPartner } from '../../types/api'
 import ApiClient from '../../network/ApiClient'
 import styled from 'styled-components'
@@ -10,45 +9,43 @@ const PartnerSample: FC = () => {
   const [getPartners, setGetPartners] = useState(initialPartners)
   const [addPartner, setAddPartner] = useState(initialPatner)
   const [deletePatnerStatus, setDeletePatnerStatus] = useState(0)
-  const router = useRouter()
 
   useEffect(() => {
+    let unmounted = false
     const getPartnerFunc = async () => {
-      try {
-        const res = await ApiClient.partner.getPartners()
+      const res = await ApiClient.partner.getPartners()
+      if (!unmounted) {
         setGetPartners(res.data)
-      } catch (error) {
-        router.push('/api-test')
       }
     }
     const addPartnerFunc = async () => {
-      try {
-        const res = await ApiClient.partner.addPartner(requestPartnerParameter)
+      const res = await ApiClient.partner.addPartner(requestPartnerParameter)
+      if (!unmounted) {
         setAddPartner(res.data)
-      } catch (error) {
-        router.push('/api-test')
       }
     }
     const deletePartnerFunc = async () => {
-      try {
-        const res = await ApiClient.partner.deletePartner(1)
+      const res = await ApiClient.partner.deletePartner(1)
+      if (!unmounted) {
         setDeletePatnerStatus(res.status)
-      } catch (error) {
-        router.push('/api-test')
       }
     }
     getPartnerFunc()
     addPartnerFunc()
     deletePartnerFunc()
+    return () => {
+      unmounted = true
+    }
   }, [])
   return (
     <>
       <h1>Partner Sample</h1>
       <h2>No.21: get partner</h2>
       <PartnerDiv>
-        {getPartners.map((partner, index) => {
-          return <PartnerList key={index} partner={partner} />
-        })}
+        {getPartners &&
+          getPartners.map((partner, index) => {
+            return <PartnerList key={index} partner={partner} />
+          })}
       </PartnerDiv>
       <h2>No.22: add partner</h2>
       {addPartner && <PartnerList partner={addPartner} />}
