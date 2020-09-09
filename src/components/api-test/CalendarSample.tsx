@@ -11,13 +11,9 @@ const CalendarSample: FC = () => {
   useEffect(() => {
     let unmounted = false
     const calendarFunc = async () => {
-      try {
-        const res = await ApiClient.calender.getCalender('2020-05-01')
-        if (!unmounted) {
-          setCalendar(res.data)
-        }
-      } catch (error) {
-        router.push('/api-test')
+      const res = await ApiClient.calender.getCalender('2020-05-01')
+      if (!unmounted) {
+        setCalendar(res.data)
       }
     }
     calendarFunc()

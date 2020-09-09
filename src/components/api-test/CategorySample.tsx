@@ -72,9 +72,10 @@ const CategorySample: FC = () => {
       <h1>CategorySample</h1>
       <h2>No.15: get category</h2>
       <CategoryDiv>
-        {getCategoies.map((category, index) => {
-          return <CategoryList key={index} category={category} />
-        })}
+        {getCategoies &&
+          getCategoies.map((category, index) => {
+            return <CategoryList key={index} category={category} />
+          })}
       </CategoryDiv>
       <h2>No.16: add category</h2>
       {addCategory && <CategoryList category={addCategory} />}
