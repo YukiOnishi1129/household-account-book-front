@@ -1,5 +1,4 @@
 import React, { FC, useState, useEffect } from 'react'
-import { useRouter } from 'next/router'
 import { MonthRate, AnnualChange } from '../../types/api'
 import ApiClient from '../../network/ApiClient'
 import styled from 'styled-components'
@@ -9,28 +8,19 @@ import AnnualChangeList from './AnnualChangeList'
 const GraphSample: FC = () => {
   const [monthRate, setMonthRate] = useState(initailMonthRate)
   const [annualChange, setAnnualChange] = useState(initailAnnualChange)
-  const router = useRouter()
 
   useEffect(() => {
     let unmounted = false
     const monthRateFunc = async () => {
-      try {
-        const res = await ApiClient.monthRate.getMonthRate('2020-05-01')
-        if (!unmounted) {
-          setMonthRate(res.data)
-        }
-      } catch (error) {
-        router.push('/api-test')
+      const res = await ApiClient.monthRate.getMonthRate('2020-05-01')
+      if (!unmounted) {
+        setMonthRate(res.data)
       }
     }
     const annualChangeFunc = async () => {
-      try {
-        const res = await ApiClient.annualChange.getAnnualChange('2020-05-01')
-        if (!unmounted) {
-          setAnnualChange(res.data)
-        }
-      } catch (error) {
-        router.push('/api-test')
+      const res = await ApiClient.annualChange.getAnnualChange('2020-05-01')
+      if (!unmounted) {
+        setAnnualChange(res.data)
       }
     }
     monthRateFunc()
@@ -45,15 +35,17 @@ const GraphSample: FC = () => {
       <h1>CalendarSample</h1>
       <h2>No.19: month rate</h2>
       <AreaDiv>
-        {monthRate.map((rate, index) => {
-          return <MonthRateList key={index} monthRate={rate} />
-        })}
+        {monthRate &&
+          monthRate.map((rate, index) => {
+            return <MonthRateList key={index} monthRate={rate} />
+          })}
       </AreaDiv>
       <h2>No.20: annual change</h2>
       <AreaDiv>
-        {annualChange.map((annual, index) => {
-          return <AnnualChangeList key={index} annualChange={annual} />
-        })}
+        {annualChange &&
+          annualChange.map((annual, index) => {
+            return <AnnualChangeList key={index} annualChange={annual} />
+          })}
       </AreaDiv>
     </>
   )

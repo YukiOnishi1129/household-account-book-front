@@ -1,5 +1,4 @@
 import React, { FC, useState, useEffect } from 'react'
-import { useRouter } from 'next/router'
 import { Category, RequestCategory } from '../../types/api'
 import ApiClient from '../../network/ApiClient'
 import styled from 'styled-components'
@@ -11,52 +10,34 @@ const CategorySample: FC = () => {
   const [addCategory, setAddCategory] = useState(initialCategory)
   const [editCategory, setEditCategory] = useState(initialCategory)
   const [deleteCategoryStatus, setDeleteCategoryStatus] = useState(0)
-  const router = useRouter()
+
   useEffect(() => {
     let unmounted = false
     const getCategoryFunc = async () => {
-      try {
-        const res = await ApiClient.category.getCategories()
-        if (!unmounted) {
-          setGetCategories(res.data)
-        }
-      } catch (error) {
-        router.push('/api-test')
+      const res = await ApiClient.category.getCategories()
+      if (!unmounted) {
+        setGetCategories(res.data)
       }
     }
     const addCategoryFunc = async () => {
-      try {
-        const res = await ApiClient.category.addCategory(
-          requestCategoryParameter
-        )
-        if (!unmounted) {
-          setAddCategory(res.data)
-        }
-      } catch (error) {
-        router.push('/api-test')
+      const res = await ApiClient.category.addCategory(requestCategoryParameter)
+      if (!unmounted) {
+        setAddCategory(res.data)
       }
     }
     const editCategoryFunc = async () => {
-      try {
-        const res = await ApiClient.category.editCategory(
-          1,
-          requestCategoryParameter
-        )
-        if (!unmounted) {
-          setEditCategory(res.data)
-        }
-      } catch (error) {
-        router.push('/api-test')
+      const res = await ApiClient.category.editCategory(
+        1,
+        requestCategoryParameter
+      )
+      if (!unmounted) {
+        setEditCategory(res.data)
       }
     }
     const deleteCategoryFunc = async () => {
-      try {
-        const res = await ApiClient.category.deleteCategory(1)
-        if (!unmounted) {
-          setDeleteCategoryStatus(res.status)
-        }
-      } catch (error) {
-        router.push('/api-test')
+      const res = await ApiClient.category.deleteCategory(1)
+      if (!unmounted) {
+        setDeleteCategoryStatus(res.status)
       }
     }
     getCategoryFunc()

@@ -1,11 +1,9 @@
-export namespace PageConst {
-  export const BeforeLoginPage = {
-    top: '/',
-    login: '/login',
-    signup: '/signup',
-    partnerLogin: '/partner-login',
-    tryLogin: '/try-login',
-    remaindPassMail: '/remaind-pass-mail',
-    remaindPassKey: '/remaind-pass-key',
-  }
+export enum BeforeLoginPage {
+  TOP = '/',
+  LOGIN = '/login',
+  SIGNUP = '/signup',
+  PATNER_LOGIN = '/partner-login',
+  TRY_LOGIN = '/try-login',
+  REMAIND_PASS_MAIL = '/remaind-pass-mail',
+  REMAIND_PASS_KEY = '/remaind-pass-key',
 }

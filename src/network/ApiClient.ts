@@ -10,7 +10,7 @@ import {
 } from '../types/api'
 import globalAxios, { AxiosResponse } from 'axios'
 import Router from 'next/router'
-import { PageConst } from '../utils/consts'
+import { BeforeLoginPage } from '../utils/consts'
 
 const config: Configuration = {
   baseOptions: {
@@ -35,30 +35,32 @@ globalAxios.interceptors.response.use(
   },
   (error) => {
     const status = error.response.status
+    // 認証エラー時
     if (status === 401) {
-      switch (Router.route) {
-        case PageConst.BeforeLoginPage.top:
-        case PageConst.BeforeLoginPage.login:
-        case PageConst.BeforeLoginPage.signup:
-        case PageConst.BeforeLoginPage.partnerLogin:
-        case PageConst.BeforeLoginPage.tryLogin:
-        case PageConst.BeforeLoginPage.remaindPassMail:
-        case PageConst.BeforeLoginPage.remaindPassKey:
-          return error
+      switch (Router.pathname) {
+        case BeforeLoginPage.TOP:
+        case BeforeLoginPage.LOGIN:
+        case BeforeLoginPage.SIGNUP:
+        case BeforeLoginPage.PATNER_LOGIN:
+        case BeforeLoginPage.TRY_LOGIN:
+        case BeforeLoginPage.REMAIND_PASS_MAIL:
+        case BeforeLoginPage.REMAIND_PASS_KEY:
+          break
         default:
+          // ログイン後のページにいる場合、ログイン画面リダイレクト
           Router.push('/login')
       }
       return error
     } else if (status === 404) {
-      console.log('404 not found')
+      alert('404 not found')
     } else if (status === 422) {
-      console.log('パラメーターエラー')
+      alert('パラメーターエラー')
     } else if (status === 403) {
-      console.log('アイテムが存在しないか、アクセス権限がありません')
+      alert('アイテムが存在しないか、アクセス権限がありません')
     } else if (status === 500) {
-      console.log('原因不明の内部エラー')
+      alert('原因不明の内部エラー')
     } else {
-      console.log(`原因不明の内部エラー:${status}`)
+      alert(`原因不明の内部エラー:${status}`)
     }
     return error
   }

@@ -10,6 +10,7 @@ import App, { AppProps } from 'next/app'
 // import { SetCookie, DestroyCookie } from '../network/SetCookie'
 import { User } from '../types/api/'
 import ApiClient from '../network/ApiClient'
+import { BeforeLoginPage } from '../utils/consts'
 
 const MyApp = ({ Component, pageProps }: AppProps): ReactElement => {
   return (
@@ -17,13 +18,6 @@ const MyApp = ({ Component, pageProps }: AppProps): ReactElement => {
       <Component {...pageProps} />
     </AuthProvider>
   )
-}
-
-MyApp.getInitialProps = async (appContext) => {
-  // calls page's `getInitialProps` and fills `appProps.pageProps`
-  const appProps = await App.getInitialProps(appContext)
-
-  return { ...appProps }
 }
 
 export default MyApp
@@ -45,6 +39,8 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     let unmounted = false
     authRouting(router, setAuth, unmounted)
+
+    // クリーンアップ
     return () => {
       unmounted = true
     }
@@ -60,14 +56,32 @@ export const authRouting = async (
   if (router.pathname === '/api-test') {
     return
   }
-  try {
-    const res = await ApiClient.user.authRooting()
-    if (!unmounted) {
-      setAuth(res.data)
+  const { data } = await ApiClient.user.authRooting()
+  if (data) {
+    // 認証済みであり、かつログイン前のページにいる場合、ダッシュボードへリダイレクトさせる
+    switch (router.pathname) {
+      case BeforeLoginPage.TOP:
+      case BeforeLoginPage.LOGIN:
+      case BeforeLoginPage.SIGNUP:
+      case BeforeLoginPage.PATNER_LOGIN:
+      case BeforeLoginPage.TRY_LOGIN:
+      case BeforeLoginPage.REMAIND_PASS_MAIL:
+      case BeforeLoginPage.REMAIND_PASS_KEY:
+        router.push('/api-test')
+        break
+      default:
     }
-  } catch (error) {
-    router.push('/api-test')
   }
+  if (!unmounted) {
+    setAuth(data)
+  }
+}
+
+MyApp.getInitialProps = async (appContext) => {
+  // calls page's `getInitialProps` and fills `appProps.pageProps`
+  const appProps = await App.getInitialProps(appContext)
+
+  return { ...appProps }
 }
 
 // export default class MyApp extends App {

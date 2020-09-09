@@ -1,12 +1,10 @@
 import React, { FC, useState, useEffect } from 'react'
-import { useRouter } from 'next/router'
 import { Calendar, SumDateMoney } from '../../types/api'
 import CalendarList from './CalendarList'
 import ApiClient from '../../network/ApiClient'
 
 const CalendarSample: FC = () => {
   const [calendar, setCalendar] = useState(initialCalendar)
-  const router = useRouter()
 
   useEffect(() => {
     let unmounted = false
@@ -27,7 +25,6 @@ const CalendarSample: FC = () => {
       <h1>CalendarSample</h1>
       <h2>No.10: get calendar</h2>
       {calendar && <CalendarList calendar={calendar} />}
-      {/* {errorCarendar === 401 && <StatusCode code={errorCarendar} />} */}
     </>
   )
 }

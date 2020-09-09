@@ -22,7 +22,6 @@ const UserSample: FC = () => {
   const [remindMailStatus, setRemindMailStatus] = useState(0)
   const [remindKeyUser, setRemindKeySUser] = useState(initialUser)
   const [changePasswordStatus, setChangePasswordStatus] = useState(0)
-  const router = useRouter()
 
   useEffect(() => {
     let unmounted = false
@@ -52,23 +51,15 @@ const UserSample: FC = () => {
       }
     }
     const authLoginFunc = async () => {
-      try {
-        const res = await ApiClient.user.authRooting()
-        if (!unmounted) {
-          setAuthLoginUser(res.data)
-        }
-      } catch (error) {
-        router.push('/api-test')
+      const res = await ApiClient.user.authRooting()
+      if (!unmounted) {
+        setAuthLoginUser(res.data)
       }
     }
     const logoutFunc = async () => {
-      try {
-        const res = await ApiClient.user.logout()
-        if (!unmounted) {
-          setLogoutStatus(res.status)
-        }
-      } catch (error) {
-        router.push('/api-test')
+      const res = await ApiClient.user.logout()
+      if (!unmounted) {
+        setLogoutStatus(res.status)
       }
     }
     const remindMailFunc = async () => {
@@ -84,13 +75,9 @@ const UserSample: FC = () => {
       }
     }
     const changePasswordFunc = async () => {
-      try {
-        const res = await ApiClient.user.changePassword(changePasswordParameter)
-        if (!unmounted) {
-          setChangePasswordStatus(res.status)
-        }
-      } catch (error) {
-        router.push('/api-test')
+      const res = await ApiClient.user.changePassword(changePasswordParameter)
+      if (!unmounted) {
+        setChangePasswordStatus(res.status)
       }
     }
 
