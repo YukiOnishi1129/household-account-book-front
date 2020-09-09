@@ -13,10 +13,13 @@ const CategorySample: FC = () => {
   const [deleteCategoryStatus, setDeleteCategoryStatus] = useState(0)
   const router = useRouter()
   useEffect(() => {
+    let unmounted = false
     const getCategoryFunc = async () => {
       try {
         const res = await ApiClient.category.getCategories()
-        setGetCategories(res.data)
+        if (!unmounted) {
+          setGetCategories(res.data)
+        }
       } catch (error) {
         router.push('/api-test')
       }
@@ -26,7 +29,9 @@ const CategorySample: FC = () => {
         const res = await ApiClient.category.addCategory(
           requestCategoryParameter
         )
-        setAddCategory(res.data)
+        if (!unmounted) {
+          setAddCategory(res.data)
+        }
       } catch (error) {
         router.push('/api-test')
       }
@@ -37,7 +42,9 @@ const CategorySample: FC = () => {
           1,
           requestCategoryParameter
         )
-        setEditCategory(res.data)
+        if (!unmounted) {
+          setEditCategory(res.data)
+        }
       } catch (error) {
         router.push('/api-test')
       }
@@ -45,7 +52,9 @@ const CategorySample: FC = () => {
     const deleteCategoryFunc = async () => {
       try {
         const res = await ApiClient.category.deleteCategory(1)
-        setDeleteCategoryStatus(res.status)
+        if (!unmounted) {
+          setDeleteCategoryStatus(res.status)
+        }
       } catch (error) {
         router.push('/api-test')
       }
@@ -54,6 +63,9 @@ const CategorySample: FC = () => {
     addCategoryFunc()
     editCategoryFunc()
     deleteCategoryFunc()
+    return () => {
+      unmounted = true
+    }
   }, [])
   return (
     <>

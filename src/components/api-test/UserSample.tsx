@@ -25,26 +25,38 @@ const UserSample: FC = () => {
   const router = useRouter()
 
   useEffect(() => {
+    let unmounted = false
     const loginFunc = async () => {
       const res = await ApiClient.user.login(requestLoginParameter)
-      setLoginUser(res.data)
+      if (!unmounted) {
+        setLoginUser(res.data)
+      }
     }
     const registerFunc = async () => {
       const res = await ApiClient.user.register(requestRegisterParameter)
-      setRegisternUser(res.data)
+
+      if (!unmounted) {
+        setRegisternUser(res.data)
+      }
     }
     const partnerLoginFunc = async () => {
       const res = await ApiClient.user.partnerLogin(requestLoginParameter)
-      setPertnerLoginUser(res.data)
+      if (!unmounted) {
+        setPertnerLoginUser(res.data)
+      }
     }
     const tryLoginFunc = async () => {
       const res = await ApiClient.user.tryLogin(requestLoginParameter)
-      setTryLoginUser(res.data)
+      if (!unmounted) {
+        setTryLoginUser(res.data)
+      }
     }
     const authLoginFunc = async () => {
       try {
         const res = await ApiClient.user.authRooting()
-        setAuthLoginUser(res.data)
+        if (!unmounted) {
+          setAuthLoginUser(res.data)
+        }
       } catch (error) {
         router.push('/api-test')
       }
@@ -52,23 +64,31 @@ const UserSample: FC = () => {
     const logoutFunc = async () => {
       try {
         const res = await ApiClient.user.logout()
-        setLogoutStatus(res.status)
+        if (!unmounted) {
+          setLogoutStatus(res.status)
+        }
       } catch (error) {
         router.push('/api-test')
       }
     }
     const remindMailFunc = async () => {
       const res = await ApiClient.user.remindEmail(requestRemindMailParameter)
-      setRemindMailStatus(res.status)
+      if (!unmounted) {
+        setRemindMailStatus(res.status)
+      }
     }
     const remindKeyFunc = async () => {
       const res = await ApiClient.user.remindKey(requestRemindKeyParameter)
-      setRemindKeySUser(res.data)
+      if (!unmounted) {
+        setRemindKeySUser(res.data)
+      }
     }
     const changePasswordFunc = async () => {
       try {
         const res = await ApiClient.user.changePassword(changePasswordParameter)
-        setChangePasswordStatus(res.status)
+        if (!unmounted) {
+          setChangePasswordStatus(res.status)
+        }
       } catch (error) {
         router.push('/api-test')
       }
@@ -83,6 +103,9 @@ const UserSample: FC = () => {
     remindMailFunc()
     remindKeyFunc()
     changePasswordFunc()
+    return () => {
+      unmounted = true
+    }
   }, [])
 
   return (

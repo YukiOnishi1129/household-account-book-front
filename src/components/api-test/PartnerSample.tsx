@@ -13,10 +13,13 @@ const PartnerSample: FC = () => {
   const router = useRouter()
 
   useEffect(() => {
+    let unmounted = false
     const getPartnerFunc = async () => {
       try {
         const res = await ApiClient.partner.getPartners()
-        setGetPartners(res.data)
+        if (!unmounted) {
+          setGetPartners(res.data)
+        }
       } catch (error) {
         router.push('/api-test')
       }
@@ -24,7 +27,9 @@ const PartnerSample: FC = () => {
     const addPartnerFunc = async () => {
       try {
         const res = await ApiClient.partner.addPartner(requestPartnerParameter)
-        setAddPartner(res.data)
+        if (!unmounted) {
+          setAddPartner(res.data)
+        }
       } catch (error) {
         router.push('/api-test')
       }
@@ -32,7 +37,9 @@ const PartnerSample: FC = () => {
     const deletePartnerFunc = async () => {
       try {
         const res = await ApiClient.partner.deletePartner(1)
-        setDeletePatnerStatus(res.status)
+        if (!unmounted) {
+          setDeletePatnerStatus(res.status)
+        }
       } catch (error) {
         router.push('/api-test')
       }
@@ -40,6 +47,9 @@ const PartnerSample: FC = () => {
     getPartnerFunc()
     addPartnerFunc()
     deletePartnerFunc()
+    return () => {
+      unmounted = true
+    }
   }, [])
   return (
     <>

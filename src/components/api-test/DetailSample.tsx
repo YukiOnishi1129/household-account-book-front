@@ -14,10 +14,13 @@ const DetailSample: FC = () => {
   const router = useRouter()
 
   useEffect(() => {
+    let unmounted = false
     const getDetailFunc = async () => {
       try {
         const res = await ApiClient.detail.getDetails('2020-05-01')
-        setGetDetail(res.data)
+        if (!unmounted) {
+          setGetDetail(res.data)
+        }
       } catch (error) {
         router.push('/api-test')
       }
@@ -25,7 +28,9 @@ const DetailSample: FC = () => {
     const addDetailFunc = async () => {
       try {
         const res = await ApiClient.detail.addDetail(requestDetailParameter)
-        setAddDetail(res.data)
+        if (!unmounted) {
+          setAddDetail(res.data)
+        }
       } catch (error) {
         router.push('/api-test')
       }
@@ -33,7 +38,9 @@ const DetailSample: FC = () => {
     const editDetailFunc = async () => {
       try {
         const res = await ApiClient.detail.editDetail(1, requestDetailParameter)
-        setEditGetDetail(res.data)
+        if (!unmounted) {
+          setEditGetDetail(res.data)
+        }
       } catch (error) {
         router.push('/api-test')
       }
@@ -41,7 +48,9 @@ const DetailSample: FC = () => {
     const deleteDetailFunc = async () => {
       try {
         const res = await ApiClient.detail.deleteDetail(1)
-        setDeleteDetailStatus(res.status)
+        if (!unmounted) {
+          setDeleteDetailStatus(res.status)
+        }
       } catch (error) {
         router.push('/api-test')
       }
@@ -50,6 +59,9 @@ const DetailSample: FC = () => {
     addDetailFunc()
     editDetailFunc()
     deleteDetailFunc()
+    return () => {
+      unmounted = true
+    }
   }, [])
 
   return (

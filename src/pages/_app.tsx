@@ -28,21 +28,6 @@ MyApp.getInitialProps = async (appContext) => {
 
 export default MyApp
 
-export const authRouting = async (
-  router: NextRouter,
-  setAuth: React.Dispatch<React.SetStateAction<User>>
-) => {
-  if (router.pathname === '/api-test') {
-    return
-  }
-  try {
-    const res = await ApiClient.user.authRooting()
-    setAuth(res.data)
-  } catch (error) {
-    router.push('/api-test')
-  }
-}
-
 export const AuthProvider = ({ children }) => {
   const router = useRouter()
   // Contextを定義
@@ -56,10 +41,33 @@ export const AuthProvider = ({ children }) => {
     main_user_id: 0,
   }
   const [auth, setAuth] = useState(initialAuth)
+
   useEffect(() => {
-    authRouting(router, setAuth)
+    let unmounted = false
+    authRouting(router, setAuth, unmounted)
+    return () => {
+      unmounted = true
+    }
   }, [])
   return <AuthProvider value={auth}>{children}</AuthProvider>
+}
+
+export const authRouting = async (
+  router: NextRouter,
+  setAuth: React.Dispatch<React.SetStateAction<User>>,
+  unmounted: boolean
+) => {
+  if (router.pathname === '/api-test') {
+    return
+  }
+  try {
+    const res = await ApiClient.user.authRooting()
+    if (!unmounted) {
+      setAuth(res.data)
+    }
+  } catch (error) {
+    router.push('/api-test')
+  }
 }
 
 // export default class MyApp extends App {

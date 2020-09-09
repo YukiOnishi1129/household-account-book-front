@@ -12,10 +12,13 @@ const GraphSample: FC = () => {
   const router = useRouter()
 
   useEffect(() => {
+    let unmounted = false
     const monthRateFunc = async () => {
       try {
         const res = await ApiClient.monthRate.getMonthRate('2020-05-01')
-        setMonthRate(res.data)
+        if (!unmounted) {
+          setMonthRate(res.data)
+        }
       } catch (error) {
         router.push('/api-test')
       }
@@ -23,13 +26,18 @@ const GraphSample: FC = () => {
     const annualChangeFunc = async () => {
       try {
         const res = await ApiClient.annualChange.getAnnualChange('2020-05-01')
-        setAnnualChange(res.data)
+        if (!unmounted) {
+          setAnnualChange(res.data)
+        }
       } catch (error) {
         router.push('/api-test')
       }
     }
     monthRateFunc()
     annualChangeFunc()
+    return () => {
+      unmounted = true
+    }
   }, [])
 
   return (
