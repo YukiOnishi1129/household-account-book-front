@@ -31,7 +31,9 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.20.0",
+    "js-cookie": "^2.2.1",
     "next": "^9.5.1",
+    "next-cookies": "^2.0.3",
     "nookies": "^2.4.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
