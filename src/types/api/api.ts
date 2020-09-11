@@ -1239,6 +1239,133 @@ export class CategoryApi extends BaseAPI {
 }
 
 /**
+ * CsrfCookieApi - axios parameter creator
+ * @export
+ */
+export const CsrfCookieApiAxiosParamCreator = function (
+  configuration?: Configuration
+) {
+  return {
+    /**
+     * csrf-cookie
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    sanctum: async (options: any = {}): Promise<RequestArgs> => {
+      const localVarPath = `/sanctum/csrf-cookie`
+      const localVarUrlObj = globalImportUrl.parse(localVarPath, true)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+      const localVarRequestOptions = {
+        method: 'GET',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      localVarUrlObj.query = {
+        ...localVarUrlObj.query,
+        ...localVarQueryParameter,
+        ...options.query,
+      }
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      delete localVarUrlObj.search
+      const headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+
+      return {
+        url: globalImportUrl.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+  }
+}
+
+/**
+ * CsrfCookieApi - functional programming interface
+ * @export
+ */
+export const CsrfCookieApiFp = function (configuration?: Configuration) {
+  return {
+    /**
+     * csrf-cookie
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async sanctum(
+      options?: any
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
+    > {
+      const localVarAxiosArgs = await CsrfCookieApiAxiosParamCreator(
+        configuration
+      ).sanctum(options)
+      return (
+        axios: AxiosInstance = globalAxios,
+        basePath: string = BASE_PATH
+      ) => {
+        const axiosRequestArgs = {
+          ...localVarAxiosArgs.options,
+          url: basePath + localVarAxiosArgs.url,
+        }
+        return axios.request(axiosRequestArgs)
+      }
+    },
+  }
+}
+
+/**
+ * CsrfCookieApi - factory interface
+ * @export
+ */
+export const CsrfCookieApiFactory = function (
+  configuration?: Configuration,
+  basePath?: string,
+  axios?: AxiosInstance
+) {
+  return {
+    /**
+     * csrf-cookie
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    sanctum(options?: any): AxiosPromise<void> {
+      return CsrfCookieApiFp(configuration)
+        .sanctum(options)
+        .then((request) => request(axios, basePath))
+    },
+  }
+}
+
+/**
+ * CsrfCookieApi - object-oriented interface
+ * @export
+ * @class CsrfCookieApi
+ * @extends {BaseAPI}
+ */
+export class CsrfCookieApi extends BaseAPI {
+  /**
+   * csrf-cookie
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof CsrfCookieApi
+   */
+  public sanctum(options?: any) {
+    return CsrfCookieApiFp(this.configuration)
+      .sanctum(options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+}
+
+/**
  * DetailApi - axios parameter creator
  * @export
  */
