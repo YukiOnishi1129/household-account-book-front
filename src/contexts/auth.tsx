@@ -1,5 +1,6 @@
-import React, { useState, useContext, useEffect } from 'react'
-import { useRouter, NextRouter } from 'next/router'
+import React, { ReactElement, useState, useContext, useEffect } from 'react'
+import Router, { useRouter, NextRouter } from 'next/router'
+import App, { AppProps } from 'next/app'
 import ApiClient from '../network/ApiClient'
 import { User } from '../types/api/'
 import { initialUser } from '../utils/inits'
@@ -55,8 +56,21 @@ export const authRouting = async (
   }
 }
 
-export default function useAuth() {
+const useAuth = () => {
   const context = useContext(AuthContext)
-
   return context
+}
+
+export default useAuth
+
+export const ProtectRoute = ({ Component, pageProps }: AppProps) => {
+  return () => {
+    const { isAuthenticated, loading } = useAuth()
+
+    useEffect(() => {
+      if (!isAuthenticated && !loading) Router.push('/login')
+    }, [loading, isAuthenticated])
+
+    return <Component {...pageProps} />
+  }
 }

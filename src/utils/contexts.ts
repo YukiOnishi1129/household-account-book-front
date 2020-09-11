@@ -1,4 +1,4 @@
 import { createContext } from 'react'
-import { User } from '../types/api/'
+import { Auth } from '../types/auth'
 
-export const AuthContext = createContext({})
+export const AuthContext = createContext({} as Auth)
