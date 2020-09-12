@@ -19,7 +19,8 @@ const Login: FC = () => {
   const handleChangPassword = (event) => {
     setPassword(event.target.value)
   }
-  const handleSubmitLogin = async () => {
+  const handleSubmitLogin = async (event) => {
+    event.preventDefault()
     const requestParam: RequestLogin = {
       email: email,
       password: password,
@@ -35,7 +36,7 @@ const Login: FC = () => {
       </Head>
       <Layout>
         <H1>ログイン</H1>
-        <div>
+        <form>
           <input
             type="email"
             placeholder="メールアドレスを入力してください"
@@ -45,11 +46,12 @@ const Login: FC = () => {
           <input
             type="password"
             placeholder="passwordを入力してください"
+            autoComplete="off"
             value={password}
             onChange={handleChangPassword}
           />
           <button onClick={handleSubmitLogin}>ログイン</button>
-        </div>
+        </form>
         <Button onClick={() => router.push('/')}>home</Button>
       </Layout>
     </div>
