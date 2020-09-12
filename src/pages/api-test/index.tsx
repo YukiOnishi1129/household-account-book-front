@@ -2,6 +2,7 @@ import React, { FC } from 'react'
 import Layout from '../../components/Layout'
 import RouteButton from '../../components/api-test/RouteButton'
 import styled from 'styled-components'
+import { ProtectRoute } from '../../contexts/auth'
 
 const ApiSamplePage: FC = () => (
   <div>
@@ -17,4 +18,4 @@ const H1 = styled.h1`
   font-size: 20px;
 `
 
-export default ApiSamplePage
+export default ProtectRoute(ApiSamplePage)

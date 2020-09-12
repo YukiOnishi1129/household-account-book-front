@@ -7,6 +7,8 @@ const RouteButton: FC = () => {
   return (
     <ButtonFlex>
       <Button onClick={() => router.push('/api-test')}>Top</Button>
+      <Button onClick={() => router.push('/api-test/sample')}>Sample</Button>
+      <Button onClick={() => router.push('/api-test/login')}>Login</Button>
       <Button onClick={() => router.push('/api-test/user')}>User</Button>
       <Button onClick={() => router.push('/api-test/calendar')}>
         Calendar

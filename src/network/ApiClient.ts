@@ -3,6 +3,7 @@ import {
   AnnualChangeApiFactory,
   CalendarApiFactory,
   CategoryApiFactory,
+  CsrfCookieApiFactory,
   DetailApiFactory,
   MonthRateApiFactory,
   PartnerApiFactory,
@@ -23,6 +24,7 @@ export default {
   annualChange: AnnualChangeApiFactory(config),
   calender: CalendarApiFactory(config),
   category: CategoryApiFactory(config),
+  csrfCookie: CsrfCookieApiFactory(config),
   detail: DetailApiFactory(config),
   monthRate: MonthRateApiFactory(config),
   partner: PartnerApiFactory(config),
@@ -35,6 +37,10 @@ globalAxios.interceptors.response.use(
   },
   (error) => {
     const status = error.response.status
+    // 認証チェックAPIの場合、エラーをそのまま返すのみ
+    if (error.response.config.url.match(/auth/)) {
+      return error
+    }
     // 認証エラー時
     if (status === 401) {
       switch (Router.pathname) {
