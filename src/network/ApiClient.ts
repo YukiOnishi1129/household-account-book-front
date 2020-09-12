@@ -37,6 +37,10 @@ globalAxios.interceptors.response.use(
   },
   (error) => {
     const status = error.response.status
+    // 認証チェックAPIの場合、エラーをそのまま返すのみ
+    if (error.response.config.url.match(/auth/)) {
+      return error
+    }
     // 認証エラー時
     if (status === 401) {
       switch (Router.pathname) {

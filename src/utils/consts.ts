@@ -7,3 +7,5 @@ export enum BeforeLoginPage {
   REMAIND_PASS_MAIL = '/remaind-pass-mail',
   REMAIND_PASS_KEY = '/remaind-pass-key',
 }
+
+export enum AfterLoginPage {}

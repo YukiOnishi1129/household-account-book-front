@@ -1,5 +1,6 @@
 import React, {
-  ReactElement,
+  ReactNode,
+  FC,
   Dispatch,
   SetStateAction,
   useState,
@@ -7,7 +8,7 @@ import React, {
   useEffect,
 } from 'react'
 import Router, { useRouter, NextRouter } from 'next/router'
-import App, { AppProps } from 'next/app'
+// import App, { AppProps } from 'next/app'
 import ApiClient from '../network/ApiClient'
 import {
   User,
@@ -21,18 +22,20 @@ import { AuthContext } from '../utils/contexts'
 import { BeforeLoginPage } from '../utils/consts'
 
 /**
- * AuthProvider
+ * Authプロバイダー
  * @param param0
  */
-export const AuthProvider = ({ children }) => {
+export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const router = useRouter()
   const [user, setUser] = useState(initialUser)
   const [loading, setLoading] = useState(true)
   const [errMsg, setErrMsg] = useState('')
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
 
   useEffect(() => {
     let unmounted = false
-    authRouting(router, setUser, setLoading, unmounted)
+    // リロード時の認証チェック
+    reloadAuthCheck(router, setUser, setLoading, unmounted)
 
     // クリーンアップ
     return () => {
@@ -55,6 +58,7 @@ export const AuthProvider = ({ children }) => {
         return
       }
       setUser(response.data)
+      setIsAuthenticated(!!response.data)
       router.push('/api-test')
     } catch (error) {
       if (error.response.status === 401) {
@@ -79,6 +83,7 @@ export const AuthProvider = ({ children }) => {
         return
       }
       setUser(response.data)
+      setIsAuthenticated(!!response.data)
       router.push('/api-test')
     } catch (error) {
       if (error.response.status === 401) {
@@ -102,6 +107,7 @@ export const AuthProvider = ({ children }) => {
         return
       }
       setUser(response.data)
+      setIsAuthenticated(!!response.data)
       router.push('/api-test')
     } catch (error) {
       if (error.response.status === 401) {
@@ -125,6 +131,7 @@ export const AuthProvider = ({ children }) => {
         return
       }
       setUser(response.data)
+      setIsAuthenticated(!!response.data)
       router.push('/api-test')
     } catch (error) {
       if (error.response.status === 401) {
@@ -139,7 +146,10 @@ export const AuthProvider = ({ children }) => {
    */
   const logout = async () => {
     const res = await ApiClient.user.logout()
-    if (res.status === 204) setUser(null)
+    if (res.status === 204) {
+      setUser(initialUser)
+      setIsAuthenticated(false)
+    }
   }
 
   /**
@@ -166,6 +176,7 @@ export const AuthProvider = ({ children }) => {
         return
       }
       setUser(response.data)
+      setIsAuthenticated(!!response.data)
       router.push('/api-test')
     } catch (error) {
       if (error.response.status === 401) {
@@ -174,10 +185,11 @@ export const AuthProvider = ({ children }) => {
       }
     }
   }
+
   return (
     <AuthContext.Provider
       value={{
-        isAuthenticated: !!user,
+        isAuthenticated,
         user,
         loading,
         errMsg,
@@ -188,6 +200,8 @@ export const AuthProvider = ({ children }) => {
         logout,
         remindMail,
         remindKey,
+        setIsAuthenticated,
+        setUser,
       }}
     >
       {children}
@@ -206,13 +220,13 @@ const useAuth = () => {
 export default useAuth
 
 /**
- * 認証ルーティング
+ * リロード時の認証チェック
  * @param router
  * @param setAuth
  * @param setLoading
  * @param unmounted
  */
-export const authRouting = async (
+export const reloadAuthCheck = async (
   router: NextRouter,
   setUser: Dispatch<SetStateAction<User>>,
   setLoading: Dispatch<SetStateAction<boolean>>,
@@ -241,18 +255,75 @@ export const authRouting = async (
 }
 
 /**
- *
- * @param param0
+ * 認証済ページのコンポーネント
+ * @param Component
  */
-export const ProtectRoute = ({ Component, pageProps }: AppProps) => {
+export const ProtectRoute = (Component: FC) => {
   const protectComponent = () => {
-    const { isAuthenticated, loading } = useAuth()
+    const { isAuthenticated, setUser, setIsAuthenticated } = useAuth()
+    const isLogined = true
 
     useEffect(() => {
-      if (!isAuthenticated && !loading) Router.push('/login')
-    }, [loading, isAuthenticated])
+      // ページ遷移時の認証ルーティング
+      authRouting(setUser, setIsAuthenticated, isAuthenticated, isLogined)
+    }, [isAuthenticated])
 
-    return <Component {...pageProps} />
+    return <Component />
   }
   return protectComponent
+}
+
+/**
+ * 認証前ページのコンポーネント
+ * @param Component
+ */
+export const beforeLoginRoute = (Component: FC) => {
+  const beforeLoginComponent = () => {
+    const { isAuthenticated, setUser, setIsAuthenticated } = useAuth()
+    const isLogined = false
+
+    useEffect(() => {
+      // ページ遷移時の認証ルーティング
+      authRouting(setUser, setIsAuthenticated, isAuthenticated, isLogined)
+    }, [isAuthenticated])
+
+    return <Component />
+  }
+  return beforeLoginComponent
+}
+
+/**
+ * ページ遷移時の認証ルーティング
+ * @param setUser
+ * @param isAuthenticated
+ * @param isLogined
+ */
+export const authRouting = async (
+  setUser: Dispatch<SetStateAction<User>>,
+  setIsAuthenticated: Dispatch<SetStateAction<boolean>>,
+  isAuthenticated: boolean,
+  isLogined: boolean
+): Promise<void> => {
+  const { data } = await ApiClient.user.authRooting()
+  if (data) {
+    // 認証チェックOK
+    // 認証前のページにいる場合
+    if (!isLogined) {
+      if (!isAuthenticated) {
+        // 認証情報を設定
+        setUser(data)
+        setIsAuthenticated(!!data)
+      }
+      Router.push('/api-test')
+    }
+  } else {
+    // 認証チェックNG
+    // 認証後のページにいる場合
+    if (isLogined) {
+      // 認証情報を初期化
+      setUser(initialUser)
+      setIsAuthenticated(false)
+      Router.push('/login')
+    }
+  }
 }

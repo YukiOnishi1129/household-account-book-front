@@ -3,6 +3,7 @@ import Layout from '../../components/Layout'
 import RouteButton from '../../components/api-test/RouteButton'
 import styled from 'styled-components'
 import ApiClient from '../../network/ApiClient'
+import { ProtectRoute } from '../../contexts/auth'
 
 const SamplePage: FC = () => {
   useEffect(() => {
@@ -30,4 +31,4 @@ const H1 = styled.h1`
   font-size: 20px;
 `
 
-export default SamplePage
+export default ProtectRoute(SamplePage)

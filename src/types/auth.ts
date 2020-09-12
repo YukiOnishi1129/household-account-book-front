@@ -1,3 +1,4 @@
+import { Dispatch, SetStateAction } from 'react'
 import {
   User,
   RequestLogin,
@@ -21,4 +22,6 @@ export interface Auth {
   logout: () => Promise<void>
   remindMail: (requestData: RequestRemindMail) => Promise<void>
   remindKey: (requestData: RequestRemindKey) => Promise<void>
+  setIsAuthenticated: Dispatch<SetStateAction<boolean>>
+  setUser: Dispatch<SetStateAction<User>>
 }
