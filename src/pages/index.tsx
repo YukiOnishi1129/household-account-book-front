@@ -9,10 +9,6 @@ const App: FC = () => {
   const router = useRouter()
   return (
     <div>
-      <Head>
-        <title>Home</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <Layout>
         <H1>Home</H1>
         <Button onClick={() => router.push('/login')}>login</Button>

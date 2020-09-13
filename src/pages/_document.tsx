@@ -25,6 +25,16 @@ export default class MyDocument extends Document<Props> {
         <Head>
           <meta charSet="utf-8" />
           {this.props.styleTags}
+          <title>おおまか家計簿</title>
+          <link rel="icon" href="/favicon.ico" />
+          <meta
+            name="description"
+            content="家計簿をおおまかにつけて管理しよう！ カテゴリごとに支出の割合を確認できるよ！"
+          />
+          <meta
+            name="keywords"
+            content="家計簿,簡単,ザックリ,アプリ,続けられる,継続"
+          />
         </Head>
         <body>
           <Main />
