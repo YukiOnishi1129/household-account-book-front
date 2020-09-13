@@ -19,7 +19,7 @@ import {
 } from '../types/api/'
 import { initialUser } from '../utils/inits'
 import { AuthContext } from '../utils/contexts'
-import { BeforeLoginPage } from '../utils/consts'
+import { BeforeLoginPage, AfterLoginPage } from '../utils/consts'
 
 /**
  * Authプロバイダー
@@ -59,7 +59,7 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
       }
       setUser(response.data)
       setIsAuthenticated(!!response.data)
-      router.push('/api-test')
+      router.push(AfterLoginPage.DASH_BOARD)
     } catch (error) {
       if (error.response.status === 401) {
         // エラーメッセージを格納
@@ -84,7 +84,7 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
       }
       setUser(response.data)
       setIsAuthenticated(!!response.data)
-      router.push('/api-test')
+      router.push(AfterLoginPage.DASH_BOARD)
     } catch (error) {
       if (error.response.status === 401) {
         // エラーメッセージを格納
@@ -108,7 +108,7 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
       }
       setUser(response.data)
       setIsAuthenticated(!!response.data)
-      router.push('/api-test')
+      router.push(AfterLoginPage.DASH_BOARD)
     } catch (error) {
       if (error.response.status === 401) {
         // エラーメッセージを格納
@@ -132,7 +132,7 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
       }
       setUser(response.data)
       setIsAuthenticated(!!response.data)
-      router.push('/api-test')
+      router.push(AfterLoginPage.DASH_BOARD)
     } catch (error) {
       if (error.response.status === 401) {
         // エラーメッセージを格納
@@ -147,6 +147,7 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const logout = async () => {
     const res = await ApiClient.user.logout()
     if (res.status === 204) {
+      // 認証情報処理化
       setUser(initialUser)
       setIsAuthenticated(false)
     }
@@ -177,7 +178,7 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
       }
       setUser(response.data)
       setIsAuthenticated(!!response.data)
-      router.push('/api-test')
+      router.push(AfterLoginPage.DASH_BOARD)
     } catch (error) {
       if (error.response.status === 401) {
         // エラーメッセージを格納
@@ -243,7 +244,7 @@ export const reloadAuthCheck = async (
       case BeforeLoginPage.TRY_LOGIN:
       case BeforeLoginPage.REMAIND_PASS_MAIL:
       case BeforeLoginPage.REMAIND_PASS_KEY:
-        router.push('/api-test')
+        router.push(AfterLoginPage.DASH_BOARD)
         break
       default:
     }
@@ -255,13 +256,27 @@ export const reloadAuthCheck = async (
 }
 
 /**
- * 認証済ページのコンポーネント
+ * 認証ルーティングコンポーネント
  * @param Component
  */
 export const ProtectRoute = (Component: FC) => {
   const protectComponent = () => {
     const { isAuthenticated, setUser, setIsAuthenticated } = useAuth()
-    const isLogined = true
+    const router = useRouter()
+    let isLogined = true
+
+    switch (router.pathname) {
+      case BeforeLoginPage.TOP:
+      case BeforeLoginPage.LOGIN:
+      case BeforeLoginPage.SIGNUP:
+      case BeforeLoginPage.PATNER_LOGIN:
+      case BeforeLoginPage.TRY_LOGIN:
+      case BeforeLoginPage.REMAIND_PASS_MAIL:
+      case BeforeLoginPage.REMAIND_PASS_KEY:
+        isLogined = false
+        break
+      default:
+    }
 
     useEffect(() => {
       // ページ遷移時の認証ルーティング
@@ -271,25 +286,6 @@ export const ProtectRoute = (Component: FC) => {
     return <Component />
   }
   return protectComponent
-}
-
-/**
- * 認証前ページのコンポーネント
- * @param Component
- */
-export const beforeLoginRoute = (Component: FC) => {
-  const beforeLoginComponent = () => {
-    const { isAuthenticated, setUser, setIsAuthenticated } = useAuth()
-    const isLogined = false
-
-    useEffect(() => {
-      // ページ遷移時の認証ルーティング
-      authRouting(setUser, setIsAuthenticated, isAuthenticated, isLogined)
-    }, [isAuthenticated])
-
-    return <Component />
-  }
-  return beforeLoginComponent
 }
 
 /**
@@ -314,7 +310,7 @@ export const authRouting = async (
         setUser(data)
         setIsAuthenticated(!!data)
       }
-      Router.push('/api-test')
+      Router.push(AfterLoginPage.DASH_BOARD)
     }
   } else {
     // 認証チェックNG
@@ -323,7 +319,7 @@ export const authRouting = async (
       // 認証情報を初期化
       setUser(initialUser)
       setIsAuthenticated(false)
-      Router.push('/login')
+      Router.push(BeforeLoginPage.LOGIN)
     }
   }
 }
