@@ -7,7 +7,6 @@ import ApiClient from '../../network/ApiClient'
 
 const Calender: FC = () => {
   const router = useRouter()
-  console.log(router.query)
   useEffect(() => {}, [])
   return (
     <div>
