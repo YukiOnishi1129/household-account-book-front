@@ -425,6 +425,18 @@ export interface User {
    * @memberof User
    */
   main_user_id: number
+  /**
+   *
+   * @type {boolean}
+   * @memberof User
+   */
+  login_flg: boolean
+  /**
+   *
+   * @type {boolean}
+   * @memberof User
+   */
+  input_flg: boolean
 }
 
 /**
@@ -437,7 +449,7 @@ export const AnnualChangeApiAxiosParamCreator = function (
   return {
     /**
      * 年間の支出推移
-     * @summary No.20 年間の支出推移取得
+     * @summary No.23 年間の支出推移取得
      * @param {string} date 現在日付
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -503,7 +515,7 @@ export const AnnualChangeApiFp = function (configuration?: Configuration) {
   return {
     /**
      * 年間の支出推移
-     * @summary No.20 年間の支出推移取得
+     * @summary No.23 年間の支出推移取得
      * @param {string} date 現在日付
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -546,7 +558,7 @@ export const AnnualChangeApiFactory = function (
   return {
     /**
      * 年間の支出推移
-     * @summary No.20 年間の支出推移取得
+     * @summary No.23 年間の支出推移取得
      * @param {string} date 現在日付
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -571,7 +583,7 @@ export const AnnualChangeApiFactory = function (
 export class AnnualChangeApi extends BaseAPI {
   /**
    * 年間の支出推移
-   * @summary No.20 年間の支出推移取得
+   * @summary No.23 年間の支出推移取得
    * @param {string} date 現在日付
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
@@ -594,7 +606,7 @@ export const CalendarApiAxiosParamCreator = function (
   return {
     /**
      * カレンダー情報取得
-     * @summary No.10 カレンダー情報取得
+     * @summary No.13 カレンダー情報取得
      * @param {string} date date
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -660,7 +672,7 @@ export const CalendarApiFp = function (configuration?: Configuration) {
   return {
     /**
      * カレンダー情報取得
-     * @summary No.10 カレンダー情報取得
+     * @summary No.13 カレンダー情報取得
      * @param {string} date date
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -700,7 +712,7 @@ export const CalendarApiFactory = function (
   return {
     /**
      * カレンダー情報取得
-     * @summary No.10 カレンダー情報取得
+     * @summary No.13 カレンダー情報取得
      * @param {string} date date
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -722,7 +734,7 @@ export const CalendarApiFactory = function (
 export class CalendarApi extends BaseAPI {
   /**
    * カレンダー情報取得
-   * @summary No.10 カレンダー情報取得
+   * @summary No.13 カレンダー情報取得
    * @param {string} date date
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
@@ -745,7 +757,7 @@ export const CategoryApiAxiosParamCreator = function (
   return {
     /**
      * カテゴリ新規登録
-     * @summary No.16 カテゴリ新規登録
+     * @summary No.19 カテゴリ新規登録
      * @param {RequestCategory} requestCategory リクエストパラメータ
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -807,7 +819,7 @@ export const CategoryApiAxiosParamCreator = function (
     },
     /**
      * カテゴリ情報削除
-     * @summary No.18 カテゴリ情報削除
+     * @summary No.21 カテゴリ情報削除
      * @param {number} categoryId カテゴリID
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -864,7 +876,7 @@ export const CategoryApiAxiosParamCreator = function (
     },
     /**
      * カテゴリ情報編集
-     * @summary No.17 カテゴリ情報編集
+     * @summary No.20 カテゴリ情報編集
      * @param {number} categoryId カテゴリID
      * @param {RequestCategory} requestCategory リクエストパラメータ
      * @param {*} [options] Override http request option.
@@ -938,7 +950,7 @@ export const CategoryApiAxiosParamCreator = function (
     },
     /**
      * カテゴリ情報取得
-     * @summary No.15 カテゴリ情報取得
+     * @summary No.18 カテゴリ情報取得
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -990,7 +1002,7 @@ export const CategoryApiFp = function (configuration?: Configuration) {
   return {
     /**
      * カテゴリ新規登録
-     * @summary No.16 カテゴリ新規登録
+     * @summary No.19 カテゴリ新規登録
      * @param {RequestCategory} requestCategory リクエストパラメータ
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -1017,7 +1029,7 @@ export const CategoryApiFp = function (configuration?: Configuration) {
     },
     /**
      * カテゴリ情報削除
-     * @summary No.18 カテゴリ情報削除
+     * @summary No.21 カテゴリ情報削除
      * @param {number} categoryId カテゴリID
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -1044,7 +1056,7 @@ export const CategoryApiFp = function (configuration?: Configuration) {
     },
     /**
      * カテゴリ情報編集
-     * @summary No.17 カテゴリ情報編集
+     * @summary No.20 カテゴリ情報編集
      * @param {number} categoryId カテゴリID
      * @param {RequestCategory} requestCategory リクエストパラメータ
      * @param {*} [options] Override http request option.
@@ -1073,7 +1085,7 @@ export const CategoryApiFp = function (configuration?: Configuration) {
     },
     /**
      * カテゴリ情報取得
-     * @summary No.15 カテゴリ情報取得
+     * @summary No.18 カテゴリ情報取得
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -1114,7 +1126,7 @@ export const CategoryApiFactory = function (
   return {
     /**
      * カテゴリ新規登録
-     * @summary No.16 カテゴリ新規登録
+     * @summary No.19 カテゴリ新規登録
      * @param {RequestCategory} requestCategory リクエストパラメータ
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -1129,7 +1141,7 @@ export const CategoryApiFactory = function (
     },
     /**
      * カテゴリ情報削除
-     * @summary No.18 カテゴリ情報削除
+     * @summary No.21 カテゴリ情報削除
      * @param {number} categoryId カテゴリID
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -1141,7 +1153,7 @@ export const CategoryApiFactory = function (
     },
     /**
      * カテゴリ情報編集
-     * @summary No.17 カテゴリ情報編集
+     * @summary No.20 カテゴリ情報編集
      * @param {number} categoryId カテゴリID
      * @param {RequestCategory} requestCategory リクエストパラメータ
      * @param {*} [options] Override http request option.
@@ -1158,7 +1170,7 @@ export const CategoryApiFactory = function (
     },
     /**
      * カテゴリ情報取得
-     * @summary No.15 カテゴリ情報取得
+     * @summary No.18 カテゴリ情報取得
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -1179,7 +1191,7 @@ export const CategoryApiFactory = function (
 export class CategoryApi extends BaseAPI {
   /**
    * カテゴリ新規登録
-   * @summary No.16 カテゴリ新規登録
+   * @summary No.19 カテゴリ新規登録
    * @param {RequestCategory} requestCategory リクエストパラメータ
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
@@ -1193,7 +1205,7 @@ export class CategoryApi extends BaseAPI {
 
   /**
    * カテゴリ情報削除
-   * @summary No.18 カテゴリ情報削除
+   * @summary No.21 カテゴリ情報削除
    * @param {number} categoryId カテゴリID
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
@@ -1207,7 +1219,7 @@ export class CategoryApi extends BaseAPI {
 
   /**
    * カテゴリ情報編集
-   * @summary No.17 カテゴリ情報編集
+   * @summary No.20 カテゴリ情報編集
    * @param {number} categoryId カテゴリID
    * @param {RequestCategory} requestCategory リクエストパラメータ
    * @param {*} [options] Override http request option.
@@ -1226,7 +1238,7 @@ export class CategoryApi extends BaseAPI {
 
   /**
    * カテゴリ情報取得
-   * @summary No.15 カテゴリ情報取得
+   * @summary No.18 カテゴリ情報取得
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof CategoryApi
@@ -1247,7 +1259,8 @@ export const CsrfCookieApiAxiosParamCreator = function (
 ) {
   return {
     /**
-     * csrf-cookie
+     * csrf-cookie処理
+     * @summary No.1 csrf-cookie処理
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -1296,7 +1309,8 @@ export const CsrfCookieApiAxiosParamCreator = function (
 export const CsrfCookieApiFp = function (configuration?: Configuration) {
   return {
     /**
-     * csrf-cookie
+     * csrf-cookie処理
+     * @summary No.1 csrf-cookie処理
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -1333,7 +1347,8 @@ export const CsrfCookieApiFactory = function (
 ) {
   return {
     /**
-     * csrf-cookie
+     * csrf-cookie処理
+     * @summary No.1 csrf-cookie処理
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -1353,7 +1368,8 @@ export const CsrfCookieApiFactory = function (
  */
 export class CsrfCookieApi extends BaseAPI {
   /**
-   * csrf-cookie
+   * csrf-cookie処理
+   * @summary No.1 csrf-cookie処理
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof CsrfCookieApi
@@ -1375,7 +1391,7 @@ export const DetailApiAxiosParamCreator = function (
   return {
     /**
      * 金額入力
-     * @summary No.12 金額情報新規登録
+     * @summary No.15 金額情報新規登録
      * @param {RequestDetail} requestDetail リクエストパラメータ
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -1437,7 +1453,7 @@ export const DetailApiAxiosParamCreator = function (
     },
     /**
      * 金額削除
-     * @summary No.14 金額情報削除
+     * @summary No.17 金額情報削除
      * @param {number} moneyId money_id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -1494,7 +1510,7 @@ export const DetailApiAxiosParamCreator = function (
     },
     /**
      * 金額編集
-     * @summary No.13 金額情報編集
+     * @summary No.16 金額情報編集
      * @param {number} moneyId money_id
      * @param {RequestDetail} requestDetail リクエストパラメータ
      * @param {*} [options] Override http request option.
@@ -1568,7 +1584,7 @@ export const DetailApiAxiosParamCreator = function (
     },
     /**
      * 日別の金額情報取得
-     * @summary No.11 日別の金額情報取得
+     * @summary No.14 日別の金額情報取得
      * @param {string} date date
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -1634,7 +1650,7 @@ export const DetailApiFp = function (configuration?: Configuration) {
   return {
     /**
      * 金額入力
-     * @summary No.12 金額情報新規登録
+     * @summary No.15 金額情報新規登録
      * @param {RequestDetail} requestDetail リクエストパラメータ
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -1661,7 +1677,7 @@ export const DetailApiFp = function (configuration?: Configuration) {
     },
     /**
      * 金額削除
-     * @summary No.14 金額情報削除
+     * @summary No.17 金額情報削除
      * @param {number} moneyId money_id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -1688,7 +1704,7 @@ export const DetailApiFp = function (configuration?: Configuration) {
     },
     /**
      * 金額編集
-     * @summary No.13 金額情報編集
+     * @summary No.16 金額情報編集
      * @param {number} moneyId money_id
      * @param {RequestDetail} requestDetail リクエストパラメータ
      * @param {*} [options] Override http request option.
@@ -1717,7 +1733,7 @@ export const DetailApiFp = function (configuration?: Configuration) {
     },
     /**
      * 日別の金額情報取得
-     * @summary No.11 日別の金額情報取得
+     * @summary No.14 日別の金額情報取得
      * @param {string} date date
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -1757,7 +1773,7 @@ export const DetailApiFactory = function (
   return {
     /**
      * 金額入力
-     * @summary No.12 金額情報新規登録
+     * @summary No.15 金額情報新規登録
      * @param {RequestDetail} requestDetail リクエストパラメータ
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -1772,7 +1788,7 @@ export const DetailApiFactory = function (
     },
     /**
      * 金額削除
-     * @summary No.14 金額情報削除
+     * @summary No.17 金額情報削除
      * @param {number} moneyId money_id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -1784,7 +1800,7 @@ export const DetailApiFactory = function (
     },
     /**
      * 金額編集
-     * @summary No.13 金額情報編集
+     * @summary No.16 金額情報編集
      * @param {number} moneyId money_id
      * @param {RequestDetail} requestDetail リクエストパラメータ
      * @param {*} [options] Override http request option.
@@ -1801,7 +1817,7 @@ export const DetailApiFactory = function (
     },
     /**
      * 日別の金額情報取得
-     * @summary No.11 日別の金額情報取得
+     * @summary No.14 日別の金額情報取得
      * @param {string} date date
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -1823,7 +1839,7 @@ export const DetailApiFactory = function (
 export class DetailApi extends BaseAPI {
   /**
    * 金額入力
-   * @summary No.12 金額情報新規登録
+   * @summary No.15 金額情報新規登録
    * @param {RequestDetail} requestDetail リクエストパラメータ
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
@@ -1837,7 +1853,7 @@ export class DetailApi extends BaseAPI {
 
   /**
    * 金額削除
-   * @summary No.14 金額情報削除
+   * @summary No.17 金額情報削除
    * @param {number} moneyId money_id
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
@@ -1851,7 +1867,7 @@ export class DetailApi extends BaseAPI {
 
   /**
    * 金額編集
-   * @summary No.13 金額情報編集
+   * @summary No.16 金額情報編集
    * @param {number} moneyId money_id
    * @param {RequestDetail} requestDetail リクエストパラメータ
    * @param {*} [options] Override http request option.
@@ -1870,7 +1886,7 @@ export class DetailApi extends BaseAPI {
 
   /**
    * 日別の金額情報取得
-   * @summary No.11 日別の金額情報取得
+   * @summary No.14 日別の金額情報取得
    * @param {string} date date
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
@@ -1893,7 +1909,7 @@ export const MonthRateApiAxiosParamCreator = function (
   return {
     /**
      * 月のカテゴリ別支出金額取得
-     * @summary No.19 月のカテゴリ別支出金額取得
+     * @summary No.22 月のカテゴリ別支出金額取得
      * @param {string} date date
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -1959,7 +1975,7 @@ export const MonthRateApiFp = function (configuration?: Configuration) {
   return {
     /**
      * 月のカテゴリ別支出金額取得
-     * @summary No.19 月のカテゴリ別支出金額取得
+     * @summary No.22 月のカテゴリ別支出金額取得
      * @param {string} date date
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2002,7 +2018,7 @@ export const MonthRateApiFactory = function (
   return {
     /**
      * 月のカテゴリ別支出金額取得
-     * @summary No.19 月のカテゴリ別支出金額取得
+     * @summary No.22 月のカテゴリ別支出金額取得
      * @param {string} date date
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2024,7 +2040,7 @@ export const MonthRateApiFactory = function (
 export class MonthRateApi extends BaseAPI {
   /**
    * 月のカテゴリ別支出金額取得
-   * @summary No.19 月のカテゴリ別支出金額取得
+   * @summary No.22 月のカテゴリ別支出金額取得
    * @param {string} date date
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
@@ -2047,7 +2063,7 @@ export const PartnerApiAxiosParamCreator = function (
   return {
     /**
      * パートナーユーザー登録
-     * @summary No.22 パートナーユーザー登録
+     * @summary No.25 パートナーユーザー登録
      * @param {RequestPartner} requestPartner リクエストパラメータ
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2109,7 +2125,7 @@ export const PartnerApiAxiosParamCreator = function (
     },
     /**
      * パートナーユーザー削除
-     * @summary No.23 パートナーユーザー削除
+     * @summary No.26 パートナーユーザー削除
      * @param {number} userId パートナーユーザーID
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2166,7 +2182,7 @@ export const PartnerApiAxiosParamCreator = function (
     },
     /**
      * パートナーユーザー取得
-     * @summary No.21 パートナーユーザー取得
+     * @summary No.24 パートナーユーザー取得
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -2218,7 +2234,7 @@ export const PartnerApiFp = function (configuration?: Configuration) {
   return {
     /**
      * パートナーユーザー登録
-     * @summary No.22 パートナーユーザー登録
+     * @summary No.25 パートナーユーザー登録
      * @param {RequestPartner} requestPartner リクエストパラメータ
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2245,7 +2261,7 @@ export const PartnerApiFp = function (configuration?: Configuration) {
     },
     /**
      * パートナーユーザー削除
-     * @summary No.23 パートナーユーザー削除
+     * @summary No.26 パートナーユーザー削除
      * @param {number} userId パートナーユーザーID
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2272,7 +2288,7 @@ export const PartnerApiFp = function (configuration?: Configuration) {
     },
     /**
      * パートナーユーザー取得
-     * @summary No.21 パートナーユーザー取得
+     * @summary No.24 パートナーユーザー取得
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -2310,7 +2326,7 @@ export const PartnerApiFactory = function (
   return {
     /**
      * パートナーユーザー登録
-     * @summary No.22 パートナーユーザー登録
+     * @summary No.25 パートナーユーザー登録
      * @param {RequestPartner} requestPartner リクエストパラメータ
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2325,7 +2341,7 @@ export const PartnerApiFactory = function (
     },
     /**
      * パートナーユーザー削除
-     * @summary No.23 パートナーユーザー削除
+     * @summary No.26 パートナーユーザー削除
      * @param {number} userId パートナーユーザーID
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2337,7 +2353,7 @@ export const PartnerApiFactory = function (
     },
     /**
      * パートナーユーザー取得
-     * @summary No.21 パートナーユーザー取得
+     * @summary No.24 パートナーユーザー取得
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -2358,7 +2374,7 @@ export const PartnerApiFactory = function (
 export class PartnerApi extends BaseAPI {
   /**
    * パートナーユーザー登録
-   * @summary No.22 パートナーユーザー登録
+   * @summary No.25 パートナーユーザー登録
    * @param {RequestPartner} requestPartner リクエストパラメータ
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
@@ -2372,7 +2388,7 @@ export class PartnerApi extends BaseAPI {
 
   /**
    * パートナーユーザー削除
-   * @summary No.23 パートナーユーザー削除
+   * @summary No.26 パートナーユーザー削除
    * @param {number} userId パートナーユーザーID
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
@@ -2386,7 +2402,7 @@ export class PartnerApi extends BaseAPI {
 
   /**
    * パートナーユーザー取得
-   * @summary No.21 パートナーユーザー取得
+   * @summary No.24 パートナーユーザー取得
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof PartnerApi
@@ -2408,7 +2424,7 @@ export const UsersApiAxiosParamCreator = function (
   return {
     /**
      * 認証ルーティング
-     * @summary No.5 認証ルーティング
+     * @summary No.6 認証ルーティング
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -2450,8 +2466,94 @@ export const UsersApiAxiosParamCreator = function (
       }
     },
     /**
+     * 金額入力済フラグ更新
+     * @summary No.12 本日の金額入力済フラグ更新
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    changeInputFlg: async (options: any = {}): Promise<RequestArgs> => {
+      const localVarPath = `/change-input-flg`
+      const localVarUrlObj = globalImportUrl.parse(localVarPath, true)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+      const localVarRequestOptions = {
+        method: 'PUT',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication cookieAuth required
+
+      localVarUrlObj.query = {
+        ...localVarUrlObj.query,
+        ...localVarQueryParameter,
+        ...options.query,
+      }
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      delete localVarUrlObj.search
+      const headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+
+      return {
+        url: globalImportUrl.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * ログイン済フラグ更新
+     * @summary No.11 本日のログイン済フラグ更新
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    changeLoginFlg: async (options: any = {}): Promise<RequestArgs> => {
+      const localVarPath = `/change-login-flg`
+      const localVarUrlObj = globalImportUrl.parse(localVarPath, true)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+      const localVarRequestOptions = {
+        method: 'PUT',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication cookieAuth required
+
+      localVarUrlObj.query = {
+        ...localVarUrlObj.query,
+        ...localVarQueryParameter,
+        ...options.query,
+      }
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      delete localVarUrlObj.search
+      const headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+
+      return {
+        url: globalImportUrl.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      * パスワード変更処理
-     * @summary No.9 パスワード変更
+     * @summary No.10 パスワード変更
      * @param {RequestChangePassword} requestChangePassword リクエストパラメータ
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2477,7 +2579,7 @@ export const UsersApiAxiosParamCreator = function (
         baseOptions = configuration.baseOptions
       }
       const localVarRequestOptions = {
-        method: 'POST',
+        method: 'PUT',
         ...baseOptions,
         ...options,
       }
@@ -2518,7 +2620,7 @@ export const UsersApiAxiosParamCreator = function (
     },
     /**
      * ログイン処理
-     * @summary No.1 ログイン
+     * @summary No.2 ログイン
      * @param {RequestLogin} requestLogin リクエストパラメータ
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2578,7 +2680,7 @@ export const UsersApiAxiosParamCreator = function (
     },
     /**
      * ログアウト処理
-     * @summary No.6 ログアウト
+     * @summary No.7 ログアウト
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -2621,7 +2723,7 @@ export const UsersApiAxiosParamCreator = function (
     },
     /**
      * パートナーユーザーによるログイン処理
-     * @summary No.3 パートナーログイン
+     * @summary No.4 パートナーログイン
      * @param {RequestLogin} requestLogin リクエストパラメータ
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2681,7 +2783,7 @@ export const UsersApiAxiosParamCreator = function (
     },
     /**
      * 会員登録処理
-     * @summary No.2 会員登録
+     * @summary No.3 会員登録
      * @param {RequestRegister} requestRegister リクエストパラメータ
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2741,7 +2843,7 @@ export const UsersApiAxiosParamCreator = function (
     },
     /**
      * パスワードリマインド アドレス送信
-     * @summary No.7 パスワードリマインド(アドレス送信)
+     * @summary No.8 パスワードリマインド(アドレス送信)
      * @param {RequestRemindMail} requestRemindMail リクエストパラメータ
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2803,7 +2905,7 @@ export const UsersApiAxiosParamCreator = function (
     },
     /**
      * パスワードリマインド キー送信
-     * @summary No.8 パスワードリマインド(キー送信)
+     * @summary No.9 パスワードリマインド(キー送信)
      * @param {RequestRemindKey} requestRemindKey リクエストパラメータ
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2863,7 +2965,7 @@ export const UsersApiAxiosParamCreator = function (
     },
     /**
      * お試しユーザーによるログイン処理
-     * @summary No.4 お試しログイン
+     * @summary No.5 お試しログイン
      * @param {RequestLogin} requestLogin リクエストパラメータ
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2932,7 +3034,7 @@ export const UsersApiFp = function (configuration?: Configuration) {
   return {
     /**
      * 認証ルーティング
-     * @summary No.5 認証ルーティング
+     * @summary No.6 認証ルーティング
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -2956,8 +3058,58 @@ export const UsersApiFp = function (configuration?: Configuration) {
       }
     },
     /**
+     * 金額入力済フラグ更新
+     * @summary No.12 本日の金額入力済フラグ更新
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async changeInputFlg(
+      options?: any
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>
+    > {
+      const localVarAxiosArgs = await UsersApiAxiosParamCreator(
+        configuration
+      ).changeInputFlg(options)
+      return (
+        axios: AxiosInstance = globalAxios,
+        basePath: string = BASE_PATH
+      ) => {
+        const axiosRequestArgs = {
+          ...localVarAxiosArgs.options,
+          url: basePath + localVarAxiosArgs.url,
+        }
+        return axios.request(axiosRequestArgs)
+      }
+    },
+    /**
+     * ログイン済フラグ更新
+     * @summary No.11 本日のログイン済フラグ更新
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async changeLoginFlg(
+      options?: any
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>
+    > {
+      const localVarAxiosArgs = await UsersApiAxiosParamCreator(
+        configuration
+      ).changeLoginFlg(options)
+      return (
+        axios: AxiosInstance = globalAxios,
+        basePath: string = BASE_PATH
+      ) => {
+        const axiosRequestArgs = {
+          ...localVarAxiosArgs.options,
+          url: basePath + localVarAxiosArgs.url,
+        }
+        return axios.request(axiosRequestArgs)
+      }
+    },
+    /**
      * パスワード変更処理
-     * @summary No.9 パスワード変更
+     * @summary No.10 パスワード変更
      * @param {RequestChangePassword} requestChangePassword リクエストパラメータ
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2984,7 +3136,7 @@ export const UsersApiFp = function (configuration?: Configuration) {
     },
     /**
      * ログイン処理
-     * @summary No.1 ログイン
+     * @summary No.2 ログイン
      * @param {RequestLogin} requestLogin リクエストパラメータ
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -3011,7 +3163,7 @@ export const UsersApiFp = function (configuration?: Configuration) {
     },
     /**
      * ログアウト処理
-     * @summary No.6 ログアウト
+     * @summary No.7 ログアウト
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -3036,7 +3188,7 @@ export const UsersApiFp = function (configuration?: Configuration) {
     },
     /**
      * パートナーユーザーによるログイン処理
-     * @summary No.3 パートナーログイン
+     * @summary No.4 パートナーログイン
      * @param {RequestLogin} requestLogin リクエストパラメータ
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -3063,7 +3215,7 @@ export const UsersApiFp = function (configuration?: Configuration) {
     },
     /**
      * 会員登録処理
-     * @summary No.2 会員登録
+     * @summary No.3 会員登録
      * @param {RequestRegister} requestRegister リクエストパラメータ
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -3090,7 +3242,7 @@ export const UsersApiFp = function (configuration?: Configuration) {
     },
     /**
      * パスワードリマインド アドレス送信
-     * @summary No.7 パスワードリマインド(アドレス送信)
+     * @summary No.8 パスワードリマインド(アドレス送信)
      * @param {RequestRemindMail} requestRemindMail リクエストパラメータ
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -3117,7 +3269,7 @@ export const UsersApiFp = function (configuration?: Configuration) {
     },
     /**
      * パスワードリマインド キー送信
-     * @summary No.8 パスワードリマインド(キー送信)
+     * @summary No.9 パスワードリマインド(キー送信)
      * @param {RequestRemindKey} requestRemindKey リクエストパラメータ
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -3144,7 +3296,7 @@ export const UsersApiFp = function (configuration?: Configuration) {
     },
     /**
      * お試しユーザーによるログイン処理
-     * @summary No.4 お試しログイン
+     * @summary No.5 お試しログイン
      * @param {RequestLogin} requestLogin リクエストパラメータ
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -3184,7 +3336,7 @@ export const UsersApiFactory = function (
   return {
     /**
      * 認証ルーティング
-     * @summary No.5 認証ルーティング
+     * @summary No.6 認証ルーティング
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -3194,8 +3346,30 @@ export const UsersApiFactory = function (
         .then((request) => request(axios, basePath))
     },
     /**
+     * 金額入力済フラグ更新
+     * @summary No.12 本日の金額入力済フラグ更新
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    changeInputFlg(options?: any): AxiosPromise<User> {
+      return UsersApiFp(configuration)
+        .changeInputFlg(options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
+     * ログイン済フラグ更新
+     * @summary No.11 本日のログイン済フラグ更新
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    changeLoginFlg(options?: any): AxiosPromise<User> {
+      return UsersApiFp(configuration)
+        .changeLoginFlg(options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
      * パスワード変更処理
-     * @summary No.9 パスワード変更
+     * @summary No.10 パスワード変更
      * @param {RequestChangePassword} requestChangePassword リクエストパラメータ
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -3210,7 +3384,7 @@ export const UsersApiFactory = function (
     },
     /**
      * ログイン処理
-     * @summary No.1 ログイン
+     * @summary No.2 ログイン
      * @param {RequestLogin} requestLogin リクエストパラメータ
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -3222,7 +3396,7 @@ export const UsersApiFactory = function (
     },
     /**
      * ログアウト処理
-     * @summary No.6 ログアウト
+     * @summary No.7 ログアウト
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -3233,7 +3407,7 @@ export const UsersApiFactory = function (
     },
     /**
      * パートナーユーザーによるログイン処理
-     * @summary No.3 パートナーログイン
+     * @summary No.4 パートナーログイン
      * @param {RequestLogin} requestLogin リクエストパラメータ
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -3248,7 +3422,7 @@ export const UsersApiFactory = function (
     },
     /**
      * 会員登録処理
-     * @summary No.2 会員登録
+     * @summary No.3 会員登録
      * @param {RequestRegister} requestRegister リクエストパラメータ
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -3263,7 +3437,7 @@ export const UsersApiFactory = function (
     },
     /**
      * パスワードリマインド アドレス送信
-     * @summary No.7 パスワードリマインド(アドレス送信)
+     * @summary No.8 パスワードリマインド(アドレス送信)
      * @param {RequestRemindMail} requestRemindMail リクエストパラメータ
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -3278,7 +3452,7 @@ export const UsersApiFactory = function (
     },
     /**
      * パスワードリマインド キー送信
-     * @summary No.8 パスワードリマインド(キー送信)
+     * @summary No.9 パスワードリマインド(キー送信)
      * @param {RequestRemindKey} requestRemindKey リクエストパラメータ
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -3293,7 +3467,7 @@ export const UsersApiFactory = function (
     },
     /**
      * お試しユーザーによるログイン処理
-     * @summary No.4 お試しログイン
+     * @summary No.5 お試しログイン
      * @param {RequestLogin} requestLogin リクエストパラメータ
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -3315,7 +3489,7 @@ export const UsersApiFactory = function (
 export class UsersApi extends BaseAPI {
   /**
    * 認証ルーティング
-   * @summary No.5 認証ルーティング
+   * @summary No.6 認証ルーティング
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof UsersApi
@@ -3327,8 +3501,34 @@ export class UsersApi extends BaseAPI {
   }
 
   /**
+   * 金額入力済フラグ更新
+   * @summary No.12 本日の金額入力済フラグ更新
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof UsersApi
+   */
+  public changeInputFlg(options?: any) {
+    return UsersApiFp(this.configuration)
+      .changeInputFlg(options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * ログイン済フラグ更新
+   * @summary No.11 本日のログイン済フラグ更新
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof UsersApi
+   */
+  public changeLoginFlg(options?: any) {
+    return UsersApiFp(this.configuration)
+      .changeLoginFlg(options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
    * パスワード変更処理
-   * @summary No.9 パスワード変更
+   * @summary No.10 パスワード変更
    * @param {RequestChangePassword} requestChangePassword リクエストパラメータ
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
@@ -3345,7 +3545,7 @@ export class UsersApi extends BaseAPI {
 
   /**
    * ログイン処理
-   * @summary No.1 ログイン
+   * @summary No.2 ログイン
    * @param {RequestLogin} requestLogin リクエストパラメータ
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
@@ -3359,7 +3559,7 @@ export class UsersApi extends BaseAPI {
 
   /**
    * ログアウト処理
-   * @summary No.6 ログアウト
+   * @summary No.7 ログアウト
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof UsersApi
@@ -3372,7 +3572,7 @@ export class UsersApi extends BaseAPI {
 
   /**
    * パートナーユーザーによるログイン処理
-   * @summary No.3 パートナーログイン
+   * @summary No.4 パートナーログイン
    * @param {RequestLogin} requestLogin リクエストパラメータ
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
@@ -3386,7 +3586,7 @@ export class UsersApi extends BaseAPI {
 
   /**
    * 会員登録処理
-   * @summary No.2 会員登録
+   * @summary No.3 会員登録
    * @param {RequestRegister} requestRegister リクエストパラメータ
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
@@ -3400,7 +3600,7 @@ export class UsersApi extends BaseAPI {
 
   /**
    * パスワードリマインド アドレス送信
-   * @summary No.7 パスワードリマインド(アドレス送信)
+   * @summary No.8 パスワードリマインド(アドレス送信)
    * @param {RequestRemindMail} requestRemindMail リクエストパラメータ
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
@@ -3414,7 +3614,7 @@ export class UsersApi extends BaseAPI {
 
   /**
    * パスワードリマインド キー送信
-   * @summary No.8 パスワードリマインド(キー送信)
+   * @summary No.9 パスワードリマインド(キー送信)
    * @param {RequestRemindKey} requestRemindKey リクエストパラメータ
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
@@ -3428,7 +3628,7 @@ export class UsersApi extends BaseAPI {
 
   /**
    * お試しユーザーによるログイン処理
-   * @summary No.4 お試しログイン
+   * @summary No.5 お試しログイン
    * @param {RequestLogin} requestLogin リクエストパラメータ
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}

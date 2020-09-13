@@ -25,7 +25,6 @@ export default class MyDocument extends Document<Props> {
         <Head>
           <meta charSet="utf-8" />
           {this.props.styleTags}
-          <title>おおまか家計簿</title>
           <link rel="icon" href="/favicon.ico" />
           <meta
             name="description"

@@ -1,12 +1,18 @@
 import React from 'react'
 import App, { AppProps, AppContext } from 'next/app'
+import Head from 'next/head'
 import { AuthProvider } from '../contexts/auth'
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
-    <AuthProvider>
-      <Component {...pageProps} />
-    </AuthProvider>
+    <>
+      <Head>
+        <title>おおまか家計簿</title>
+      </Head>
+      <AuthProvider>
+        <Component {...pageProps} />
+      </AuthProvider>
+    </>
   )
 }
 

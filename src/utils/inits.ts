@@ -6,4 +6,6 @@ export const initialUser: User = {
   email: '',
   user_type: 0,
   main_user_id: 0,
+  login_flg: false,
+  input_flg: false,
 }

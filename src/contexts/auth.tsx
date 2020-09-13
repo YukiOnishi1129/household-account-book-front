@@ -20,6 +20,7 @@ import {
 import { initialUser } from '../utils/inits'
 import { AuthContext } from '../utils/contexts'
 import { BeforeLoginPage, AfterLoginPage } from '../utils/consts'
+import { CurrentDate } from '../utils/date'
 
 /**
  * Authプロバイダー
@@ -59,7 +60,7 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
       }
       setUser(response.data)
       setIsAuthenticated(!!response.data)
-      router.push(AfterLoginPage.DASH_BOARD)
+      router.push(AfterLoginPage.DASH_BOARD + CurrentDate())
     } catch (error) {
       if (error.response.status === 401) {
         // エラーメッセージを格納
@@ -84,7 +85,7 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
       }
       setUser(response.data)
       setIsAuthenticated(!!response.data)
-      router.push(AfterLoginPage.DASH_BOARD)
+      router.push(AfterLoginPage.DASH_BOARD + CurrentDate())
     } catch (error) {
       if (error.response.status === 401) {
         // エラーメッセージを格納
@@ -108,7 +109,7 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
       }
       setUser(response.data)
       setIsAuthenticated(!!response.data)
-      router.push(AfterLoginPage.DASH_BOARD)
+      router.push(AfterLoginPage.DASH_BOARD + CurrentDate())
     } catch (error) {
       if (error.response.status === 401) {
         // エラーメッセージを格納
@@ -132,7 +133,7 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
       }
       setUser(response.data)
       setIsAuthenticated(!!response.data)
-      router.push(AfterLoginPage.DASH_BOARD)
+      router.push(AfterLoginPage.DASH_BOARD + CurrentDate())
     } catch (error) {
       if (error.response.status === 401) {
         // エラーメッセージを格納
@@ -178,7 +179,7 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
       }
       setUser(response.data)
       setIsAuthenticated(!!response.data)
-      router.push(AfterLoginPage.DASH_BOARD)
+      router.push(AfterLoginPage.DASH_BOARD + CurrentDate())
     } catch (error) {
       if (error.response.status === 401) {
         // エラーメッセージを格納
@@ -244,7 +245,7 @@ export const reloadAuthCheck = async (
       case BeforeLoginPage.TRY_LOGIN:
       case BeforeLoginPage.REMAIND_PASS_MAIL:
       case BeforeLoginPage.REMAIND_PASS_KEY:
-        router.push(AfterLoginPage.DASH_BOARD)
+        router.push(AfterLoginPage.DASH_BOARD + CurrentDate())
         break
       default:
     }
@@ -310,7 +311,7 @@ export const authRouting = async (
         setUser(data)
         setIsAuthenticated(!!data)
       }
-      Router.push(AfterLoginPage.DASH_BOARD)
+      Router.push(AfterLoginPage.DASH_BOARD + CurrentDate())
     }
   } else {
     // 認証チェックNG

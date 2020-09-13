@@ -15,8 +15,8 @@ export enum BeforeLoginPage {
  * ログイン後ページのURL
  */
 export enum AfterLoginPage {
-  DASH_BOARD = '/api-test',
-  // DASH_BOARD = '/calendar/',
+  // DASH_BOARD = '/api-test',
+  DASH_BOARD = '/calendar/',
   DETAIL = '/detail',
   CATEGORY = '/category',
   GRAPH = '/graph',
