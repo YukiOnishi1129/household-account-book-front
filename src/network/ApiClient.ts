@@ -11,7 +11,7 @@ import {
 } from '../types/api'
 import globalAxios, { AxiosResponse } from 'axios'
 import Router from 'next/router'
-import { BeforeLoginPage } from '../utils/consts'
+import { BeforeLoginAPI } from '../utils/consts'
 
 const config: Configuration = {
   baseOptions: {
@@ -44,16 +44,16 @@ globalAxios.interceptors.response.use(
     // 認証エラー時
     if (status === 401) {
       switch (Router.pathname) {
-        case BeforeLoginPage.TOP:
-        case BeforeLoginPage.LOGIN:
-        case BeforeLoginPage.SIGNUP:
-        case BeforeLoginPage.PATNER_LOGIN:
-        case BeforeLoginPage.TRY_LOGIN:
-        case BeforeLoginPage.REMAIND_PASS_MAIL:
-        case BeforeLoginPage.REMAIND_PASS_KEY:
+        case BeforeLoginAPI.SANCTUM_API:
+        case BeforeLoginAPI.LOGIN_API:
+        case BeforeLoginAPI.REGISTER_API:
+        case BeforeLoginAPI.PATNER_LOGIN_API:
+        case BeforeLoginAPI.TRY_LOGIN_API:
+        case BeforeLoginAPI.REMAIND_PASS_MAIL_API:
+        case BeforeLoginAPI.REMAIND_PASS_KEY_API:
           break
         default:
-          // ログイン後のページにいる場合、ログイン画面リダイレクト
+          // 認証必須のAPIにて認証エラーの場合、ログイン画面リダイレクト
           Router.push('/login')
       }
       return error

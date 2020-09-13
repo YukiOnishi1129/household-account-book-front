@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Layout from '../components/Layout'
 import styled from 'styled-components'
-import { beforeLoginRoute } from '../contexts/auth'
+import { ProtectRoute } from '../contexts/auth'
 import { RequestLogin } from '../types/api/'
 import useAuth from '../contexts/auth'
 
@@ -68,4 +68,4 @@ const Button = styled.button`
   font-size: 20px;
 `
 
-export default beforeLoginRoute(Login)
+export default ProtectRoute(Login)
