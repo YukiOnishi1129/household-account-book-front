@@ -1,8 +1,14 @@
+const withSass = require('@zeit/next-sass')
+
 module.exports = {
   webpack: (config) => {
     config.node = {
-      fs: 'empty'
+      fs: 'empty',
     }
     return config
-  }
-};
+  },
+}
+
+module.exports = withSass({
+  cssModules: true,
+})
