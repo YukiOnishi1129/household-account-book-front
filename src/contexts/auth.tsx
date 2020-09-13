@@ -59,7 +59,8 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
       }
       setUser(response.data)
       setIsAuthenticated(!!response.data)
-      router.push(AfterLoginPage.DASH_BOARD)
+      const date = '2020-05-01'
+      router.push(AfterLoginPage.DASH_BOARD + date)
     } catch (error) {
       if (error.response.status === 401) {
         // エラーメッセージを格納
