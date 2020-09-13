@@ -30,10 +30,6 @@ const Login: FC = () => {
 
   return (
     <div>
-      <Head>
-        <title>ログイン</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <Layout>
         <H1>ログイン</H1>
         <form>
