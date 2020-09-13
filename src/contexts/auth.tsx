@@ -265,7 +265,7 @@ export const ProtectRoute = (Component: FC) => {
     const router = useRouter()
     let isLogined = true
 
-    switch (router.pathname) {
+    switch (router && router.pathname) {
       case BeforeLoginPage.TOP:
       case BeforeLoginPage.LOGIN:
       case BeforeLoginPage.SIGNUP:
