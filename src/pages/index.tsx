@@ -1,6 +1,5 @@
 import React, { FC } from 'react'
 import { useRouter } from 'next/router'
-import Head from 'next/head'
 import Layout from '../components/Layout'
 import styled from 'styled-components'
 import { ProtectRoute } from '../contexts/auth'

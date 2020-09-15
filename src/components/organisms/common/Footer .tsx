@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
 
-const Footer = () => {
+const Footer: FC = () => {
   return <FooterArea>©️ 2020 おおまか家計簿</FooterArea>
 }
 
