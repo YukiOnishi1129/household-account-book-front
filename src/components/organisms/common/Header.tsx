@@ -1,14 +1,35 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
+import { useRouter } from 'next/router'
+import { LinkStatus, BeforeLoginPage } from '../../../utils/consts'
 
 const Header: FC = () => {
+  const router = useRouter()
   return (
     <HeaderArea>
-      <img src="/top_logo.png" />
+      <TopLogo
+        src="/top_logo.png"
+        onClick={() => router.push(BeforeLoginPage.TOP)}
+      />
       <Nav>
-        <NavLink state={'signup'}>会員登録</NavLink>
-        <NavLink state={'login'}>ログイン</NavLink>
-        <NavLink state={'partner'}>パートナーログイン</NavLink>
+        <NavLink
+          state={LinkStatus.SIGNUP}
+          onClick={() => router.push(BeforeLoginPage.LOGIN)}
+        >
+          会員登録
+        </NavLink>
+        <NavLink
+          state={LinkStatus.LOGIN}
+          onClick={() => router.push(BeforeLoginPage.LOGIN)}
+        >
+          ログイン
+        </NavLink>
+        <NavLink
+          state={LinkStatus.PARTNER_LOGIN}
+          onClick={() => router.push(BeforeLoginPage.LOGIN)}
+        >
+          パートナーログイン
+        </NavLink>
       </Nav>
     </HeaderArea>
   )
@@ -31,11 +52,15 @@ const HeaderArea = styled.div`
   box-sizing: border-box;
 `
 
+const TopLogo = styled.img`
+  cursor: pointer;
+`
+
 const Nav = styled.ul`
   display: flex;
 `
 
-export const NavLink = styled.li`
+const NavLink = styled.li`
   cursor: pointer;
   margin-left: 20px;
   user-select: none;
@@ -46,7 +71,7 @@ export const NavLink = styled.li`
   ${({ state }: TProps) => getNavBgColor(state)};
 `
 
-export const getNavBgColor = (state: string): string => {
+const getNavBgColor = (state: string): string => {
   switch (state) {
     case 'login':
       return `background-color: #fff; color: #06BADB; border: 1px solid #06BADB;`

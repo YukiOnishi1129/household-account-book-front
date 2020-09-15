@@ -36,3 +36,13 @@ export enum BeforeLoginAPI {
   REMAIND_PASS_MAIL_API = '/remaind-pass-mail',
   REMAIND_PASS_KEY_API = '/remaind-pass-key',
 }
+
+/**
+ * リンクステータス
+ */
+export enum LinkStatus {
+  SIGNUP = 'signup',
+  LOGIN = 'login',
+  PARTNER_LOGIN = 'partner',
+  LOGOUT = 'logout',
+}
