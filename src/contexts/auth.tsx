@@ -21,6 +21,7 @@ import { initialUser } from '../utils/inits'
 import { AuthContext } from '../utils/contexts'
 import { BeforeLoginPage, AfterLoginPage } from '../utils/consts'
 import { CurrentDate } from '../utils/date'
+import BeforeLoginLayout from '../components/templates/common/BeforeLoginLayout'
 
 /**
  * Authプロバイダー
@@ -298,7 +299,11 @@ export const ProtectRoute = (Component: FC) => {
       authRouting(setUser, setIsAuthenticated, isAuthenticated, isLogined)
     }, [isAuthenticated])
 
-    return <Component />
+    return (
+      <BeforeLoginLayout>
+        <Component />
+      </BeforeLoginLayout>
+    )
   }
   return protectComponent
 }
