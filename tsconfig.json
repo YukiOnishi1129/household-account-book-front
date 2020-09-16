@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -13,14 +17,29 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "removeComments": true,
-    "jsx": "react",
-    "baseUrl": "./src/",
+    "jsx": "preserve",
+    "baseUrl": "./src",
     "paths": {
-      "#/*": ["*"]
+      "@/*": [
+        "*"
+      ]
     },
-    "types": ["jest"],
-    "typeRoots": ["node_modules/@types", "node_modules/jest-enzyme"]
+    "types": [
+      "jest"
+    ],
+    "typeRoots": [
+      "node_modules/@types",
+      "node_modules/jest-enzyme"
+    ]
   },
-  "include": ["next-env.d.ts", "**/*.ts"],
-  "exclude": ["node_modules", "jest", "src/setupEnzyme.ts"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules",
+    "jest",
+    "src/setupEnzyme.ts"
+  ]
 }
