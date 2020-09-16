@@ -21,6 +21,7 @@ import { initialUser } from '../utils/inits'
 import { AuthContext } from '../utils/contexts'
 import { BeforeLoginPage, AfterLoginPage } from '../utils/consts'
 import { CurrentDate } from '../utils/date'
+import BeforeLoginLayout from '../components/templates/common/BeforeLoginLayout'
 
 /**
  * Authプロバイダー
@@ -236,7 +237,7 @@ export const reloadAuthCheck = async (
 ) => {
   const { data } = await ApiClient.user.authRooting()
   if (data) {
-    // 認証済みであり、かつログイン前のページにいる場合、ダッシュボードへリダイレクトさせる
+    // 認証済みであり、かつログイン前のページにいる場合、ダッシュボードへリダイレクト
     switch (router.pathname) {
       case BeforeLoginPage.TOP:
       case BeforeLoginPage.LOGIN:
@@ -248,6 +249,20 @@ export const reloadAuthCheck = async (
         router.push(AfterLoginPage.DASH_BOARD + CurrentDate())
         break
       default:
+    }
+  } else {
+    // 認証エラーであり、かつ認証後のページにいる場合、ログイン画面へリダイレクト
+    switch (router.pathname) {
+      case BeforeLoginPage.TOP:
+      case BeforeLoginPage.LOGIN:
+      case BeforeLoginPage.SIGNUP:
+      case BeforeLoginPage.PATNER_LOGIN:
+      case BeforeLoginPage.TRY_LOGIN:
+      case BeforeLoginPage.REMAIND_PASS_MAIL:
+      case BeforeLoginPage.REMAIND_PASS_KEY:
+        break
+      default:
+        router.push(BeforeLoginPage.LOGIN)
     }
   }
   if (!unmounted) {
@@ -284,7 +299,11 @@ export const ProtectRoute = (Component: FC) => {
       authRouting(setUser, setIsAuthenticated, isAuthenticated, isLogined)
     }, [isAuthenticated])
 
-    return <Component />
+    return (
+      <BeforeLoginLayout>
+        <Component />
+      </BeforeLoginLayout>
+    )
   }
   return protectComponent
 }
