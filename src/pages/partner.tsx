@@ -13,13 +13,14 @@ const Partner: FC = () => {
     <div>
       <Layout>
         <H1>パートナー</H1>
-        <Link
-          href={{
-            pathname: AfterLoginPage.DETAIL + CurrentDate(),
-          }}
-        >
-          日別
-        </Link>
+        <div>
+          <Link
+            href={`${AfterLoginPage.DETAIL}[date]`}
+            as={`${AfterLoginPage.DETAIL}${CurrentDate()}`}
+          >
+            日別
+          </Link>
+        </div>
         <div onClick={() => router.push(AfterLoginPage.GRAPH)}>グラフ</div>
         <div onClick={() => router.push(AfterLoginPage.PARTNER_USER)}>
           パートナー

@@ -16,13 +16,14 @@ const Detail: FC = () => {
       <Layout>
         <H1>日別</H1>
         <p>{router.query.date}</p>
-        <Link
-          href={{
-            pathname: AfterLoginPage.DETAIL + CurrentDate(),
-          }}
-        >
-          日別
-        </Link>
+        <div>
+          <Link
+            href={`${AfterLoginPage.DETAIL}[date]`}
+            as={`${AfterLoginPage.DETAIL}${CurrentDate()}`}
+          >
+            日別
+          </Link>
+        </div>
         <div onClick={() => router.push(AfterLoginPage.GRAPH)}>グラフ</div>
         <div onClick={() => router.push(AfterLoginPage.PARTNER_USER)}>
           パートナー

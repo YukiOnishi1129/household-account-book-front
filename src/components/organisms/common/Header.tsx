@@ -58,26 +58,29 @@ export const BeforeLoginHeader: FC = () => {
 }
 export const AfterLoginHeader: FC = () => {
   const router = useRouter()
+  const { logout } = useAuth()
+  const handleSubmitLogout = async () => {
+    await logout()
+  }
   return (
     <>
-      <TopLogo
-        src="/top_logo.png"
-        onClick={() => router.push(AfterLoginPage.DASH_BOARD + CurrentDate())}
-      />
+      <Link
+        href={`${AfterLoginPage.DASH_BOARD}[date]`}
+        as={`${AfterLoginPage.DASH_BOARD}${CurrentDate()}`}
+      >
+        <TopLogo src="/top_logo.png" />
+      </Link>
+
       <Nav>
         <NavLink state={LinkStatus.TOP}>
           <Link
-            href={{
-              pathname: AfterLoginPage.DASH_BOARD + CurrentDate(),
-            }}
+            href={`${AfterLoginPage.DASH_BOARD}[date]`}
+            as={`${AfterLoginPage.DASH_BOARD}${CurrentDate()}`}
           >
             TOP
           </Link>
         </NavLink>
-        <NavLink
-          state={LinkStatus.LOGOUT}
-          onClick={() => router.push(BeforeLoginPage.LOGIN)}
-        >
+        <NavLink state={LinkStatus.LOGOUT} onClick={handleSubmitLogout}>
           ログアウト
         </NavLink>
       </Nav>
