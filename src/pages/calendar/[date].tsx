@@ -1,9 +1,8 @@
 import React, { FC, useEffect } from 'react'
 import { useRouter } from 'next/router'
-import Head from 'next/head'
-import Layout from '../../components/Layout'
+import Layout from '@/components/Layout'
 import styled from 'styled-components'
-import ApiClient from '../../network/ApiClient'
+import ApiClient from '@/network/ApiClient'
 
 const Calender: FC = () => {
   const router = useRouter()

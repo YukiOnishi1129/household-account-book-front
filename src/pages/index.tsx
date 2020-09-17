@@ -1,8 +1,8 @@
 import React, { FC } from 'react'
 import { useRouter } from 'next/router'
-import Layout from '../components/Layout'
+import Layout from '@/components/Layout'
 import styled from 'styled-components'
-import { ProtectRoute } from '../contexts/auth'
+import { ProtectRoute } from '@/contexts/auth'
 
 const App: FC = () => {
   const router = useRouter()

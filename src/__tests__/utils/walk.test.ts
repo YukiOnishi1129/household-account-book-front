@@ -1,4 +1,4 @@
-import * as walkModule from '../../utils/walk'
+import * as walkModule from '@/utils/walk'
 
 describe('walkFast関数のモック化テスト', () => {
   it('モックかできているか', () => {

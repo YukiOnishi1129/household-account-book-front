@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
 import { useRouter } from 'next/router'
-import { LinkStatus, BeforeLoginPage } from '../../../utils/consts'
+import { LinkStatus, BeforeLoginPage } from '@/utils/consts'
 
 const Header: FC = () => {
   const router = useRouter()

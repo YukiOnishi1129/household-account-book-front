@@ -1,8 +1,8 @@
 import React, { FC, useEffect } from 'react'
 import Head from 'next/head'
-import Layout from '../components/Layout'
+import Layout from '@/components/Layout'
 import styled from 'styled-components'
-import ApiClient from '../network/ApiClient'
+import ApiClient from '@/network/ApiClient'
 
 const Main: FC = () => {
   useEffect(() => {}, [])

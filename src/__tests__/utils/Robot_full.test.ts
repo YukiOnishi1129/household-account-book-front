@@ -1,4 +1,4 @@
-import { Robot } from '../../utils/Robot'
+import { Robot } from '@/utils/Robot'
 
 // jest.mock()によって、クラス全体をモック化できる
 // jest.mock()はdescribeなどで囲むとエラーになる

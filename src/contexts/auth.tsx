@@ -9,7 +9,7 @@ import React, {
 } from 'react'
 import Router, { useRouter, NextRouter } from 'next/router'
 // import App, { AppProps } from 'next/app'
-import ApiClient from '../network/ApiClient'
+import ApiClient from '@/network/ApiClient'
 import {
   User,
   RequestLogin,
@@ -17,11 +17,11 @@ import {
   RequestRemindMail,
   RequestRemindKey,
 } from '../types/api/'
-import { initialUser } from '../utils/inits'
-import { AuthContext } from '../utils/contexts'
-import { BeforeLoginPage, AfterLoginPage } from '../utils/consts'
-import { CurrentDate } from '../utils/date'
-import BeforeLoginLayout from '../components/templates/common/BeforeLoginLayout'
+import { initialUser } from '@/utils/inits'
+import { AuthContext } from '@/utils/contexts'
+import { BeforeLoginPage, AfterLoginPage } from '@/utils/consts'
+import { CurrentDate } from '@/utils/date'
+import BeforeLoginLayout from '@/components/templates/common/BeforeLoginLayout'
 
 /**
  * Authプロバイダー

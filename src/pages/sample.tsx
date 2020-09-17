@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
-import Layout from '../components/Layout'
+import Layout from '@/components/Layout'
 import styled from 'styled-components'
-import ApiSample from '../components/ApiSample'
+import ApiSample from '@/components/ApiSample'
 
 const Sample: FC = () => (
   <div>

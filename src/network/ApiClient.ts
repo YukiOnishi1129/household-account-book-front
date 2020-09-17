@@ -8,10 +8,10 @@ import {
   MonthRateApiFactory,
   PartnerApiFactory,
   UsersApiFactory,
-} from '../types/api'
+} from '@/types/api'
 import globalAxios, { AxiosResponse } from 'axios'
 import Router from 'next/router'
-import { BeforeLoginAPI } from '../utils/consts'
+import { BeforeLoginAPI } from '@/utils/consts'
 
 const config: Configuration = {
   baseOptions: {

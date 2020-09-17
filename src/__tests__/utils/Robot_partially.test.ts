@@ -1,4 +1,4 @@
-import { Robot } from '../../utils/Robot'
+import { Robot } from '@/utils/Robot'
 
 // 一部だけモックにしたいので、jest.mock()はなし
 

@@ -1,4 +1,4 @@
-import { User } from '../types/api/'
+import { User } from '@/types/api/'
 
 export const initialUser: User = {
   id: 0,

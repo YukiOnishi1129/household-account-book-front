@@ -1,11 +1,11 @@
 import React, { FC, useState, useContext } from 'react'
 import { useRouter } from 'next/router'
-import Head from 'next/head'
-import Layout from '../components/Layout'
+import Layout from '@/components/Layout'
 import styled from 'styled-components'
-import { ProtectRoute } from '../contexts/auth'
-import { RequestLogin } from '../types/api/'
-import useAuth from '../contexts/auth'
+import { ProtectRoute } from '@/contexts/auth'
+import { RequestLogin } from '@/types/api/'
+import useAuth from '@/contexts/auth'
+import { EventType } from '@/types/events'
 
 const Login: FC = () => {
   const { login } = useAuth()
@@ -13,13 +13,13 @@ const Login: FC = () => {
   const [password, setPassword] = useState('')
   const router = useRouter()
 
-  const handleChangeEmail = (event) => {
+  const handleChangeEmail: EventType['onChange'] = (event) => {
     setEmail(event.target.value)
   }
-  const handleChangPassword = (event) => {
+  const handleChangPassword: EventType['onChange'] = (event) => {
     setPassword(event.target.value)
   }
-  const handleSubmitLogin = async (event) => {
+  const handleSubmitLogin: EventType['onClickButton'] = async (event) => {
     event.preventDefault()
     const requestParam: RequestLogin = {
       email: email,
