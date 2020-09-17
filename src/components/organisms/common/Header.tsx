@@ -1,37 +1,87 @@
 import React, { FC } from 'react'
+import Link from 'next/link'
 import styled from 'styled-components'
-import { useRouter } from 'next/router'
-import { LinkStatus, BeforeLoginPage } from '@/utils/consts'
+import Router, { useRouter } from 'next/router'
+import { LinkStatus, BeforeLoginPage, AfterLoginPage } from '@/utils/consts'
+import useAuth from '@/contexts/auth'
+import { CurrentDate } from '@/utils/date'
 
 const Header: FC = () => {
-  const router = useRouter()
+  const { isAuthenticated } = useAuth()
+
   return (
     <HeaderArea>
+      {isAuthenticated ? <AfterLoginHeader /> : <BeforeLoginHeader />}
+    </HeaderArea>
+  )
+}
+
+export const BeforeLoginHeader: FC = () => {
+  const router = useRouter()
+  return (
+    <>
       <TopLogo
         src="/top_logo.png"
         onClick={() => router.push(BeforeLoginPage.TOP)}
       />
       <Nav>
-        <NavLink
-          state={LinkStatus.SIGNUP}
-          onClick={() => router.push(BeforeLoginPage.LOGIN)}
-        >
-          会員登録
+        <NavLink state={LinkStatus.SIGNUP}>
+          <Link
+            href={{
+              pathname: BeforeLoginPage.SIGNUP,
+            }}
+          >
+            会員登録
+          </Link>
         </NavLink>
-        <NavLink
-          state={LinkStatus.LOGIN}
-          onClick={() => router.push(BeforeLoginPage.LOGIN)}
-        >
-          ログイン
+        <NavLink state={LinkStatus.LOGIN}>
+          <Link
+            href={{
+              pathname: BeforeLoginPage.LOGIN,
+            }}
+          >
+            ログイン
+          </Link>
         </NavLink>
-        <NavLink
-          state={LinkStatus.PARTNER_LOGIN}
-          onClick={() => router.push(BeforeLoginPage.LOGIN)}
-        >
-          パートナーログイン
+        <NavLink state={LinkStatus.PARTNER_LOGIN}>
+          <Link
+            href={{
+              pathname: BeforeLoginPage.PATNER_LOGIN,
+            }}
+          >
+            パートナーログイン
+          </Link>
         </NavLink>
       </Nav>
-    </HeaderArea>
+    </>
+  )
+}
+export const AfterLoginHeader: FC = () => {
+  const router = useRouter()
+  return (
+    <>
+      <TopLogo
+        src="/top_logo.png"
+        onClick={() => router.push(AfterLoginPage.DASH_BOARD + CurrentDate())}
+      />
+      <Nav>
+        <NavLink state={LinkStatus.TOP}>
+          <Link
+            href={{
+              pathname: AfterLoginPage.DASH_BOARD + CurrentDate(),
+            }}
+          >
+            TOP
+          </Link>
+        </NavLink>
+        <NavLink
+          state={LinkStatus.LOGOUT}
+          onClick={() => router.push(BeforeLoginPage.LOGIN)}
+        >
+          ログアウト
+        </NavLink>
+      </Nav>
+    </>
   )
 }
 
@@ -74,11 +124,13 @@ const NavLink = styled.li`
 const getNavBgColor = (state: string): string => {
   switch (state) {
     case 'login':
-      return `background-color: #fff; color: #06BADB; border: 1px solid #06BADB;`
+      return `background-color: #fff; border: 1px solid #06BADB; a { color: #06BADB; text-decoration: none; }`
     case 'partner':
-      return `background-color: #fff; color: #21CE01; border: 1px solid #21CE01;`
+      return `background-color: #fff; border: 1px solid #21CE01; a { color: #21CE01; text-decoration: none; }`
+    case 'logout':
+      return `background-color: #fff; color: #ef70f4; border: 1px solid #ef70f4;`
     default:
-      return `background-color: #ef70f4; color: #fff; border: 1px solid #ef70f4;`
+      return `background-color: #ef70f4; border: 1px solid #ef70f4; a { color: #fff; text-decoration: none; }`
   }
 }
 export default Header

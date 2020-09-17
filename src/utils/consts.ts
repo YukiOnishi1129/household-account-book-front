@@ -17,7 +17,7 @@ export enum BeforeLoginPage {
 export enum AfterLoginPage {
   // DASH_BOARD = '/api-test',
   DASH_BOARD = '/calendar/',
-  DETAIL = '/detail',
+  DETAIL = '/detail/',
   CATEGORY = '/category',
   GRAPH = '/graph',
   PARTNER_USER = '/partner',
@@ -41,6 +41,7 @@ export enum BeforeLoginAPI {
  * リンクステータス
  */
 export enum LinkStatus {
+  TOP = 'top',
   SIGNUP = 'signup',
   LOGIN = 'login',
   PARTNER_LOGIN = 'partner',

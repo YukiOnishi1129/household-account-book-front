@@ -1,24 +1,26 @@
 import React, { FC, useEffect } from 'react'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { ProtectRoute } from '@/contexts/auth'
 import Layout from '@/components/Layout'
 import styled from 'styled-components'
-import ApiClient from '@/network/ApiClient'
 import { LinkStatus, BeforeLoginPage, AfterLoginPage } from '@/utils/consts'
 import { CurrentDate } from '@/utils/date'
 
-const Calender: FC = () => {
+const Graph: FC = () => {
   const router = useRouter()
-  useEffect(() => {}, [])
   return (
     <div>
       <Layout>
-        <H1>カレンダー</H1>
-        <p>{router.query.date}</p>
-        <div onClick={() => router.push(AfterLoginPage.GRAPH)}>グラフ</div>
-        <div onClick={() => router.push(AfterLoginPage.DETAIL + CurrentDate())}>
+        <H1>グラフ</H1>
+        <Link
+          href={{
+            pathname: AfterLoginPage.DETAIL + CurrentDate(),
+          }}
+        >
           日別
-        </div>
+        </Link>
+        <div onClick={() => router.push(AfterLoginPage.GRAPH)}>グラフ</div>
         <div onClick={() => router.push(AfterLoginPage.PARTNER_USER)}>
           パートナー
         </div>
@@ -32,4 +34,4 @@ const H1 = styled.h1`
   font-size: 20px;
 `
 
-export default ProtectRoute(Calender)
+export default ProtectRoute(Graph)

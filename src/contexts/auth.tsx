@@ -21,7 +21,7 @@ import { initialUser } from '@/utils/inits'
 import { AuthContext } from '@/utils/contexts'
 import { BeforeLoginPage, AfterLoginPage } from '@/utils/consts'
 import { CurrentDate } from '@/utils/date'
-import BeforeLoginLayout from '@/components/templates/common/BeforeLoginLayout'
+import TemplateLayout from '@/components/templates/common/Layout'
 
 /**
  * Authプロバイダー
@@ -37,7 +37,7 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
   useEffect(() => {
     let unmounted = false
     // リロード時の認証チェック
-    reloadAuthCheck(router, setUser, setLoading, unmounted)
+    reloadAuthCheck(router, setUser, setLoading, setIsAuthenticated, unmounted)
 
     // クリーンアップ
     return () => {
@@ -207,7 +207,7 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
         setUser,
       }}
     >
-      {children}
+      <TemplateLayout>{children}</TemplateLayout>
     </AuthContext.Provider>
   )
 }
@@ -233,6 +233,7 @@ export const reloadAuthCheck = async (
   router: NextRouter,
   setUser: Dispatch<SetStateAction<User>>,
   setLoading: Dispatch<SetStateAction<boolean>>,
+  setIsAuthenticated: Dispatch<SetStateAction<boolean>>,
   unmounted: boolean
 ) => {
   const { data } = await ApiClient.user.authRooting()
@@ -267,6 +268,7 @@ export const reloadAuthCheck = async (
   }
   if (!unmounted) {
     setUser(data)
+    setIsAuthenticated(!!data)
     setLoading(false)
   }
 }
@@ -299,11 +301,7 @@ export const ProtectRoute = (Component: FC) => {
       authRouting(setUser, setIsAuthenticated, isAuthenticated, isLogined)
     }, [isAuthenticated])
 
-    return (
-      <BeforeLoginLayout>
-        <Component />
-      </BeforeLoginLayout>
-    )
+    return <Component />
   }
   return protectComponent
 }
