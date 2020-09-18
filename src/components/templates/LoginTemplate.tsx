@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react'
 import AuthForm from '@/components/organisms/common/AuthForm'
-import SignupButtonField from '@/components/molcules/SinupButtonField'
+import LinkButtonField from '@/components/molcules/LinkButtonField'
 import LoginForm from '@/components/molcules/LoginFrom'
 import useAuth from '@/contexts/auth'
 import { LinkStatus } from '@/utils/consts'
@@ -26,7 +26,7 @@ const LoginTemplate: FC = () => {
   }
   return (
     <AuthForm>
-      <SignupButtonField />
+      <LinkButtonField status={LinkStatus.SIGNUP} />
       <LoginForm
         status={LinkStatus.LOGIN}
         email={email}
@@ -35,6 +35,7 @@ const LoginTemplate: FC = () => {
         changePassword={handleChangePassword}
         submit={handleSubmitLogin}
       />
+      <LinkButtonField status={LinkStatus.PARTNER_LOGIN} />
     </AuthForm>
   )
 }
