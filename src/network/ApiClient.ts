@@ -11,7 +11,7 @@ import {
 } from '@/types/api'
 import globalAxios, { AxiosResponse } from 'axios'
 import Router from 'next/router'
-import { BeforeLoginAPI } from '@/utils/consts'
+import { BeforeLoginPage, BeforeLoginAPI } from '@/utils/consts'
 
 const config: Configuration = {
   baseOptions: {
@@ -54,7 +54,7 @@ globalAxios.interceptors.response.use(
           break
         default:
           // 認証必須のAPIにて認証エラーの場合、ログイン画面リダイレクト
-          Router.push('/login')
+          Router.push(BeforeLoginPage.LOGIN)
       }
       return error
     } else if (status === 404) {

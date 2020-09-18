@@ -1,63 +1,42 @@
 import React, { FC } from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
-import Router, { useRouter } from 'next/router'
 import { LinkStatus, BeforeLoginPage, AfterLoginPage } from '@/utils/consts'
 import useAuth from '@/contexts/auth'
 import { CurrentDate } from '@/utils/date'
 
 const Header: FC = () => {
   const { isAuthenticated } = useAuth()
-
   return (
     <HeaderArea>
       {isAuthenticated ? <AfterLoginHeader /> : <BeforeLoginHeader />}
     </HeaderArea>
   )
 }
+export default Header
 
 export const BeforeLoginHeader: FC = () => {
-  const router = useRouter()
   return (
     <>
-      <TopLogo
-        src="/top_logo.png"
-        onClick={() => router.push(BeforeLoginPage.TOP)}
-      />
+      <Link href={BeforeLoginPage.TOP}>
+        <TopLogo src="/top_logo.png" />
+      </Link>
       <Nav>
         <NavLink state={LinkStatus.SIGNUP}>
-          <Link
-            href={{
-              pathname: BeforeLoginPage.SIGNUP,
-            }}
-          >
-            会員登録
-          </Link>
+          <Link href={BeforeLoginPage.SIGNUP}>会員登録</Link>
         </NavLink>
         <NavLink state={LinkStatus.LOGIN}>
-          <Link
-            href={{
-              pathname: BeforeLoginPage.LOGIN,
-            }}
-          >
-            ログイン
-          </Link>
+          <Link href={BeforeLoginPage.LOGIN}>ログイン</Link>
         </NavLink>
         <NavLink state={LinkStatus.PARTNER_LOGIN}>
-          <Link
-            href={{
-              pathname: BeforeLoginPage.PATNER_LOGIN,
-            }}
-          >
-            パートナーログイン
-          </Link>
+          <Link href={BeforeLoginPage.PATNER_LOGIN}>パートナーログイン</Link>
         </NavLink>
       </Nav>
     </>
   )
 }
+
 export const AfterLoginHeader: FC = () => {
-  const router = useRouter()
   const { logout } = useAuth()
   const handleSubmitLogout = async () => {
     await logout()
@@ -70,7 +49,6 @@ export const AfterLoginHeader: FC = () => {
       >
         <TopLogo src="/top_logo.png" />
       </Link>
-
       <Nav>
         <NavLink state={LinkStatus.TOP}>
           <Link
@@ -136,4 +114,3 @@ const getNavBgColor = (state: string): string => {
       return `background-color: #ef70f4; border: 1px solid #ef70f4; a { color: #fff; text-decoration: none; }`
   }
 }
-export default Header

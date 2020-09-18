@@ -61,7 +61,10 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
       }
       setUser(response.data)
       setIsAuthenticated(!!response.data)
-      router.push(AfterLoginPage.DASH_BOARD + CurrentDate())
+      router.push({
+        pathname: `${AfterLoginPage.DASH_BOARD}[date]`,
+        query: { date: CurrentDate() },
+      })
     } catch (error) {
       if (error.response.status === 401) {
         // エラーメッセージを格納
@@ -86,7 +89,10 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
       }
       setUser(response.data)
       setIsAuthenticated(!!response.data)
-      router.push(AfterLoginPage.DASH_BOARD + CurrentDate())
+      router.push({
+        pathname: `${AfterLoginPage.DASH_BOARD}[date]`,
+        query: { date: CurrentDate() },
+      })
     } catch (error) {
       if (error.response.status === 401) {
         // エラーメッセージを格納
@@ -110,7 +116,10 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
       }
       setUser(response.data)
       setIsAuthenticated(!!response.data)
-      router.push(AfterLoginPage.DASH_BOARD + CurrentDate())
+      router.push({
+        pathname: `${AfterLoginPage.DASH_BOARD}[date]`,
+        query: { date: CurrentDate() },
+      })
     } catch (error) {
       if (error.response.status === 401) {
         // エラーメッセージを格納
@@ -134,7 +143,10 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
       }
       setUser(response.data)
       setIsAuthenticated(!!response.data)
-      router.push(AfterLoginPage.DASH_BOARD + CurrentDate())
+      router.push({
+        pathname: `${AfterLoginPage.DASH_BOARD}[date]`,
+        query: { date: CurrentDate() },
+      })
     } catch (error) {
       if (error.response.status === 401) {
         // エラーメッセージを格納
@@ -180,7 +192,10 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
       }
       setUser(response.data)
       setIsAuthenticated(!!response.data)
-      router.push(AfterLoginPage.DASH_BOARD + CurrentDate())
+      router.push({
+        pathname: `${AfterLoginPage.DASH_BOARD}[date]`,
+        query: { date: CurrentDate() },
+      })
     } catch (error) {
       if (error.response.status === 401) {
         // エラーメッセージを格納
