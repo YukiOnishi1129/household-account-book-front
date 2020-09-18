@@ -104,11 +104,11 @@ const NavLink = styled.li`
 
 const getNavBgColor = (state: string): string => {
   switch (state) {
-    case 'login':
+    case LinkStatus.LOGIN:
       return `background-color: #fff; border: 1px solid #06BADB; a { color: #06BADB; text-decoration: none; }`
-    case 'partner':
+    case LinkStatus.PARTNER_LOGIN:
       return `background-color: #fff; border: 1px solid #21CE01; a { color: #21CE01; text-decoration: none; }`
-    case 'logout':
+    case LinkStatus.LOGOUT:
       return `background-color: #fff; color: #ef70f4; border: 1px solid #ef70f4;`
     default:
       return `background-color: #ef70f4; border: 1px solid #ef70f4; a { color: #fff; text-decoration: none; }`
