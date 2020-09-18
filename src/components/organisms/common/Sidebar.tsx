@@ -35,12 +35,12 @@ const Sidebar: FC = () => {
 
 const SidebarArea = styled.div`
   width: 15%;
-  background: #888888;
+  background: #bd9df0;
 `
 
 const Nav = styled.ul`
   margin: 20px auto;
-  width: 80%;
+  width: 65%;
   min-height: calc(100vh - 180px);
 `
 const Navlink = styled.li`
@@ -51,6 +51,8 @@ const Navlink = styled.li`
     color: #fff;
     text-decoration: none;
     font-size: 1.25rem;
+    font-weight: bold;
+    font-family: '筑紫A丸ゴシック', sans-serif;
   }
 `
 
