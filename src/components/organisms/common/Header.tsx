@@ -19,7 +19,7 @@ export const BeforeLoginHeader: FC = () => {
   return (
     <>
       <Link href={BeforeLoginPage.TOP}>
-        <TopLogo src="/top_logo.png" />
+        <TopLogo src="/top_logo.png" alt="TOPロゴ" />
       </Link>
       <Nav>
         <NavLink state={LinkStatus.SIGNUP}>

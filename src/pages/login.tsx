@@ -1,8 +1,9 @@
 import React, { FC, useState, useContext } from 'react'
 import { useRouter } from 'next/router'
-import Layout from '@/components/Layout'
 import styled from 'styled-components'
 import { ProtectRoute } from '@/contexts/auth'
+import LoginTemplate from '@/components//templates/LoginTemplate'
+import Layout from '@/components/Layout'
 import { RequestLogin } from '@/types/api/'
 import useAuth from '@/contexts/auth'
 import { EventType } from '@/types/events'
@@ -28,30 +29,29 @@ const Login: FC = () => {
     await login(requestParam)
   }
 
-  return (
-    <div>
-      <Layout>
-        <H1>ログイン</H1>
-        <form>
-          <input
-            type="email"
-            placeholder="メールアドレスを入力してください"
-            value={email}
-            onChange={handleChangeEmail}
-          />
-          <input
-            type="password"
-            placeholder="passwordを入力してください"
-            autoComplete="off"
-            value={password}
-            onChange={handleChangPassword}
-          />
-          <button onClick={handleSubmitLogin}>ログイン</button>
-        </form>
-        <Button onClick={() => router.push('/')}>home</Button>
-      </Layout>
-    </div>
-  )
+  return <LoginTemplate />
+  // <div>
+  //   <Layout>
+  //     <H1>ログイン</H1>
+  //     <form>
+  //       <input
+  //         type="email"
+  //         placeholder="メールアドレスを入力してください"
+  //         value={email}
+  //         onChange={handleChangeEmail}
+  //       />
+  //       <input
+  //         type="password"
+  //         placeholder="passwordを入力してください"
+  //         autoComplete="off"
+  //         value={password}
+  //         onChange={handleChangPassword}
+  //       />
+  //       <button onClick={handleSubmitLogin}>ログイン</button>
+  //     </form>
+  //     <Button onClick={() => router.push('/')}>home</Button>
+  //   </Layout>
+  // </div>
 }
 
 const H1 = styled.h1`

@@ -7,7 +7,7 @@ import Sidebar from '@/components/organisms/common/Sidebar'
 import Footer from '@/components/organisms/common/Footer'
 import { isAuthFormPage } from '@/utils/pages'
 
-const TemplateLayout: FC<{ children: ReactNode }> = ({ children }) => {
+const LayoutTemplate: FC<{ children: ReactNode }> = ({ children }) => {
   const { isAuthenticated } = useAuth()
   const router = useRouter()
   const isBeforeLoginFormPage = isAuthFormPage(router)
@@ -48,4 +48,4 @@ const Content = styled.div`
   width: 85%;
 `
 
-export default TemplateLayout
+export default LayoutTemplate

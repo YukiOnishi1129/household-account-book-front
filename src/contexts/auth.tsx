@@ -21,7 +21,7 @@ import { initialUser } from '@/utils/inits'
 import { AuthContext } from '@/utils/contexts'
 import { BeforeLoginPage, AfterLoginPage } from '@/utils/consts'
 import { CurrentDate } from '@/utils/date'
-import TemplateLayout from '@/components/templates/common/Layout'
+import LayoutTemplate from '@/components/templates/common/LayoutTemplate'
 
 /**
  * Authプロバイダー
@@ -222,7 +222,7 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
         setUser,
       }}
     >
-      <TemplateLayout>{children}</TemplateLayout>
+      <LayoutTemplate>{children}</LayoutTemplate>
     </AuthContext.Provider>
   )
 }
