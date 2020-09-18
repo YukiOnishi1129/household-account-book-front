@@ -259,7 +259,6 @@ export const reloadAuthCheck = async (
       case BeforeLoginPage.LOGIN:
       case BeforeLoginPage.SIGNUP:
       case BeforeLoginPage.PATNER_LOGIN:
-      case BeforeLoginPage.TRY_LOGIN:
       case BeforeLoginPage.REMAIND_PASS_MAIL:
       case BeforeLoginPage.REMAIND_PASS_KEY:
         router.push(AfterLoginPage.DASH_BOARD + CurrentDate())
@@ -273,7 +272,6 @@ export const reloadAuthCheck = async (
       case BeforeLoginPage.LOGIN:
       case BeforeLoginPage.SIGNUP:
       case BeforeLoginPage.PATNER_LOGIN:
-      case BeforeLoginPage.TRY_LOGIN:
       case BeforeLoginPage.REMAIND_PASS_MAIL:
       case BeforeLoginPage.REMAIND_PASS_KEY:
         break
@@ -303,7 +301,6 @@ export const ProtectRoute = (Component: FC) => {
       case BeforeLoginPage.LOGIN:
       case BeforeLoginPage.SIGNUP:
       case BeforeLoginPage.PATNER_LOGIN:
-      case BeforeLoginPage.TRY_LOGIN:
       case BeforeLoginPage.REMAIND_PASS_MAIL:
       case BeforeLoginPage.REMAIND_PASS_KEY:
         isLogined = false
