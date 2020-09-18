@@ -1,4 +1,4 @@
-import React, { FC, useState, useContext } from 'react'
+import React, { FC } from 'react'
 import { ProtectRoute } from '@/contexts/auth'
 import LoginTemplate from '@/components//templates/LoginTemplate'
 

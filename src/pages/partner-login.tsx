@@ -1,67 +1,9 @@
-import React, { FC, useState, useContext } from 'react'
-import { useRouter } from 'next/router'
-import Layout from '@/components/Layout'
-import styled from 'styled-components'
+import React, { FC } from 'react'
 import { ProtectRoute } from '@/contexts/auth'
-import { RequestLogin } from '@/types/api/'
-import useAuth from '@/contexts/auth'
-import { EventType } from '@/types/events'
+import PartnerLoginTemplate from '@/components/templates/PartnerLoginTemplate'
 
 const PartnerLogin: FC = () => {
-  const { login } = useAuth()
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const router = useRouter()
-
-  const handleChangeEmail: EventType['onChange'] = (event) => {
-    setEmail(event.target.value)
-  }
-  const handleChangPassword: EventType['onChange'] = (event) => {
-    setPassword(event.target.value)
-  }
-  const handleSubmitLogin: EventType['onClickButton'] = async (event) => {
-    event.preventDefault()
-    const requestParam: RequestLogin = {
-      email: email,
-      password: password,
-    }
-    await login(requestParam)
-  }
-
-  return (
-    <div>
-      <Layout>
-        <H1>パートナー</H1>
-        <form>
-          <input
-            type="email"
-            placeholder="メールアドレスを入力してください"
-            value={email}
-            onChange={handleChangeEmail}
-          />
-          <input
-            type="password"
-            placeholder="passwordを入力してください"
-            autoComplete="off"
-            value={password}
-            onChange={handleChangPassword}
-          />
-          <button onClick={handleSubmitLogin}>ログイン</button>
-        </form>
-        <Button onClick={() => router.push('/')}>home</Button>
-      </Layout>
-    </div>
-  )
+  return <PartnerLoginTemplate />
 }
-
-const H1 = styled.h1`
-  color: ${(props) => props.theme.main};
-  font-size: 20px;
-`
-const Button = styled.button`
-  margin-left: 20px;
-  padding: 5px 10px;
-  font-size: 20px;
-`
 
 export default ProtectRoute(PartnerLogin)
