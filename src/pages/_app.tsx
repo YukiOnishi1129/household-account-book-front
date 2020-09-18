@@ -1,8 +1,8 @@
 import React from 'react'
 import App, { AppProps, AppContext } from 'next/app'
 import Head from 'next/head'
-import { AuthProvider } from '../contexts/auth'
-import '../styles/styles.scss'
+import { AuthProvider } from '@/contexts/auth'
+import '@/styles/styles.scss'
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (

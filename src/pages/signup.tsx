@@ -7,7 +7,7 @@ import { RequestLogin } from '@/types/api/'
 import useAuth from '@/contexts/auth'
 import { EventType } from '@/types/events'
 
-const Login: FC = () => {
+const Signup: FC = () => {
   const { login } = useAuth()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -31,7 +31,7 @@ const Login: FC = () => {
   return (
     <div>
       <Layout>
-        <H1>ログイン</H1>
+        <H1>会員登録</H1>
         <form>
           <input
             type="email"
@@ -64,4 +64,4 @@ const Button = styled.button`
   font-size: 20px;
 `
 
-export default ProtectRoute(Login)
+export default ProtectRoute(Signup)

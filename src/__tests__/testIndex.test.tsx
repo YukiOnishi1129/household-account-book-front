@@ -1,5 +1,5 @@
 import React from 'react'
-import { MyButton, MyButtonProps } from '../components/test/index'
+import { MyButton, MyButtonProps } from '@/components/test/index'
 import { mount } from 'enzyme'
 import TestRenderer from 'react-test-renderer'
 

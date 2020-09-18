@@ -9,7 +9,7 @@ import React, {
 } from 'react'
 import Router, { useRouter, NextRouter } from 'next/router'
 // import App, { AppProps } from 'next/app'
-import ApiClient from '../network/ApiClient'
+import ApiClient from '@/network/ApiClient'
 import {
   User,
   RequestLogin,
@@ -17,11 +17,11 @@ import {
   RequestRemindMail,
   RequestRemindKey,
 } from '../types/api/'
-import { initialUser } from '../utils/inits'
-import { AuthContext } from '../utils/contexts'
-import { BeforeLoginPage, AfterLoginPage } from '../utils/consts'
-import { CurrentDate } from '../utils/date'
-import BeforeLoginLayout from '../components/templates/common/BeforeLoginLayout'
+import { initialUser } from '@/utils/inits'
+import { AuthContext } from '@/utils/contexts'
+import { BeforeLoginPage, AfterLoginPage } from '@/utils/consts'
+import { CurrentDate } from '@/utils/date'
+import TemplateLayout from '@/components/templates/common/Layout'
 
 /**
  * Authプロバイダー
@@ -37,7 +37,7 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
   useEffect(() => {
     let unmounted = false
     // リロード時の認証チェック
-    reloadAuthCheck(router, setUser, setLoading, unmounted)
+    reloadAuthCheck(router, setUser, setLoading, setIsAuthenticated, unmounted)
 
     // クリーンアップ
     return () => {
@@ -61,7 +61,10 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
       }
       setUser(response.data)
       setIsAuthenticated(!!response.data)
-      router.push(AfterLoginPage.DASH_BOARD + CurrentDate())
+      router.push({
+        pathname: `${AfterLoginPage.DASH_BOARD}[date]`,
+        query: { date: CurrentDate() },
+      })
     } catch (error) {
       if (error.response.status === 401) {
         // エラーメッセージを格納
@@ -86,7 +89,10 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
       }
       setUser(response.data)
       setIsAuthenticated(!!response.data)
-      router.push(AfterLoginPage.DASH_BOARD + CurrentDate())
+      router.push({
+        pathname: `${AfterLoginPage.DASH_BOARD}[date]`,
+        query: { date: CurrentDate() },
+      })
     } catch (error) {
       if (error.response.status === 401) {
         // エラーメッセージを格納
@@ -110,7 +116,10 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
       }
       setUser(response.data)
       setIsAuthenticated(!!response.data)
-      router.push(AfterLoginPage.DASH_BOARD + CurrentDate())
+      router.push({
+        pathname: `${AfterLoginPage.DASH_BOARD}[date]`,
+        query: { date: CurrentDate() },
+      })
     } catch (error) {
       if (error.response.status === 401) {
         // エラーメッセージを格納
@@ -134,7 +143,10 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
       }
       setUser(response.data)
       setIsAuthenticated(!!response.data)
-      router.push(AfterLoginPage.DASH_BOARD + CurrentDate())
+      router.push({
+        pathname: `${AfterLoginPage.DASH_BOARD}[date]`,
+        query: { date: CurrentDate() },
+      })
     } catch (error) {
       if (error.response.status === 401) {
         // エラーメッセージを格納
@@ -180,7 +192,10 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
       }
       setUser(response.data)
       setIsAuthenticated(!!response.data)
-      router.push(AfterLoginPage.DASH_BOARD + CurrentDate())
+      router.push({
+        pathname: `${AfterLoginPage.DASH_BOARD}[date]`,
+        query: { date: CurrentDate() },
+      })
     } catch (error) {
       if (error.response.status === 401) {
         // エラーメッセージを格納
@@ -207,7 +222,7 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
         setUser,
       }}
     >
-      {children}
+      <TemplateLayout>{children}</TemplateLayout>
     </AuthContext.Provider>
   )
 }
@@ -233,6 +248,7 @@ export const reloadAuthCheck = async (
   router: NextRouter,
   setUser: Dispatch<SetStateAction<User>>,
   setLoading: Dispatch<SetStateAction<boolean>>,
+  setIsAuthenticated: Dispatch<SetStateAction<boolean>>,
   unmounted: boolean
 ) => {
   const { data } = await ApiClient.user.authRooting()
@@ -267,6 +283,7 @@ export const reloadAuthCheck = async (
   }
   if (!unmounted) {
     setUser(data)
+    setIsAuthenticated(!!data)
     setLoading(false)
   }
 }
@@ -299,11 +316,7 @@ export const ProtectRoute = (Component: FC) => {
       authRouting(setUser, setIsAuthenticated, isAuthenticated, isLogined)
     }, [isAuthenticated])
 
-    return (
-      <BeforeLoginLayout>
-        <Component />
-      </BeforeLoginLayout>
-    )
+    return <Component />
   }
   return protectComponent
 }
