@@ -1,11 +1,13 @@
 import React, { FC } from 'react'
+import Link from 'next/link'
 import styled from 'styled-components'
 import InputForm from '@/components/atoms/InputForm'
 import SubmitButton from '@/components/atoms/SubmitButton'
-import { LinkStatus } from '@/utils/consts'
+import { LinkStatus, BeforeLoginPage } from '@/utils/consts'
 import { EventType } from '@/types/events'
 
 export type Props = {
+  status: string
   email: string
   password: string
   changeEmail: EventType['onChange']
@@ -14,6 +16,7 @@ export type Props = {
 }
 
 const LoginForm: FC<Props> = ({
+  status,
   email,
   password,
   changeEmail,
@@ -39,21 +42,49 @@ const LoginForm: FC<Props> = ({
         value={password}
       />
       <SubmitButton
-        status={LinkStatus.LOGIN}
+        status={status}
         submit={() => {
           submit()
         }}
       />
+      <NavLink status={status}>
+        <Link href={BeforeLoginPage.REMAIND_PASS_MAIL}>
+          パスワードをお忘れの方はこちら
+        </Link>
+      </NavLink>
     </Form>
   )
 }
 
 export default LoginForm
 
-const Form = styled.div`
+export type TProps = {
+  status: string
+}
+
+const Form = styled.form`
   padding: 30px 60px;
   border-bottom: 1px solid #dddbdb;
   input[type='email'] {
     margin-bottom: 30px;
   }
 `
+
+const NavLink = styled.div`
+  padding: 20px 0;
+  a {
+    font-size: 0.75rem;
+    ${({ status }: TProps) => getNavBgColor(status)};
+  }
+`
+
+const getNavBgColor = (status: string): string => {
+  switch (status) {
+    case LinkStatus.LOGIN:
+      return `color: #06BADB; &:hover{ color: #82dced; }`
+    case LinkStatus.PARTNER_LOGIN:
+      return `color: #21CE01; &:hover{ color: #90E680; }`
+    default:
+      return ''
+  }
+}

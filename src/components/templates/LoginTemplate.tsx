@@ -3,6 +3,7 @@ import AuthForm from '@/components/organisms/common/AuthForm'
 import SignupButtonField from '@/components/molcules/SinupButtonField'
 import LoginForm from '@/components/molcules/LoginFrom'
 import useAuth from '@/contexts/auth'
+import { LinkStatus } from '@/utils/consts'
 import { EventType } from '@/types/events'
 import { RequestLogin } from '@/types/api/'
 
@@ -27,6 +28,7 @@ const LoginTemplate: FC = () => {
     <AuthForm>
       <SignupButtonField />
       <LoginForm
+        status={LinkStatus.LOGIN}
         email={email}
         password={password}
         changeEmail={handleChangeEmail}

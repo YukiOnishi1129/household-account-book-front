@@ -1,5 +1,5 @@
-import React, { FC, ReactNode } from 'react'
-import { LinkStatus, BeforeLoginPage, AfterLoginPage } from '@/utils/consts'
+import React, { FC } from 'react'
+import { LinkStatus } from '@/utils/consts'
 import styled from 'styled-components'
 
 export type Props = {

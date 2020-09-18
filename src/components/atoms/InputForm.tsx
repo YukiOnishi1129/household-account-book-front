@@ -10,15 +10,30 @@ export type Props = {
 }
 
 const InputForm: FC<Props> = ({ type, comment, value, changeValue }) => {
+  const passFlg = type === 'password'
   return (
-    <Input
-      type={type}
-      placeholder={comment}
-      value={value}
-      onChange={(event) => {
-        changeValue(event)
-      }}
-    />
+    <>
+      {passFlg ? (
+        <Input
+          type={type}
+          placeholder={comment}
+          value={value}
+          autoComplete="off"
+          onChange={(event) => {
+            changeValue(event)
+          }}
+        />
+      ) : (
+        <Input
+          type={type}
+          placeholder={comment}
+          value={value}
+          onChange={(event) => {
+            changeValue(event)
+          }}
+        />
+      )}
+    </>
   )
 }
 
