@@ -16,7 +16,7 @@ export default AuthForm
 
 const AuthFormArea = styled.div`
   margin: 20px auto;
-  width: 50%;
+  width: 40%;
 `
 const ImageArea = styled.div`
   height: 100px;

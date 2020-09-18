@@ -1,17 +1,26 @@
-import React, { FC } from 'react'
-import Link from 'next/link'
-import { LinkStatus, BeforeLoginPage } from '@/utils/consts'
+import React, { FC, ReactNode } from 'react'
+import { LinkStatus, BeforeLoginPage, AfterLoginPage } from '@/utils/consts'
 import styled from 'styled-components'
 
-const LinkButton: FC<{ status: string }> = ({ status }) => {
+export type Props = {
+  status: string
+  submit: VoidFunction
+}
+
+const SubmitButton: FC<Props> = ({ status, submit }) => {
   return (
-    <Link href={getUrl(status)}>
-      <Button status={status}>{getLabelName(status)}</Button>
-    </Link>
+    <Button
+      status={status}
+      onClick={() => {
+        submit()
+      }}
+    >
+      {getLabelName(status)}
+    </Button>
   )
 }
 
-export default LinkButton
+export default SubmitButton
 
 export type TProps = {
   status: string
@@ -27,19 +36,6 @@ const getLabelName = (status: string): string => {
       return '新規会員登録'
     default:
       return 'TOP'
-  }
-}
-
-const getUrl = (status: string): string => {
-  switch (status) {
-    case LinkStatus.LOGIN:
-      return BeforeLoginPage.LOGIN
-    case LinkStatus.PARTNER_LOGIN:
-      return BeforeLoginPage.PATNER_LOGIN
-    case LinkStatus.SIGNUP:
-      return BeforeLoginPage.SIGNUP
-    default:
-      return '/'
   }
 }
 
