@@ -21,7 +21,7 @@ import { initialUser } from '@/utils/inits'
 import { AuthContext } from '@/utils/contexts'
 import { BeforeLoginPage, AfterLoginPage } from '@/utils/consts'
 import { CurrentDate } from '@/utils/date'
-import TemplateLayout from '@/components/templates/common/Layout'
+import LayoutTemplate from '@/components/templates/common/LayoutTemplate'
 
 /**
  * Authプロバイダー
@@ -222,7 +222,7 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
         setUser,
       }}
     >
-      <TemplateLayout>{children}</TemplateLayout>
+      <LayoutTemplate>{children}</LayoutTemplate>
     </AuthContext.Provider>
   )
 }
@@ -259,7 +259,6 @@ export const reloadAuthCheck = async (
       case BeforeLoginPage.LOGIN:
       case BeforeLoginPage.SIGNUP:
       case BeforeLoginPage.PATNER_LOGIN:
-      case BeforeLoginPage.TRY_LOGIN:
       case BeforeLoginPage.REMAIND_PASS_MAIL:
       case BeforeLoginPage.REMAIND_PASS_KEY:
         router.push(AfterLoginPage.DASH_BOARD + CurrentDate())
@@ -273,7 +272,6 @@ export const reloadAuthCheck = async (
       case BeforeLoginPage.LOGIN:
       case BeforeLoginPage.SIGNUP:
       case BeforeLoginPage.PATNER_LOGIN:
-      case BeforeLoginPage.TRY_LOGIN:
       case BeforeLoginPage.REMAIND_PASS_MAIL:
       case BeforeLoginPage.REMAIND_PASS_KEY:
         break
@@ -303,7 +301,6 @@ export const ProtectRoute = (Component: FC) => {
       case BeforeLoginPage.LOGIN:
       case BeforeLoginPage.SIGNUP:
       case BeforeLoginPage.PATNER_LOGIN:
-      case BeforeLoginPage.TRY_LOGIN:
       case BeforeLoginPage.REMAIND_PASS_MAIL:
       case BeforeLoginPage.REMAIND_PASS_KEY:
         isLogined = false

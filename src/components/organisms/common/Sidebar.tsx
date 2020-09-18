@@ -52,7 +52,6 @@ const Navlink = styled.li`
     text-decoration: none;
     font-size: 1.25rem;
     font-weight: bold;
-    font-family: '筑紫A丸ゴシック', sans-serif;
   }
 `
 
