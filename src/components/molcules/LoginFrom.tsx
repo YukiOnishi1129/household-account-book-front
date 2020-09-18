@@ -75,15 +75,18 @@ const NavLink = styled.div`
   a {
     font-size: 0.75rem;
     ${({ status }: TProps) => getNavBgColor(status)};
+    &:hover {
+      opacity: 0.7;
+    }
   }
 `
 
 const getNavBgColor = (status: string): string => {
   switch (status) {
     case LinkStatus.LOGIN:
-      return `color: #06BADB; &:hover{ color: #82dced; }`
+      return `color: #06BADB;`
     case LinkStatus.PARTNER_LOGIN:
-      return `color: #21CE01; &:hover{ color: #90E680; }`
+      return `color: #21CE01;`
     default:
       return ''
   }

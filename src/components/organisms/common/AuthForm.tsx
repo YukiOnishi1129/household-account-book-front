@@ -1,12 +1,16 @@
 import React, { FC, ReactNode } from 'react'
+import Link from 'next/link'
 import styled from 'styled-components'
+import { BeforeLoginPage } from '@/utils/consts'
 
 const AuthForm: FC<{ children: ReactNode }> = ({ children }) => {
   return (
     <AuthFormArea>
-      <ImageArea>
-        <img src="/top_logo.png" alt="ロゴ" />
-      </ImageArea>
+      <Link href={BeforeLoginPage.TOP}>
+        <ImageArea>
+          <img src="/top_logo.png" alt="ロゴ" />
+        </ImageArea>
+      </Link>
       <FormArea>{children}</FormArea>
     </AuthFormArea>
   )
@@ -19,7 +23,11 @@ const AuthFormArea = styled.div`
   width: 40%;
 `
 const ImageArea = styled.div`
+  cursor: pointer;
   height: 100px;
+  &:hover {
+    opacity: 0.7;
+  }
 
   img {
     display: block;

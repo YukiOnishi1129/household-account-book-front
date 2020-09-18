@@ -54,6 +54,9 @@ const Button = styled.div`
   color: #fff;
   border-radius: 10px;
   ${({ status }: TProps) => getNavBgColor(status)};
+  &:hover {
+    opacity: 0.7;
+  }
 `
 
 const getNavBgColor = (status: string): string => {
