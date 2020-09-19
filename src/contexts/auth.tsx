@@ -160,7 +160,7 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
    */
   const remindMail = async (requestData: RequestRemindMail) => {
     const res = await ApiClient.user.remindEmail(requestData)
-    if (res.status === 201) router.push('/remaind-key')
+    if (res.status === 204) router.push('/remaind-key')
   }
 
   /**

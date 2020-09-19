@@ -82,6 +82,8 @@ const Form = styled.form`
   }
   input[type='email'] {
     margin-top: 20px;
-    margin-bottom: 40px;
+  }
+  button {
+    margin-top: 60px;
   }
 `

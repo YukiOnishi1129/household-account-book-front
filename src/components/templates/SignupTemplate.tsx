@@ -112,7 +112,7 @@ const isValid = (
   let nameErrMsg = RequiredValidation(name)
   let emailErrMsg = RequiredValidation(email)
   let passErrMsg = RequiredValidation(password)
-  let confirmPassErrMsg = RequiredValidation(confirmPassword)
+  const confirmPassErrMsg = RequiredValidation(confirmPassword)
   if (nameErrMsg === '') nameErrMsg = MaxLengthValidation(name, 15)
   if (emailErrMsg === '') emailErrMsg = EmailValidation(email)
   if (emailErrMsg === '') emailErrMsg = MaxLengthValidation(email, 255)

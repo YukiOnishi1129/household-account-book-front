@@ -12,9 +12,6 @@ import {
   RequiredValidation,
   EmailValidation,
   MaxLengthValidation,
-  AlphanumericValidation,
-  ValueLengthValidation,
-  MatchPasswordValidation,
 } from '@/utils/validations'
 
 const RemindPassMailTemplate: FC = () => {
@@ -36,11 +33,12 @@ const RemindPassMailTemplate: FC = () => {
    * パスワードリマインダーEメール送信処理
    */
   const handleSubmitRemindMail = async () => {
-    return
-    const requestParam: RequestRemindMail = {
-      email: email,
+    if (isValid(email, setRemindEmailError)) {
+      const requestParam: RequestRemindMail = {
+        email: email,
+      }
+      await remindMail(requestParam)
     }
-    await remindMail(requestParam)
   }
   return (
     <AuthForm>
@@ -63,7 +61,32 @@ const RemindPassMailTemplate: FC = () => {
 
 export default RemindPassMailTemplate
 
+/**
+ * バリデーション
+ * @param email
+ * @param setRemindEmailError
+ */
+const isValid = (
+  email: string,
+  setRemindEmailError: React.Dispatch<React.SetStateAction<RemindValidError>>
+): boolean => {
+  // バリデーションエラーを初期化
+  setRemindEmailError({ value: '' })
+  // バリデーションチェック
+  let emailErrMsg = RequiredValidation(email)
+  if (emailErrMsg === '') emailErrMsg = EmailValidation(email)
+  if (emailErrMsg === '') emailErrMsg = MaxLengthValidation(email, 255)
+  if (emailErrMsg !== '') {
+    setRemindEmailError({
+      value: emailErrMsg,
+    })
+    return false
+  }
+  return true
+}
+
 const Describe = styled.p`
   padding: 30px 60px;
   line-height: 32px;
+  /* font-size: 0.875rem; */
 `
