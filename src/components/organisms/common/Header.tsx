@@ -22,15 +22,15 @@ export const BeforeLoginHeader: FC = () => {
         <TopLogo src="/top_logo.png" alt="TOPロゴ" />
       </Link>
       <Nav>
-        <NavLink state={LinkStatus.SIGNUP}>
-          <Link href={BeforeLoginPage.SIGNUP}>会員登録</Link>
-        </NavLink>
-        <NavLink state={LinkStatus.LOGIN}>
-          <Link href={BeforeLoginPage.LOGIN}>ログイン</Link>
-        </NavLink>
-        <NavLink state={LinkStatus.PARTNER_LOGIN}>
-          <Link href={BeforeLoginPage.PATNER_LOGIN}>パートナーログイン</Link>
-        </NavLink>
+        <Link href={BeforeLoginPage.SIGNUP}>
+          <NavLink state={LinkStatus.SIGNUP}>会員登録</NavLink>
+        </Link>
+        <Link href={BeforeLoginPage.LOGIN}>
+          <NavLink state={LinkStatus.LOGIN}>ログイン</NavLink>
+        </Link>
+        <Link href={BeforeLoginPage.PATNER_LOGIN}>
+          <NavLink state={LinkStatus.PARTNER_LOGIN}>パートナーログイン</NavLink>
+        </Link>
       </Nav>
     </>
   )
@@ -50,14 +50,12 @@ export const AfterLoginHeader: FC = () => {
         <TopLogo src="/top_logo.png" />
       </Link>
       <Nav>
-        <NavLink state={LinkStatus.TOP}>
-          <Link
-            href={`${AfterLoginPage.DASH_BOARD}[date]`}
-            as={`${AfterLoginPage.DASH_BOARD}${CurrentDate()}`}
-          >
-            TOP
-          </Link>
-        </NavLink>
+        <Link
+          href={`${AfterLoginPage.DASH_BOARD}[date]`}
+          as={`${AfterLoginPage.DASH_BOARD}${CurrentDate()}`}
+        >
+          <NavLink state={LinkStatus.TOP}>TOP</NavLink>
+        </Link>
         <NavLink state={LinkStatus.LOGOUT} onClick={handleSubmitLogout}>
           ログアウト
         </NavLink>
@@ -105,12 +103,12 @@ const NavLink = styled.li`
 const getNavBgColor = (state: string): string => {
   switch (state) {
     case LinkStatus.LOGIN:
-      return `background-color: #fff; border: 1px solid #06BADB; a { color: #06BADB; text-decoration: none; }`
+      return `background-color: #fff; border: 1px solid #06BADB; color: #06BADB;`
     case LinkStatus.PARTNER_LOGIN:
-      return `background-color: #fff; border: 1px solid #21CE01; a { color: #21CE01; text-decoration: none; }`
+      return `background-color: #fff; border: 1px solid #21CE01; color: #21CE01;`
     case LinkStatus.LOGOUT:
       return `background-color: #fff; color: #ef70f4; border: 1px solid #ef70f4;`
     default:
-      return `background-color: #ef70f4; border: 1px solid #ef70f4; a { color: #fff; text-decoration: none; }`
+      return `background-color: #ef70f4; border: 1px solid #ef70f4; color: #fff; &:hover{ opacity: 0.7; }`
   }
 }
