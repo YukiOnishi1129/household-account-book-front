@@ -83,6 +83,9 @@ const HeaderArea = styled.div`
 
 const TopLogo = styled.img`
   cursor: pointer;
+  &:hover {
+    opacity: 0.7;
+  }
 `
 
 const Nav = styled.ul`
