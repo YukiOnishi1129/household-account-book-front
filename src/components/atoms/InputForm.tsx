@@ -6,7 +6,7 @@ export type Props = {
   type: string
   comment: string
   value: string
-  validError: boolean
+  errMsg: string
   changeValue: EventType['onChange']
 }
 
@@ -14,7 +14,7 @@ const InputForm: FC<Props> = ({
   type,
   comment,
   value,
-  validError,
+  errMsg,
   changeValue,
 }) => {
   const passFlg = type === 'password'
@@ -25,7 +25,7 @@ const InputForm: FC<Props> = ({
           type={type}
           placeholder={comment}
           value={value}
-          error={validError}
+          error={errMsg !== ''}
           minLength={8}
           maxLength={20}
           autoComplete="off"
@@ -38,13 +38,14 @@ const InputForm: FC<Props> = ({
           type={type}
           placeholder={comment}
           value={value}
-          error={validError}
+          error={errMsg !== ''}
           maxLength={255}
           onChange={(event) => {
             changeValue(event)
           }}
         />
       )}
+      {errMsg !== '' && <ValidErrorMsg>{errMsg}</ValidErrorMsg>}
     </>
   )
 }
@@ -56,14 +57,16 @@ export type TProps = {
 }
 
 const Input = styled.input`
-  /* display: block; */
   padding: 15px 15px;
   width: 100%;
-  /* height: 40px; */
   font-size: 1rem;
   font-family: '筑紫A丸ゴシック', sans-serif;
   border: ${({ error }: TProps) => (error ? '1px solid #ea352d;' : 'none;')};
   border-radius: 5px;
   box-sizing: border-box;
-  /* border: 1px solid #ea352d; */
+`
+
+const ValidErrorMsg = styled.p`
+  padding-top: 5px;
+  color: #ea352d;
 `

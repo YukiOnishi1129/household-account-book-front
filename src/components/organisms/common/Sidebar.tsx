@@ -8,26 +8,28 @@ const Sidebar: FC = () => {
   return (
     <SidebarArea>
       <Nav>
-        <Navlink>
-          <Link
-            href={`${AfterLoginPage.DASH_BOARD}[date]`}
-            as={`${AfterLoginPage.DASH_BOARD}${CurrentDate()}`}
-          >
-            TOP
-          </Link>
-        </Navlink>
-        <Navlink>
-          <Link href={AfterLoginPage.GRAPH}>グラフ</Link>
-        </Navlink>
-        <Navlink>
-          <Link href={AfterLoginPage.CATEGORY}>カテゴリ</Link>
-        </Navlink>
-        <Navlink>
-          <Link href={AfterLoginPage.PARTNER_USER}>パートナー</Link>
-        </Navlink>
-        <Navlink>
-          <Link href={AfterLoginPage.CHANGE_PASSWORD}>パスワード</Link>
-        </Navlink>
+        <Link
+          href={`${AfterLoginPage.DASH_BOARD}[date]`}
+          as={`${AfterLoginPage.DASH_BOARD}${CurrentDate()}`}
+        >
+          <Navlink>TOP</Navlink>
+        </Link>
+
+        <Link href={AfterLoginPage.GRAPH}>
+          <Navlink>グラフ</Navlink>
+        </Link>
+
+        <Link href={AfterLoginPage.CATEGORY}>
+          <Navlink>カテゴリ</Navlink>
+        </Link>
+
+        <Link href={AfterLoginPage.PARTNER_USER}>
+          <Navlink>パートナー</Navlink>
+        </Link>
+
+        <Link href={AfterLoginPage.CHANGE_PASSWORD}>
+          <Navlink>パスワード</Navlink>
+        </Link>
       </Nav>
     </SidebarArea>
   )
@@ -39,19 +41,17 @@ const SidebarArea = styled.div`
 `
 
 const Nav = styled.ul`
-  margin: 20px auto;
-  width: 65%;
   min-height: calc(100vh - 180px);
 `
 const Navlink = styled.li`
   cursor: pointer;
-  padding-top: 30px;
-  padding-bottom: 30px;
-  a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 1.25rem;
-    font-weight: bold;
+  padding: 40px;
+  background: #bd9df0;
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: bold;
+  &:hover {
+    filter: brightness(80%);
   }
 `
 
