@@ -41,6 +41,8 @@ const getLabelName = (status: string): string => {
       return '新規会員登録'
     case LinkStatus.SUBMIT:
       return '送信'
+    case LinkStatus.CHANGE:
+      return '変更'
     default:
       return 'TOP'
   }

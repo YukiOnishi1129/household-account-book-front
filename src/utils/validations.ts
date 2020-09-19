@@ -75,3 +75,17 @@ export const MatchPasswordValidation = (
   if (password !== confirmPasseword) return 'パスワード(再入力)と一致しません。'
   return ''
 }
+
+/**
+ * パスワード不一致チェック
+ * @param currentPassword
+ * @param newPassword
+ */
+export const UnMatchPasswordValidation = (
+  currentPassword: string,
+  newPassword: string
+): string => {
+  if (currentPassword === newPassword)
+    return '現在のパスワードと新しいパスワードが同じです。'
+  return ''
+}

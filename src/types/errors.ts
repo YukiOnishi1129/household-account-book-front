@@ -16,6 +16,15 @@ export interface SinupValidError {
   confirmPassword: string
 }
 
+/**
+ * パスワードリマインドバリデーションエラー
+ */
 export interface RemindValidError {
   value: string
+}
+
+export interface ChangePasswordValidError {
+  currentPassword: string
+  newPassword: string
+  confirmNewPassword: string
 }

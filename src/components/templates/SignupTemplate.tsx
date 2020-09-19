@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react'
 import AuthForm from '@/components/organisms/common/AuthForm'
 import FormTitle from '@/components/atoms/FormTitle'
-import SignupForm from '@/components/molcules/SignupForm'
+import SignupForm from '@/components/molcules/signup/SignupForm'
 import useAuth from '@/contexts/auth'
 import { LinkStatus } from '@/utils/consts'
 import { EventType } from '@/types/events'
