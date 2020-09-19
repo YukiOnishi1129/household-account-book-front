@@ -5,17 +5,17 @@ import useAuth from '@/contexts/auth'
 import Header from '@/components/organisms/common/Header'
 import Sidebar from '@/components/organisms/common/Sidebar'
 import Footer from '@/components/organisms/common/Footer'
-import { isAuthFormPage } from '@/utils/pages'
+import { isShowHeader } from '@/utils/pages'
 
 const LayoutTemplate: FC<{ children: ReactNode }> = ({ children }) => {
   const { isAuthenticated } = useAuth()
   const router = useRouter()
-  const isBeforeLoginFormPage = isAuthFormPage(router)
+  const isHeader = isShowHeader(router)
 
   return (
     <Wrapper>
-      {!isBeforeLoginFormPage && <Header />}
-      <Main isPages={isBeforeLoginFormPage}>
+      {!isHeader && <Header />}
+      <Main isPages={isHeader}>
         {isAuthenticated ? (
           <>
             <Sidebar />

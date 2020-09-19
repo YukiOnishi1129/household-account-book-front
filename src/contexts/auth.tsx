@@ -8,7 +8,6 @@ import React, {
   useEffect,
 } from 'react'
 import Router, { useRouter, NextRouter } from 'next/router'
-// import App, { AppProps } from 'next/app'
 import ApiClient from '@/network/ApiClient'
 import {
   User,
@@ -30,20 +29,8 @@ import LayoutTemplate from '@/components/templates/common/LayoutTemplate'
 export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const router = useRouter()
   const [user, setUser] = useState(initialUser)
-  const [loading, setLoading] = useState(true)
   const [errMsg, setErrMsg] = useState('')
   const [isAuthenticated, setIsAuthenticated] = useState(false)
-
-  useEffect(() => {
-    let unmounted = false
-    // リロード時の認証チェック
-    reloadAuthCheck(router, setUser, setLoading, setIsAuthenticated, unmounted)
-
-    // クリーンアップ
-    return () => {
-      unmounted = true
-    }
-  }, [])
 
   /**
    * ログイン処理
@@ -209,7 +196,6 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
       value={{
         isAuthenticated,
         user,
-        loading,
         errMsg,
         login,
         register,
@@ -244,47 +230,47 @@ export default useAuth
  * @param setLoading
  * @param unmounted
  */
-export const reloadAuthCheck = async (
-  router: NextRouter,
-  setUser: Dispatch<SetStateAction<User>>,
-  setLoading: Dispatch<SetStateAction<boolean>>,
-  setIsAuthenticated: Dispatch<SetStateAction<boolean>>,
-  unmounted: boolean
-) => {
-  const { data } = await ApiClient.user.authRooting()
-  if (data) {
-    // 認証済みであり、かつログイン前のページにいる場合、ダッシュボードへリダイレクト
-    switch (router.pathname) {
-      case BeforeLoginPage.TOP:
-      case BeforeLoginPage.LOGIN:
-      case BeforeLoginPage.SIGNUP:
-      case BeforeLoginPage.PATNER_LOGIN:
-      case BeforeLoginPage.REMAIND_PASS_MAIL:
-      case BeforeLoginPage.REMAIND_PASS_KEY:
-        router.push(AfterLoginPage.DASH_BOARD + CurrentDate())
-        break
-      default:
-    }
-  } else {
-    // 認証エラーであり、かつ認証後のページにいる場合、ログイン画面へリダイレクト
-    switch (router.pathname) {
-      case BeforeLoginPage.TOP:
-      case BeforeLoginPage.LOGIN:
-      case BeforeLoginPage.SIGNUP:
-      case BeforeLoginPage.PATNER_LOGIN:
-      case BeforeLoginPage.REMAIND_PASS_MAIL:
-      case BeforeLoginPage.REMAIND_PASS_KEY:
-        break
-      default:
-        router.push(BeforeLoginPage.LOGIN)
-    }
-  }
-  if (!unmounted) {
-    setUser(data)
-    setIsAuthenticated(!!data)
-    setLoading(false)
-  }
-}
+// export const reloadAuthCheck = async (
+//   router: NextRouter,
+//   setUser: Dispatch<SetStateAction<User>>,
+//   setLoading: Dispatch<SetStateAction<boolean>>,
+//   setIsAuthenticated: Dispatch<SetStateAction<boolean>>,
+//   unmounted: boolean
+// ) => {
+//   const { data } = await ApiClient.user.authRooting()
+//   if (data) {
+//     // 認証済みであり、かつログイン前のページにいる場合、ダッシュボードへリダイレクト
+//     switch (router.pathname) {
+//       case BeforeLoginPage.TOP:
+//       case BeforeLoginPage.LOGIN:
+//       case BeforeLoginPage.SIGNUP:
+//       case BeforeLoginPage.PATNER_LOGIN:
+//       case BeforeLoginPage.REMAIND_PASS_MAIL:
+//       case BeforeLoginPage.REMAIND_PASS_KEY:
+//         router.push(AfterLoginPage.DASH_BOARD + CurrentDate())
+//         break
+//       default:
+//     }
+//   } else {
+//     // 認証エラーであり、かつ認証後のページにいる場合、ログイン画面へリダイレクト
+//     switch (router.pathname) {
+//       case BeforeLoginPage.TOP:
+//       case BeforeLoginPage.LOGIN:
+//       case BeforeLoginPage.SIGNUP:
+//       case BeforeLoginPage.PATNER_LOGIN:
+//       case BeforeLoginPage.REMAIND_PASS_MAIL:
+//       case BeforeLoginPage.REMAIND_PASS_KEY:
+//         break
+//       default:
+//         router.push(BeforeLoginPage.LOGIN)
+//     }
+//   }
+//   if (!unmounted) {
+//     setUser(data)
+//     setIsAuthenticated(!!data)
+//     setLoading(false)
+//   }
+// }
 
 /**
  * 認証ルーティングコンポーネント
@@ -292,7 +278,7 @@ export const reloadAuthCheck = async (
  */
 export const ProtectRoute = (Component: FC) => {
   const protectComponent = () => {
-    const { isAuthenticated, setUser, setIsAuthenticated } = useAuth()
+    const { setUser, setIsAuthenticated } = useAuth()
     const router = useRouter()
     let isLogined = true
 
@@ -309,9 +295,9 @@ export const ProtectRoute = (Component: FC) => {
     }
 
     useEffect(() => {
-      // ページ遷移時の認証ルーティング
-      authRouting(setUser, setIsAuthenticated, isAuthenticated, isLogined)
-    }, [isAuthenticated])
+      // 認証ルーティング
+      authRouting(setUser, setIsAuthenticated, isLogined)
+    }, [])
 
     return <Component />
   }
@@ -319,27 +305,24 @@ export const ProtectRoute = (Component: FC) => {
 }
 
 /**
- * ページ遷移時の認証ルーティング
+ * 認証ルーティング
  * @param setUser
- * @param isAuthenticated
+ * @param setIsAuthenticated
  * @param isLogined
  */
 export const authRouting = async (
   setUser: Dispatch<SetStateAction<User>>,
   setIsAuthenticated: Dispatch<SetStateAction<boolean>>,
-  isAuthenticated: boolean,
   isLogined: boolean
 ): Promise<void> => {
   const { data } = await ApiClient.user.authRooting()
   if (data) {
     // 認証チェックOK
+    // 認証情報を設定
+    setUser(data)
+    setIsAuthenticated(!!data)
     // 認証前のページにいる場合
     if (!isLogined) {
-      if (!isAuthenticated) {
-        // 認証情報を設定
-        setUser(data)
-        setIsAuthenticated(!!data)
-      }
       Router.push(AfterLoginPage.DASH_BOARD + CurrentDate())
     }
   } else {
