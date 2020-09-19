@@ -4,14 +4,18 @@ import styled from 'styled-components'
 
 export type Props = {
   status: string
+  size?: string
   submit: VoidFunction
 }
 
-const SubmitButton: FC<Props> = ({ status, submit }) => {
+const SubmitButton: FC<Props> = ({ status, size, submit }) => {
+  const styleSize = size ? size : ''
   return (
     <Button
       status={status}
-      onClick={() => {
+      size={styleSize}
+      onClick={(e) => {
+        e.preventDefault()
         submit()
       }}
     >
@@ -22,8 +26,9 @@ const SubmitButton: FC<Props> = ({ status, submit }) => {
 
 export default SubmitButton
 
-export type TProps = {
+export type StyleProps = {
   status: string
+  size: string
 }
 
 const getLabelName = (status: string): string => {
@@ -39,8 +44,9 @@ const getLabelName = (status: string): string => {
   }
 }
 
-const Button = styled.div`
+const Button = styled.button`
   cursor: pointer;
+  display: block;
   margin-top: 20px;
   height: 50px;
   line-height: 50px;
@@ -49,11 +55,29 @@ const Button = styled.div`
   text-align: center;
   color: #fff;
   border-radius: 10px;
-  ${({ status }: TProps) => getNavBgColor(status)};
+  ${({ status, size }: StyleProps) => getStyle(status, size)}
   &:hover {
     opacity: 0.7;
   }
 `
+
+const getStyle = (status: string, size: string): string => {
+  const styleSize = getButtonSize(size)
+  const styleStatus = getNavBgColor(status)
+
+  return styleSize + styleStatus
+}
+
+const getButtonSize = (size: string): string => {
+  switch (size) {
+    case 'sm':
+      return 'width: 30%; margin-right: auto; margin-left: auto;'
+    case 'md':
+      return 'width: 50%; margin-right: auto; margin-left: auto;'
+    default:
+      return 'width: 100%;'
+  }
+}
 
 const getNavBgColor = (status: string): string => {
   switch (status) {
@@ -64,6 +88,6 @@ const getNavBgColor = (status: string): string => {
     case LinkStatus.SIGNUP:
       return `background-color: #ef70f4; border: 1px solid #ef70f4;`
     default:
-      return ''
+      return `background-color: #BD9DF0; border: 1px solid #BD9DF0;`
   }
 }

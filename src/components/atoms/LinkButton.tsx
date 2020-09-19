@@ -13,7 +13,7 @@ const LinkButton: FC<{ status: string }> = ({ status }) => {
 
 export default LinkButton
 
-export type TProps = {
+export type StyleProps = {
   status: string
 }
 
@@ -43,9 +43,10 @@ const getUrl = (status: string): string => {
   }
 }
 
-const Button = styled.div`
+const Button = styled.button`
   cursor: pointer;
   margin-top: 20px;
+  width: 100%;
   height: 50px;
   line-height: 50px;
   font-size: 1.25em;
@@ -53,7 +54,7 @@ const Button = styled.div`
   text-align: center;
   color: #fff;
   border-radius: 10px;
-  ${({ status }: TProps) => getNavBgColor(status)};
+  ${({ status }: StyleProps) => getNavBgColor(status)};
   &:hover {
     opacity: 0.7;
   }
@@ -68,6 +69,6 @@ const getNavBgColor = (status: string): string => {
     case LinkStatus.SIGNUP:
       return `background-color: #ef70f4; border: 1px solid #ef70f4;`
     default:
-      return ''
+      return `background-color: #BD9DF0; border: 1px solid #BD9DF0;`
   }
 }
