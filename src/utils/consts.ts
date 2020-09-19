@@ -52,4 +52,5 @@ export enum LinkStatus {
   LOGIN = 'login',
   PARTNER_LOGIN = 'partner',
   LOGOUT = 'logout',
+  SUBMIT = 'submit',
 }

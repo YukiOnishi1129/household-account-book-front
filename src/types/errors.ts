@@ -15,3 +15,7 @@ export interface SinupValidError {
   password: string
   confirmPassword: string
 }
+
+export interface RemindValidError {
+  value: string
+}

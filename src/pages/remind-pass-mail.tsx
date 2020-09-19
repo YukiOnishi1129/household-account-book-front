@@ -1,9 +1,9 @@
 import React, { FC } from 'react'
 import { ProtectRoute } from '@/contexts/auth'
-import SignTemplate from '@/components//templates/SignupTemplate'
+import RemindPassMailTemplate from '@/components//templates/RemindPassMailTemplate'
 
 const RemindPassMail: FC = () => {
-  return <SignTemplate />
+  return <RemindPassMailTemplate />
 }
 
 export default ProtectRoute(RemindPassMail)
