@@ -6,6 +6,7 @@ export type Props = {
   type: string
   comment: string
   value: string
+  length?: number
   errMsg: string
   changeValue: EventType['onChange']
 }
@@ -14,37 +15,25 @@ const InputForm: FC<Props> = ({
   type,
   comment,
   value,
+  length,
   errMsg,
   changeValue,
 }) => {
-  const passFlg = type === 'password'
+  const autoComp = type === 'password' ? 'off' : 'on'
+  const maxLen = length ? length : 255
   return (
     <>
-      {passFlg ? (
-        <Input
-          type={type}
-          placeholder={comment}
-          value={value}
-          error={errMsg !== ''}
-          minLength={8}
-          maxLength={20}
-          autoComplete="off"
-          onChange={(event) => {
-            changeValue(event)
-          }}
-        />
-      ) : (
-        <Input
-          type={type}
-          placeholder={comment}
-          value={value}
-          error={errMsg !== ''}
-          maxLength={255}
-          onChange={(event) => {
-            changeValue(event)
-          }}
-        />
-      )}
+      <Input
+        type={type}
+        placeholder={comment}
+        value={value}
+        error={errMsg !== ''}
+        maxLength={maxLen}
+        autoComplete={autoComp}
+        onChange={(event) => {
+          changeValue(event)
+        }}
+      />
       {errMsg !== '' && <ValidErrorMsg>{errMsg}</ValidErrorMsg>}
     </>
   )

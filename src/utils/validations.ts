@@ -43,7 +43,7 @@ export const ValueLengthValidation = (
 }
 
 /**
- * メールアドレスのバリデーション
+ * メールアドレス形式チェック
  * @param email
  */
 export const EmailValidation = (email: string): string => {
@@ -53,8 +53,25 @@ export const EmailValidation = (email: string): string => {
   return ''
 }
 
+/**
+ * 半角英数字チェック
+ * @param value
+ */
 export const AlphanumericValidation = (value: string): string => {
   const regex = /^[A-Za-z0-9]*$/
   if (!regex.test(value)) return '半角英数字にて入力してください。'
+  return ''
+}
+
+/**
+ * パスワード一致チェック
+ * @param password
+ * @param confirmPasseword
+ */
+export const MatchPasswordValidation = (
+  password: string,
+  confirmPasseword: string
+): string => {
+  if (password !== confirmPasseword) return 'パスワード(再入力)と一致しません。'
   return ''
 }

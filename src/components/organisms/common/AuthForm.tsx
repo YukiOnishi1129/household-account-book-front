@@ -37,6 +37,6 @@ const ImageArea = styled.div`
 `
 const FormArea = styled.div`
   min-height: 400px;
-  border-radius: 10px;
+  border-radius: 20px;
   background: #faf4f9;
 `
