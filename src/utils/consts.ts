@@ -6,8 +6,8 @@ export enum BeforeLoginPage {
   LOGIN = '/login',
   SIGNUP = '/signup',
   PATNER_LOGIN = '/partner-login',
-  REMAIND_PASS_MAIL = '/remaind-mail',
-  REMAIND_PASS_KEY = '/remaind-key',
+  REMIND_PASS_MAIL = '/remind-pass-mail',
+  REMIND_PASS_KEY = '/remind-pass-key',
 }
 
 /**
@@ -39,8 +39,8 @@ export enum BeforeLoginAPI {
   REGISTER_API = '/register',
   PATNER_LOGIN_API = '/partner-login',
   TRY_LOGIN_API = '/try-login',
-  REMAIND_PASS_MAIL_API = '/remaind-pass-mail',
-  REMAIND_PASS_KEY_API = '/remaind-pass-key',
+  REMIND_PASS_MAIL_API = '/remind-pass-mail',
+  REMIND_PASS_KEY_API = '/remind-pass-key',
 }
 
 /**

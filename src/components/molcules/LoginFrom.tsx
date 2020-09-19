@@ -53,7 +53,7 @@ const LoginForm: FC<Props> = ({
         }}
       />
       <NavLink status={status}>
-        <Link href={BeforeLoginPage.REMAIND_PASS_MAIL}>
+        <Link href={BeforeLoginPage.REMIND_PASS_MAIL}>
           パスワードをお忘れの方はこちら
         </Link>
       </NavLink>

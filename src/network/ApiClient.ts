@@ -49,8 +49,8 @@ globalAxios.interceptors.response.use(
         case BeforeLoginAPI.REGISTER_API:
         case BeforeLoginAPI.PATNER_LOGIN_API:
         case BeforeLoginAPI.TRY_LOGIN_API:
-        case BeforeLoginAPI.REMAIND_PASS_MAIL_API:
-        case BeforeLoginAPI.REMAIND_PASS_KEY_API:
+        case BeforeLoginAPI.REMIND_PASS_MAIL_API:
+        case BeforeLoginAPI.REMIND_PASS_KEY_API:
           break
         default:
           // 認証必須のAPIにて認証エラーの場合、ログイン画面リダイレクト
