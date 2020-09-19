@@ -35,11 +35,8 @@ const LoginForm: FC<Props> = ({
           return changeEmail(event)
         }}
         value={email}
-        validError={loginError.email !== ''}
+        errMsg={loginError.email}
       />
-      {loginError.email !== '' && (
-        <ValidErrorMsg>{loginError.email}</ValidErrorMsg>
-      )}
       <InputForm
         type="password"
         comment="パスワード"
@@ -47,11 +44,8 @@ const LoginForm: FC<Props> = ({
           changePassword(event)
         }}
         value={password}
-        validError={loginError.password !== ''}
+        errMsg={loginError.password}
       />
-      {loginError.password !== '' && (
-        <ValidErrorMsg>{loginError.password}</ValidErrorMsg>
-      )}
       <SubmitButton
         status={status}
         submit={() => {
@@ -90,11 +84,6 @@ const NavLink = styled.div`
       opacity: 0.7;
     }
   }
-`
-
-const ValidErrorMsg = styled.p`
-  padding-top: 5px;
-  color: #ea352d;
 `
 
 const getNavBgColor = (status: string): string => {
