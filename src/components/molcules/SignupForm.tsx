@@ -41,6 +41,7 @@ const SignupForm: FC<Props> = ({
           return changeName(event)
         }}
         value={name}
+        length={15}
         errMsg={signupError.name}
       />
       <InputForm
@@ -68,7 +69,7 @@ const SignupForm: FC<Props> = ({
           changeConfirmPassword(event)
         }}
         value={confirmPassword}
-        errMsg={signupError.password}
+        errMsg={signupError.confirmPassword}
       />
       <SubmitButton
         status={status}

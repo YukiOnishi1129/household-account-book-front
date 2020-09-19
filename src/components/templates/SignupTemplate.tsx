@@ -1,7 +1,6 @@
 import React, { FC, useState } from 'react'
 import AuthForm from '@/components/organisms/common/AuthForm'
 import FormTitle from '@/components/atoms/FormTitle'
-import LinkButtonField from '@/components/molcules/LinkButtonField'
 import SignupForm from '@/components/molcules/SignupForm'
 import useAuth from '@/contexts/auth'
 import { LinkStatus } from '@/utils/consts'
@@ -14,6 +13,7 @@ import {
   MaxLengthValidation,
   AlphanumericValidation,
   ValueLengthValidation,
+  MatchPasswordValidation,
 } from '@/utils/validations'
 
 const SignupTemplate: FC = () => {
@@ -60,7 +60,7 @@ const SignupTemplate: FC = () => {
   }
 
   const handleSubmitSignup = async () => {
-    if (false) {
+    if (isValid(name, email, password, confirmPassword, setSignupError)) {
       const requestParam: RequestRegister = {
         name: name,
         email: email,
@@ -90,3 +90,49 @@ const SignupTemplate: FC = () => {
 }
 
 export default SignupTemplate
+
+/**
+ * 会員登録バリデーション
+ * @param name
+ * @param email
+ * @param password
+ * @param confirmPassword
+ * @param setSignupError
+ */
+const isValid = (
+  name: string,
+  email: string,
+  password: string,
+  confirmPassword: string,
+  setSignupError: React.Dispatch<React.SetStateAction<SinupValidError>>
+): boolean => {
+  // バリデーションエラーを初期化
+  setSignupError({ name: '', email: '', password: '', confirmPassword: '' })
+  // バリデーションチェック
+  let nameErrMsg = RequiredValidation(name)
+  let emailErrMsg = RequiredValidation(email)
+  let passErrMsg = RequiredValidation(password)
+  let confirmPassErrMsg = RequiredValidation(confirmPassword)
+  if (nameErrMsg === '') nameErrMsg = MaxLengthValidation(name, 15)
+  if (emailErrMsg === '') emailErrMsg = EmailValidation(email)
+  if (emailErrMsg === '') emailErrMsg = MaxLengthValidation(email, 255)
+  if (passErrMsg === '') passErrMsg = AlphanumericValidation(password)
+  if (passErrMsg === '') passErrMsg = ValueLengthValidation(password, 8, 20)
+  if (passErrMsg === '')
+    passErrMsg = MatchPasswordValidation(password, confirmPassword)
+  if (
+    nameErrMsg !== '' ||
+    emailErrMsg !== '' ||
+    passErrMsg !== '' ||
+    confirmPassErrMsg !== ''
+  ) {
+    setSignupError({
+      name: nameErrMsg,
+      email: emailErrMsg,
+      password: passErrMsg,
+      confirmPassword: confirmPassErrMsg,
+    })
+    return false
+  }
+  return true
+}
