@@ -24,6 +24,13 @@ export enum AfterLoginPage {
 }
 
 /**
+ * エラーページのURL
+ */
+export enum ErrorPage {
+  NOT_FOUND = '/404',
+}
+
+/**
  * ログイン前APIのURL
  */
 export enum BeforeLoginAPI {

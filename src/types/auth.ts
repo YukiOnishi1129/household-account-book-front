@@ -12,7 +12,6 @@ import {
  */
 export interface Auth {
   isAuthenticated: boolean
-  loading: boolean
   errMsg: string
   user: User | null
   login: (requestData: RequestLogin) => Promise<void>
