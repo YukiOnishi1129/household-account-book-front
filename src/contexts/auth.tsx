@@ -7,7 +7,7 @@ import React, {
   useContext,
   useEffect,
 } from 'react'
-import Router, { useRouter, NextRouter } from 'next/router'
+import Router, { useRouter } from 'next/router'
 import ApiClient from '@/network/ApiClient'
 import {
   User,
@@ -160,7 +160,7 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
    */
   const remindMail = async (requestData: RequestRemindMail) => {
     const res = await ApiClient.user.remindEmail(requestData)
-    if (res.status === 201) router.push('/remaind-key')
+    if (res.status === 204) router.push('/remaind-key')
   }
 
   /**
@@ -245,7 +245,7 @@ export default useAuth
 //       case BeforeLoginPage.LOGIN:
 //       case BeforeLoginPage.SIGNUP:
 //       case BeforeLoginPage.PATNER_LOGIN:
-//       case BeforeLoginPage.REMAIND_PASS_MAIL:
+//       case BeforeLoginPage.REMIND_PASS_MAIL:
 //       case BeforeLoginPage.REMAIND_PASS_KEY:
 //         router.push(AfterLoginPage.DASH_BOARD + CurrentDate())
 //         break
@@ -258,7 +258,7 @@ export default useAuth
 //       case BeforeLoginPage.LOGIN:
 //       case BeforeLoginPage.SIGNUP:
 //       case BeforeLoginPage.PATNER_LOGIN:
-//       case BeforeLoginPage.REMAIND_PASS_MAIL:
+//       case BeforeLoginPage.REMIND_PASS_MAIL:
 //       case BeforeLoginPage.REMAIND_PASS_KEY:
 //         break
 //       default:
@@ -287,8 +287,8 @@ export const ProtectRoute = (Component: FC) => {
       case BeforeLoginPage.LOGIN:
       case BeforeLoginPage.SIGNUP:
       case BeforeLoginPage.PATNER_LOGIN:
-      case BeforeLoginPage.REMAIND_PASS_MAIL:
-      case BeforeLoginPage.REMAIND_PASS_KEY:
+      case BeforeLoginPage.REMIND_PASS_MAIL:
+      case BeforeLoginPage.REMIND_PASS_KEY:
         isLogined = false
         break
       default:

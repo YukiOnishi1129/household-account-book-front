@@ -10,8 +10,8 @@ export const isShowHeader = (router: NextRouter): boolean => {
     case BeforeLoginPage.LOGIN:
     case BeforeLoginPage.SIGNUP:
     case BeforeLoginPage.PATNER_LOGIN:
-    case BeforeLoginPage.REMAIND_PASS_MAIL:
-    case BeforeLoginPage.REMAIND_PASS_KEY:
+    case BeforeLoginPage.REMIND_PASS_MAIL:
+    case BeforeLoginPage.REMIND_PASS_KEY:
     case ErrorPage.NOT_FOUND:
       return true
     default:
