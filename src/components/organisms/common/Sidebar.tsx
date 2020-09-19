@@ -41,18 +41,13 @@ const SidebarArea = styled.div`
 `
 
 const Nav = styled.ul`
-  /* margin: 20px auto; */
-  /* width: 65%; */
   min-height: calc(100vh - 180px);
 `
 const Navlink = styled.li`
   cursor: pointer;
-  padding: 30px;
-  /* padding-top: 30px;
-  padding-bottom: 30px; */
+  padding: 40px;
   background: #bd9df0;
   color: #fff;
-  text-decoration: none;
   font-size: 1.25rem;
   font-weight: bold;
   &:hover {
