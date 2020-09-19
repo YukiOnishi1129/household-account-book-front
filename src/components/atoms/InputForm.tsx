@@ -6,10 +6,17 @@ export type Props = {
   type: string
   comment: string
   value: string
+  validError: boolean
   changeValue: EventType['onChange']
 }
 
-const InputForm: FC<Props> = ({ type, comment, value, changeValue }) => {
+const InputForm: FC<Props> = ({
+  type,
+  comment,
+  value,
+  validError,
+  changeValue,
+}) => {
   const passFlg = type === 'password'
   return (
     <>
@@ -18,6 +25,9 @@ const InputForm: FC<Props> = ({ type, comment, value, changeValue }) => {
           type={type}
           placeholder={comment}
           value={value}
+          error={validError}
+          minLength={8}
+          maxLength={20}
           autoComplete="off"
           onChange={(event) => {
             changeValue(event)
@@ -28,6 +38,8 @@ const InputForm: FC<Props> = ({ type, comment, value, changeValue }) => {
           type={type}
           placeholder={comment}
           value={value}
+          error={validError}
+          maxLength={255}
           onChange={(event) => {
             changeValue(event)
           }}
@@ -39,6 +51,10 @@ const InputForm: FC<Props> = ({ type, comment, value, changeValue }) => {
 
 export default InputForm
 
+export type TProps = {
+  error: boolean
+}
+
 const Input = styled.input`
   /* display: block; */
   padding: 15px 15px;
@@ -46,7 +62,8 @@ const Input = styled.input`
   /* height: 40px; */
   font-size: 1rem;
   font-family: '筑紫A丸ゴシック', sans-serif;
-  border: none;
+  border: ${({ error }: TProps) => (error ? '1px solid #ea352d;' : 'none;')};
   border-radius: 5px;
   box-sizing: border-box;
+  /* border: 1px solid #ea352d; */
 `

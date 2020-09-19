@@ -4,12 +4,14 @@ import styled from 'styled-components'
 import InputForm from '@/components/atoms/InputForm'
 import SubmitButton from '@/components/atoms/SubmitButton'
 import { LinkStatus, BeforeLoginPage } from '@/utils/consts'
+import { LoginValidError } from '@/types/errors'
 import { EventType } from '@/types/events'
 
 export type Props = {
   status: string
   email: string
   password: string
+  loginError: LoginValidError
   changeEmail: EventType['onChange']
   changePassword: EventType['onChange']
   submit: VoidFunction
@@ -19,6 +21,7 @@ const LoginForm: FC<Props> = ({
   status,
   email,
   password,
+  loginError,
   changeEmail,
   changePassword,
   submit,
@@ -32,7 +35,11 @@ const LoginForm: FC<Props> = ({
           return changeEmail(event)
         }}
         value={email}
+        validError={loginError.email !== ''}
       />
+      {loginError.email !== '' && (
+        <ValidErrorMsg>{loginError.email}</ValidErrorMsg>
+      )}
       <InputForm
         type="password"
         comment="パスワード"
@@ -40,7 +47,11 @@ const LoginForm: FC<Props> = ({
           changePassword(event)
         }}
         value={password}
+        validError={loginError.password !== ''}
       />
+      {loginError.password !== '' && (
+        <ValidErrorMsg>{loginError.password}</ValidErrorMsg>
+      )}
       <SubmitButton
         status={status}
         submit={() => {
@@ -65,8 +76,8 @@ export type TProps = {
 const Form = styled.form`
   padding: 30px 60px;
   border-bottom: 1px solid #dddbdb;
-  input[type='email'] {
-    margin-bottom: 30px;
+  input[type='password'] {
+    margin-top: 20px;
   }
 `
 
@@ -79,6 +90,11 @@ const NavLink = styled.div`
       opacity: 0.7;
     }
   }
+`
+
+const ValidErrorMsg = styled.p`
+  padding-top: 5px;
+  color: #ea352d;
 `
 
 const getNavBgColor = (status: string): string => {
