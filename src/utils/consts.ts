@@ -53,4 +53,5 @@ export enum LinkStatus {
   PARTNER_LOGIN = 'partner',
   LOGOUT = 'logout',
   SUBMIT = 'submit',
+  CHANGE = 'change',
 }
