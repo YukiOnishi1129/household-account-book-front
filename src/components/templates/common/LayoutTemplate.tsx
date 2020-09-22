@@ -2,9 +2,9 @@ import React, { FC, ReactNode } from 'react'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
 import useAuth from '@/contexts/auth'
-import Header from '@/components/organisms/common/Header'
-import Sidebar from '@/components/organisms/common/Sidebar'
-import Footer from '@/components/organisms/common/Footer'
+import Header from '@/components/layouts/Header'
+import Sidebar from '@/components/layouts/Sidebar'
+import Footer from '@/components/layouts/Footer'
 import { isShowHeader } from '@/utils/pages'
 
 const LayoutTemplate: FC<{ children: ReactNode }> = ({ children }) => {
