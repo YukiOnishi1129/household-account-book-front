@@ -13,16 +13,23 @@ export const PartnerProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [partners, setPartners] = useState(initPartners)
 
   useEffect(() => {
-    getPartners()
+    let unmounted = false
+    getPartners(unmounted)
+
+    const cleanup = () => {
+      unmounted = true
+    }
+    return cleanup
   }, [])
 
   /**
    * パートナー一覧取得
    */
-  const getPartners = async () => {
+  const getPartners = async (unmounted: boolean) => {
     try {
       const res = await ApiClient.partner.getPartners()
-      setPartners(res.data)
+      // アンマウントされていなければ、stateを更新
+      if (!unmounted) setPartners(res.data)
     } catch (error) {}
   }
 

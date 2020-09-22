@@ -1,7 +1,8 @@
 import React, { FC, useState } from 'react'
 import styled from 'styled-components'
 import { PartnerProvider } from '@/contexts/partner'
-import ContentsForm from '@/components/organisms/common/ContentsForm'
+import AddPartnerForm from '@/components/organisms/partner/AddPartnerForm'
+import ShowPartnerList from '@/components/organisms/partner/ShowPartnerList'
 
 const PartnerTemplate: FC = () => {
   return (
@@ -12,14 +13,10 @@ const PartnerTemplate: FC = () => {
         </TitleHeader>
         <Contents>
           <ContentsRight>
-            <ContentsForm>
-              <div>aaa</div>
-            </ContentsForm>
+            <AddPartnerForm></AddPartnerForm>
           </ContentsRight>
           <ContentsLeft>
-            <ContentsForm>
-              <div>aaa</div>
-            </ContentsForm>
+            <ShowPartnerList></ShowPartnerList>
           </ContentsLeft>
         </Contents>
       </Mian>
