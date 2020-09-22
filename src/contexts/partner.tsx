@@ -52,7 +52,7 @@ export const PartnerProvider: FC<{ children: ReactNode }> = ({ children }) => {
     try {
       const res = await ApiClient.partner.deletePartner(userId)
       const newPartners = partners.filter((partner) => {
-        partner.id !== userId
+        return partner.id !== userId
       })
       setPartners(newPartners)
     } catch (error) {}
