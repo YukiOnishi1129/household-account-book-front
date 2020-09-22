@@ -1,5 +1,4 @@
 import React, { FC, useState } from 'react'
-import styled from 'styled-components'
 import usePartner from '@/contexts/partner'
 import ContentsForm from '@/components/organisms/common/ContentsForm'
 import FormTitle from '@/components/atoms/FormTitle'
@@ -12,8 +11,6 @@ import {
   RequiredValidation,
   EmailValidation,
   MaxLengthValidation,
-  AlphanumericValidation,
-  ValueLengthValidation,
 } from '@/utils/validations'
 
 const AddPartnerForm: FC = () => {
@@ -50,10 +47,12 @@ const AddPartnerForm: FC = () => {
         email: '',
       }
       await addPartner(requestData)
+      // 入力項目初期化
       setName('')
       setEmail('')
     }
   }
+
   return (
     <ContentsForm>
       <FormTitle title="共有パートナー登録" space="sm" />
