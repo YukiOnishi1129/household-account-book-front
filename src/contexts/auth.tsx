@@ -15,7 +15,7 @@ import {
   RequestRegister,
   RequestRemindMail,
   RequestRemindKey,
-} from '../types/api/'
+} from '@/types/api/'
 import { initialUser } from '@/utils/inits'
 import { AuthContext } from '@/utils/contexts'
 import { BeforeLoginPage, AfterLoginPage } from '@/utils/consts'
@@ -23,7 +23,7 @@ import { CurrentDate } from '@/utils/date'
 import LayoutTemplate from '@/components/templates/common/LayoutTemplate'
 
 /**
- * Authプロバイダー
+ * AuthProvider
  * @param param0
  */
 export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {

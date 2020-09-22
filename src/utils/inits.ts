@@ -1,5 +1,8 @@
-import { User } from '@/types/api/'
+import { User, Partner } from '@/types/api/'
 
+/**
+ * Userステートの初期値
+ */
 export const initialUser: User = {
   id: 0,
   name: '',
@@ -9,3 +12,14 @@ export const initialUser: User = {
   login_flg: false,
   input_flg: false,
 }
+
+/**
+ * Partnerステートの初期値
+ */
+export const initPartners: Partner[] = [
+  {
+    id: 0,
+    name: '',
+    email: '',
+  },
+]

@@ -1,26 +1,29 @@
 import React, { FC, useState } from 'react'
 import styled from 'styled-components'
+import { PartnerProvider } from '@/contexts/partner'
 import ContentsForm from '@/components/organisms/common/ContentsForm'
 
 const PartnerTemplate: FC = () => {
   return (
-    <Mian>
-      <TitleHeader>
-        <h2>共有パートナー管理</h2>
-      </TitleHeader>
-      <Contents>
-        <ContentsRight>
-          <ContentsForm>
-            <div>aaa</div>
-          </ContentsForm>
-        </ContentsRight>
-        <ContentsLeft>
-          <ContentsForm>
-            <div>aaa</div>
-          </ContentsForm>
-        </ContentsLeft>
-      </Contents>
-    </Mian>
+    <PartnerProvider>
+      <Mian>
+        <TitleHeader>
+          <h2>共有パートナー管理</h2>
+        </TitleHeader>
+        <Contents>
+          <ContentsRight>
+            <ContentsForm>
+              <div>aaa</div>
+            </ContentsForm>
+          </ContentsRight>
+          <ContentsLeft>
+            <ContentsForm>
+              <div>aaa</div>
+            </ContentsForm>
+          </ContentsLeft>
+        </Contents>
+      </Mian>
+    </PartnerProvider>
   )
 }
 

@@ -5,7 +5,9 @@ import {
   RequestRegister,
   RequestRemindMail,
   RequestRemindKey,
-} from './api/'
+  Partner,
+  RequestPartner,
+} from './api'
 
 /**
  * 認証情報
@@ -23,4 +25,10 @@ export interface Auth {
   remindKey: (requestData: RequestRemindKey) => Promise<void>
   setIsAuthenticated: Dispatch<SetStateAction<boolean>>
   setUser: Dispatch<SetStateAction<User>>
+}
+
+export interface Partners {
+  partners: Partner[]
+  addPartner: (requestData: RequestPartner) => Promise<void>
+  deletePartner: (userId: Partner['id']) => Promise<void>
 }
