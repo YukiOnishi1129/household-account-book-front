@@ -1,10 +1,10 @@
-import React, { FC, useState } from 'react'
-import styled from 'styled-components'
+import React, { FC } from 'react'
 import usePartner from '@/contexts/partner'
 import ContentsForm from '@/components/organisms/common/ContentsForm'
 import ListArea from '@/components/organisms/common/ListArea'
 import PartnerList from '@/components/molcules/partner/PartnerList'
 import FormTitle from '@/components/atoms/FormTitle'
+import Balloon from '@/components/atoms/Balloon'
 
 const ShowPartnerList: FC = () => {
   const { partners, deletePartner } = usePartner()

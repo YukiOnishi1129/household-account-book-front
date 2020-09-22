@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { FC } from 'react'
 import styled from 'styled-components'
 import { PartnerProvider } from '@/contexts/partner'
 import AddPartnerForm from '@/components/organisms/partner/AddPartnerForm'
@@ -7,7 +7,7 @@ import ShowPartnerList from '@/components/organisms/partner/ShowPartnerList'
 const PartnerTemplate: FC = () => {
   return (
     <PartnerProvider>
-      <Mian>
+      <Main>
         <TitleHeader>
           <h2>共有パートナー管理</h2>
         </TitleHeader>
@@ -19,14 +19,14 @@ const PartnerTemplate: FC = () => {
             <ShowPartnerList></ShowPartnerList>
           </ContentsLeft>
         </Contents>
-      </Mian>
+      </Main>
     </PartnerProvider>
   )
 }
 
 export default PartnerTemplate
 
-const Mian = styled.div`
+const Main = styled.div`
   padding: 20px;
   width: 100%;
   min-height: calc(100vh - 140px);
@@ -45,7 +45,7 @@ const Contents = styled.div`
   display: flex;
   justify-content: space-around;
   padding: 20px 40px;
-  min-height: 500px;
+  min-height: 380px;
   box-sizing: border-box;
 `
 
