@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
-import Balloon from '@/components/atoms/Balloon'
+import DeleteIcon from '@/components/atoms/DeleteIcon'
 
 export type Props = {
   id: number
@@ -16,16 +16,14 @@ const PartnerList: FC<Props> = ({ id, name, email, submit }) => {
         <p>{name}</p>
         <p>{email}</p>
       </ListDetail>
-      <DeleteIcon>
-        <img
-          src="/icon/delete_icon.svg"
-          alt=""
-          onClick={() => {
+      <DeleteIconArea>
+        <DeleteIcon
+          id={id}
+          submit={() => {
             submit(id)
           }}
         />
-        <Balloon comment="削除する" />
-      </DeleteIcon>
+      </DeleteIconArea>
     </List>
   )
 }
@@ -55,7 +53,7 @@ const ListDetail = styled.div`
   }
 `
 
-const DeleteIcon = styled.div`
+const DeleteIconArea = styled.div`
   width: 30%;
   padding: 20px 0;
   text-align: center;
@@ -63,10 +61,10 @@ const DeleteIcon = styled.div`
     cursor: pointer;
     width: 40%;
   }
-  img:hover {
+  /* img:hover {
     opacity: 0.7;
   }
   img:hover + p {
     display: block;
-  }
+  } */
 `
