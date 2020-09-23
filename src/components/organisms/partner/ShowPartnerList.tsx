@@ -13,13 +13,15 @@ const ShowPartnerList: FC = () => {
    * @param id
    */
   const handleSubmitDelete = async (id: number) => {
-    await deletePartner(id)
+    if (confirm('パートナーを削除しますか？')) {
+      await deletePartner(id)
+    }
   }
 
   return (
     <ContentsForm>
       <FormTitle title="共有パートナー一覧" space="sm" />
-      {partners[0].id !== 0 && (
+      {partners.length !== 0 && partners[0].id !== 0 && (
         <ListArea>
           {partners.map((partner) => (
             <PartnerList
