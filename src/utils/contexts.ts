@@ -1,6 +1,8 @@
 import { createContext } from 'react'
-import { Auth, Partners } from '@/types/contexts'
+import { AuthType, CategoryType, PartnerType } from '@/types/contexts'
 
-export const AuthContext = createContext({} as Auth)
+export const AuthContext = createContext({} as AuthType)
 
-export const PartnerContext = createContext({} as Partners)
+export const CategoryContext = createContext({} as CategoryType)
+
+export const PartnerContext = createContext({} as PartnerType)

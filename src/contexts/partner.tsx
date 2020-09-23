@@ -2,7 +2,7 @@ import React, { ReactNode, FC, useState, useContext, useEffect } from 'react'
 import { PartnerContext } from '@/utils/contexts'
 import ApiClient from '@/network/ApiClient'
 import useAuth from '@/contexts/auth'
-import { initPartners } from '@/utils/inits'
+import { initialPartners } from '@/utils/inits'
 import { Partner, RequestPartner } from '@/types/api'
 
 /**
@@ -10,7 +10,7 @@ import { Partner, RequestPartner } from '@/types/api'
  * @param param0
  */
 export const PartnerProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  const [partners, setPartners] = useState(initPartners)
+  const [partners, setPartners] = useState(initialPartners)
 
   useEffect(() => {
     let unmounted = false

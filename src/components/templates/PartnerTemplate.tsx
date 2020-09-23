@@ -1,13 +1,14 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
 import { PartnerProvider } from '@/contexts/partner'
+import ContentsMain from '@/components/organisms/common/ContentsMain'
 import AddPartnerForm from '@/components/organisms/partner/AddPartnerForm'
 import ShowPartnerList from '@/components/organisms/partner/ShowPartnerList'
 
 const PartnerTemplate: FC = () => {
   return (
     <PartnerProvider>
-      <Main>
+      <ContentsMain>
         <TitleHeader>
           <h2>共有パートナー管理</h2>
         </TitleHeader>
@@ -19,19 +20,12 @@ const PartnerTemplate: FC = () => {
             <ShowPartnerList></ShowPartnerList>
           </ContentsLeft>
         </Contents>
-      </Main>
+      </ContentsMain>
     </PartnerProvider>
   )
 }
 
 export default PartnerTemplate
-
-const Main = styled.div`
-  padding: 20px;
-  width: 100%;
-  min-height: calc(100vh - 140px);
-  box-sizing: border-box;
-`
 
 const TitleHeader = styled.div`
   height: 80px;

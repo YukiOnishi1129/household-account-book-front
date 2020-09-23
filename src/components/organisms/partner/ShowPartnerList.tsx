@@ -19,7 +19,7 @@ const ShowPartnerList: FC = () => {
   return (
     <ContentsForm>
       <FormTitle title="共有パートナー一覧" space="sm" />
-      {partners.length !== 0 && (
+      {partners[0].id !== 0 && (
         <ListArea>
           {partners.map((partner) => (
             <PartnerList
