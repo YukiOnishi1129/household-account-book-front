@@ -23,6 +23,17 @@ export interface RemindValidError {
   value: string
 }
 
+/**
+ * 共有パートナー登録バリデーションエラー
+ */
+export interface PartnerValidError {
+  name: string
+  email: string
+}
+
+/**
+ * パスワード変更バリデーションエラー
+ */
 export interface ChangePasswordValidError {
   currentPassword: string
   newPassword: string

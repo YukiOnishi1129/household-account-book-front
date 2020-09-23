@@ -54,4 +54,5 @@ export enum LinkStatus {
   LOGOUT = 'logout',
   SUBMIT = 'submit',
   CHANGE = 'change',
+  REGISTER = 'register',
 }
