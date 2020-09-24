@@ -2,6 +2,8 @@ import React, { FC } from 'react'
 import styled from 'styled-components'
 import { CategoryProvider } from '@/contexts/category'
 import ContentsMain from '@/components/organisms/common/ContentsMain'
+import AddCategoryForm from '@/components/organisms/category/AddCategoryForm'
+import ShowCategoryList from '@/components/organisms/category/ShowCategoryList'
 
 const CategoryTemplate: FC = () => {
   return (
@@ -11,6 +13,14 @@ const CategoryTemplate: FC = () => {
           <DetailLinkArea></DetailLinkArea>
           <h2>カテゴリ管理</h2>
         </TitleHeader>
+        <Contents>
+          <ContentsRight>
+            <AddCategoryForm />
+          </ContentsRight>
+          <ContentsLeft>
+            <ShowCategoryList />
+          </ContentsLeft>
+        </Contents>
       </ContentsMain>
     </CategoryProvider>
   )
@@ -29,7 +39,21 @@ const TitleHeader = styled.div`
 `
 
 const DetailLinkArea = styled.div`
-  /* border: 1px solid red; */
   width: 480px;
   height: 80px;
+`
+
+const Contents = styled.div`
+  display: flex;
+  justify-content: space-around;
+  padding: 20px 40px;
+  min-height: 380px;
+  box-sizing: border-box;
+`
+
+const ContentsRight = styled.div`
+  width: 40%;
+`
+const ContentsLeft = styled.div`
+  width: 50%;
 `
