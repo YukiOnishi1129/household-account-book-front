@@ -45,6 +45,10 @@ const getLabelName = (status: string): string => {
       return '変更'
     case LinkStatus.REGISTER:
       return '登録'
+    case LinkStatus.DELETE:
+      return '削除'
+    case LinkStatus.CANCEL:
+      return 'キャンセル'
     default:
       return 'TOP'
   }
@@ -79,7 +83,7 @@ const getButtonSize = (size: string): string => {
     case 'sm':
       return 'width: 30%; margin-right: auto; margin-left: auto;'
     case 'md':
-      return 'width: 50%; margin-right: auto; margin-left: auto;'
+      return 'width: 40%; margin-right: auto; margin-left: auto;'
     default:
       return 'width: 100%;'
   }
