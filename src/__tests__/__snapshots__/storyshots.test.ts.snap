@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots atoms/DeleteIcon Sample Delete Icon 1`] = `
+<img
+  alt="削除アイコン"
+  className="sc-bdnylx cLVJUW"
+  onClick={[Function]}
+  size="sm"
+  src="/icon/delete_icon.svg"
+/>
+`;
+
+exports[`Storyshots atoms/FormTitle Calendar Title 1`] = `
+<div
+  className="sc-gtssRu cIxxNY"
+>
+  <h3>
+    カレンダー
+  </h3>
+</div>
+`;
+
+exports[`Storyshots atoms/FormTitle Graph Title 1`] = `
+<div
+  className="sc-gtssRu cIxxNY"
+>
+  <h3>
+    グラフ
+  </h3>
+</div>
+`;
