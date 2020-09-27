@@ -6,7 +6,7 @@ export type Props = {
   id: number
   name: string
   email: string
-  submit: (id: number) => void
+  submit: (id: number, name: string, email: string) => void
 }
 
 const PartnerList: FC<Props> = ({ id, name, email, submit }) => {
@@ -20,7 +20,7 @@ const PartnerList: FC<Props> = ({ id, name, email, submit }) => {
         <DeleteIcon
           id={id}
           submit={() => {
-            submit(id)
+            submit(id, name, email)
           }}
         />
       </DeleteIconArea>

@@ -1,4 +1,5 @@
 import React from 'react'
+import { ModalProvider } from 'styled-react-modal'
 import App, { AppProps, AppContext } from 'next/app'
 import Head from 'next/head'
 import { AuthProvider } from '@/contexts/auth'
@@ -11,7 +12,9 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         <title>おおまか家計簿</title>
       </Head>
       <AuthProvider>
-        <Component {...pageProps} />
+        <ModalProvider>
+          <Component {...pageProps} />
+        </ModalProvider>
       </AuthProvider>
     </>
   )
