@@ -1,4 +1,4 @@
-import { User, Partner } from '@/types/api/'
+import { User, Category, Partner } from '@/types/api/'
 
 /**
  * Userステートの初期値
@@ -14,9 +14,19 @@ export const initialUser: User = {
 }
 
 /**
+ * Categorysテートの初期値
+ */
+export const initialCategories: Category[] = [
+  {
+    id: 0,
+    category_name: '',
+    color_type: 0,
+  },
+]
+/**
  * Partnerステートの初期値
  */
-export const initPartners: Partner[] = [
+export const initialPartners: Partner[] = [
   {
     id: 0,
     name: '',

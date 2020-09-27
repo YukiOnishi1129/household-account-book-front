@@ -1,33 +1,35 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
-import { PartnerProvider } from '@/contexts/partner'
+import { CategoryProvider } from '@/contexts/category'
 import ContentsMain from '@/components/organisms/common/ContentsMain'
-import AddPartnerForm from '@/components/organisms/partner/AddPartnerForm'
-import ShowPartnerList from '@/components/organisms/partner/ShowPartnerList'
+import AddCategoryForm from '@/components/organisms/category/AddCategoryForm'
+import ShowCategoryList from '@/components/organisms/category/ShowCategoryList'
 
-const PartnerTemplate: FC = () => {
+const CategoryTemplate: FC = () => {
   return (
-    <PartnerProvider>
+    <CategoryProvider>
       <ContentsMain>
         <TitleHeader>
-          <h2>共有パートナー管理</h2>
+          <DetailLinkArea></DetailLinkArea>
+          <h2>カテゴリ管理</h2>
         </TitleHeader>
         <Contents>
           <ContentsRight>
-            <AddPartnerForm></AddPartnerForm>
+            <AddCategoryForm />
           </ContentsRight>
           <ContentsLeft>
-            <ShowPartnerList></ShowPartnerList>
+            <ShowCategoryList />
           </ContentsLeft>
         </Contents>
       </ContentsMain>
-    </PartnerProvider>
+    </CategoryProvider>
   )
 }
 
-export default PartnerTemplate
+export default CategoryTemplate
 
 const TitleHeader = styled.div`
+  display: flex;
   height: 80px;
   line-height: 80px;
   font-size: 1.75rem;
@@ -35,6 +37,12 @@ const TitleHeader = styled.div`
   color: #d163a2;
   text-align: center;
 `
+
+const DetailLinkArea = styled.div`
+  width: 480px;
+  height: 80px;
+`
+
 const Contents = styled.div`
   display: flex;
   justify-content: space-around;
@@ -44,7 +52,7 @@ const Contents = styled.div`
 `
 
 const ContentsRight = styled.div`
-  width: 35%;
+  width: 40%;
 `
 const ContentsLeft = styled.div`
   width: 50%;

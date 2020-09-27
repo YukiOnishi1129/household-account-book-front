@@ -57,14 +57,10 @@ const DeleteIconArea = styled.div`
   width: 30%;
   padding: 20px 0;
   text-align: center;
-  img {
-    cursor: pointer;
-    width: 40%;
-  }
-  /* img:hover {
+  img:hover {
     opacity: 0.7;
   }
-  img:hover + p {
+  /* img:hover + p {
     display: block;
   } */
 `

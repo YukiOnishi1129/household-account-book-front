@@ -5,6 +5,8 @@ import {
   RequestRegister,
   RequestRemindMail,
   RequestRemindKey,
+  Category,
+  RequestCategory,
   Partner,
   RequestPartner,
 } from './api'
@@ -12,7 +14,7 @@ import {
 /**
  * 認証情報
  */
-export interface Auth {
+export interface AuthType {
   isAuthenticated: boolean
   errMsg: string
   user: User | null
@@ -27,7 +29,17 @@ export interface Auth {
   setUser: Dispatch<SetStateAction<User>>
 }
 
-export interface Partners {
+export interface CategoryType {
+  categories: Category[]
+  addCategories: (requestData: RequestCategory) => Promise<void>
+  editCategory: (
+    id: Category['id'],
+    requestData: RequestCategory
+  ) => Promise<void>
+  deleteCategory: (id: Category['id']) => Promise<void>
+}
+
+export interface PartnerType {
   partners: Partner[]
   addPartner: (requestData: RequestPartner) => Promise<void>
   deletePartner: (userId: Partner['id']) => Promise<void>
