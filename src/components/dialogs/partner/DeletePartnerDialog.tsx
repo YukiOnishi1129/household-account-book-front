@@ -1,7 +1,10 @@
 import React, { FC } from 'react'
-import styled from 'styled-components'
 import { LinkStatus } from '@/utils/consts'
 import BaseDialog from '@/components/dialogs/common/BaseDialog'
+import DialogTitle from '@/components/dialogs/common/DialogTitle'
+import DialogFormGroup from '@/components/dialogs/common/DialogFormGroup'
+import DialogFormItem from '@/components/dialogs/common/DialogFormItem'
+import DialogButtonGroup from '@/components/dialogs/common/DialogButtonGroup'
 import SubmitButton from '@/components/atoms/SubmitButton'
 
 export type Props = {
@@ -23,18 +26,16 @@ const DeletePartnerDialog: FC<Props> = ({
 }) => {
   return (
     <BaseDialog isOpen={isOpen} closeDialog={close}>
-      <ModalTitle>パートナーを削除しますか？</ModalTitle>
-      <FormGroup>
-        <FormItem>
-          <ItemName>お名前</ItemName>
-          <ItemValue>{name}</ItemValue>
-        </FormItem>
-        <FormItem>
-          <ItemName>メールアドレス</ItemName>
-          <ItemValue>{email}</ItemValue>
-        </FormItem>
-      </FormGroup>
-      <ButtonGroup>
+      <DialogTitle title="パートナーを削除しますか？" />
+      <DialogFormGroup>
+        <DialogFormItem title="お名前">
+          <p>{name}</p>
+        </DialogFormItem>
+        <DialogFormItem title="メールアドレス">
+          <p>{email}</p>
+        </DialogFormItem>
+      </DialogFormGroup>
+      <DialogButtonGroup>
         <SubmitButton status={LinkStatus.CANCEL} size="md" submit={close}>
           削除
         </SubmitButton>
@@ -47,44 +48,9 @@ const DeletePartnerDialog: FC<Props> = ({
         >
           削除
         </SubmitButton>
-      </ButtonGroup>
+      </DialogButtonGroup>
     </BaseDialog>
   )
 }
 
 export default DeletePartnerDialog
-
-const ModalTitle = styled.h2`
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-align: center;
-  color: #d163a2;
-`
-const FormGroup = styled.div`
-  padding-top: 30px;
-  padding-bottom: 30px;
-  box-sizing: border-box;
-`
-
-const FormItem = styled.div`
-  display: flex;
-
-  &:first-child {
-    padding-top: 10px;
-    padding-bottom: 30px;
-  }
-`
-
-const ItemName = styled.p`
-  width: 180px;
-  font-size: 1.25rem;
-  font-weight: bold;
-`
-
-const ItemValue = styled.p`
-  font-size: 1.25rem;
-`
-
-const ButtonGroup = styled.div`
-  display: flex;
-`
