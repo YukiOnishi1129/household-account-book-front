@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React from 'react'
 import { Story, Meta } from '@storybook/react/types-6-0'
 import FormTitle, { Props as FormTitlProps } from './FormTitle'
 

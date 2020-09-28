@@ -3,7 +3,11 @@ import Link from 'next/link'
 import { LinkStatus, BeforeLoginPage } from '@/utils/consts'
 import styled from 'styled-components'
 
-const LinkButton: FC<{ status: string }> = ({ status }) => {
+export type Props = {
+  status: string
+}
+
+const LinkButton: FC<Props> = ({ status }) => {
   return (
     <Link href={getUrl(status)}>
       <Button status={status}>{getLabelName(status)}</Button>

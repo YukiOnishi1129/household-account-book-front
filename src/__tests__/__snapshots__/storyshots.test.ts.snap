@@ -29,3 +29,159 @@ exports[`Storyshots atoms/FormTitle Graph Title 1`] = `
   </h3>
 </div>
 `;
+
+exports[`Storyshots atoms/InputForm Email Input 1`] = `
+<input
+  autoComplete="on"
+  className="sc-dlnjPT gYldIA"
+  maxLength={255}
+  onChange={[Function]}
+  placeholder="メールアドレスを入力してください。"
+  type="email"
+  value=""
+/>
+`;
+
+exports[`Storyshots atoms/InputForm Password Input 1`] = `
+<input
+  autoComplete="off"
+  className="sc-dlnjPT gYldIA"
+  maxLength={20}
+  onChange={[Function]}
+  placeholder="パスワードを入力してください。"
+  type="password"
+  value=""
+/>
+`;
+
+exports[`Storyshots atoms/InputForm Text Input 1`] = `
+<input
+  autoComplete="on"
+  className="sc-dlnjPT gYldIA"
+  maxLength={255}
+  onChange={[Function]}
+  placeholder="入力してください"
+  type="text"
+  value=""
+/>
+`;
+
+exports[`Storyshots atoms/LinkButton Login Button 1`] = `
+<button
+  className="sc-eCApGN gTbfWe"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+>
+  ログイン
+</button>
+`;
+
+exports[`Storyshots atoms/LinkButton Normal Button 1`] = `
+<button
+  className="sc-eCApGN hzjEEC"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+>
+  TOP
+</button>
+`;
+
+exports[`Storyshots atoms/LinkButton Partner Login Button 1`] = `
+<button
+  className="sc-eCApGN gkWhPW"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+>
+  パートナーログイン
+</button>
+`;
+
+exports[`Storyshots atoms/LinkButton Sign Button 1`] = `
+<button
+  className="sc-eCApGN bqPpy"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+>
+  新規会員登録
+</button>
+`;
+
+exports[`Storyshots atoms/SubmitButton Cancel Button 1`] = `
+<button
+  className="sc-jSFkmK OKMmV"
+  onClick={[Function]}
+  size="md"
+>
+  キャンセル
+</button>
+`;
+
+exports[`Storyshots atoms/SubmitButton Change Button 1`] = `
+<button
+  className="sc-jSFkmK OKMmV"
+  onClick={[Function]}
+  size="md"
+>
+  変更
+</button>
+`;
+
+exports[`Storyshots atoms/SubmitButton Delete Button 1`] = `
+<button
+  className="sc-jSFkmK OKMmV"
+  onClick={[Function]}
+  size="md"
+>
+  削除
+</button>
+`;
+
+exports[`Storyshots atoms/SubmitButton Login Button 1`] = `
+<button
+  className="sc-jSFkmK fsgPZt"
+  onClick={[Function]}
+  size="md"
+>
+  ログイン
+</button>
+`;
+
+exports[`Storyshots atoms/SubmitButton Partner Button 1`] = `
+<button
+  className="sc-jSFkmK didvyV"
+  onClick={[Function]}
+  size="md"
+>
+  パートナーログイン
+</button>
+`;
+
+exports[`Storyshots atoms/SubmitButton Register Button 1`] = `
+<button
+  className="sc-jSFkmK OKMmV"
+  onClick={[Function]}
+  size="md"
+>
+  登録
+</button>
+`;
+
+exports[`Storyshots atoms/SubmitButton Send Button 1`] = `
+<button
+  className="sc-jSFkmK OKMmV"
+  onClick={[Function]}
+  size="md"
+>
+  送信
+</button>
+`;
+
+exports[`Storyshots atoms/SubmitButton Signup Button 1`] = `
+<button
+  className="sc-jSFkmK btfWSV"
+  onClick={[Function]}
+  size="md"
+>
+  新規会員登録
+</button>
+`;
