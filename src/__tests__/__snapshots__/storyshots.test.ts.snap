@@ -185,3 +185,20 @@ exports[`Storyshots atoms/SubmitButton Signup Button 1`] = `
   新規会員登録
 </button>
 `;
+
+exports[`Storyshots molcules/LinkButtonField Login 1`] = `
+<div
+  className="sc-gKAblj kNZxfG"
+>
+  <p>
+    メインでのご利用の方はこちら
+  </p>
+  <button
+    className="sc-eCApGN gTbfWe"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+  >
+    ログイン
+  </button>
+</div>
+`;
