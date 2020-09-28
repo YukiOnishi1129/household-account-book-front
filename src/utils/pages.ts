@@ -1,12 +1,11 @@
-import { NextRouter } from 'next/router'
 import { BeforeLoginPage, ErrorPage } from '@/utils/consts'
 
 /**
  * ログイン前のformページの判別関数
  * @param router
  */
-export const isShowHeader = (router: NextRouter): boolean => {
-  switch (router.pathname) {
+export const isShowHeader = (pathname: string): boolean => {
+  switch (pathname) {
     case BeforeLoginPage.LOGIN:
     case BeforeLoginPage.SIGNUP:
     case BeforeLoginPage.PATNER_LOGIN:

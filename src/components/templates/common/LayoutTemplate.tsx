@@ -10,7 +10,7 @@ import { isShowHeader } from '@/utils/pages'
 const LayoutTemplate: FC<{ children: ReactNode }> = ({ children }) => {
   const { isAuthenticated } = useAuth()
   const router = useRouter()
-  const isHeader = isShowHeader(router)
+  const isHeader = isShowHeader(router.pathname)
 
   return (
     <Wrapper>
