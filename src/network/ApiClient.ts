@@ -13,23 +13,33 @@ import globalAxios, { AxiosResponse } from 'axios'
 import Router from 'next/router'
 import { BeforeLoginPage, BeforeLoginAPI } from '@/utils/consts'
 
-const apiBasePath = process.env.NEXT_PUBLIC_API_BASE_URL
-
 const config: Configuration = {
   baseOptions: {
     withCredentials: true,
   },
 }
 
+const resolveApiBasePath = () => {
+  const env = process.env.NEXT_PUBLIC_ENVIRONMENT
+    ? process.env.NEXT_PUBLIC_ENVIRONMENT
+    : ''
+  switch (env) {
+    case 'swagger':
+      return process.env.NEXT_PUBLIC_OPEN_API_BASE_URL
+    default:
+      return process.env.NEXT_PUBLIC_API_BASE_URL
+  }
+}
+
 export default {
-  annualChange: AnnualChangeApiFactory(config, apiBasePath),
-  calender: CalendarApiFactory(config, apiBasePath),
-  category: CategoryApiFactory(config, apiBasePath),
-  csrfCookie: CsrfCookieApiFactory(config, apiBasePath),
-  detail: DetailApiFactory(config, apiBasePath),
-  monthRate: MonthRateApiFactory(config, apiBasePath),
-  partner: PartnerApiFactory(config, apiBasePath),
-  user: UsersApiFactory(config, apiBasePath),
+  annualChange: AnnualChangeApiFactory(config, resolveApiBasePath()),
+  calender: CalendarApiFactory(config, resolveApiBasePath()),
+  category: CategoryApiFactory(config, resolveApiBasePath()),
+  csrfCookie: CsrfCookieApiFactory(config, resolveApiBasePath()),
+  detail: DetailApiFactory(config, resolveApiBasePath()),
+  monthRate: MonthRateApiFactory(config, resolveApiBasePath()),
+  partner: PartnerApiFactory(config, resolveApiBasePath()),
+  user: UsersApiFactory(config, resolveApiBasePath()),
 }
 
 globalAxios.interceptors.response.use(
