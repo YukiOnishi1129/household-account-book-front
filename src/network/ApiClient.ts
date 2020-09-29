@@ -15,7 +15,7 @@ import { BeforeLoginPage, BeforeLoginAPI } from '@/utils/consts'
 
 const config: Configuration = {
   baseOptions: {
-    baseURL: 'http://localhost:4010',
+    baseURL: process.env.API_BASE_URL,
     withCredentials: true,
   },
 }
