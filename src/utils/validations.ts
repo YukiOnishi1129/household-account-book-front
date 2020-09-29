@@ -3,7 +3,7 @@
  * @param value
  */
 export const RequiredValidation = (value: string): string => {
-  if (value === '') return '入力してください。'
+  if (value.trim() === '') return '入力してください。'
   return ''
 }
 
@@ -54,12 +54,12 @@ export const EmailValidation = (email: string): string => {
 }
 
 /**
- * 半角英数字チェック
+ * 英数字チェック
  * @param value
  */
 export const AlphanumericValidation = (value: string): string => {
   const regex = /^[A-Za-z0-9]*$/
-  if (!regex.test(value)) return '半角英数字にて入力してください。'
+  if (!regex.test(value)) return '英数字にて入力してください。'
   return ''
 }
 

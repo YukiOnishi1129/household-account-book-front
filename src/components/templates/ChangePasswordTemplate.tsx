@@ -129,7 +129,7 @@ const isValid = (
   let curPassErrMsg = RequiredValidation(currentPassword)
   let newPassErrMsg = RequiredValidation(newPassword)
   const newConfirmPassErrMsg = RequiredValidation(confirmNewPassword)
-  //   半角英数チェック
+  //   英数チェック
   if (curPassErrMsg === '')
     curPassErrMsg = AlphanumericValidation(currentPassword)
   if (newPassErrMsg === '') newPassErrMsg = AlphanumericValidation(newPassword)
