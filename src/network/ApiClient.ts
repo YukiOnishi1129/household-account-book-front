@@ -13,22 +13,23 @@ import globalAxios, { AxiosResponse } from 'axios'
 import Router from 'next/router'
 import { BeforeLoginPage, BeforeLoginAPI } from '@/utils/consts'
 
+const apiBasePath = process.env.NEXT_PUBLIC_API_BASE_URL
+
 const config: Configuration = {
   baseOptions: {
-    baseURL: process.env.API_BASE_URL,
     withCredentials: true,
   },
 }
 
 export default {
-  annualChange: AnnualChangeApiFactory(config),
-  calender: CalendarApiFactory(config),
-  category: CategoryApiFactory(config),
-  csrfCookie: CsrfCookieApiFactory(config),
-  detail: DetailApiFactory(config),
-  monthRate: MonthRateApiFactory(config),
-  partner: PartnerApiFactory(config),
-  user: UsersApiFactory(config),
+  annualChange: AnnualChangeApiFactory(config, apiBasePath),
+  calender: CalendarApiFactory(config, apiBasePath),
+  category: CategoryApiFactory(config, apiBasePath),
+  csrfCookie: CsrfCookieApiFactory(config, apiBasePath),
+  detail: DetailApiFactory(config, apiBasePath),
+  monthRate: MonthRateApiFactory(config, apiBasePath),
+  partner: PartnerApiFactory(config, apiBasePath),
+  user: UsersApiFactory(config, apiBasePath),
 }
 
 globalAxios.interceptors.response.use(
