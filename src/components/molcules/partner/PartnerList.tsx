@@ -19,6 +19,7 @@ const PartnerList: FC<Props> = ({ id, name, email, submit }) => {
       <DeleteIconArea>
         <DeleteIcon
           id={id}
+          size={50}
           submit={() => {
             submit(id, name, email)
           }}
@@ -55,7 +56,7 @@ const ListDetail = styled.div`
 
 const DeleteIconArea = styled.div`
   width: 30%;
-  padding: 20px 0;
+  padding: 25px 0;
   text-align: center;
   img:hover {
     opacity: 0.7;

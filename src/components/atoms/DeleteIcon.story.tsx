@@ -11,4 +11,4 @@ export default {
 const Template: Story<DeleteIconProps> = (args) => <DeleteIcon {...args} />
 
 export const SampleDeleteIcon = Template.bind({})
-SampleDeleteIcon.args = { id: 1, size: 'sm' }
+SampleDeleteIcon.args = { id: 1, size: 50 }
