@@ -14,6 +14,7 @@
     "lint": "eslint src --max-warnings=0 --ext .ts,.tsx --fix --ignore-path .eslintignore .",
     "lint:css": "stylelint './src/**/*.tsx'",
     "test": "jest",
+    "coverage": "jest --coverage",
     "storyshots": "jest --config ./jest.storyshots.config.js",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
