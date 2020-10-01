@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 import Link from 'next/link'
 import { LinkStatus, BeforeLoginPage } from '@/utils/consts'
+import { getLabelName } from '@/utils/conversion'
 import styled from 'styled-components'
 
 export type Props = {
@@ -19,19 +20,6 @@ export default LinkButton
 
 export type StyleProps = {
   status: string
-}
-
-const getLabelName = (status: string): string => {
-  switch (status) {
-    case LinkStatus.LOGIN:
-      return 'ログイン'
-    case LinkStatus.PARTNER_LOGIN:
-      return 'パートナーログイン'
-    case LinkStatus.SIGNUP:
-      return '新規会員登録'
-    default:
-      return 'TOP'
-  }
 }
 
 const getUrl = (status: string): string => {
