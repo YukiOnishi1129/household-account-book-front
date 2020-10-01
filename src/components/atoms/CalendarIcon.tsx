@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
-import DeleteIconSvg from '../../svgs/delete_icon.svg'
+import CalendarIconSvg from '../../svgs/calendar_icon.svg'
 
 export type Props = {
   id: number
@@ -8,7 +8,7 @@ export type Props = {
   submit: (id: number) => void
 }
 
-const DeleteIcon: FC<Props> = ({ id, size, submit }) => {
+const CalendarIcon: FC<Props> = ({ id, size, submit }) => {
   return (
     <Icon
       size={size}
@@ -16,12 +16,12 @@ const DeleteIcon: FC<Props> = ({ id, size, submit }) => {
         submit(id)
       }}
     >
-      <DeleteIconSvg />
+      <CalendarIconSvg />
     </Icon>
   )
 }
 
-export default DeleteIcon
+export default CalendarIcon
 
 export type StyleProps = {
   size: number
