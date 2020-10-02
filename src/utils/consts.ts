@@ -58,3 +58,17 @@ export enum LinkStatus {
   DELETE = 'delete',
   CANCEL = 'cancel',
 }
+
+/**
+ * カテゴリーカラー
+ */
+export enum CategoryColor {
+  FIRST = '#f50b26;',
+  SECOND = '#0F21FC;',
+  THIRD = '#1AC304;',
+  FORTH = '#FCFC0F;',
+  FIFTH = '#FD08BB;',
+  SIXTH = '#FCA10F;',
+  SEVENTH = '#8A03FD;',
+  EIGHTH = '#0FBCFC;',
+}
