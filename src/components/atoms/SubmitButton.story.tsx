@@ -4,7 +4,7 @@ import { LinkStatus } from '@/utils/consts'
 import SubmitButton, { Props as SubmitButtonProps } from './SubmitButton'
 
 export default {
-  title: 'atoms/SubmitButton',
+  title: 'atoms/Button-Submit',
   compomemts: SubmitButton,
   argTypes: {
     status: {
@@ -18,43 +18,43 @@ export default {
 
 const Template: Story<SubmitButtonProps> = (args) => <SubmitButton {...args} />
 
-export const LoginButton = Template.bind({})
-LoginButton.args = {
+export const Login = Template.bind({})
+Login.args = {
   status: LinkStatus.LOGIN,
   size: 'md',
 }
-export const SignupButton = Template.bind({})
-SignupButton.args = {
+export const Signup = Template.bind({})
+Signup.args = {
   status: LinkStatus.SIGNUP,
   size: 'md',
 }
-export const PartnerButton = Template.bind({})
-PartnerButton.args = {
+export const Partner = Template.bind({})
+Partner.args = {
   status: LinkStatus.PARTNER_LOGIN,
   size: 'md',
 }
-export const SendButton = Template.bind({})
-SendButton.args = {
+export const Send = Template.bind({})
+Send.args = {
   status: LinkStatus.SUBMIT,
   size: 'md',
 }
-export const ChangeButton = Template.bind({})
-ChangeButton.args = {
+export const Change = Template.bind({})
+Change.args = {
   status: LinkStatus.CHANGE,
   size: 'md',
 }
-export const RegisterButton = Template.bind({})
-RegisterButton.args = {
+export const Register = Template.bind({})
+Register.args = {
   status: LinkStatus.REGISTER,
   size: 'md',
 }
-export const DeleteButton = Template.bind({})
-DeleteButton.args = {
+export const Delete = Template.bind({})
+Delete.args = {
   status: LinkStatus.DELETE,
   size: 'md',
 }
-export const CancelButton = Template.bind({})
-CancelButton.args = {
+export const Cancel = Template.bind({})
+Cancel.args = {
   status: LinkStatus.CANCEL,
   size: 'md',
 }

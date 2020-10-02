@@ -5,7 +5,7 @@ import { AfterLoginPage } from '@/utils/consts'
 import { CurrentDate } from '@/utils/date'
 
 export default {
-  title: 'atoms/BeforeLink',
+  title: 'atoms/Link',
   components: BeforeLink,
 } as Meta
 
