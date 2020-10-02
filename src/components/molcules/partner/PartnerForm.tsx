@@ -1,9 +1,7 @@
 import React, { FC } from 'react'
-import Link from 'next/link'
 import styled from 'styled-components'
 import InputForm from '@/components/atoms/InputForm'
 import SubmitButton from '@/components/atoms/SubmitButton'
-import { LinkStatus, BeforeLoginPage } from '@/utils/consts'
 import { PartnerValidError } from '@/types/errors'
 import { EventType } from '@/types/events'
 
