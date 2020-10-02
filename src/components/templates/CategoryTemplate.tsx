@@ -2,6 +2,7 @@ import React, { FC } from 'react'
 import styled from 'styled-components'
 import { useRouter } from 'next/router'
 import { CategoryProvider } from '@/contexts/category'
+import TitleHeader from '@/components/organisms/common/TitleHeader'
 import ContentsMain from '@/components/organisms/common/ContentsMain'
 import AddCategoryForm from '@/components/organisms/category/AddCategoryForm'
 import ShowCategoryList from '@/components/organisms/category/ShowCategoryList'
@@ -31,16 +32,6 @@ const CategoryTemplate: FC = () => {
 }
 
 export default CategoryTemplate
-
-const TitleHeader = styled.div`
-  position: relative;
-  height: 80px;
-  line-height: 80px;
-  font-size: 1.75rem;
-  font-weight: bold;
-  color: #d163a2;
-  text-align: center;
-`
 
 const Contents = styled.div`
   display: flex;

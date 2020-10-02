@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
 import { PartnerProvider } from '@/contexts/partner'
+import TitleHeader from '@/components/organisms/common/TitleHeader'
 import ContentsMain from '@/components/organisms/common/ContentsMain'
 import AddPartnerForm from '@/components/organisms/partner/AddPartnerForm'
 import ShowPartnerList from '@/components/organisms/partner/ShowPartnerList'
@@ -27,14 +28,6 @@ const PartnerTemplate: FC = () => {
 
 export default PartnerTemplate
 
-const TitleHeader = styled.div`
-  height: 80px;
-  line-height: 80px;
-  font-size: 1.75rem;
-  font-weight: bold;
-  color: #d163a2;
-  text-align: center;
-`
 const Contents = styled.div`
   display: flex;
   justify-content: space-around;
