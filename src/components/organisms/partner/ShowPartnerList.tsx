@@ -13,6 +13,12 @@ const ShowPartnerList: FC = () => {
   const [targetName, setTatgetName] = useState('')
   const [targetMail, setTatgetMail] = useState('')
 
+  /**
+   * ダイアログを開く処理
+   * @param id
+   * @param name
+   * @param email
+   */
   const openModal = (id: number, name: string, email: string): void => {
     setTatgetId(id)
     setTatgetName(name)
@@ -20,6 +26,9 @@ const ShowPartnerList: FC = () => {
     setIsOpen(true)
   }
 
+  /**
+   * ダイアログを閉じる処理
+   */
   const closeModal = (): void => {
     setTatgetId(0)
     setTatgetName('')

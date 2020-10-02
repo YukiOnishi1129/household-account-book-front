@@ -1,8 +1,36 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Storyshots atoms/BeforeLink Category Link 1`] = `
+<div
+  className="sc-bdnylx jTHwZq"
+>
+  <a
+    href="/detail/2020-10-02"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+  >
+    &lt;&lt; 2020年10月02日の金額情報へ戻る
+  </a>
+</div>
+`;
+
+exports[`Storyshots atoms/BeforeLink Detail Link 1`] = `
+<div
+  className="sc-bdnylx jTHwZq"
+>
+  <a
+    href="/calendar/2020-10-02"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+  >
+    &lt;&lt; カレンダーへ戻る
+  </a>
+</div>
+`;
+
 exports[`Storyshots atoms/FormTitle Calendar Title 1`] = `
 <div
-  className="sc-bdnylx eLSIhZ"
+  className="sc-gtssRu cIxxNY"
 >
   <h3>
     カレンダー
@@ -12,7 +40,7 @@ exports[`Storyshots atoms/FormTitle Calendar Title 1`] = `
 
 exports[`Storyshots atoms/FormTitle Graph Title 1`] = `
 <div
-  className="sc-bdnylx eLSIhZ"
+  className="sc-gtssRu cIxxNY"
 >
   <h3>
     グラフ
@@ -23,7 +51,7 @@ exports[`Storyshots atoms/FormTitle Graph Title 1`] = `
 exports[`Storyshots atoms/InputForm Email Input 1`] = `
 <input
   autoComplete="on"
-  className="sc-gtssRu LePTA"
+  className="sc-dlnjPT gYldIA"
   maxLength={255}
   onChange={[Function]}
   placeholder="メールアドレスを入力してください。"
@@ -35,7 +63,7 @@ exports[`Storyshots atoms/InputForm Email Input 1`] = `
 exports[`Storyshots atoms/InputForm Password Input 1`] = `
 <input
   autoComplete="off"
-  className="sc-gtssRu LePTA"
+  className="sc-dlnjPT gYldIA"
   maxLength={20}
   onChange={[Function]}
   placeholder="パスワードを入力してください。"
@@ -47,7 +75,7 @@ exports[`Storyshots atoms/InputForm Password Input 1`] = `
 exports[`Storyshots atoms/InputForm Text Input 1`] = `
 <input
   autoComplete="on"
-  className="sc-gtssRu LePTA"
+  className="sc-dlnjPT gYldIA"
   maxLength={255}
   onChange={[Function]}
   placeholder="入力してください"
@@ -58,7 +86,7 @@ exports[`Storyshots atoms/InputForm Text Input 1`] = `
 
 exports[`Storyshots atoms/LinkButton Login Button 1`] = `
 <button
-  className="sc-hKFyIo iJFlUO"
+  className="sc-eCApGN gTbfWe"
   onClick={[Function]}
   onMouseEnter={[Function]}
 >
@@ -68,7 +96,7 @@ exports[`Storyshots atoms/LinkButton Login Button 1`] = `
 
 exports[`Storyshots atoms/LinkButton Normal Button 1`] = `
 <button
-  className="sc-hKFyIo jGxnWG"
+  className="sc-eCApGN hzjEEC"
   onClick={[Function]}
   onMouseEnter={[Function]}
 >
@@ -78,7 +106,7 @@ exports[`Storyshots atoms/LinkButton Normal Button 1`] = `
 
 exports[`Storyshots atoms/LinkButton Partner Login Button 1`] = `
 <button
-  className="sc-hKFyIo fDYzmq"
+  className="sc-eCApGN gkWhPW"
   onClick={[Function]}
   onMouseEnter={[Function]}
 >
@@ -88,7 +116,7 @@ exports[`Storyshots atoms/LinkButton Partner Login Button 1`] = `
 
 exports[`Storyshots atoms/LinkButton Sign Button 1`] = `
 <button
-  className="sc-hKFyIo gRfmHC"
+  className="sc-eCApGN bqPpy"
   onClick={[Function]}
   onMouseEnter={[Function]}
 >
@@ -98,7 +126,7 @@ exports[`Storyshots atoms/LinkButton Sign Button 1`] = `
 
 exports[`Storyshots atoms/SubmitButton Cancel Button 1`] = `
 <button
-  className="sc-eCApGN fiBKqt"
+  className="sc-jSFkmK OKMmV"
   onClick={[Function]}
   size="md"
 >
@@ -108,7 +136,7 @@ exports[`Storyshots atoms/SubmitButton Cancel Button 1`] = `
 
 exports[`Storyshots atoms/SubmitButton Change Button 1`] = `
 <button
-  className="sc-eCApGN fiBKqt"
+  className="sc-jSFkmK OKMmV"
   onClick={[Function]}
   size="md"
 >
@@ -118,7 +146,7 @@ exports[`Storyshots atoms/SubmitButton Change Button 1`] = `
 
 exports[`Storyshots atoms/SubmitButton Delete Button 1`] = `
 <button
-  className="sc-eCApGN fiBKqt"
+  className="sc-jSFkmK OKMmV"
   onClick={[Function]}
   size="md"
 >
@@ -128,7 +156,7 @@ exports[`Storyshots atoms/SubmitButton Delete Button 1`] = `
 
 exports[`Storyshots atoms/SubmitButton Login Button 1`] = `
 <button
-  className="sc-eCApGN kIJMpN"
+  className="sc-jSFkmK fsgPZt"
   onClick={[Function]}
   size="md"
 >
@@ -138,7 +166,7 @@ exports[`Storyshots atoms/SubmitButton Login Button 1`] = `
 
 exports[`Storyshots atoms/SubmitButton Partner Button 1`] = `
 <button
-  className="sc-eCApGN jcGkWt"
+  className="sc-jSFkmK didvyV"
   onClick={[Function]}
   size="md"
 >
@@ -148,7 +176,7 @@ exports[`Storyshots atoms/SubmitButton Partner Button 1`] = `
 
 exports[`Storyshots atoms/SubmitButton Register Button 1`] = `
 <button
-  className="sc-eCApGN fiBKqt"
+  className="sc-jSFkmK OKMmV"
   onClick={[Function]}
   size="md"
 >
@@ -158,7 +186,7 @@ exports[`Storyshots atoms/SubmitButton Register Button 1`] = `
 
 exports[`Storyshots atoms/SubmitButton Send Button 1`] = `
 <button
-  className="sc-eCApGN fiBKqt"
+  className="sc-jSFkmK OKMmV"
   onClick={[Function]}
   size="md"
 >
@@ -168,7 +196,7 @@ exports[`Storyshots atoms/SubmitButton Send Button 1`] = `
 
 exports[`Storyshots atoms/SubmitButton Signup Button 1`] = `
 <button
-  className="sc-eCApGN fycueJ"
+  className="sc-jSFkmK btfWSV"
   onClick={[Function]}
   size="md"
 >
@@ -178,13 +206,13 @@ exports[`Storyshots atoms/SubmitButton Signup Button 1`] = `
 
 exports[`Storyshots molcules/LinkButtonField Login 1`] = `
 <div
-  className="sc-jSFkmK jmxNPR"
+  className="sc-gKAblj kNZxfG"
 >
   <p>
     メインでのご利用の方はこちら
   </p>
   <button
-    className="sc-hKFyIo iJFlUO"
+    className="sc-eCApGN gTbfWe"
     onClick={[Function]}
     onMouseEnter={[Function]}
   >
