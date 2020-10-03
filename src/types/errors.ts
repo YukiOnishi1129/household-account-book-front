@@ -24,6 +24,13 @@ export interface RemindValidError {
 }
 
 /**
+ * カテゴリー登録・編集バリデーションエラー
+ */
+export interface CategoryValidError {
+  name: string
+  colorType: string
+}
+/**
  * 共有パートナー登録バリデーションエラー
  */
 export interface PartnerValidError {

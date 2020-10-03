@@ -1,17 +1,28 @@
-import React, { FC, useState } from 'react'
+import React, { FC } from 'react'
 import styled from 'styled-components'
+import { EventType } from '@/types/events'
 import { showColor } from '@/utils/color'
 
 export type Props = {
-  colorType: number
-  checked?: boolean
+  value: number
+  currentValue: number
+  changeValue: EventType['onChange']
 }
 
-const ColorRadioButton: FC<Props> = ({ colorType, checked }) => {
+const ColorRadioButton: FC<Props> = ({ value, currentValue, changeValue }) => {
+  const isChecked = currentValue === value
   return (
-    <RadioButton type={colorType}>
-      <input type="radio" name="color" />
-      {checked && <CheckedColor />}
+    <RadioButton type={value}>
+      <input
+        type="radio"
+        name="color"
+        value={value}
+        checked={isChecked}
+        onChange={(event) => {
+          changeValue(event)
+        }}
+      />
+      {isChecked && <CheckedColor />}
     </RadioButton>
   )
 }
