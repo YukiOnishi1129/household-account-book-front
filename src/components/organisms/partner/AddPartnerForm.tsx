@@ -72,8 +72,8 @@ const AddPartnerForm: FC = () => {
 export default AddPartnerForm
 
 /**
- *
- * @param name バリデーション
+ * バリデーション
+ * @param name
  * @param email
  * @param setPatnerError
  */

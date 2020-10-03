@@ -1,29 +1,241 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots atoms/FormTitle Calendar Title 1`] = `
-<div
-  className="sc-bdnylx eLSIhZ"
+exports[`Storyshots atoms/Button-Color-Radio Eighth 1`] = `
+<label
+  className="sc-gtssRu edyPoQ"
+  type={8}
 >
-  <h3>
-    カレンダー
-  </h3>
-</div>
+  <input
+    checked={false}
+    name="color"
+    onChange={[Function]}
+    type="radio"
+    value={8}
+  />
+</label>
 `;
 
-exports[`Storyshots atoms/FormTitle Graph Title 1`] = `
-<div
-  className="sc-bdnylx eLSIhZ"
+exports[`Storyshots atoms/Button-Color-Radio Fifth 1`] = `
+<label
+  className="sc-gtssRu kxorpo"
+  type={5}
 >
-  <h3>
-    グラフ
-  </h3>
-</div>
+  <input
+    checked={false}
+    name="color"
+    onChange={[Function]}
+    type="radio"
+    value={5}
+  />
+</label>
 `;
 
-exports[`Storyshots atoms/InputForm Email Input 1`] = `
+exports[`Storyshots atoms/Button-Color-Radio First 1`] = `
+<div
+  className="sc-hKFyIo hhkMaw"
+  type={1}
+/>
+`;
+
+exports[`Storyshots atoms/Button-Color-Radio Forth 1`] = `
+<label
+  className="sc-gtssRu cjXYuM"
+  type={4}
+>
+  <input
+    checked={false}
+    name="color"
+    onChange={[Function]}
+    type="radio"
+    value={4}
+  />
+</label>
+`;
+
+exports[`Storyshots atoms/Button-Color-Radio Second 1`] = `
+<label
+  className="sc-gtssRu fbpkZu"
+  type={2}
+>
+  <input
+    checked={false}
+    name="color"
+    onChange={[Function]}
+    type="radio"
+    value={2}
+  />
+</label>
+`;
+
+exports[`Storyshots atoms/Button-Color-Radio Seventh 1`] = `
+<label
+  className="sc-gtssRu ffSBdm"
+  type={7}
+>
+  <input
+    checked={false}
+    name="color"
+    onChange={[Function]}
+    type="radio"
+    value={7}
+  />
+</label>
+`;
+
+exports[`Storyshots atoms/Button-Color-Radio Sixth 1`] = `
+<label
+  className="sc-gtssRu iTBlsR"
+  type={6}
+>
+  <input
+    checked={false}
+    name="color"
+    onChange={[Function]}
+    type="radio"
+    value={6}
+  />
+</label>
+`;
+
+exports[`Storyshots atoms/Button-Color-Radio Third 1`] = `
+<label
+  className="sc-gtssRu fyFKPq"
+  type={3}
+>
+  <input
+    checked={false}
+    name="color"
+    onChange={[Function]}
+    type="radio"
+    value={3}
+  />
+</label>
+`;
+
+exports[`Storyshots atoms/Button-Link Login 1`] = `
+<button
+  className="sc-iCoHVE fUDlXq"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+>
+  ログイン
+</button>
+`;
+
+exports[`Storyshots atoms/Button-Link Normal 1`] = `
+<button
+  className="sc-iCoHVE ianfeu"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+>
+  TOP
+</button>
+`;
+
+exports[`Storyshots atoms/Button-Link Partner Login 1`] = `
+<button
+  className="sc-iCoHVE kUUxie"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+>
+  パートナーログイン
+</button>
+`;
+
+exports[`Storyshots atoms/Button-Link Signup 1`] = `
+<button
+  className="sc-iCoHVE fURiwC"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+>
+  新規会員登録
+</button>
+`;
+
+exports[`Storyshots atoms/Button-Submit Cancel 1`] = `
+<button
+  className="sc-jrsJCI kUpbZA"
+  onClick={[Function]}
+  size="md"
+>
+  キャンセル
+</button>
+`;
+
+exports[`Storyshots atoms/Button-Submit Change 1`] = `
+<button
+  className="sc-jrsJCI kUpbZA"
+  onClick={[Function]}
+  size="md"
+>
+  変更
+</button>
+`;
+
+exports[`Storyshots atoms/Button-Submit Delete 1`] = `
+<button
+  className="sc-jrsJCI kUpbZA"
+  onClick={[Function]}
+  size="md"
+>
+  削除
+</button>
+`;
+
+exports[`Storyshots atoms/Button-Submit Login 1`] = `
+<button
+  className="sc-jrsJCI bcEMPs"
+  onClick={[Function]}
+  size="md"
+>
+  ログイン
+</button>
+`;
+
+exports[`Storyshots atoms/Button-Submit Partner 1`] = `
+<button
+  className="sc-jrsJCI hPPAEU"
+  onClick={[Function]}
+  size="md"
+>
+  パートナーログイン
+</button>
+`;
+
+exports[`Storyshots atoms/Button-Submit Register 1`] = `
+<button
+  className="sc-jrsJCI kUpbZA"
+  onClick={[Function]}
+  size="md"
+>
+  登録
+</button>
+`;
+
+exports[`Storyshots atoms/Button-Submit Send 1`] = `
+<button
+  className="sc-jrsJCI kUpbZA"
+  onClick={[Function]}
+  size="md"
+>
+  送信
+</button>
+`;
+
+exports[`Storyshots atoms/Button-Submit Signup 1`] = `
+<button
+  className="sc-jrsJCI lhfQtQ"
+  onClick={[Function]}
+  size="md"
+>
+  新規会員登録
+</button>
+`;
+
+exports[`Storyshots atoms/Form-Input Email 1`] = `
 <input
   autoComplete="on"
-  className="sc-gtssRu LePTA"
+  className="sc-jSFkmK drZrfu"
   maxLength={255}
   onChange={[Function]}
   placeholder="メールアドレスを入力してください。"
@@ -32,10 +244,10 @@ exports[`Storyshots atoms/InputForm Email Input 1`] = `
 />
 `;
 
-exports[`Storyshots atoms/InputForm Password Input 1`] = `
+exports[`Storyshots atoms/Form-Input Password 1`] = `
 <input
   autoComplete="off"
-  className="sc-gtssRu LePTA"
+  className="sc-jSFkmK drZrfu"
   maxLength={20}
   onChange={[Function]}
   placeholder="パスワードを入力してください。"
@@ -44,10 +256,10 @@ exports[`Storyshots atoms/InputForm Password Input 1`] = `
 />
 `;
 
-exports[`Storyshots atoms/InputForm Text Input 1`] = `
+exports[`Storyshots atoms/Form-Input Text 1`] = `
 <input
   autoComplete="on"
-  className="sc-gtssRu LePTA"
+  className="sc-jSFkmK drZrfu"
   maxLength={255}
   onChange={[Function]}
   placeholder="入力してください"
@@ -56,135 +268,144 @@ exports[`Storyshots atoms/InputForm Text Input 1`] = `
 />
 `;
 
-exports[`Storyshots atoms/LinkButton Login Button 1`] = `
-<button
-  className="sc-hKFyIo iJFlUO"
-  onClick={[Function]}
-  onMouseEnter={[Function]}
+exports[`Storyshots atoms/Link Category Link 1`] = `
+<div
+  className="sc-bdnylx jTHwZq"
 >
-  ログイン
-</button>
+  <a
+    href="/detail/2020-10-04"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+  >
+    &lt;&lt; 2020年10月04日の金額情報へ戻る
+  </a>
+</div>
 `;
 
-exports[`Storyshots atoms/LinkButton Normal Button 1`] = `
-<button
-  className="sc-hKFyIo jGxnWG"
-  onClick={[Function]}
-  onMouseEnter={[Function]}
+exports[`Storyshots atoms/Link Detail Link 1`] = `
+<div
+  className="sc-bdnylx jTHwZq"
 >
-  TOP
-</button>
+  <a
+    href="/calendar/2020-10-04"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+  >
+    &lt;&lt; カレンダーへ戻る
+  </a>
+</div>
 `;
 
-exports[`Storyshots atoms/LinkButton Partner Login Button 1`] = `
-<button
-  className="sc-hKFyIo fDYzmq"
-  onClick={[Function]}
-  onMouseEnter={[Function]}
+exports[`Storyshots atoms/Show-Color Eighth 1`] = `
+<p
+  className="sc-fujyUd gFMQYQ"
+  type={8}
 >
-  パートナーログイン
-</button>
+  色を選択してください。
+</p>
 `;
 
-exports[`Storyshots atoms/LinkButton Sign Button 1`] = `
-<button
-  className="sc-hKFyIo gRfmHC"
-  onClick={[Function]}
-  onMouseEnter={[Function]}
+exports[`Storyshots atoms/Show-Color Fifth 1`] = `
+<p
+  className="sc-fujyUd jEQwIQ"
+  type={5}
 >
-  新規会員登録
-</button>
+  色を選択してください。
+</p>
 `;
 
-exports[`Storyshots atoms/SubmitButton Cancel Button 1`] = `
-<button
-  className="sc-eCApGN fiBKqt"
-  onClick={[Function]}
-  size="md"
+exports[`Storyshots atoms/Show-Color First 1`] = `
+<p
+  className="sc-fujyUd kyBYNM"
+  type={1}
 >
-  キャンセル
-</button>
+  色を選択してください。
+</p>
 `;
 
-exports[`Storyshots atoms/SubmitButton Change Button 1`] = `
-<button
-  className="sc-eCApGN fiBKqt"
-  onClick={[Function]}
-  size="md"
+exports[`Storyshots atoms/Show-Color Forth 1`] = `
+<p
+  className="sc-fujyUd dUYhNw"
+  type={4}
 >
-  変更
-</button>
+  色を選択してください。
+</p>
 `;
 
-exports[`Storyshots atoms/SubmitButton Delete Button 1`] = `
-<button
-  className="sc-eCApGN fiBKqt"
-  onClick={[Function]}
-  size="md"
+exports[`Storyshots atoms/Show-Color None 1`] = `
+<p
+  className="sc-fujyUd eUMCNR"
+  type={0}
 >
-  削除
-</button>
+  色を選択してください。
+</p>
 `;
 
-exports[`Storyshots atoms/SubmitButton Login Button 1`] = `
-<button
-  className="sc-eCApGN kIJMpN"
-  onClick={[Function]}
-  size="md"
+exports[`Storyshots atoms/Show-Color Second 1`] = `
+<p
+  className="sc-fujyUd hLwAhM"
+  type={2}
 >
-  ログイン
-</button>
+  色を選択してください。
+</p>
 `;
 
-exports[`Storyshots atoms/SubmitButton Partner Button 1`] = `
-<button
-  className="sc-eCApGN jcGkWt"
-  onClick={[Function]}
-  size="md"
+exports[`Storyshots atoms/Show-Color Seventh 1`] = `
+<p
+  className="sc-fujyUd etoIIQ"
+  type={7}
 >
-  パートナーログイン
-</button>
+  色を選択してください。
+</p>
 `;
 
-exports[`Storyshots atoms/SubmitButton Register Button 1`] = `
-<button
-  className="sc-eCApGN fiBKqt"
-  onClick={[Function]}
-  size="md"
+exports[`Storyshots atoms/Show-Color Sixth 1`] = `
+<p
+  className="sc-fujyUd kuHEXE"
+  type={6}
 >
-  登録
-</button>
+  色を選択してください。
+</p>
 `;
 
-exports[`Storyshots atoms/SubmitButton Send Button 1`] = `
-<button
-  className="sc-eCApGN fiBKqt"
-  onClick={[Function]}
-  size="md"
+exports[`Storyshots atoms/Show-Color Third 1`] = `
+<p
+  className="sc-fujyUd jMeEbE"
+  type={3}
 >
-  送信
-</button>
+  色を選択してください。
+</p>
 `;
 
-exports[`Storyshots atoms/SubmitButton Signup Button 1`] = `
-<button
-  className="sc-eCApGN fycueJ"
-  onClick={[Function]}
-  size="md"
+exports[`Storyshots atoms/Title Calendar 1`] = `
+<div
+  className="sc-eCApGN kWtOrq"
 >
-  新規会員登録
-</button>
+  <h3>
+    カレンダー
+  </h3>
+</div>
+`;
+
+exports[`Storyshots atoms/Title Graph 1`] = `
+<div
+  className="sc-eCApGN kWtOrq"
+>
+  <h3>
+    グラフ
+  </h3>
+</div>
 `;
 
 exports[`Storyshots molcules/LinkButtonField Login 1`] = `
 <div
-  className="sc-jSFkmK jmxNPR"
+  className="sc-kEqYlL dHwDYJ"
 >
   <p>
     メインでのご利用の方はこちら
   </p>
   <button
-    className="sc-hKFyIo iJFlUO"
+    className="sc-iCoHVE fUDlXq"
     onClick={[Function]}
     onMouseEnter={[Function]}
   >

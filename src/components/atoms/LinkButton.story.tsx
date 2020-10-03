@@ -4,25 +4,25 @@ import { LinkStatus } from '@/utils/consts'
 import LinkButton, { Props as LinkButtonProps } from './LinkButton'
 
 export default {
-  title: 'atoms/LinkButton',
+  title: 'atoms/Button-Link',
   components: LinkButton,
 } as Meta
 
 const Template: Story<LinkButtonProps> = (args) => <LinkButton {...args} />
 
-export const LoginButton = Template.bind({})
-LoginButton.args = {
+export const Login = Template.bind({})
+Login.args = {
   status: LinkStatus.LOGIN,
 }
-export const SignButton = Template.bind({})
-SignButton.args = {
+export const Signup = Template.bind({})
+Signup.args = {
   status: LinkStatus.SIGNUP,
 }
-export const PartnerLoginButton = Template.bind({})
-PartnerLoginButton.args = {
+export const PartnerLogin = Template.bind({})
+PartnerLogin.args = {
   status: LinkStatus.PARTNER_LOGIN,
 }
-export const NormalButton = Template.bind({})
-NormalButton.args = {
+export const Normal = Template.bind({})
+Normal.args = {
   status: '',
 }

@@ -89,3 +89,12 @@ export const UnMatchPasswordValidation = (
     return '現在のパスワードと新しいパスワードが同じです。'
   return ''
 }
+
+/**
+ * 色選択必須チェック
+ * @param colorType
+ */
+export const RequireColorTypeValidation = (colorType: number): string => {
+  if (colorType < 1 || colorType > 8) return '色を選択してください。'
+  return ''
+}
