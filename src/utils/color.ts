@@ -35,68 +35,28 @@ export const showSelectedColor = (type: number, error: boolean): string => {
   let style = ''
   switch (type) {
     case 1:
-      style =
-        'background: ' +
-        CategoryColor.FIRST +
-        ' color: ' +
-        CategoryColor.FIRST +
-        ' border: 1px solid #707070;'
+      style = getSelectedCategoryColor(CategoryColor.FIRST)
       break
     case 2:
-      style =
-        'background: ' +
-        CategoryColor.SECOND +
-        ' color: ' +
-        CategoryColor.SECOND +
-        ' border: 1px solid #707070;'
+      style = getSelectedCategoryColor(CategoryColor.SECOND)
       break
     case 3:
-      style =
-        'background: ' +
-        CategoryColor.THIRD +
-        ' color: ' +
-        CategoryColor.THIRD +
-        ' border: 1px solid #707070;'
+      style = getSelectedCategoryColor(CategoryColor.THIRD)
       break
     case 4:
-      style =
-        'background: ' +
-        CategoryColor.FORTH +
-        ' color: ' +
-        CategoryColor.FORTH +
-        ' border: 1px solid #707070;'
+      style = getSelectedCategoryColor(CategoryColor.FORTH)
       break
     case 5:
-      style =
-        'background: ' +
-        CategoryColor.FIFTH +
-        ' color: ' +
-        CategoryColor.FIFTH +
-        ' border: 1px solid #707070;'
+      style = getSelectedCategoryColor(CategoryColor.FIFTH)
       break
     case 6:
-      style =
-        'background: ' +
-        CategoryColor.SIXTH +
-        ' color: ' +
-        CategoryColor.SIXTH +
-        ' border: 1px solid #707070;'
+      style = getSelectedCategoryColor(CategoryColor.SIXTH)
       break
     case 7:
-      style =
-        'background: ' +
-        CategoryColor.SEVENTH +
-        ' color: ' +
-        CategoryColor.SEVENTH +
-        ' border: 1px solid #707070;'
+      style = getSelectedCategoryColor(CategoryColor.SEVENTH)
       break
     case 8:
-      style =
-        'background: ' +
-        CategoryColor.EIGHTH +
-        ' color: ' +
-        CategoryColor.EIGHTH +
-        ' border: 1px solid #707070;'
+      style = getSelectedCategoryColor(CategoryColor.EIGHTH)
       break
     default:
       style = error
@@ -104,4 +64,14 @@ export const showSelectedColor = (type: number, error: boolean): string => {
         : 'background: #fff; color: #757575; border: 1px solid #fff;'
   }
   return style
+}
+
+/**
+ * カテゴリーカラーのsタイル取得
+ * @param color
+ */
+export const getSelectedCategoryColor = (color: string): string => {
+  return (
+    'background: ' + color + ' color: ' + color + ' border: 1px solid #707070;'
+  )
 }

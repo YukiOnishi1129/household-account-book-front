@@ -1,8 +1,120 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Storyshots atoms/Button-Color-Radio Eighth 1`] = `
+<label
+  className="sc-gtssRu edyPoQ"
+  type={8}
+>
+  <input
+    checked={false}
+    name="color"
+    onChange={[Function]}
+    type="radio"
+    value={8}
+  />
+</label>
+`;
+
+exports[`Storyshots atoms/Button-Color-Radio Fifth 1`] = `
+<label
+  className="sc-gtssRu kxorpo"
+  type={5}
+>
+  <input
+    checked={false}
+    name="color"
+    onChange={[Function]}
+    type="radio"
+    value={5}
+  />
+</label>
+`;
+
+exports[`Storyshots atoms/Button-Color-Radio First 1`] = `
+<div
+  className="sc-hKFyIo hhkMaw"
+  type={1}
+/>
+`;
+
+exports[`Storyshots atoms/Button-Color-Radio Forth 1`] = `
+<label
+  className="sc-gtssRu cjXYuM"
+  type={4}
+>
+  <input
+    checked={false}
+    name="color"
+    onChange={[Function]}
+    type="radio"
+    value={4}
+  />
+</label>
+`;
+
+exports[`Storyshots atoms/Button-Color-Radio Second 1`] = `
+<label
+  className="sc-gtssRu fbpkZu"
+  type={2}
+>
+  <input
+    checked={false}
+    name="color"
+    onChange={[Function]}
+    type="radio"
+    value={2}
+  />
+</label>
+`;
+
+exports[`Storyshots atoms/Button-Color-Radio Seventh 1`] = `
+<label
+  className="sc-gtssRu ffSBdm"
+  type={7}
+>
+  <input
+    checked={false}
+    name="color"
+    onChange={[Function]}
+    type="radio"
+    value={7}
+  />
+</label>
+`;
+
+exports[`Storyshots atoms/Button-Color-Radio Sixth 1`] = `
+<label
+  className="sc-gtssRu iTBlsR"
+  type={6}
+>
+  <input
+    checked={false}
+    name="color"
+    onChange={[Function]}
+    type="radio"
+    value={6}
+  />
+</label>
+`;
+
+exports[`Storyshots atoms/Button-Color-Radio Third 1`] = `
+<label
+  className="sc-gtssRu fyFKPq"
+  type={3}
+>
+  <input
+    checked={false}
+    name="color"
+    onChange={[Function]}
+    type="radio"
+    value={3}
+  />
+</label>
+`;
+
 exports[`Storyshots atoms/Button-Link Login 1`] = `
 <button
-  className="sc-eCApGN gTbfWe"
+  className="sc-iCoHVE fUDlXq"
   onClick={[Function]}
   onMouseEnter={[Function]}
 >
@@ -12,7 +124,7 @@ exports[`Storyshots atoms/Button-Link Login 1`] = `
 
 exports[`Storyshots atoms/Button-Link Normal 1`] = `
 <button
-  className="sc-eCApGN hzjEEC"
+  className="sc-iCoHVE ianfeu"
   onClick={[Function]}
   onMouseEnter={[Function]}
 >
@@ -22,7 +134,7 @@ exports[`Storyshots atoms/Button-Link Normal 1`] = `
 
 exports[`Storyshots atoms/Button-Link Partner Login 1`] = `
 <button
-  className="sc-eCApGN gkWhPW"
+  className="sc-iCoHVE kUUxie"
   onClick={[Function]}
   onMouseEnter={[Function]}
 >
@@ -32,7 +144,7 @@ exports[`Storyshots atoms/Button-Link Partner Login 1`] = `
 
 exports[`Storyshots atoms/Button-Link Signup 1`] = `
 <button
-  className="sc-eCApGN bqPpy"
+  className="sc-iCoHVE fURiwC"
   onClick={[Function]}
   onMouseEnter={[Function]}
 >
@@ -42,7 +154,7 @@ exports[`Storyshots atoms/Button-Link Signup 1`] = `
 
 exports[`Storyshots atoms/Button-Submit Cancel 1`] = `
 <button
-  className="sc-jSFkmK OKMmV"
+  className="sc-jrsJCI kUpbZA"
   onClick={[Function]}
   size="md"
 >
@@ -52,7 +164,7 @@ exports[`Storyshots atoms/Button-Submit Cancel 1`] = `
 
 exports[`Storyshots atoms/Button-Submit Change 1`] = `
 <button
-  className="sc-jSFkmK OKMmV"
+  className="sc-jrsJCI kUpbZA"
   onClick={[Function]}
   size="md"
 >
@@ -62,7 +174,7 @@ exports[`Storyshots atoms/Button-Submit Change 1`] = `
 
 exports[`Storyshots atoms/Button-Submit Delete 1`] = `
 <button
-  className="sc-jSFkmK OKMmV"
+  className="sc-jrsJCI kUpbZA"
   onClick={[Function]}
   size="md"
 >
@@ -72,7 +184,7 @@ exports[`Storyshots atoms/Button-Submit Delete 1`] = `
 
 exports[`Storyshots atoms/Button-Submit Login 1`] = `
 <button
-  className="sc-jSFkmK fsgPZt"
+  className="sc-jrsJCI bcEMPs"
   onClick={[Function]}
   size="md"
 >
@@ -82,7 +194,7 @@ exports[`Storyshots atoms/Button-Submit Login 1`] = `
 
 exports[`Storyshots atoms/Button-Submit Partner 1`] = `
 <button
-  className="sc-jSFkmK didvyV"
+  className="sc-jrsJCI hPPAEU"
   onClick={[Function]}
   size="md"
 >
@@ -92,7 +204,7 @@ exports[`Storyshots atoms/Button-Submit Partner 1`] = `
 
 exports[`Storyshots atoms/Button-Submit Register 1`] = `
 <button
-  className="sc-jSFkmK OKMmV"
+  className="sc-jrsJCI kUpbZA"
   onClick={[Function]}
   size="md"
 >
@@ -102,7 +214,7 @@ exports[`Storyshots atoms/Button-Submit Register 1`] = `
 
 exports[`Storyshots atoms/Button-Submit Send 1`] = `
 <button
-  className="sc-jSFkmK OKMmV"
+  className="sc-jrsJCI kUpbZA"
   onClick={[Function]}
   size="md"
 >
@@ -112,7 +224,7 @@ exports[`Storyshots atoms/Button-Submit Send 1`] = `
 
 exports[`Storyshots atoms/Button-Submit Signup 1`] = `
 <button
-  className="sc-jSFkmK btfWSV"
+  className="sc-jrsJCI lhfQtQ"
   onClick={[Function]}
   size="md"
 >
@@ -123,7 +235,7 @@ exports[`Storyshots atoms/Button-Submit Signup 1`] = `
 exports[`Storyshots atoms/Form-Input Email 1`] = `
 <input
   autoComplete="on"
-  className="sc-dlnjPT gYldIA"
+  className="sc-jSFkmK drZrfu"
   maxLength={255}
   onChange={[Function]}
   placeholder="メールアドレスを入力してください。"
@@ -135,7 +247,7 @@ exports[`Storyshots atoms/Form-Input Email 1`] = `
 exports[`Storyshots atoms/Form-Input Password 1`] = `
 <input
   autoComplete="off"
-  className="sc-dlnjPT gYldIA"
+  className="sc-jSFkmK drZrfu"
   maxLength={20}
   onChange={[Function]}
   placeholder="パスワードを入力してください。"
@@ -147,7 +259,7 @@ exports[`Storyshots atoms/Form-Input Password 1`] = `
 exports[`Storyshots atoms/Form-Input Text 1`] = `
 <input
   autoComplete="on"
-  className="sc-dlnjPT gYldIA"
+  className="sc-jSFkmK drZrfu"
   maxLength={255}
   onChange={[Function]}
   placeholder="入力してください"
@@ -161,11 +273,11 @@ exports[`Storyshots atoms/Link Category Link 1`] = `
   className="sc-bdnylx jTHwZq"
 >
   <a
-    href="/detail/2020-10-03"
+    href="/detail/2020-10-04"
     onClick={[Function]}
     onMouseEnter={[Function]}
   >
-    &lt;&lt; 2020年10月03日の金額情報へ戻る
+    &lt;&lt; 2020年10月04日の金額情報へ戻る
   </a>
 </div>
 `;
@@ -175,7 +287,7 @@ exports[`Storyshots atoms/Link Detail Link 1`] = `
   className="sc-bdnylx jTHwZq"
 >
   <a
-    href="/calendar/2020-10-03"
+    href="/calendar/2020-10-04"
     onClick={[Function]}
     onMouseEnter={[Function]}
   >
@@ -184,9 +296,90 @@ exports[`Storyshots atoms/Link Detail Link 1`] = `
 </div>
 `;
 
+exports[`Storyshots atoms/Show-Color Eighth 1`] = `
+<p
+  className="sc-fujyUd gFMQYQ"
+  type={8}
+>
+  色を選択してください。
+</p>
+`;
+
+exports[`Storyshots atoms/Show-Color Fifth 1`] = `
+<p
+  className="sc-fujyUd jEQwIQ"
+  type={5}
+>
+  色を選択してください。
+</p>
+`;
+
+exports[`Storyshots atoms/Show-Color First 1`] = `
+<p
+  className="sc-fujyUd kyBYNM"
+  type={1}
+>
+  色を選択してください。
+</p>
+`;
+
+exports[`Storyshots atoms/Show-Color Forth 1`] = `
+<p
+  className="sc-fujyUd dUYhNw"
+  type={4}
+>
+  色を選択してください。
+</p>
+`;
+
+exports[`Storyshots atoms/Show-Color None 1`] = `
+<p
+  className="sc-fujyUd eUMCNR"
+  type={0}
+>
+  色を選択してください。
+</p>
+`;
+
+exports[`Storyshots atoms/Show-Color Second 1`] = `
+<p
+  className="sc-fujyUd hLwAhM"
+  type={2}
+>
+  色を選択してください。
+</p>
+`;
+
+exports[`Storyshots atoms/Show-Color Seventh 1`] = `
+<p
+  className="sc-fujyUd etoIIQ"
+  type={7}
+>
+  色を選択してください。
+</p>
+`;
+
+exports[`Storyshots atoms/Show-Color Sixth 1`] = `
+<p
+  className="sc-fujyUd kuHEXE"
+  type={6}
+>
+  色を選択してください。
+</p>
+`;
+
+exports[`Storyshots atoms/Show-Color Third 1`] = `
+<p
+  className="sc-fujyUd jMeEbE"
+  type={3}
+>
+  色を選択してください。
+</p>
+`;
+
 exports[`Storyshots atoms/Title Calendar 1`] = `
 <div
-  className="sc-gtssRu cIxxNY"
+  className="sc-eCApGN kWtOrq"
 >
   <h3>
     カレンダー
@@ -196,7 +389,7 @@ exports[`Storyshots atoms/Title Calendar 1`] = `
 
 exports[`Storyshots atoms/Title Graph 1`] = `
 <div
-  className="sc-gtssRu cIxxNY"
+  className="sc-eCApGN kWtOrq"
 >
   <h3>
     グラフ
@@ -206,13 +399,13 @@ exports[`Storyshots atoms/Title Graph 1`] = `
 
 exports[`Storyshots molcules/LinkButtonField Login 1`] = `
 <div
-  className="sc-gKAblj kNZxfG"
+  className="sc-kEqYlL dHwDYJ"
 >
   <p>
     メインでのご利用の方はこちら
   </p>
   <button
-    className="sc-eCApGN gTbfWe"
+    className="sc-iCoHVE fUDlXq"
     onClick={[Function]}
     onMouseEnter={[Function]}
   >
