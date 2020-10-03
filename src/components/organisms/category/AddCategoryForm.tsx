@@ -15,7 +15,7 @@ import {
 } from '@/utils/validations'
 
 const AddCategoryForm: FC = () => {
-  const { addCategories } = useCategory()
+  const { categories, addCategories } = useCategory()
   const [name, setName] = useState('')
   const [colorType, setColorType] = useState(0)
   const [categoryError, setCategoryError] = useState<CategoryValidError>({
@@ -61,6 +61,7 @@ const AddCategoryForm: FC = () => {
       <Describe>8つまで登録できます</Describe>
       <CategoryForm
         status={LinkStatus.REGISTER}
+        categories={categories}
         name={name}
         colorType={colorType}
         categoryError={categoryError}

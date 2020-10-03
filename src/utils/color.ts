@@ -99,10 +99,9 @@ export const showSelectedColor = (type: number, error: boolean): string => {
         ' border: 1px solid #707070;'
       break
     default:
-      style = 'background: #fff; color: #757575; '
+      style = error
+        ? 'background: #fff; color: #757575; border: 1px solid #ea352d;'
+        : 'background: #fff; color: #757575; border: 1px solid #fff;'
   }
-  style = error
-    ? style + 'border: 1px solid #ea352d;'
-    : style + 'border: 1px solid #fff;'
   return style
 }

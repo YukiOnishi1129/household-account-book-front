@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
+import { Category } from '@/types/api'
 import { EventType } from '@/types/events'
 import { CategoryValidError } from '@/types/errors'
 import InputForm from '@/components/atoms/InputForm'
@@ -9,6 +10,7 @@ import SubmitButton from '@/components/atoms/SubmitButton'
 
 export type Props = {
   status: string
+  categories: Category[]
   name: string
   colorType: number
   categoryError: CategoryValidError
@@ -19,6 +21,7 @@ export type Props = {
 
 const CategoryForm: FC<Props> = ({
   status,
+  categories,
   name,
   colorType,
   categoryError,
@@ -43,6 +46,7 @@ const CategoryForm: FC<Props> = ({
       />
       <RadioTopField>
         <ColorRadioButton
+          categories={categories}
           value={1}
           currentValue={colorType}
           changeValue={(event) => {
@@ -50,6 +54,7 @@ const CategoryForm: FC<Props> = ({
           }}
         />
         <ColorRadioButton
+          categories={categories}
           value={2}
           currentValue={colorType}
           changeValue={(event) => {
@@ -57,6 +62,7 @@ const CategoryForm: FC<Props> = ({
           }}
         />
         <ColorRadioButton
+          categories={categories}
           value={3}
           currentValue={colorType}
           changeValue={(event) => {
@@ -64,6 +70,7 @@ const CategoryForm: FC<Props> = ({
           }}
         />
         <ColorRadioButton
+          categories={categories}
           value={4}
           currentValue={colorType}
           changeValue={(event) => {
@@ -73,6 +80,7 @@ const CategoryForm: FC<Props> = ({
       </RadioTopField>
       <RadioBottomField>
         <ColorRadioButton
+          categories={categories}
           value={5}
           currentValue={colorType}
           changeValue={(event) => {
@@ -80,6 +88,7 @@ const CategoryForm: FC<Props> = ({
           }}
         />
         <ColorRadioButton
+          categories={categories}
           value={6}
           currentValue={colorType}
           changeValue={(event) => {
@@ -87,6 +96,7 @@ const CategoryForm: FC<Props> = ({
           }}
         />
         <ColorRadioButton
+          categories={categories}
           value={7}
           currentValue={colorType}
           changeValue={(event) => {
@@ -94,6 +104,7 @@ const CategoryForm: FC<Props> = ({
           }}
         />
         <ColorRadioButton
+          categories={categories}
           value={8}
           currentValue={colorType}
           changeValue={(event) => {
