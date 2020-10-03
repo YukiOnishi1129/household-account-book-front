@@ -4,10 +4,16 @@ import { showSelectedColor } from '@/utils/color'
 
 export type Props = {
   currentValue: number
+  errMsg: string
 }
 
-const ShowSelectedColor: FC<Props> = ({ currentValue }) => {
-  return <SelctedColor type={currentValue}>色を選択してください。</SelctedColor>
+const ShowSelectedColor: FC<Props> = ({ currentValue, errMsg }) => {
+  return (
+    <>
+      <SelctedColor type={currentValue}>色を選択してください。</SelctedColor>
+      {errMsg !== '' && <ValidErrorMsg>{errMsg}</ValidErrorMsg>}
+    </>
+  )
 }
 
 export default ShowSelectedColor
@@ -25,4 +31,9 @@ const SelctedColor = styled.p`
   border-radius: 5px;
   box-sizing: border-box;
   user-select: none;
+`
+
+const ValidErrorMsg = styled.p`
+  padding-top: 5px;
+  color: #ea352d;
 `
