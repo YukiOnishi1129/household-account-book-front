@@ -273,11 +273,11 @@ exports[`Storyshots atoms/Link Category Link 1`] = `
   className="sc-bdnylx jTHwZq"
 >
   <a
-    href="/detail/2020-10-04"
+    href="/detail/2020-09-10"
     onClick={[Function]}
     onMouseEnter={[Function]}
   >
-    &lt;&lt; 2020年10月04日の金額情報へ戻る
+    &lt;&lt; 2020年09月10日の金額情報へ戻る
   </a>
 </div>
 `;
@@ -287,7 +287,7 @@ exports[`Storyshots atoms/Link Detail Link 1`] = `
   className="sc-bdnylx jTHwZq"
 >
   <a
-    href="/calendar/2020-10-04"
+    href="/calendar/2020-09-10"
     onClick={[Function]}
     onMouseEnter={[Function]}
   >

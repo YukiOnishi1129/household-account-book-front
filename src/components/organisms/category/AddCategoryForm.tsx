@@ -90,7 +90,7 @@ const isValid = (
   setCategoryError({ name: '', colorType: '' })
   // バリデーションチェック
   let nameErrMsg = RequiredValidation(name)
-  let colorTypeErrMsg = RequireColorTypeValidation(colorType)
+  const colorTypeErrMsg = RequireColorTypeValidation(colorType)
   if (nameErrMsg === '') nameErrMsg = MaxLengthValidation(name, 6)
   if (nameErrMsg !== '' || colorTypeErrMsg !== '') {
     setCategoryError({ name: nameErrMsg, colorType: colorTypeErrMsg })
