@@ -28,76 +28,81 @@ export const showColor = (type: number): string => {
 }
 
 /**
- *
+ * 選択済みのカラー表示
  * @param type
  */
-export const showSelectedColor = (type: number): string => {
+export const showSelectedColor = (type: number, error: boolean): string => {
+  let style = ''
   switch (type) {
     case 1:
-      return (
+      style =
         'background: ' +
         CategoryColor.FIRST +
         ' color: ' +
         CategoryColor.FIRST +
         ' border: 1px solid #707070;'
-      )
+      break
     case 2:
-      return (
+      style =
         'background: ' +
         CategoryColor.SECOND +
         ' color: ' +
         CategoryColor.SECOND +
         ' border: 1px solid #707070;'
-      )
+      break
     case 3:
-      return (
+      style =
         'background: ' +
         CategoryColor.THIRD +
         ' color: ' +
         CategoryColor.THIRD +
         ' border: 1px solid #707070;'
-      )
+      break
     case 4:
-      return (
+      style =
         'background: ' +
         CategoryColor.FORTH +
         ' color: ' +
         CategoryColor.FORTH +
         ' border: 1px solid #707070;'
-      )
+      break
     case 5:
-      return (
+      style =
         'background: ' +
         CategoryColor.FIFTH +
         ' color: ' +
         CategoryColor.FIFTH +
         ' border: 1px solid #707070;'
-      )
+      break
     case 6:
-      return (
+      style =
         'background: ' +
         CategoryColor.SIXTH +
         ' color: ' +
         CategoryColor.SIXTH +
         ' border: 1px solid #707070;'
-      )
+      break
     case 7:
-      return (
+      style =
         'background: ' +
         CategoryColor.SEVENTH +
         ' color: ' +
         CategoryColor.SEVENTH +
         ' border: 1px solid #707070;'
-      )
+      break
     case 8:
-      return (
+      style =
         'background: ' +
         CategoryColor.EIGHTH +
         ' color: ' +
         CategoryColor.EIGHTH +
         ' border: 1px solid #707070;'
-      )
+      break
     default:
-      return 'background: #fff; color: #757575; border: 1px solid #fff;'
+      style = 'background: #fff; color: #757575; '
   }
+  style = error
+    ? style + 'border: 1px solid #ea352d;'
+    : style + 'border: 1px solid #fff;'
+  return style
 }

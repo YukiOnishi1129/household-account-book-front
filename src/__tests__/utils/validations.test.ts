@@ -7,6 +7,7 @@ import {
   AlphanumericValidation,
   MatchPasswordValidation,
   UnMatchPasswordValidation,
+  RequireColorTypeValidation,
 } from '@/utils/validations'
 
 describe('必須入力チェック(RequiredValidation)', () => {
@@ -216,5 +217,20 @@ describe('パスワード不一致チェック(UnMatchPasswordValidation)', () =
     expect(UnMatchPasswordValidation(currentPassword, newPassword)).toBe(
       '現在のパスワードと新しいパスワードが同じです。'
     )
+  })
+})
+
+describe('色選択必須チェック(RequireColorTypeValidation)', () => {
+  it('【正常系】カラーコード(1)を選択の場合', () => {
+    expect(RequireColorTypeValidation(1)).not.toBe('色を選択してください。')
+  })
+  it('【正常系】カラーコード(8)を選択の場合', () => {
+    expect(RequireColorTypeValidation(1)).not.toBe('色を選択してください。')
+  })
+  it('【異常系】未選択の場合', () => {
+    expect(RequireColorTypeValidation(0)).toBe('色を選択してください。')
+  })
+  it('【異常系】ありえないカラーコード(9)を選択の場合', () => {
+    expect(RequireColorTypeValidation(9)).toBe('色を選択してください。')
   })
 })

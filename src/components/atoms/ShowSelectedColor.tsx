@@ -10,7 +10,9 @@ export type Props = {
 const ShowSelectedColor: FC<Props> = ({ currentValue, errMsg }) => {
   return (
     <>
-      <SelctedColor type={currentValue}>色を選択してください。</SelctedColor>
+      <SelctedColor type={currentValue} error={errMsg !== ''}>
+        色を選択してください。
+      </SelctedColor>
       {errMsg !== '' && <ValidErrorMsg>{errMsg}</ValidErrorMsg>}
     </>
   )
@@ -20,11 +22,13 @@ export default ShowSelectedColor
 
 export type StyleProps = {
   type: number
+  error: boolean
 }
 
 const SelctedColor = styled.p`
+  margin-top: 20px;
   padding: 19px 15px;
-  ${({ type }: StyleProps) => showSelectedColor(type)};
+  ${({ type, error }: StyleProps) => showSelectedColor(type, error)};
   width: 100%;
   font-size: 1rem;
   font-family: '筑紫A丸ゴシック', sans-serif;
