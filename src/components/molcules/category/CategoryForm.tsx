@@ -127,7 +127,6 @@ export default CategoryForm
 
 const Form = styled.div`
   padding: 30px;
-  /* opacity: 0.3; */
 `
 
 const RadioTopField = styled.div`

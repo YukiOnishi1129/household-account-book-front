@@ -8,10 +8,17 @@ export type Props = {
   id: number
   name: string
   colorType: number
-  submit: (id: number, name: string, colorType: number) => void
+  editSubmit: (id: number, name: string, colorType: number) => void
+  deleteSubmit: (id: number, name: string, colorType: number) => void
 }
 
-const CategoryList: FC<Props> = ({ id, name, colorType, submit }) => {
+const CategoryList: FC<Props> = ({
+  id,
+  name,
+  colorType,
+  editSubmit,
+  deleteSubmit,
+}) => {
   return (
     <List key={id}>
       <CategoryName name={name} type={colorType}>
@@ -22,14 +29,14 @@ const CategoryList: FC<Props> = ({ id, name, colorType, submit }) => {
           id={id}
           size={30}
           submit={() => {
-            submit(id, name, colorType)
+            editSubmit(id, name, colorType)
           }}
         />
         <DeleteIcon
           id={id}
           size={30}
           submit={() => {
-            submit(id, name, colorType)
+            deleteSubmit(id, name, colorType)
           }}
         />
       </IconArea>
