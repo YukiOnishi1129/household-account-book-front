@@ -23,6 +23,9 @@ const AddCategoryForm: FC = () => {
     colorType: '',
   })
 
+  const describe =
+    categories.length > 7 ? 'これ以上登録できません。' : '8つまで登録できます。'
+
   /**
    * カテゴリー名入力処理
    * @param event
@@ -58,7 +61,7 @@ const AddCategoryForm: FC = () => {
   return (
     <ContentsForm>
       <FormTitle title="カテゴリ追加" space="sm" />
-      <Describe>8つまで登録できます</Describe>
+      <Describe>{describe}</Describe>
       <CategoryForm
         status={LinkStatus.REGISTER}
         categories={categories}

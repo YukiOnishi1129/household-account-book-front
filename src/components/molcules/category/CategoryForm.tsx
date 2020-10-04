@@ -114,6 +114,7 @@ const CategoryForm: FC<Props> = ({
       </RadioBottomField>
       <SubmitButton
         status={status}
+        disabled={categories && categories.length > 7}
         submit={() => {
           submit()
         }}
