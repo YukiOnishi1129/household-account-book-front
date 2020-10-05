@@ -43,7 +43,7 @@ const ValidErrorMsg = styled.p`
 `
 
 const setStyle = (type: number, error: boolean, size: string): string => {
-  let style = showSelectedColor(type, error)
+  const style = showSelectedColor(type, error)
 
   switch (size) {
     case 'dialog':

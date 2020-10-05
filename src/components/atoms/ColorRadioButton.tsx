@@ -5,22 +5,26 @@ import { EventType } from '@/types/events'
 import { showColor } from '@/utils/color'
 
 export type Props = {
+  isDialog?: boolean
   categories: Category[]
   value: number
   currentValue: number
+  targetColorType?: number
   changeValue: EventType['onChange']
 }
 
 const ColorRadioButton: FC<Props> = ({
+  isDialog,
   categories,
   value,
   currentValue,
+  targetColorType,
   changeValue,
 }) => {
   const isChecked = currentValue === value
   return (
     <>
-      {unUsedColorType(value, categories) ? (
+      {unUsedColorType(value, categories, isDialog, targetColorType) ? (
         <RadioButton type={value}>
           <input
             type="radio"
@@ -44,9 +48,12 @@ export default ColorRadioButton
 
 const unUsedColorType = (
   colorType: number,
-  categories: Category[]
+  categories: Category[],
+  isDialog?: boolean,
+  targetColorType?: number
 ): boolean => {
   return (
+    (isDialog && targetColorType === colorType) ||
     categories.filter((c) => {
       return c.color_type === colorType
     }).length === 0

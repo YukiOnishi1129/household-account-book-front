@@ -298,7 +298,8 @@ exports[`Storyshots atoms/Link Detail Link 1`] = `
 
 exports[`Storyshots atoms/Show-Color Eighth 1`] = `
 <p
-  className="sc-fujyUd gFMQYQ"
+  className="sc-fujyUd dTaYXe"
+  size=""
   type={8}
 >
   色を選択してください。
@@ -307,7 +308,8 @@ exports[`Storyshots atoms/Show-Color Eighth 1`] = `
 
 exports[`Storyshots atoms/Show-Color Fifth 1`] = `
 <p
-  className="sc-fujyUd jEQwIQ"
+  className="sc-fujyUd TQJyi"
+  size=""
   type={5}
 >
   色を選択してください。
@@ -316,7 +318,8 @@ exports[`Storyshots atoms/Show-Color Fifth 1`] = `
 
 exports[`Storyshots atoms/Show-Color First 1`] = `
 <p
-  className="sc-fujyUd kyBYNM"
+  className="sc-fujyUd eDHyvu"
+  size=""
   type={1}
 >
   色を選択してください。
@@ -325,7 +328,8 @@ exports[`Storyshots atoms/Show-Color First 1`] = `
 
 exports[`Storyshots atoms/Show-Color Forth 1`] = `
 <p
-  className="sc-fujyUd dUYhNw"
+  className="sc-fujyUd SFMoG"
+  size=""
   type={4}
 >
   色を選択してください。
@@ -334,7 +338,8 @@ exports[`Storyshots atoms/Show-Color Forth 1`] = `
 
 exports[`Storyshots atoms/Show-Color None 1`] = `
 <p
-  className="sc-fujyUd eUMCNR"
+  className="sc-fujyUd irIeBH"
+  size=""
   type={0}
 >
   色を選択してください。
@@ -343,7 +348,8 @@ exports[`Storyshots atoms/Show-Color None 1`] = `
 
 exports[`Storyshots atoms/Show-Color Second 1`] = `
 <p
-  className="sc-fujyUd hLwAhM"
+  className="sc-fujyUd jykZii"
+  size=""
   type={2}
 >
   色を選択してください。
@@ -352,7 +358,8 @@ exports[`Storyshots atoms/Show-Color Second 1`] = `
 
 exports[`Storyshots atoms/Show-Color Seventh 1`] = `
 <p
-  className="sc-fujyUd etoIIQ"
+  className="sc-fujyUd EOZJm"
+  size=""
   type={7}
 >
   色を選択してください。
@@ -361,7 +368,8 @@ exports[`Storyshots atoms/Show-Color Seventh 1`] = `
 
 exports[`Storyshots atoms/Show-Color Sixth 1`] = `
 <p
-  className="sc-fujyUd kuHEXE"
+  className="sc-fujyUd cyCKXK"
+  size=""
   type={6}
 >
   色を選択してください。
@@ -370,7 +378,8 @@ exports[`Storyshots atoms/Show-Color Sixth 1`] = `
 
 exports[`Storyshots atoms/Show-Color Third 1`] = `
 <p
-  className="sc-fujyUd jMeEbE"
+  className="sc-fujyUd jDmAiy"
+  size=""
   type={3}
 >
   色を選択してください。
@@ -399,7 +408,7 @@ exports[`Storyshots atoms/Title Graph 1`] = `
 
 exports[`Storyshots molcules/LinkButtonField Login 1`] = `
 <div
-  className="sc-kEqYlL dHwDYJ"
+  className="sc-iqAbSa jqNyoC"
 >
   <p>
     メインでのご利用の方はこちら

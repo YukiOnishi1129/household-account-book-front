@@ -41,18 +41,14 @@ const DeleteCategoryDialog: FC<Props> = ({
         </DialogFormItem>
       </DialogFormGroup>
       <DialogButtonGroup>
-        <SubmitButton status={LinkStatus.CANCEL} size="md" submit={close}>
-          削除
-        </SubmitButton>
+        <SubmitButton status={LinkStatus.CANCEL} size="md" submit={close} />
         <SubmitButton
           status={LinkStatus.DELETE}
           size="md"
           submit={() => {
             submit(id)
           }}
-        >
-          削除
-        </SubmitButton>
+        />
       </DialogButtonGroup>
     </BaseDialog>
   )

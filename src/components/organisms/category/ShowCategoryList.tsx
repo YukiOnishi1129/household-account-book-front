@@ -7,6 +7,7 @@ import { EventType } from '@/types/events'
 import ContentsForm from '@/components/organisms/common/ContentsForm'
 import FormTitle from '@/components/atoms/FormTitle'
 import CategoryList from '@/components/molcules/category/CategoryList'
+import EditCategoryDialog from '@/components/dialogs/category/EditCategoryDialog'
 import DeleteCategoryDialog from '@/components/dialogs/category/DeleteCategoryDialog'
 
 const ShowCategoryList: FC = () => {
@@ -16,11 +17,15 @@ const ShowCategoryList: FC = () => {
   const [targetId, setTatgetId] = useState(0)
   const [targetName, setTatgetName] = useState('')
   const [targetColorType, setTargetColorType] = useState(0)
+  const [inputName, setInputName] = useState('')
+  const [inputColorType, setInputColorType] = useState(0)
 
-  const openModal = (id: number, name: string, colorType: number): void => {
-    // console.log('クリック')
-  }
-
+  /**
+   * カテゴリー編集モーダルを開く処理
+   * @param id
+   * @param name
+   * @param colorType
+   */
   const openEditDialog = (
     id: number,
     name: string,
@@ -30,6 +35,15 @@ const ShowCategoryList: FC = () => {
     setTatgetId(id)
     setTatgetName(name)
     setTargetColorType(colorType)
+    setInputName(name)
+    setInputColorType(colorType)
+  }
+
+  /**
+   * カテゴリー編集モーダルを閉じる処理
+   */
+  const closeEditDialog = (): void => {
+    setIsEditOpen(false)
   }
 
   /**
@@ -56,6 +70,12 @@ const ShowCategoryList: FC = () => {
     setIsDeleteOpen(false)
   }
 
+  /**
+   * カテゴリー編集処理
+   * @param id
+   * @param name
+   * @param colorType
+   */
   const handleSubmitEdit = async (
     id: number,
     name: string,
@@ -91,6 +111,17 @@ const ShowCategoryList: FC = () => {
           </CategoryListArea>
         )}
       </ContentsForm>
+      <EditCategoryDialog
+        isOpen={isEditOpen}
+        id={targetId}
+        targetColorType={targetColorType}
+        inputName={inputName}
+        inputColorType={inputColorType}
+        setInputName={setInputName}
+        setInputColorType={setInputColorType}
+        submit={handleSubmitEdit}
+        close={closeEditDialog}
+      />
       <DeleteCategoryDialog
         isOpen={isDeleteOpen}
         id={targetId}
