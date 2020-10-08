@@ -3,15 +3,25 @@ import styled from 'styled-components'
 import useCategory from '@/contexts/category'
 import { RequestCategory } from '@/types/api'
 import { CategoryValidError } from '@/types/errors'
-import { EventType } from '@/types/events'
 import ContentsForm from '@/components/organisms/common/ContentsForm'
 import FormTitle from '@/components/atoms/FormTitle'
 import CategoryList from '@/components/molcules/category/CategoryList'
 import EditCategoryDialog from '@/components/dialogs/category/EditCategoryDialog'
 import DeleteCategoryDialog from '@/components/dialogs/category/DeleteCategoryDialog'
+import {
+  RequiredValidation,
+  RequireColorTypeValidation,
+  MaxLengthValidation,
+} from '@/utils/validations'
 
 const ShowCategoryList: FC = () => {
-  const { categories, editCategory, deleteCategory } = useCategory()
+  const {
+    categories,
+    setName,
+    setColorType,
+    editCategory,
+    deleteCategory,
+  } = useCategory()
   const [isEditOpen, setIsEditOpen] = useState(false)
   const [isDeleteOpen, setIsDeleteOpen] = useState(false)
   const [targetId, setTatgetId] = useState(0)
@@ -19,6 +29,10 @@ const ShowCategoryList: FC = () => {
   const [targetColorType, setTargetColorType] = useState(0)
   const [inputName, setInputName] = useState('')
   const [inputColorType, setInputColorType] = useState(0)
+  const [categoryError, setCategoryError] = useState<CategoryValidError>({
+    name: '',
+    colorType: '',
+  })
 
   /**
    * カテゴリー編集モーダルを開く処理
@@ -31,6 +45,9 @@ const ShowCategoryList: FC = () => {
     name: string,
     colorType: number
   ): void => {
+    // バリデーションエラー初期化
+    setCategoryError({ name: '', colorType: '' })
+    // ダイアログを開く
     setIsEditOpen(true)
     setTatgetId(id)
     setTatgetName(name)
@@ -81,7 +98,21 @@ const ShowCategoryList: FC = () => {
     name: string,
     colorType: number
   ): Promise<void> => {
-    await deleteCategory(id)
+    if (isValid(name, colorType, setCategoryError)) {
+      const requestData: RequestCategory = {
+        category_name: name,
+        color_type: colorType,
+      }
+      await editCategory(id, requestData)
+      // 初期化
+      setName('')
+      setColorType(0)
+      setTatgetId(0)
+      setTatgetName('')
+      setTargetColorType(0)
+      // ダイアログを閉じる
+      closeEditDialog()
+    }
   }
 
   /**
@@ -92,6 +123,7 @@ const ShowCategoryList: FC = () => {
     await deleteCategory(id)
     closeDeleteDialog()
   }
+
   return (
     <>
       <ContentsForm>
@@ -117,6 +149,7 @@ const ShowCategoryList: FC = () => {
         targetColorType={targetColorType}
         inputName={inputName}
         inputColorType={inputColorType}
+        categoryError={categoryError}
         setInputName={setInputName}
         setInputColorType={setInputColorType}
         submit={handleSubmitEdit}
@@ -135,6 +168,30 @@ const ShowCategoryList: FC = () => {
 }
 
 export default ShowCategoryList
+
+/**
+ * バリデーション
+ * @param name
+ * @param colorType
+ * @param setCategoryError
+ */
+const isValid = (
+  name: string,
+  colorType: number,
+  setCategoryError: React.Dispatch<React.SetStateAction<CategoryValidError>>
+): boolean => {
+  //  バリデーションエラー初期化
+  setCategoryError({ name: '', colorType: '' })
+  // バリデーションチェック
+  let nameErrMsg = RequiredValidation(name)
+  const colorTypeErrMsg = RequireColorTypeValidation(colorType)
+  if (nameErrMsg === '') nameErrMsg = MaxLengthValidation(name, 6)
+  if (nameErrMsg !== '' || colorTypeErrMsg !== '') {
+    setCategoryError({ name: nameErrMsg, colorType: colorTypeErrMsg })
+    return false
+  }
+  return true
+}
 
 const CategoryListArea = styled.div`
   display: flex;

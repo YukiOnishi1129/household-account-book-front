@@ -19,6 +19,9 @@ const config: Configuration = {
   },
 }
 
+/**
+ * API関数取得メソッド
+ */
 const resolveApiBasePath = () => {
   const env = process.env.NEXT_PUBLIC_ENVIRONMENT
     ? process.env.NEXT_PUBLIC_ENVIRONMENT

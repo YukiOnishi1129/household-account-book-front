@@ -15,9 +15,14 @@ import {
 } from '@/utils/validations'
 
 const AddCategoryForm: FC = () => {
-  const { categories, addCategories } = useCategory()
-  const [name, setName] = useState('')
-  const [colorType, setColorType] = useState(0)
+  const {
+    categories,
+    name,
+    colorType,
+    setName,
+    setColorType,
+    addCategories,
+  } = useCategory()
   const [categoryError, setCategoryError] = useState<CategoryValidError>({
     name: '',
     colorType: '',

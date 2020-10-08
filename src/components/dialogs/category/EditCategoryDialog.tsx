@@ -1,7 +1,6 @@
-import React, { FC, useState, useEffect } from 'react'
+import React, { FC } from 'react'
 import useCategory from '@/contexts/category'
 import { LinkStatus } from '@/utils/consts'
-import { RequestCategory } from '@/types/api'
 import { CategoryValidError } from '@/types/errors'
 import { EventType } from '@/types/events'
 import BaseDialog from '@/components/dialogs/common/BaseDialog'
@@ -16,6 +15,7 @@ export type Props = {
   targetColorType: number
   inputName: string
   inputColorType: number
+  categoryError: CategoryValidError
   setInputName: React.Dispatch<React.SetStateAction<string>>
   setInputColorType: React.Dispatch<React.SetStateAction<number>>
   submit: (id: number, name: string, colorType: number) => Promise<void>
@@ -28,16 +28,13 @@ const EditCategoryDialog: FC<Props> = ({
   targetColorType,
   inputName,
   inputColorType,
+  categoryError,
   setInputName,
   setInputColorType,
   submit,
   close,
 }) => {
   const { categories } = useCategory()
-  const [categoryError, setCategoryError] = useState<CategoryValidError>({
-    name: '',
-    colorType: '',
-  })
 
   /**
    * カテゴリー名入力処理

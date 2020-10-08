@@ -31,6 +31,10 @@ export interface AuthType {
 
 export interface CategoryType {
   categories: Category[]
+  name: string
+  colorType: number
+  setName: React.Dispatch<React.SetStateAction<string>>
+  setColorType: React.Dispatch<React.SetStateAction<number>>
   addCategories: (requestData: RequestCategory) => Promise<void>
   editCategory: (
     id: Category['id'],

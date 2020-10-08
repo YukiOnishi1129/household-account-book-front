@@ -10,6 +10,8 @@ import { Category, RequestCategory } from '@/types/api'
  */
 export const CategoryProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [categories, setCategories] = useState(initialCategories)
+  const [name, setName] = useState('')
+  const [colorType, setColorType] = useState(0)
 
   useEffect(() => {
     let unmounted = false
@@ -87,7 +89,16 @@ export const CategoryProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
   return (
     <CategoryContext.Provider
-      value={{ categories, addCategories, editCategory, deleteCategory }}
+      value={{
+        categories,
+        name,
+        colorType,
+        setName,
+        setColorType,
+        addCategories,
+        editCategory,
+        deleteCategory,
+      }}
     >
       {children}
     </CategoryContext.Provider>
