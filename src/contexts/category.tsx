@@ -43,7 +43,7 @@ export const CategoryProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const addCategories = async (requestData: RequestCategory) => {
     try {
       const res = await ApiClient.category.addCategory(requestData)
-      setCategories(categories.concat(res.data))
+      if (res.status === 201) setCategories(categories.concat(res.data))
     } catch (error) {}
   }
 
@@ -58,16 +58,19 @@ export const CategoryProvider: FC<{ children: ReactNode }> = ({ children }) => {
   ) => {
     try {
       const res = await ApiClient.category.editCategory(id, requestData)
-      const newCategories = categories.map((category) => {
-        if (category.id === id) {
-          return Object.assign({}, category, {
-            category_name: res.data.category_name,
-            color_type: res.data.color_type,
-          })
-        }
-        return category
-      })
-      setCategories(newCategories)
+      if (res.status === 204) {
+        const newCategories = categories.map((category) => {
+          if (category.id === id) {
+            return Object.assign({}, category, {
+              // TODO: レスポンスdataを入れるように後ほど修正
+              category_name: requestData.category_name,
+              color_type: requestData.color_type,
+            })
+          }
+          return category
+        })
+        setCategories(newCategories)
+      }
     } catch (error) {}
   }
 
