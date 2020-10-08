@@ -4,13 +4,15 @@ import { showSelectedColor } from '@/utils/color'
 
 export type Props = {
   currentValue: number
+  sizeStyle?: string
   errMsg: string
 }
 
-const ShowSelectedColor: FC<Props> = ({ currentValue, errMsg }) => {
+const ShowSelectedColor: FC<Props> = ({ currentValue, sizeStyle, errMsg }) => {
+  const size = sizeStyle ? sizeStyle : ''
   return (
     <>
-      <SelctedColor type={currentValue} error={errMsg !== ''}>
+      <SelctedColor type={currentValue} error={errMsg !== ''} size={size}>
         色を選択してください。
       </SelctedColor>
       {errMsg !== '' && <ValidErrorMsg>{errMsg}</ValidErrorMsg>}
@@ -23,13 +25,11 @@ export default ShowSelectedColor
 export type StyleProps = {
   type: number
   error: boolean
+  size: string
 }
 
 const SelctedColor = styled.p`
-  margin-top: 20px;
-  padding: 19px 15px;
-  ${({ type, error }: StyleProps) => showSelectedColor(type, error)};
-  width: 100%;
+  ${({ type, error, size }: StyleProps) => setStyle(type, error, size)};
   font-size: 1rem;
   font-family: '筑紫A丸ゴシック', sans-serif;
   border-radius: 5px;
@@ -41,3 +41,14 @@ const ValidErrorMsg = styled.p`
   padding-top: 5px;
   color: #ea352d;
 `
+
+const setStyle = (type: number, error: boolean, size: string): string => {
+  const style = showSelectedColor(type, error)
+
+  switch (size) {
+    case 'dialog':
+      return style
+    default:
+      return style + ' margin-top: 20px; padding: 19px 15px; width: 100%;'
+  }
+}

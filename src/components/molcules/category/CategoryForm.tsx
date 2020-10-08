@@ -9,8 +9,10 @@ import ColorRadioButton from '@/components/atoms/ColorRadioButton'
 import SubmitButton from '@/components/atoms/SubmitButton'
 
 export type Props = {
+  isDialog?: boolean
   status: string
   categories: Category[]
+  targetColorType?: number
   name: string
   colorType: number
   categoryError: CategoryValidError
@@ -20,8 +22,10 @@ export type Props = {
 }
 
 const CategoryForm: FC<Props> = ({
+  isDialog,
   status,
   categories,
+  targetColorType,
   name,
   colorType,
   categoryError,
@@ -29,6 +33,7 @@ const CategoryForm: FC<Props> = ({
   changeColorType,
   submit,
 }) => {
+  const dialog = isDialog
   return (
     <Form>
       <InputForm
@@ -46,6 +51,8 @@ const CategoryForm: FC<Props> = ({
       />
       <RadioTopField>
         <ColorRadioButton
+          isDialog={dialog}
+          targetColorType={targetColorType}
           categories={categories}
           value={1}
           currentValue={colorType}
@@ -54,6 +61,8 @@ const CategoryForm: FC<Props> = ({
           }}
         />
         <ColorRadioButton
+          isDialog={dialog}
+          targetColorType={targetColorType}
           categories={categories}
           value={2}
           currentValue={colorType}
@@ -62,6 +71,8 @@ const CategoryForm: FC<Props> = ({
           }}
         />
         <ColorRadioButton
+          isDialog={dialog}
+          targetColorType={targetColorType}
           categories={categories}
           value={3}
           currentValue={colorType}
@@ -70,6 +81,8 @@ const CategoryForm: FC<Props> = ({
           }}
         />
         <ColorRadioButton
+          isDialog={dialog}
+          targetColorType={targetColorType}
           categories={categories}
           value={4}
           currentValue={colorType}
@@ -80,6 +93,8 @@ const CategoryForm: FC<Props> = ({
       </RadioTopField>
       <RadioBottomField>
         <ColorRadioButton
+          isDialog={dialog}
+          targetColorType={targetColorType}
           categories={categories}
           value={5}
           currentValue={colorType}
@@ -88,6 +103,8 @@ const CategoryForm: FC<Props> = ({
           }}
         />
         <ColorRadioButton
+          isDialog={dialog}
+          targetColorType={targetColorType}
           categories={categories}
           value={6}
           currentValue={colorType}
@@ -96,6 +113,8 @@ const CategoryForm: FC<Props> = ({
           }}
         />
         <ColorRadioButton
+          isDialog={dialog}
+          targetColorType={targetColorType}
           categories={categories}
           value={7}
           currentValue={colorType}
@@ -104,6 +123,8 @@ const CategoryForm: FC<Props> = ({
           }}
         />
         <ColorRadioButton
+          isDialog={dialog}
+          targetColorType={targetColorType}
           categories={categories}
           value={8}
           currentValue={colorType}
@@ -112,12 +133,15 @@ const CategoryForm: FC<Props> = ({
           }}
         />
       </RadioBottomField>
-      <SubmitButton
-        status={status}
-        submit={() => {
-          submit()
-        }}
-      />
+      {!isDialog && (
+        <SubmitButton
+          status={status}
+          disabled={categories && categories.length > 7}
+          submit={() => {
+            submit()
+          }}
+        />
+      )}
     </Form>
   )
 }
@@ -126,7 +150,6 @@ export default CategoryForm
 
 const Form = styled.div`
   padding: 30px;
-  /* opacity: 0.3; */
 `
 
 const RadioTopField = styled.div`

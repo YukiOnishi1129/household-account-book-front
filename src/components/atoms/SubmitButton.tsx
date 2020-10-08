@@ -6,22 +6,33 @@ import styled from 'styled-components'
 export type Props = {
   status: string
   size?: string
+  disabled?: boolean
   submit: VoidFunction
 }
 
-const SubmitButton: FC<Props> = ({ status, size, submit }) => {
+const SubmitButton: FC<Props> = ({ status, size, disabled, submit }) => {
   const styleSize = size ? size : ''
+  const showButton = disabled ? true : false
   return (
-    <Button
-      status={status}
-      size={styleSize}
-      onClick={(e) => {
-        e.preventDefault()
-        submit()
-      }}
-    >
-      {getLabelName(status)}
-    </Button>
+    <>
+      {showButton ? (
+        <DisabledButton status={status} size={styleSize}>
+          {' '}
+          {getLabelName(status)}
+        </DisabledButton>
+      ) : (
+        <Button
+          status={status}
+          size={styleSize}
+          onClick={(e) => {
+            e.preventDefault()
+            submit()
+          }}
+        >
+          {getLabelName(status)}
+        </Button>
+      )}
+    </>
   )
 }
 
@@ -47,6 +58,20 @@ const Button = styled.button`
   &:hover {
     opacity: 0.7;
   }
+`
+
+const DisabledButton = styled.button`
+  display: block;
+  margin-top: 20px;
+  height: 50px;
+  line-height: 50px;
+  font-size: 1.25em;
+  font-weight: bold;
+  text-align: center;
+  color: #fff;
+  border-radius: 10px;
+  ${({ status, size }: StyleProps) => getStyle(status, size)}
+  opacity: 0.3;
 `
 
 const getStyle = (status: string, size: string): string => {
