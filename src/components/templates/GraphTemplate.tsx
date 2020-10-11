@@ -34,9 +34,7 @@ const Contents = styled.div`
 
 const ContentsRight = styled.div`
   width: 45%;
-  border: 1px solid red;
 `
 const ContentsLeft = styled.div`
   width: 45%;
-  border: 1px solid red;
 `
