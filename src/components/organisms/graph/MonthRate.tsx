@@ -15,7 +15,7 @@ const DynamicMonthRacte = dynamic(
 )
 
 const MonthRate: FC = () => {
-  const { date } = useGraph()
+  const { date, monthRate } = useGraph()
   const showdate = FormatCgangeYearMonth(date) + 'の支出割合'
   return (
     <ContentsForm>
@@ -24,7 +24,7 @@ const MonthRate: FC = () => {
         <CalendarIcon id={1} size={24} submit={() => {}} />
       </Title>
       <GraphFierld>
-        <DynamicMonthRacte />
+        <DynamicMonthRacte monthRate={monthRate} />
       </GraphFierld>
     </ContentsForm>
   )

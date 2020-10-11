@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC } from 'react'
 import {
   PieChart,
   Pie,
@@ -6,15 +6,8 @@ import {
   ContentRenderer,
   PieLabelRenderProps,
 } from 'recharts'
-
-const data = [
-  { name: 'Group A', value: 400 },
-  { name: 'Group B', value: 300 },
-  { name: 'Group C', value: 300 },
-  { name: 'Group D', value: 200 },
-]
-
-const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042']
+import { MonthRate } from '@/types/api'
+import { showColor } from '@/utils/color'
 
 const RADIAN = Math.PI / 180
 
@@ -25,6 +18,7 @@ const renderCustomizedLabel: ContentRenderer<PieLabelRenderProps> = ({
   innerRadius,
   outerRadius,
   percent,
+  index,
 }) => {
   const renCx = cx ? Number(cx) : 0
   const renCy = cy ? Number(cy) : 0
@@ -32,6 +26,7 @@ const renderCustomizedLabel: ContentRenderer<PieLabelRenderProps> = ({
   const outRadius = outerRadius ? Number(outerRadius) : 0
   const renMidAngle = midAngle ? Number(midAngle) : 0
   const renPercent = percent ? Number(percent) : 0
+  const color = index === 3 ? '#555' : '#fff'
 
   const radius = inRadius + (outRadius - inRadius) * 0.5
   const x = renCx + radius * Math.cos(-renMidAngle * RADIAN)
@@ -41,7 +36,7 @@ const renderCustomizedLabel: ContentRenderer<PieLabelRenderProps> = ({
     <text
       x={x}
       y={y}
-      fill="white"
+      fill={color}
       textAnchor={x > renCx ? 'start' : 'end'}
       dominantBaseline="central"
       style={{ fontWeight: 'bold' }}
@@ -51,21 +46,27 @@ const renderCustomizedLabel: ContentRenderer<PieLabelRenderProps> = ({
   )
 }
 
-export const MonthRateChaters = () => {
+export type Props = {
+  monthRate: MonthRate[]
+}
+
+export const MonthRateChaters: FC<Props> = ({ monthRate }) => {
   return (
     <PieChart width={400} height={400}>
       <Pie
-        data={data}
+        data={monthRate}
         cx={200}
         cy={180}
         labelLine={false}
         label={renderCustomizedLabel}
         outerRadius={160}
-        fill="#8884d8"
-        dataKey="value"
+        dataKey="money"
       >
-        {data.map((entry, index) => (
-          <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+        {monthRate.map((rate) => (
+          <Cell
+            key={`cell-${rate.color_type}`}
+            fill={showColor(rate.color_type).slice(0, -1)}
+          />
         ))}
       </Pie>
     </PieChart>
