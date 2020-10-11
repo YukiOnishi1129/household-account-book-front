@@ -23,9 +23,7 @@ const MonthRate: FC = () => {
         <FormTitle title={showdate} space="sm" />
         <CalendarIcon id={1} size={24} submit={() => {}} />
       </Title>
-      <GraphFierld>
-        <DynamicMonthRacte monthRate={monthRate} />
-      </GraphFierld>
+      <DynamicMonthRacte monthRate={monthRate} />
     </ContentsForm>
   )
 }
@@ -41,11 +39,5 @@ const Title = styled.div`
       padding-top: 16px;
       padding-bottom: 16px;
     }
-  }
-`
-
-const GraphFierld = styled.div`
-  div:last-child {
-    margin: 0 auto;
   }
 `
