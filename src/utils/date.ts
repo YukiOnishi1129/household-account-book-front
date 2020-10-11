@@ -17,3 +17,7 @@ export const CurrentDate = (): string => {
 export const FormatChangeYearMonthDate = (date: string): string => {
   return dayjs(date).format('YYYY年MM月DD日')
 }
+
+export const FormatCgangeYearMonth = (date: string): string => {
+  return dayjs(date).format('YYYY年MM月')
+}

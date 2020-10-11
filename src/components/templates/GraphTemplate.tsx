@@ -1,9 +1,42 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
 import { GraphProvider } from '@/contexts/graph'
+import ContentsMain from '@/components/organisms/common/ContentsMain'
+import MonthRate from '@/components/organisms/graph/MonthRate'
+import AnnualChange from '@/components/organisms/graph/AnnualChange'
 
 const GraphTemplate: FC = () => {
-  return <GraphProvider>aaa</GraphProvider>
+  return (
+    <GraphProvider>
+      <ContentsMain>
+        <Contents>
+          <ContentsRight>
+            <MonthRate />
+          </ContentsRight>
+          <ContentsLeft>
+            <AnnualChange />
+          </ContentsLeft>
+        </Contents>
+      </ContentsMain>
+    </GraphProvider>
+  )
 }
 
 export default GraphTemplate
+
+const Contents = styled.div`
+  display: flex;
+  justify-content: space-around;
+  padding: 20px 40px;
+  min-height: 380px;
+  box-sizing: border-box;
+`
+
+const ContentsRight = styled.div`
+  width: 45%;
+  border: 1px solid red;
+`
+const ContentsLeft = styled.div`
+  width: 45%;
+  border: 1px solid red;
+`
