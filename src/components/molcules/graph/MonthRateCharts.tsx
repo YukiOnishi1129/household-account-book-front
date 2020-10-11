@@ -44,9 +44,8 @@ export const MonthRateChaters: FC<Props> = ({ monthRate }) => {
       </GraphFierld>
       <LabelField>
         {monthRate.map((rate) => (
-          <LabelItem>
+          <LabelItem key={`label-${rate.color_type}`}>
             <LabelCategory
-              key={`label-${rate.color_type}`}
               name={rate.category_name}
               colorType={rate.color_type}
             />

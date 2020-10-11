@@ -9,7 +9,7 @@ import { FormatCgangeYearMonth } from '@/utils/date'
 
 // NOTE: RechartsはSSRでwarinngが出るから、SSRしないようにする
 // https://github.com/vercel/next.js/issues/12863
-const DynamicMonthRacte = dynamic(
+const DynamicMonthRate = dynamic(
   () => import('@/components/molcules/graph/MonthRateCharts'),
   { ssr: false }
 )
@@ -23,7 +23,7 @@ const MonthRate: FC = () => {
         <FormTitle title={showdate} space="sm" />
         <CalendarIcon id={1} size={24} submit={() => {}} />
       </Title>
-      <DynamicMonthRacte monthRate={monthRate} />
+      <DynamicMonthRate monthRate={monthRate} />
     </ContentsForm>
   )
 }
