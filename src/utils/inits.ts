@@ -1,4 +1,11 @@
-import { User, MonthRate, AnnualChange, Category, Partner } from '@/types/api/'
+import {
+  User,
+  MonthRate,
+  MonthRateDate,
+  AnnualChange,
+  Category,
+  Partner,
+} from '@/types/api/'
 
 /**
  * Userステートの初期値
@@ -22,6 +29,12 @@ export const initilaMonthRate: MonthRate[] = [
     category_name: '',
     color_type: 0,
     money: 0,
+  },
+]
+
+export const initialMonthRateDate: MonthRateDate[] = [
+  {
+    date: '2020-09-01',
   },
 ]
 

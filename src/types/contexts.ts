@@ -6,6 +6,7 @@ import {
   RequestRemindMail,
   RequestRemindKey,
   MonthRate,
+  MonthRateDate,
   AnnualChange,
   Category,
   RequestCategory,
@@ -36,6 +37,7 @@ export interface AuthType {
  */
 export interface GraphType {
   monthRate: MonthRate[]
+  changeDates: MonthRateDate[]
   annualChange: AnnualChange[]
   inputDate: string
   setMonthRate: React.Dispatch<React.SetStateAction<MonthRate[]>>
