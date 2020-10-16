@@ -186,6 +186,19 @@ export interface MonthRate {
 /**
  * 
  * @export
+ * @interface MonthRateDate
+ */
+export interface MonthRateDate {
+    /**
+     * 
+     * @type {string}
+     * @memberof MonthRateDate
+     */
+    date: string;
+}
+/**
+ * 
+ * @export
  * @interface Partner
  */
 export interface Partner {
@@ -453,7 +466,7 @@ export const AnnualChangeApiAxiosParamCreator = function (configuration?: Config
             if (date === null || date === undefined) {
                 throw new RequiredError('date','Required parameter date was null or undefined when calling getAnnualChange.');
             }
-            const localVarPath = `/annual_change/{date}`
+            const localVarPath = `/annual-change/{date}`
                 .replace(`{${"date"}}`, encodeURIComponent(String(date)));
             const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
             let baseOptions;
@@ -1483,6 +1496,38 @@ export const MonthRateApiAxiosParamCreator = function (configuration?: Configura
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * 変更月取得
+         * @summary 変更月取得
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getMonthRateDate: async (options: any = {}): Promise<RequestArgs> => {
+            const localVarPath = `/month-rate-date`;
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication cookieAuth required
+
+
+    
+            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: globalImportUrl.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -1501,6 +1546,19 @@ export const MonthRateApiFp = function(configuration?: Configuration) {
          */
         async getMonthRate(date: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<MonthRate>>> {
             const localVarAxiosArgs = await MonthRateApiAxiosParamCreator(configuration).getMonthRate(date, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         * 変更月取得
+         * @summary 変更月取得
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getMonthRateDate(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<MonthRateDate>>> {
+            const localVarAxiosArgs = await MonthRateApiAxiosParamCreator(configuration).getMonthRateDate(options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -1525,6 +1583,15 @@ export const MonthRateApiFactory = function (configuration?: Configuration, base
         getMonthRate(date: string, options?: any): AxiosPromise<Array<MonthRate>> {
             return MonthRateApiFp(configuration).getMonthRate(date, options).then((request) => request(axios, basePath));
         },
+        /**
+         * 変更月取得
+         * @summary 変更月取得
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getMonthRateDate(options?: any): AxiosPromise<Array<MonthRateDate>> {
+            return MonthRateApiFp(configuration).getMonthRateDate(options).then((request) => request(axios, basePath));
+        },
     };
 };
 
@@ -1545,6 +1612,17 @@ export class MonthRateApi extends BaseAPI {
      */
     public getMonthRate(date: string, options?: any) {
         return MonthRateApiFp(this.configuration).getMonthRate(date, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 変更月取得
+     * @summary 変更月取得
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MonthRateApi
+     */
+    public getMonthRateDate(options?: any) {
+        return MonthRateApiFp(this.configuration).getMonthRateDate(options).then((request) => request(this.axios, this.basePath));
     }
 }
 

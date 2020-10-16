@@ -5,6 +5,9 @@ import {
   RequestRegister,
   RequestRemindMail,
   RequestRemindKey,
+  MonthRate,
+  MonthRateDate,
+  AnnualChange,
   Category,
   RequestCategory,
   Partner,
@@ -29,6 +32,23 @@ export interface AuthType {
   setUser: Dispatch<SetStateAction<User>>
 }
 
+/**
+ * グラフ情報
+ */
+export interface GraphType {
+  monthRate: MonthRate[]
+  changeDates: MonthRateDate[]
+  annualChange: AnnualChange[]
+  inputDate: string
+  setMonthRate: React.Dispatch<React.SetStateAction<MonthRate[]>>
+  setAnnualChange: React.Dispatch<React.SetStateAction<AnnualChange[]>>
+  setInputDate: React.Dispatch<React.SetStateAction<string>>
+  getMonthRate: (date: string) => Promise<void>
+}
+
+/**
+ * カテゴリー情報
+ */
 export interface CategoryType {
   categories: Category[]
   name: string
@@ -43,6 +63,9 @@ export interface CategoryType {
   deleteCategory: (id: Category['id']) => Promise<void>
 }
 
+/**
+ * パートナー情報
+ */
 export interface PartnerType {
   partners: Partner[]
   addPartner: (requestData: RequestPartner) => Promise<void>

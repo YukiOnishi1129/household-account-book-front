@@ -33,6 +33,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/recharts": "^1.8.16",
     "@zeit/next-sass": "^1.0.1",
     "axios": "^0.20.0",
     "dayjs": "^1.8.35",
@@ -44,6 +45,7 @@
     "normalize.css": "^8.0.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "recharts": "^1.8.5",
     "reset-css": "^5.0.1",
     "styled-components": "^5.1.1",
     "styled-react-modal": "^2.0.1"
