@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import { LinkStatus } from '@/utils/consts'
 import BaseDialog from '@/components/dialogs/common/BaseDialog'
 import DialogTitle from '@/components/dialogs/common/DialogTitle'
@@ -7,16 +7,16 @@ import SubmitButton from '@/components/atoms/SubmitButton'
 
 export type Props = {
   isOpen: boolean
-  inputDate: string
-  setInputDate: React.Dispatch<React.SetStateAction<string>>
-  submit: () => Promise<void>
+  targetDate: string
+  setTargetDate: React.Dispatch<React.SetStateAction<string>>
+  submit: (date: string) => Promise<void>
   close: () => void
 }
 
 const ChangeMonthDialog: FC<Props> = ({
   isOpen,
-  inputDate,
-  setInputDate,
+  targetDate,
+  setTargetDate,
   submit,
   close,
 }) => {
@@ -34,7 +34,10 @@ const ChangeMonthDialog: FC<Props> = ({
   return (
     <BaseDialog isOpen={isOpen} closeDialog={close}>
       <DialogTitle title="支出割合の月を変更" />
-      <select value={inputDate} onChange={(e) => setInputDate(e.target.value)}>
+      <select
+        value={targetDate}
+        onChange={(e) => setTargetDate(e.target.value)}
+      >
         {optioons}
       </select>
       <DialogButtonGroup>
@@ -43,7 +46,7 @@ const ChangeMonthDialog: FC<Props> = ({
           status={LinkStatus.CHANGE}
           size="md"
           submit={() => {
-            submit()
+            submit(targetDate)
           }}
         />
       </DialogButtonGroup>

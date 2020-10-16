@@ -18,6 +18,7 @@ const DynamicMonthRate = dynamic(
 const MonthRate: FC = () => {
   const { inputDate, setInputDate, monthRate, getMonthRate } = useGraph()
   const [isOepn, setIsOpen] = useState(false)
+  const [targetDate, setTargetDate] = useState(inputDate)
   const showdate = FormatCgangeYearMonth(inputDate) + 'の支出割合'
 
   /**
@@ -30,12 +31,14 @@ const MonthRate: FC = () => {
    * ダイアログを閉じる処理
    */
   const closeModal = (): void => {
+    setTargetDate(inputDate)
     setIsOpen(false)
   }
 
-  const changeMonthRate = async () => {
+  const changeMonthRate = async (date: string) => {
+    setInputDate(date)
     await getMonthRate(inputDate)
-    closeModal()
+    setIsOpen(false)
   }
   return (
     <>
@@ -48,9 +51,9 @@ const MonthRate: FC = () => {
       </ContentsForm>
       <ChangeMonthDialog
         isOpen={isOepn}
-        inputDate={inputDate}
-        setInputDate={setInputDate}
-        submit={() => changeMonthRate()}
+        targetDate={targetDate}
+        setTargetDate={setTargetDate}
+        submit={(date) => changeMonthRate(date)}
         close={() => closeModal()}
       />
     </>
