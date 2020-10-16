@@ -18,7 +18,6 @@ export const GraphProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [annualChange, setAnnualChange] = useState(initialAnnualChange)
 
   const [inputDate, setInputDate] = useState(CurrentMonth())
-  console.log(inputDate)
 
   useEffect(() => {
     let unmounted = false
