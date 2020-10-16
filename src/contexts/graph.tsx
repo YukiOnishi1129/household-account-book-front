@@ -2,7 +2,7 @@ import React, { ReactNode, FC, useState, useContext, useEffect } from 'react'
 import { GraphContext } from '@/utils/contexts'
 import ApiClient from '@/network/ApiClient'
 import { initilaMonthRate, initialAnnualChange } from '@/utils/inits'
-import { CurrentDate } from '@/utils/date'
+import { CurrentMonth } from '@/utils/date'
 
 /**
  * GraphProvider
@@ -11,11 +11,12 @@ import { CurrentDate } from '@/utils/date'
 export const GraphProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [monthRate, setMonthRate] = useState(initilaMonthRate)
   const [annualChange, setAnnualChange] = useState(initialAnnualChange)
-  const [date, setDate] = useState(CurrentDate())
+  const [inputDate, setInputDate] = useState(CurrentMonth())
+  console.log(inputDate)
 
   useEffect(() => {
     let unmounted = false
-    getGraph(date, unmounted)
+    getGraph(CurrentMonth(), unmounted)
 
     const cleanup = () => {
       unmounted = true
@@ -61,10 +62,10 @@ export const GraphProvider: FC<{ children: ReactNode }> = ({ children }) => {
       value={{
         monthRate,
         annualChange,
-        date,
+        inputDate,
         setMonthRate,
         setAnnualChange,
-        setDate,
+        setInputDate,
         getMonthRate,
       }}
     >

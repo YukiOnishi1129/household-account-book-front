@@ -37,10 +37,10 @@ export interface AuthType {
 export interface GraphType {
   monthRate: MonthRate[]
   annualChange: AnnualChange[]
-  date: string
+  inputDate: string
   setMonthRate: React.Dispatch<React.SetStateAction<MonthRate[]>>
   setAnnualChange: React.Dispatch<React.SetStateAction<AnnualChange[]>>
-  setDate: React.Dispatch<React.SetStateAction<string>>
+  setInputDate: React.Dispatch<React.SetStateAction<string>>
   getMonthRate: (date: string) => Promise<void>
 }
 

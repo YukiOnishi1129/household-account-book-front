@@ -11,6 +11,13 @@ export const CurrentDate = (): string => {
 }
 
 /**
+ * 現在月を取得
+ */
+export const CurrentMonth = (): string => {
+  return dayjs().format('YYYY-MM-DD').slice(0, -3) + '-01'
+}
+
+/**
  * 日付フォーマット変換(YYYY年MM月DD日)
  * @param date
  */

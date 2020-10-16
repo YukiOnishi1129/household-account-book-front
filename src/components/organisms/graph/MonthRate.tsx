@@ -1,10 +1,11 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import styled from 'styled-components'
 import dynamic from 'next/dynamic'
 import useGraph from '@/contexts/graph'
 import ContentsForm from '@/components/organisms/common/ContentsForm'
 import FormTitle from '@/components/atoms/FormTitle'
 import CalendarIcon from '@/components/atoms/CalendarIcon'
+import ChangeMonthDialog from '@/components/dialogs/graph/ChangeMonthDialog'
 import { FormatCgangeYearMonth } from '@/utils/date'
 
 // NOTE: RechartsはSSRでwarinngが出るから、SSRしないようにする
@@ -15,16 +16,44 @@ const DynamicMonthRate = dynamic(
 )
 
 const MonthRate: FC = () => {
-  const { date, monthRate } = useGraph()
-  const showdate = FormatCgangeYearMonth(date) + 'の支出割合'
+  const { inputDate, setInputDate, monthRate, getMonthRate } = useGraph()
+  const [isOepn, setIsOpen] = useState(false)
+  const showdate = FormatCgangeYearMonth(inputDate) + 'の支出割合'
+
+  /**
+   * ダイアログを開く処理
+   */
+  const openModal = (): void => {
+    setIsOpen(true)
+  }
+  /**
+   * ダイアログを閉じる処理
+   */
+  const closeModal = (): void => {
+    setIsOpen(false)
+  }
+
+  const changeMonthRate = async () => {
+    await getMonthRate(inputDate)
+    closeModal()
+  }
   return (
-    <ContentsForm>
-      <Title>
-        <FormTitle title={showdate} space="sm" />
-        <CalendarIcon id={1} size={24} submit={() => {}} />
-      </Title>
-      <DynamicMonthRate monthRate={monthRate} />
-    </ContentsForm>
+    <>
+      <ContentsForm>
+        <Title>
+          <FormTitle title={showdate} space="sm" />
+          <CalendarIcon id={1} size={24} submit={() => openModal()} />
+        </Title>
+        <DynamicMonthRate monthRate={monthRate} />
+      </ContentsForm>
+      <ChangeMonthDialog
+        isOpen={isOepn}
+        inputDate={inputDate}
+        setInputDate={setInputDate}
+        submit={() => changeMonthRate()}
+        close={() => closeModal()}
+      />
+    </>
   )
 }
 
