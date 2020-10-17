@@ -1,7 +1,9 @@
-import React, { FC, useState } from 'react'
+import React, { FC } from 'react'
+import styled from 'styled-components'
 import { LinkStatus } from '@/utils/consts'
 import BaseDialog from '@/components/dialogs/common/BaseDialog'
 import DialogTitle from '@/components/dialogs/common/DialogTitle'
+import DialogFormGroup from '@/components/dialogs/common/DialogFormGroup'
 import DialogButtonGroup from '@/components/dialogs/common/DialogButtonGroup'
 import SubmitButton from '@/components/atoms/SubmitButton'
 
@@ -28,16 +30,19 @@ const ChangeMonthDialog: FC<Props> = ({
   return (
     <BaseDialog isOpen={isOpen} closeDialog={close}>
       <DialogTitle title="支出割合の月を変更" />
-      <select
-        value={targetDate}
-        onChange={(e) => setTargetDate(e.target.value)}
-      >
-        {changeDate.map((d) => (
-          <option key={d.id} value={d.id}>
-            {d.value}
-          </option>
-        ))}
-      </select>
+      <DialogFormGroup>
+        <Select
+          value={targetDate}
+          onChange={(e) => setTargetDate(e.target.value)}
+        >
+          {changeDate.map((d) => (
+            <option key={d.id} value={d.id}>
+              {d.value}
+            </option>
+          ))}
+        </Select>
+      </DialogFormGroup>
+
       <DialogButtonGroup>
         <SubmitButton status={LinkStatus.CANCEL} size="md" submit={close} />
         <SubmitButton
@@ -53,3 +58,16 @@ const ChangeMonthDialog: FC<Props> = ({
 }
 
 export default ChangeMonthDialog
+
+const Select = styled.select`
+  display: block;
+  margin: 0 auto;
+  cursor: pointer;
+  width: 90%;
+  padding: 15px 15px;
+  font-size: 1rem;
+  font-family: '筑紫A丸ゴシック', sans-serif;
+  border: none;
+  border-radius: 5px;
+  box-sizing: border-box;
+`
