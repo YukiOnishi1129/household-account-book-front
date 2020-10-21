@@ -23,15 +23,20 @@ const DashBoard: FC = () => {
   return (
     <Margin>
       <DaysLi>
-        {days.map((d) => (
-          <div key={d}>{d}</div>
+        {days.map((d, index) => (
+          <Days index={index} key={d}>
+            {d}
+          </Days>
         ))}
       </DaysLi>
 
       {showCalendar.map((weekRow, rowNum) => (
         <DateLi key={rowNum}>
-          {weekRow.map((date) => (
-            <div key={getDay(date)}>{getDate(date)}</div>
+          {weekRow.map((date, index) => (
+            <DateBox key={getDay(date)} index={index}>
+              <p>{getDate(date)}</p>
+              <p>1,000,000円</p>
+            </DateBox>
           ))}
         </DateLi>
       ))}
@@ -80,6 +85,25 @@ const getCalendarArray = (date: Date) => {
   )
 }
 
+/**
+ * 曜日ごとに色を変える
+ * @param index
+ */
+const setDaysColor = (index: number): string => {
+  switch (index) {
+    case 0:
+      return 'color: #F82020;'
+    case 6:
+      return 'color: #3118F5;'
+    default:
+      return ''
+  }
+}
+
+type StyleDateBox = {
+  index: number
+}
+
 const Margin = styled.div`
   margin: 40px auto;
   width: 90%;
@@ -105,9 +129,10 @@ const DaysLi = styled.li`
   font-weight: bold;
   text-align: center;
   border-bottom: 1px solid #ccc;
-  div {
-    width: 14.3%;
-  }
+`
+const Days = styled.div`
+  width: 14.3%;
+  ${({ index }: StyleDateBox) => setDaysColor(index)};
 `
 
 const DateLi = styled.li`
@@ -115,10 +140,24 @@ const DateLi = styled.li`
   justify-content: space-around;
   text-align: center;
   border-bottom: 1px solid #ccc;
-  div {
-    width: 14.3%;
-    height: 100px;
-    line-height: 1.5;
+`
+
+const DateBox = styled.div`
+  cursor: pointer;
+  width: 14.3%;
+  height: 100px;
+  line-height: 1.5;
+  &:hover {
+    background: #bd9df0;
+    color: #fff;
+  }
+  p {
+    height: 40%;
+    &:first-child {
+      font-weight: bold;
+      padding-top: 10px;
+      ${({ index }: StyleDateBox) => setDaysColor(index)};
+    }
   }
 `
 
