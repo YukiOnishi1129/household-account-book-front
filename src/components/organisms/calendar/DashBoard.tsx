@@ -1,6 +1,7 @@
 import React, { FC, useState } from 'react'
 import styled from 'styled-components'
 import CalendarContext from '@/contexts/calendar'
+import { GridList, Typography } from '@material-ui/core'
 import format from 'date-fns/format'
 import getDate from 'date-fns/getDate'
 import getDay from 'date-fns/getDay'
@@ -12,6 +13,8 @@ import subMonths from 'date-fns/subMonths'
 import startOfMonth from 'date-fns/startOfMonth'
 import endOfMonth from 'date-fns/endOfMonth'
 
+const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+
 const DashBoard: FC = () => {
   const { calendar } = CalendarContext()
   const [targetDate, setTargetDate] = useState(new Date(calendar.date))
@@ -19,7 +22,20 @@ const DashBoard: FC = () => {
 
   return (
     <Margin>
-      <Table>
+      <DaysLi>
+        {days.map((d) => (
+          <div key={d}>{d}</div>
+        ))}
+      </DaysLi>
+
+      {showCalendar.map((weekRow, rowNum) => (
+        <DateLi key={rowNum}>
+          {weekRow.map((date) => (
+            <div key={getDay(date)}>{getDate(date)}</div>
+          ))}
+        </DateLi>
+      ))}
+      {/* <Table>
         <THead>
           <tr>
             <th>Sun</th>
@@ -42,7 +58,7 @@ const DashBoard: FC = () => {
             </tr>
           ))}
         </TBody>
-      </Table>
+      </Table> */}
     </Margin>
   )
 }
@@ -54,6 +70,7 @@ export default DashBoard
  * @param date
  */
 const getCalendarArray = (date: Date) => {
+  console.log(date)
   const sundays = eachWeekOfInterval({
     start: startOfMonth(date),
     end: endOfMonth(date),
@@ -66,6 +83,43 @@ const getCalendarArray = (date: Date) => {
 const Margin = styled.div`
   margin: 40px auto;
   width: 90%;
+`
+
+const CalendarUl = styled.ul`
+  border: 1px solid red;
+  display: flex;
+  justify-content: space-around;
+  min-height: calc(100vh - 200px);
+  padding: 0;
+  flex-wrap: wrap;
+  list-style: none;
+  overflow-y: auto;
+`
+
+const DaysLi = styled.li`
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  height: 30px;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+  div {
+    width: 14.3%;
+  }
+`
+
+const DateLi = styled.li`
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+  div {
+    width: 14.3%;
+    height: 100px;
+    line-height: 1.5;
+  }
 `
 
 const Table = styled.table`
