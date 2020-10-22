@@ -40,3 +40,11 @@ export const FormatCgangeYearMonth = (date: string): string => {
 export const FormatHyphenYearMonthDate = (date: string): string => {
   return dayjs(date).format('YYYY-MM-DD')
 }
+
+/**
+ * 日付フォーマット変換(YYYY-MM)
+ * @param date
+ */
+export const FormatHyphenYearMonth = (date: string): string => {
+  return dayjs(date).format('YYYY-MM')
+}

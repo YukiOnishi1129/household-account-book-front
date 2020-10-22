@@ -1,7 +1,8 @@
 import React, { FC, useState } from 'react'
+import { useRouter } from 'next/router'
 import styled from 'styled-components'
 import CalendarContext from '@/contexts/calendar'
-import { GridList, Typography } from '@material-ui/core'
+import { AfterLoginPage } from '@/utils/consts'
 import format from 'date-fns/format'
 import getDate from 'date-fns/getDate'
 import getDay from 'date-fns/getDay'
@@ -12,11 +13,12 @@ import addMonths from 'date-fns/addMonths'
 import subMonths from 'date-fns/subMonths'
 import startOfMonth from 'date-fns/startOfMonth'
 import endOfMonth from 'date-fns/endOfMonth'
-import { FormatHyphenYearMonthDate } from '@/utils/date'
+import { FormatHyphenYearMonthDate, FormatHyphenYearMonth } from '@/utils/date'
 
 const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 
 const DashBoard: FC = () => {
+  const router = useRouter()
   const { calendar, getCalendar } = CalendarContext()
   const targetDate = new Date(calendar.date)
   const showCalendar = getCalendarArray(targetDate)
@@ -25,6 +27,7 @@ const DashBoard: FC = () => {
    * 前月へ移動
    */
   const changeLastMonth = (): void => {
+    // TODO: 月変更はAPI実装後確認
     getCalendar(FormatHyphenYearMonthDate(String(subMonths(targetDate, 1))))
   }
 
@@ -32,6 +35,7 @@ const DashBoard: FC = () => {
    * 翌月へ移動
    */
   const changeNextMonth = (): void => {
+    // TODO: 月変更はAPI実装後確認
     getCalendar(FormatHyphenYearMonthDate(String(addMonths(targetDate, 1))))
   }
 
@@ -49,7 +53,7 @@ const DashBoard: FC = () => {
   }
 
   /**
-   * 各日付の金額表示
+   * 日付の金額表示
    * @param date
    */
   const showDateMoney = (date: string): string => {
@@ -57,6 +61,16 @@ const DashBoard: FC = () => {
       return m.date === date
     })
     return calendarDate[0].money + '円'
+  }
+
+  /**
+   * 現在表示している月の日付判定
+   * @param date
+   */
+  const isNotCurrentMonth = (date: string) => {
+    return (
+      FormatHyphenYearMonth(date) === FormatHyphenYearMonth(String(targetDate))
+    )
   }
 
   return (
@@ -74,12 +88,27 @@ const DashBoard: FC = () => {
         <DateLi key={rowNum}>
           {weekRow.map((date) =>
             isMatchMoneyDate(FormatHyphenYearMonthDate(String(date))) ? (
-              <DateBox key={getDay(date)} index={getDay(date)}>
+              <DateBox
+                key={getDay(date)}
+                index={getDay(date)}
+                onClick={() =>
+                  router.push({
+                    pathname: `${AfterLoginPage.DETAIL}[date]`,
+                    query: { date: FormatHyphenYearMonthDate(String(date)) },
+                  })
+                }
+              >
                 <p>{getDate(date)}</p>
                 <p>{showDateMoney(FormatHyphenYearMonthDate(String(date)))}</p>
               </DateBox>
             ) : (
-              <NoMoneyDateBox key={getDay(date)} index={getDay(date)}>
+              <NoMoneyDateBox
+                key={getDay(date)}
+                index={getDay(date)}
+                currentMonth={isNotCurrentMonth(
+                  FormatHyphenYearMonthDate(String(date))
+                )}
+              >
                 <p>{getDate(date)}</p>
               </NoMoneyDateBox>
             )
@@ -121,8 +150,26 @@ const setDaysColor = (index: number): string => {
   }
 }
 
+/**
+ * 現在月ではない日付の場合、グレーにする
+ * @param index
+ * @param currentMonth
+ */
+const setCurrentMonthDaysColor = (
+  index: number,
+  currentMonth: boolean
+): string => {
+  if (currentMonth) return setDaysColor(index)
+  return 'color: #888;'
+}
+
 type StyleDateBox = {
   index: number
+}
+
+type StyleNoMoneyDateBox = {
+  index: number
+  currentMonth: boolean
 }
 
 const Margin = styled.div`
@@ -180,6 +227,7 @@ const NoMoneyDateBox = styled.div`
     height: 40%;
     font-weight: bold;
     padding-top: 10px;
-    ${({ index }: StyleDateBox) => setDaysColor(index)};
+    ${({ index, currentMonth }: StyleNoMoneyDateBox) =>
+      setCurrentMonthDaysColor(index, currentMonth)};
   }
 `
