@@ -57,10 +57,12 @@ const DashBoard: FC = () => {
    * @param date
    */
   const showDateMoney = (date: string): string => {
-    const calendarDate = calendar.sum_date_money.filter((m) => {
-      return m.date === date
-    })
-    return calendarDate[0].money + '円'
+    const calendarDate =
+      calendar.sum_date_money &&
+      calendar.sum_date_money.filter((m) => {
+        return m.date === date
+      })
+    return calendarDate.length > 0 ? calendarDate[0].money + '円' : ''
   }
 
   /**
@@ -87,7 +89,7 @@ const DashBoard: FC = () => {
       {showCalendar.map((weekRow, rowNum) => (
         <DateLi key={rowNum}>
           {weekRow.map((date) =>
-            isMatchMoneyDate(FormatHyphenYearMonthDate(String(date))) ? (
+            isNotCurrentMonth(FormatHyphenYearMonthDate(String(date))) ? (
               <DateBox
                 key={getDay(date)}
                 index={getDay(date)}
@@ -102,15 +104,9 @@ const DashBoard: FC = () => {
                 <p>{showDateMoney(FormatHyphenYearMonthDate(String(date)))}</p>
               </DateBox>
             ) : (
-              <NoMoneyDateBox
-                key={getDay(date)}
-                index={getDay(date)}
-                currentMonth={isNotCurrentMonth(
-                  FormatHyphenYearMonthDate(String(date))
-                )}
-              >
+              <NoCurrentMonthDateBox key={getDay(date)}>
                 <p>{getDate(date)}</p>
-              </NoMoneyDateBox>
+              </NoCurrentMonthDateBox>
             )
           )}
         </DateLi>
@@ -150,26 +146,8 @@ const setDaysColor = (index: number): string => {
   }
 }
 
-/**
- * 現在月ではない日付の場合、グレーにする
- * @param index
- * @param currentMonth
- */
-const setCurrentMonthDaysColor = (
-  index: number,
-  currentMonth: boolean
-): string => {
-  if (currentMonth) return setDaysColor(index)
-  return 'color: #888;'
-}
-
 type StyleDateBox = {
   index: number
-}
-
-type StyleNoMoneyDateBox = {
-  index: number
-  currentMonth: boolean
 }
 
 const Margin = styled.div`
@@ -219,7 +197,7 @@ const DateBox = styled.div`
   }
 `
 
-const NoMoneyDateBox = styled.div`
+const NoCurrentMonthDateBox = styled.div`
   width: 14.3%;
   height: 100px;
   line-height: 1.5;
@@ -227,7 +205,6 @@ const NoMoneyDateBox = styled.div`
     height: 40%;
     font-weight: bold;
     padding-top: 10px;
-    ${({ index, currentMonth }: StyleNoMoneyDateBox) =>
-      setCurrentMonthDaysColor(index, currentMonth)};
+    color: #888;
   }
 `
