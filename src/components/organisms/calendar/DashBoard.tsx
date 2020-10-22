@@ -12,58 +12,80 @@ import addMonths from 'date-fns/addMonths'
 import subMonths from 'date-fns/subMonths'
 import startOfMonth from 'date-fns/startOfMonth'
 import endOfMonth from 'date-fns/endOfMonth'
+import { FormatHyphenYearMonthDate } from '@/utils/date'
 
 const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 
 const DashBoard: FC = () => {
-  const { calendar } = CalendarContext()
-  const [targetDate, setTargetDate] = useState(new Date(calendar.date))
+  const { calendar, getCalendar } = CalendarContext()
+  const targetDate = new Date(calendar.date)
   const showCalendar = getCalendarArray(targetDate)
+
+  /**
+   * 前月へ移動
+   */
+  const changeLastMonth = (): void => {
+    getCalendar(FormatHyphenYearMonthDate(String(subMonths(targetDate, 1))))
+  }
+
+  /**
+   * 翌月へ移動
+   */
+  const changeNextMonth = (): void => {
+    getCalendar(FormatHyphenYearMonthDate(String(addMonths(targetDate, 1))))
+  }
+
+  /**
+   * 金額情報のある日付を選定
+   * @param date
+   */
+  const isMatchMoneyDate = (date: string): boolean => {
+    return (
+      calendar.sum_date_money &&
+      calendar.sum_date_money.filter((m) => {
+        return m.date === date
+      }).length > 0
+    )
+  }
+
+  /**
+   * 各日付の金額表示
+   * @param date
+   */
+  const showDateMoney = (date: string): string => {
+    const calendarDate = calendar.sum_date_money.filter((m) => {
+      return m.date === date
+    })
+    return calendarDate[0].money + '円'
+  }
 
   return (
     <Margin>
+      <div onClick={() => changeLastMonth()}>前</div>
+      <div onClick={() => changeNextMonth()}>次</div>
       <DaysLi>
         {days.map((d, index) => (
-          <Days index={index} key={d}>
+          <Days index={index} key={index}>
             {d}
           </Days>
         ))}
       </DaysLi>
-
       {showCalendar.map((weekRow, rowNum) => (
         <DateLi key={rowNum}>
-          {weekRow.map((date, index) => (
-            <DateBox key={getDay(date)} index={index}>
-              <p>{getDate(date)}</p>
-              <p>1,000,000円</p>
-            </DateBox>
-          ))}
+          {weekRow.map((date) =>
+            isMatchMoneyDate(FormatHyphenYearMonthDate(String(date))) ? (
+              <DateBox key={getDay(date)} index={getDay(date)}>
+                <p>{getDate(date)}</p>
+                <p>{showDateMoney(FormatHyphenYearMonthDate(String(date)))}</p>
+              </DateBox>
+            ) : (
+              <NoMoneyDateBox key={getDay(date)} index={getDay(date)}>
+                <p>{getDate(date)}</p>
+              </NoMoneyDateBox>
+            )
+          )}
         </DateLi>
       ))}
-      {/* <Table>
-        <THead>
-          <tr>
-            <th>Sun</th>
-            <th>Mon</th>
-            <th>Tue</th>
-            <th>Wed</th>
-            <th>Thu</th>
-            <th>Fri</th>
-            <th>Sat</th>
-          </tr>
-        </THead>
-        <TBody>
-          {showCalendar.map((weekRow, rowNum) => (
-            <tr key={rowNum}>
-              {weekRow.map((date) => (
-                <td key={getDay(date)} align="center">
-                  {getDate(date)}
-                </td>
-              ))}
-            </tr>
-          ))}
-        </TBody>
-      </Table> */}
     </Margin>
   )
 }
@@ -75,7 +97,6 @@ export default DashBoard
  * @param date
  */
 const getCalendarArray = (date: Date) => {
-  console.log(date)
   const sundays = eachWeekOfInterval({
     start: startOfMonth(date),
     end: endOfMonth(date),
@@ -107,17 +128,7 @@ type StyleDateBox = {
 const Margin = styled.div`
   margin: 40px auto;
   width: 90%;
-`
-
-const CalendarUl = styled.ul`
-  border: 1px solid red;
-  display: flex;
-  justify-content: space-around;
-  min-height: calc(100vh - 200px);
-  padding: 0;
-  flex-wrap: wrap;
-  list-style: none;
-  overflow-y: auto;
+  min-height: calc(100vh - 220px);
 `
 
 const DaysLi = styled.li`
@@ -161,27 +172,14 @@ const DateBox = styled.div`
   }
 `
 
-const Table = styled.table`
-  width: 100%;
-`
-
-const THead = styled.thead`
-  tr {
-    height: 30px;
-    border-bottom: 1px solid #888;
-    th {
-      font-weight: bold;
-    }
-  }
-`
-
-const TBody = styled.tbody`
-  tr {
-    td {
-      height: 10px;
-      padding-top: 20px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid #888;
-    }
+const NoMoneyDateBox = styled.div`
+  width: 14.3%;
+  height: 100px;
+  line-height: 1.5;
+  p:first-child {
+    height: 40%;
+    font-weight: bold;
+    padding-top: 10px;
+    ${({ index }: StyleDateBox) => setDaysColor(index)};
   }
 `
