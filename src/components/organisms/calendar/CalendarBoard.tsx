@@ -26,6 +26,7 @@ import subMonths from 'date-fns/subMonths'
 import startOfMonth from 'date-fns/startOfMonth'
 import endOfMonth from 'date-fns/endOfMonth'
 
+// NOTE: 未使用コンポーネント、サンプルとして置いてるだけ
 const CalendarBoard: FC = () => {
   const { calendar } = CalendarContext()
   const [targetDate, setTargetDate] = useState(new Date(calendar.date))

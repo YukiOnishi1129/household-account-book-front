@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import styled from 'styled-components'
 import CalendarContext from '@/contexts/calendar'
 import { AfterLoginPage } from '@/utils/consts'
+import TitleHeader from '@/components/organisms/common/TitleHeader'
 import format from 'date-fns/format'
 import getDate from 'date-fns/getDate'
 import getDay from 'date-fns/getDay'
@@ -24,7 +25,7 @@ const DashBoard: FC = () => {
   const showCalendar = getCalendarArray(targetDate)
 
   /**
-   * 前月へ移動
+   * 先月へ移動
    */
   const changeLastMonth = (): void => {
     // TODO: 月変更はAPI実装後確認
@@ -39,17 +40,8 @@ const DashBoard: FC = () => {
     getCalendar(FormatHyphenYearMonthDate(String(addMonths(targetDate, 1))))
   }
 
-  /**
-   * 金額情報のある日付を選定
-   * @param date
-   */
-  const isMatchMoneyDate = (date: string): boolean => {
-    return (
-      calendar.sum_date_money &&
-      calendar.sum_date_money.filter((m) => {
-        return m.date === date
-      }).length > 0
-    )
+  const SumMonthMoney = (): string => {
+    return calendar.sum_month_money ? calendar.sum_month_money + '円' : 0 + '円'
   }
 
   /**
@@ -77,40 +69,50 @@ const DashBoard: FC = () => {
 
   return (
     <Margin>
-      <div onClick={() => changeLastMonth()}>前</div>
-      <div onClick={() => changeNextMonth()}>次</div>
-      <DaysLi>
-        {days.map((d, index) => (
-          <Days index={index} key={index}>
-            {d}
-          </Days>
+      <TitleHeader>
+        <ChangeMonthArea>
+          <div onClick={() => changeLastMonth()}>&lt;</div>
+          <div onClick={() => changeNextMonth()}>&gt;</div>
+        </ChangeMonthArea>
+        <h2>{format(targetDate, 'y年M月')}</h2>
+        <SumMoneyArea>総支出金額：{SumMonthMoney()}</SumMoneyArea>
+      </TitleHeader>
+      <DaysUl>
+        <DaysLi>
+          {days.map((d, index) => (
+            <Days index={index} key={index}>
+              {d}
+            </Days>
+          ))}
+        </DaysLi>
+        {showCalendar.map((weekRow, rowNum) => (
+          <DateLi key={rowNum}>
+            {weekRow.map((date) =>
+              isNotCurrentMonth(FormatHyphenYearMonthDate(String(date))) ? (
+                <DateBox
+                  key={getDay(date)}
+                  index={getDay(date)}
+                  onClick={() =>
+                    router.push({
+                      pathname: `${AfterLoginPage.DETAIL}[date]`,
+                      query: { date: FormatHyphenYearMonthDate(String(date)) },
+                    })
+                  }
+                >
+                  <p>{getDate(date)}</p>
+                  <p>
+                    {showDateMoney(FormatHyphenYearMonthDate(String(date)))}
+                  </p>
+                </DateBox>
+              ) : (
+                <NoCurrentMonthDateBox key={getDay(date)}>
+                  <p>{getDate(date)}</p>
+                </NoCurrentMonthDateBox>
+              )
+            )}
+          </DateLi>
         ))}
-      </DaysLi>
-      {showCalendar.map((weekRow, rowNum) => (
-        <DateLi key={rowNum}>
-          {weekRow.map((date) =>
-            isNotCurrentMonth(FormatHyphenYearMonthDate(String(date))) ? (
-              <DateBox
-                key={getDay(date)}
-                index={getDay(date)}
-                onClick={() =>
-                  router.push({
-                    pathname: `${AfterLoginPage.DETAIL}[date]`,
-                    query: { date: FormatHyphenYearMonthDate(String(date)) },
-                  })
-                }
-              >
-                <p>{getDate(date)}</p>
-                <p>{showDateMoney(FormatHyphenYearMonthDate(String(date)))}</p>
-              </DateBox>
-            ) : (
-              <NoCurrentMonthDateBox key={getDay(date)}>
-                <p>{getDate(date)}</p>
-              </NoCurrentMonthDateBox>
-            )
-          )}
-        </DateLi>
-      ))}
+      </DaysUl>
     </Margin>
   )
 }
@@ -151,9 +153,39 @@ type StyleDateBox = {
 }
 
 const Margin = styled.div`
-  margin: 40px auto;
+  margin: 0px auto 100px auto;
   width: 90%;
   min-height: calc(100vh - 220px);
+`
+
+const ChangeMonthArea = styled.div`
+  position: absolute;
+  top: 0px;
+  left: 80px;
+  display: flex;
+
+  div {
+    cursor: pointer;
+    font-size: 2.5rem;
+    color: #272727;
+    margin-right: 40px;
+    user-select: none;
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+`
+
+const SumMoneyArea = styled.div`
+  position: absolute;
+  top: 0px;
+  right: 80px;
+  font-size: 1.25rem;
+  color: #272727;
+`
+
+const DaysUl = styled.ul`
+  margin-top: 20px;
 `
 
 const DaysLi = styled.li`
@@ -184,6 +216,7 @@ const DateBox = styled.div`
   height: 100px;
   line-height: 1.5;
   &:hover {
+    border-radius: 10px;
     background: #bd9df0;
     color: #fff;
   }
