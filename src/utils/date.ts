@@ -25,6 +25,26 @@ export const FormatChangeYearMonthDate = (date: string): string => {
   return dayjs(date).format('YYYY年MM月DD日')
 }
 
+/**
+ * 日付フォーマット変換(YYYY年MM月)
+ * @param date
+ */
 export const FormatCgangeYearMonth = (date: string): string => {
   return dayjs(date).format('YYYY年MM月')
+}
+
+/**
+ * 日付フォーマット変換(YYYY-MM-DD)
+ * @param date
+ */
+export const FormatHyphenYearMonthDate = (date: string): string => {
+  return dayjs(date).format('YYYY-MM-DD')
+}
+
+/**
+ * 日付フォーマット変換(YYYY-MM)
+ * @param date
+ */
+export const FormatHyphenYearMonth = (date: string): string => {
+  return dayjs(date).format('YYYY-MM')
 }

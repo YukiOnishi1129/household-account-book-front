@@ -1,5 +1,6 @@
 import {
   User,
+  Calendar,
   MonthRate,
   MonthRateDate,
   AnnualChange,
@@ -18,6 +19,29 @@ export const initialUser: User = {
   main_user_id: 0,
   login_flg: false,
   input_flg: false,
+}
+
+export const initialCalendar: Calendar = {
+  date: '2020-09-01',
+  sum_month_money: 200000,
+  sum_date_money: [
+    {
+      date: '2020-09-01',
+      money: 1000,
+    },
+    {
+      date: '2020-09-05',
+      money: 11000,
+    },
+    {
+      date: '2020-09-11',
+      money: 30000,
+    },
+    {
+      date: '2020-09-30',
+      money: 20000,
+    },
+  ],
 }
 
 /**

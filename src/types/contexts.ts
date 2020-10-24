@@ -5,6 +5,7 @@ import {
   RequestRegister,
   RequestRemindMail,
   RequestRemindKey,
+  Calendar,
   MonthRate,
   MonthRateDate,
   AnnualChange,
@@ -30,6 +31,15 @@ export interface AuthType {
   remindKey: (requestData: RequestRemindKey) => Promise<void>
   setIsAuthenticated: Dispatch<SetStateAction<boolean>>
   setUser: Dispatch<SetStateAction<User>>
+}
+
+/**
+ * カレンダー情報
+ */
+export interface CalendarType {
+  calendar: Calendar
+  setCalendar: React.Dispatch<React.SetStateAction<Calendar>>
+  getCalendar: (date: string) => Promise<void>
 }
 
 /**
