@@ -3,7 +3,7 @@ import { ProtectRoute } from '@/contexts/auth'
 import CalendarTemplate from '@/components/templates/CalendarTemplate'
 
 const Calender: FC = () => {
-  return <CalendarTemplate></CalendarTemplate>
+  return <CalendarTemplate />
 }
 
 export default ProtectRoute(Calender)

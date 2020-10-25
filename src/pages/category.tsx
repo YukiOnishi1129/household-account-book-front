@@ -3,7 +3,7 @@ import { ProtectRoute } from '@/contexts/auth'
 import CategoryTemplate from '@/components/templates/CategoryTemplate'
 
 const Category: FC = () => {
-  return <CategoryTemplate></CategoryTemplate>
+  return <CategoryTemplate />
 }
 
 export default ProtectRoute(Category)
