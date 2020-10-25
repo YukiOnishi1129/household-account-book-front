@@ -1,6 +1,7 @@
 import {
   User,
   Calendar,
+  Detail,
   MonthRate,
   MonthRateDate,
   AnnualChange,
@@ -21,6 +22,9 @@ export const initialUser: User = {
   input_flg: false,
 }
 
+/**
+ * カレンダーデータの初期値
+ */
 export const initialCalendar: Calendar = {
   date: '2020-09-01',
   sum_month_money: 200000,
@@ -29,20 +33,21 @@ export const initialCalendar: Calendar = {
       date: '2020-09-01',
       money: 1000,
     },
-    {
-      date: '2020-09-05',
-      money: 11000,
-    },
-    {
-      date: '2020-09-11',
-      money: 30000,
-    },
-    {
-      date: '2020-09-30',
-      money: 20000,
-    },
   ],
 }
+
+/**
+ * 日付単位の金額詳細データの初期値
+ */
+export const initialDetails: Detail[] = [
+  {
+    id: 0,
+    money: 0,
+    img_file: '',
+    category_id: 0,
+    category_name: '',
+  },
+]
 
 /**
  * 月間カテゴリ別支出割合データの初期値
