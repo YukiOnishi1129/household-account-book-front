@@ -11,8 +11,10 @@ const Header = styled.div`
   position: relative;
   height: 80px;
   line-height: 80px;
-  font-size: 1.75rem;
   font-weight: bold;
   color: #d163a2;
   text-align: center;
+  h2 {
+    font-size: 1.75rem;
+  }
 `

@@ -22,6 +22,8 @@ export const getLabelName = (status: string): string => {
       return '削除'
     case LinkStatus.CANCEL:
       return 'キャンセル'
+    case LinkStatus.CATEGORY:
+      return 'カテゴリを編集'
     default:
       return 'TOP'
   }

@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { useRouter } from 'next/router'
 import { CategoryProvider } from '@/contexts/category'
@@ -10,12 +10,23 @@ import BeforeLink from '@/components/atoms/BeforeLink'
 
 const CategoryTemplate: FC = () => {
   const router = useRouter()
+  const [beforeDetailDate, setBeforeDetailDate] = useState<string | null>('')
+
+  useEffect(() => {
+    setBeforeDetailDate(localStorage.getItem('detailDate'))
+    return () => {
+      // NOTE: unmount時に、localStorageを削除
+      localStorage.removeItem('detailDate')
+    }
+  }, [])
 
   return (
     <CategoryProvider>
       <ContentsMain>
         <TitleHeader>
-          <BeforeLink nowPage={router.pathname} date="2020-09-01" />
+          {beforeDetailDate && (
+            <BeforeLink nowPage={router.pathname} date={beforeDetailDate} />
+          )}
           <h2>カテゴリ管理</h2>
         </TitleHeader>
         <Contents>

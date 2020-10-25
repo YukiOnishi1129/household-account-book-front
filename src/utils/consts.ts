@@ -57,6 +57,7 @@ export enum LinkStatus {
   REGISTER = 'register',
   DELETE = 'delete',
   CANCEL = 'cancel',
+  CATEGORY = 'category',
 }
 
 /**
