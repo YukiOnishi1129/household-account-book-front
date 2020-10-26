@@ -5,6 +5,8 @@ import { LinkStatus, AfterLoginPage } from '@/utils/consts'
 import { DetailProvider } from '@/contexts/detail'
 import TitleHeader from '@/components/organisms/common/TitleHeader'
 import ContentsMain from '@/components/organisms/common/ContentsMain'
+import AddDetailFrom from '@/components/organisms/detail/AddDetailForm'
+import ShowDetailList from '@/components/organisms/detail/ShowDetailList'
 import BeforeLink from '@/components/atoms/BeforeLink'
 import SubmitButton from '@/components/atoms/SubmitButton'
 import { FormatChangeYearMonthDate, ChangeFirstDate } from '@/utils/date'
@@ -41,8 +43,12 @@ const DetailTemplate: FC = () => {
           </CategoryLink>
         </TitleHeader>
         <Contents>
-          <ContentsRight>aaa</ContentsRight>
-          <ContentsLeft>aaa</ContentsLeft>
+          <ContentsRight>
+            <AddDetailFrom />
+          </ContentsRight>
+          <ContentsLeft>
+            <ShowDetailList />
+          </ContentsLeft>
         </Contents>
       </ContentsMain>
     </DetailProvider>
@@ -64,7 +70,6 @@ const Contents = styled.div`
   padding: 20px 40px;
   min-height: 380px;
   box-sizing: border-box;
-  font-size: 1.5rem;
 `
 
 const ContentsRight = styled.div`
