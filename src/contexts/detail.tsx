@@ -2,7 +2,7 @@ import React, { ReactNode, FC, useState, useContext, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { DetailContext } from '@/utils/contexts'
 import ApiClient from '@/network/ApiClient'
-import { initialDetails } from '@/utils/inits'
+import { initialDetails, initialCategories } from '@/utils/inits'
 import { Detail } from '@/types/api'
 
 /**
@@ -11,6 +11,7 @@ import { Detail } from '@/types/api'
  */
 export const DetailProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [details, setDetails] = useState(initialDetails)
+  const [categories, setCategories] = useState(initialCategories)
   const router = useRouter()
 
   useEffect(() => {
@@ -21,8 +22,12 @@ export const DetailProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const getDetails = async (unmounted: boolean, date: string) => {
     try {
       const res = await ApiClient.detail.getDetails(date)
+      const resCategories = await ApiClient.category.getCategories()
       // アンマウントされていなければ、stateを更新
-      if (!unmounted) setDetails(res.data)
+      if (!unmounted) {
+        setDetails(res.data)
+        setCategories(resCategories.data)
+      }
     } catch (error) {}
   }
 
@@ -42,6 +47,7 @@ export const DetailProvider: FC<{ children: ReactNode }> = ({ children }) => {
     <DetailContext.Provider
       value={{
         details,
+        categories,
         setDetails,
         deleteDetail,
       }}

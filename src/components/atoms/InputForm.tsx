@@ -5,7 +5,7 @@ import { EventType } from '@/types/events'
 export type Props = {
   type: string
   comment: string
-  value: string
+  value: string | number
   length?: number
   errMsg: string
   changeValue: EventType['onChange']

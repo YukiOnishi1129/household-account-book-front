@@ -24,6 +24,15 @@ export interface RemindValidError {
 }
 
 /**
+ * 金額入力・編集バリデーションエラー
+ */
+export interface DetailValidError {
+  categoryId: string
+  money: string
+  imgFile: string
+}
+
+/**
  * カテゴリー登録・編集バリデーションエラー
  */
 export interface CategoryValidError {

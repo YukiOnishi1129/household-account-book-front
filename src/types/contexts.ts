@@ -45,6 +45,7 @@ export interface CalendarType {
 
 export interface DetailType {
   details: Detail[]
+  categories: Category[]
   setDetails: React.Dispatch<React.SetStateAction<Detail[]>>
   deleteDetail: (moneyId: Detail['id']) => Promise<void>
 }
