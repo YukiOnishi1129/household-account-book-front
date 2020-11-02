@@ -10,11 +10,11 @@ export type Props = {
 
 const LabelCategory: FC<Props> = ({ size, name, colorType }) => {
   return (
-    <CategoryNameItem size={size ? size : 100}>
-      <CategoryName name={name} type={colorType}>
+    <_CategoryNameItem size={size ? size : 100}>
+      <_CategoryName name={name} type={colorType}>
         {name}
-      </CategoryName>
-    </CategoryNameItem>
+      </_CategoryName>
+    </_CategoryNameItem>
   )
 }
 
@@ -24,7 +24,7 @@ export type ItemProps = {
   size: number
 }
 
-const CategoryNameItem = styled.div`
+const _CategoryNameItem = styled.div`
   width: ${({ size }: ItemProps) => `${size}%`};
 `
 
@@ -33,7 +33,7 @@ export type NameProps = {
   type: number
 }
 
-const CategoryName = styled.p`
+const _CategoryName = styled.p`
   margin: 10px 0;
   padding: 10px 0;
   ${({ name, type }: NameProps) => showCategoryLabel(name, type)};
