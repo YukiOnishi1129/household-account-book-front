@@ -3,49 +3,37 @@ import styled from 'styled-components'
 import { EventType } from '@/types/events'
 
 export type Props = {
-  type: string
-  comment: string
   value: string | number
-  length?: number
+  option: JSX.Element[]
   errMsg: string
-  changeValue: EventType['onChange']
+  changeValue: EventType['onChangeSelect']
 }
 
-const InputForm: FC<Props> = ({
-  type,
-  comment,
-  value,
-  length,
-  errMsg,
-  changeValue,
-}) => {
-  const autoComp = type === 'password' ? 'off' : 'on'
-  const maxLen = length ? length : 255
+const SelectForm: FC<Props> = ({ value, option, errMsg, changeValue }) => {
   return (
     <>
-      <_Input
-        type={type}
-        placeholder={comment}
+      <_SELECT
         value={value}
         error={errMsg !== ''}
-        maxLength={maxLen}
-        autoComplete={autoComp}
         onChange={(event) => {
           changeValue(event)
         }}
-      />
+      >
+        {option}
+      </_SELECT>
       {errMsg !== '' && <_ValidErrorMsg>{errMsg}</_ValidErrorMsg>}
     </>
   )
 }
 
-export default InputForm
+export default SelectForm
 
 export type TProps = {
   error: boolean
 }
 
-const _Input = styled.input`
+const _SELECT = styled.select`
+  cursor: pointer;
   padding: 15px 15px;
   width: 100%;
   font-size: 1rem;

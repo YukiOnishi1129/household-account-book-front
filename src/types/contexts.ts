@@ -6,6 +6,7 @@ import {
   RequestRemindMail,
   RequestRemindKey,
   Calendar,
+  Detail,
   MonthRate,
   MonthRateDate,
   AnnualChange,
@@ -40,6 +41,13 @@ export interface CalendarType {
   calendar: Calendar
   setCalendar: React.Dispatch<React.SetStateAction<Calendar>>
   getCalendar: (date: string) => Promise<void>
+}
+
+export interface DetailType {
+  details: Detail[]
+  categories: Category[]
+  setDetails: React.Dispatch<React.SetStateAction<Detail[]>>
+  deleteDetail: (moneyId: Detail['id']) => Promise<void>
 }
 
 /**

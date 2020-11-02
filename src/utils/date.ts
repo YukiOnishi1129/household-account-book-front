@@ -48,3 +48,11 @@ export const FormatHyphenYearMonthDate = (date: string): string => {
 export const FormatHyphenYearMonth = (date: string): string => {
   return dayjs(date).format('YYYY-MM')
 }
+
+/**
+ * 月の最初の日付に変換
+ * @param date
+ */
+export const ChangeFirstDate = (date: string): string => {
+  return dayjs(date).format('YYYY-MM') + '-01'
+}
