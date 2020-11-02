@@ -14,6 +14,8 @@ export type Props = {
   money: string | number
   imgFile: string
   categories: Category[]
+  setCategpryId: React.Dispatch<React.SetStateAction<number>>
+  setMoney: React.Dispatch<React.SetStateAction<string | number>>
   detailError: DetailValidError
   submit: VoidFunction
 }
@@ -24,12 +26,13 @@ const DetailForm: FC<Props> = ({
   categoryId,
   money,
   imgFile,
+  setCategpryId,
+  setMoney,
   categories,
   detailError,
   submit,
 }) => {
   const initialState = { id: 0, name: 'カテゴリを選択してください' }
-  const [selectedId, setSelectedId] = useState(0)
   const categoryState =
     categories && categories.length > 1
       ? categories
@@ -49,17 +52,31 @@ const DetailForm: FC<Props> = ({
   ))
 
   /**
-   * カテゴリー選択結果更新
+   * カテゴリー選択処理
    * @param event
    */
   const ChangeSelect: EventType['onChangeSelect'] = (event) => {
-    setSelectedId(Number(event.target.value))
+    setCategpryId(Number(event.target.value))
+  }
+
+  /**
+   * 金額入力処理
+   * @param event
+   */
+  const ChangeMoney: EventType['onChange'] = (event) => {
+    if (isFinite(Number(event.target.value))) {
+      if (Number(event.target.value) === 0) {
+        setMoney('')
+      } else {
+        setMoney(Number(event.target.value))
+      }
+    }
   }
 
   return (
     <_Form>
       <SelectForm
-        value={selectedId}
+        value={categoryId}
         option={options}
         errMsg={detailError.categoryId}
         changeValue={ChangeSelect}
@@ -68,9 +85,10 @@ const DetailForm: FC<Props> = ({
       <InputForm
         type="text"
         comment="金額を入力してください"
-        changeValue={() => {}}
         value={money}
+        length={7}
         errMsg={detailError.money}
+        changeValue={ChangeMoney}
       />
       <SubmitButton
         status={status}

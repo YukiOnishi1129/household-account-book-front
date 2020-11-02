@@ -28,6 +28,8 @@ const AddDetailFrom: FC = () => {
         money={money}
         imgFile={imgFile}
         categories={categories}
+        setCategpryId={setCategpryId}
+        setMoney={setMoney}
         detailError={detailError}
         submit={() => {}}
       />
