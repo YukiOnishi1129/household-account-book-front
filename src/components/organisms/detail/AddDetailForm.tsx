@@ -7,7 +7,6 @@ import { LinkStatus } from '@/utils/consts'
 import ContentsForm from '@/components/organisms/common/ContentsForm'
 import FormTitle from '@/components/atoms/FormTitle'
 import DetailForm from '@/components/molcules/detail/DetailForm'
-import { getEnabledCategories } from 'trace_events'
 
 const AddDetailFrom: FC = () => {
   const { categories } = useDetail()

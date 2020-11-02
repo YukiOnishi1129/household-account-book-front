@@ -118,7 +118,7 @@ export interface Detail {
      * @type {number}
      * @memberof Detail
      */
-    category_id: number;
+    color_type: number;
     /**
      * 
      * @type {string}
