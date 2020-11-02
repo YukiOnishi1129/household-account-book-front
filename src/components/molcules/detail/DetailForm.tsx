@@ -4,6 +4,7 @@ import { Detail, Category } from '@/types/api'
 import { EventType } from '@/types/events'
 import { DetailValidError } from '@/types/errors'
 import InputForm from '@/components/atoms/InputForm'
+import SelectForm from '@/components/atoms/SelectForm'
 import SubmitButton from '@/components/atoms/SubmitButton'
 
 export type Props = {
@@ -47,20 +48,22 @@ const DetailForm: FC<Props> = ({
     </option>
   ))
 
-  const ChangeSelect: EventType['onChangeSelect'] = (e) => {
-    setSelectedId(Number(e.target.value))
+  /**
+   * カテゴリー選択結果更新
+   * @param event
+   */
+  const ChangeSelect: EventType['onChangeSelect'] = (event) => {
+    setSelectedId(Number(event.target.value))
   }
 
   return (
-    <Form>
-      <select
+    <_Form>
+      <SelectForm
         value={selectedId}
-        onChange={(event) => {
-          ChangeSelect(event)
-        }}
-      >
-        {options}
-      </select>
+        option={options}
+        errMsg={detailError.categoryId}
+        changeValue={ChangeSelect}
+      />
 
       <InputForm
         type="text"
@@ -75,11 +78,18 @@ const DetailForm: FC<Props> = ({
           submit()
         }}
       />
-    </Form>
+    </_Form>
   )
 }
 export default DetailForm
 
-const Form = styled.div`
+export type TProps = {
+  error: boolean
+}
+
+const _Form = styled.div`
   padding: 30px;
+  select:first-child {
+    margin-bottom: 20px;
+  }
 `
