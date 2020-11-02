@@ -11,12 +11,12 @@ export type Props = {
 
 const PartnerList: FC<Props> = ({ id, name, email, submit }) => {
   return (
-    <List>
-      <ListDetail>
+    <_List>
+      <_ListDetail>
         <p>{name}</p>
         <p>{email}</p>
-      </ListDetail>
-      <DeleteIconArea>
+      </_ListDetail>
+      <_DeleteIconArea>
         <DeleteIcon
           id={id}
           size={50}
@@ -24,14 +24,14 @@ const PartnerList: FC<Props> = ({ id, name, email, submit }) => {
             submit(id, name, email)
           }}
         />
-      </DeleteIconArea>
-    </List>
+      </_DeleteIconArea>
+    </_List>
   )
 }
 
 export default PartnerList
 
-const List = styled.div`
+const _List = styled.div`
   position: relative;
   display: flex;
   height: 100px;
@@ -40,7 +40,7 @@ const List = styled.div`
     border-bottom: none;
   }
 `
-const ListDetail = styled.div`
+const _ListDetail = styled.div`
   width: 70%;
   p {
     padding: 15px 20px;
@@ -54,7 +54,7 @@ const ListDetail = styled.div`
   }
 `
 
-const DeleteIconArea = styled.div`
+const _DeleteIconArea = styled.div`
   width: 30%;
   padding: 25px 0;
   text-align: center;
