@@ -44,7 +44,7 @@ export const initialDetails: Detail[] = [
     id: 0,
     money: 0,
     img_file: '',
-    category_id: 0,
+    color_type: 0,
     category_name: '',
   },
 ]
