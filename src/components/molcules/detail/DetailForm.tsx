@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useState, ChangeEvent } from 'react'
 import styled from 'styled-components'
 import { Detail, Category } from '@/types/api'
 import { EventType } from '@/types/events'
@@ -47,13 +47,18 @@ const DetailForm: FC<Props> = ({
     </option>
   ))
 
-  const ChangeSelect = (e) => {
-    setSelectedId(e.target.value)
+  const ChangeSelect: EventType['onChangeSelect'] = (e) => {
+    setSelectedId(Number(e.target.value))
   }
 
   return (
     <Form>
-      <select value={selectedId} onChange={ChangeSelect}>
+      <select
+        value={selectedId}
+        onChange={(event) => {
+          ChangeSelect(event)
+        }}
+      >
         {options}
       </select>
 
