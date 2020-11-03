@@ -50,6 +50,7 @@ globalAxios.interceptors.response.use(
     return response
   },
   (error) => {
+    if (!error.response) return error
     const status = error.response.status
     // 認証チェックAPIの場合、エラーをそのまま返すのみ
     if (error.response.config.url.match(/auth/)) {
