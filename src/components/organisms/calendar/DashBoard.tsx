@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
-import CalendarContext from '@/contexts/calendar'
+import useCalendar from '@/contexts/calendar'
 import { AfterLoginPage } from '@/utils/consts'
 import TitleHeader from '@/components/organisms/common/TitleHeader'
 import format from 'date-fns/format'
@@ -20,7 +20,7 @@ const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 
 const DashBoard: FC = () => {
   const router = useRouter()
-  const { calendar, getCalendar } = CalendarContext()
+  const { calendar, getCalendar } = useCalendar()
   const targetDate = new Date(calendar.date)
   const showCalendar = getCalendarArray(targetDate)
 
