@@ -26,12 +26,12 @@ export const initialUser: User = {
  * カレンダーデータの初期値
  */
 export const initialCalendar: Calendar = {
-  date: '2020-09-01',
-  sum_month_money: 200000,
+  date: '',
+  sum_month_money: 0,
   sum_date_money: [
     {
-      date: '2020-09-01',
-      money: 1000,
+      date: '',
+      money: 0,
     },
   ],
 }

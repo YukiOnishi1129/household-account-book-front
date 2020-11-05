@@ -34,11 +34,23 @@ const resolveApiBasePath = () => {
   }
 }
 
+const sanctumBasePath = () => {
+  const env = process.env.NEXT_PUBLIC_ENVIRONMENT
+    ? process.env.NEXT_PUBLIC_ENVIRONMENT
+    : ''
+  switch (env) {
+    case 'swagger':
+      return process.env.NEXT_PUBLIC_OPEN_API_BASE_URL
+    default:
+      return process.env.NEXT_PUBLIC_SANCTUM_API_BASE_URL
+  }
+}
+
 export default {
   annualChange: AnnualChangeApiFactory(config, resolveApiBasePath()),
   calender: CalendarApiFactory(config, resolveApiBasePath()),
   category: CategoryApiFactory(config, resolveApiBasePath()),
-  csrfCookie: CsrfCookieApiFactory(config, resolveApiBasePath()),
+  csrfCookie: CsrfCookieApiFactory(config, sanctumBasePath()),
   detail: DetailApiFactory(config, resolveApiBasePath()),
   monthRate: MonthRateApiFactory(config, resolveApiBasePath()),
   partner: PartnerApiFactory(config, resolveApiBasePath()),
@@ -50,6 +62,7 @@ globalAxios.interceptors.response.use(
     return response
   },
   (error) => {
+    if (!error.response) return error
     const status = error.response.status
     // 認証チェックAPIの場合、エラーをそのまま返すのみ
     if (error.response.config.url.match(/auth/)) {

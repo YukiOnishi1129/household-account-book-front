@@ -1,13 +1,10 @@
 import React, { FC } from 'react'
 import DashBoard from '@/components/organisms/calendar/DashBoard'
-import { CalendarProvider } from '@/contexts/calendar'
+import useCalendar from '@/contexts/calendar'
 
 const CalendarTemplate: FC = () => {
-  return (
-    <CalendarProvider>
-      <DashBoard />
-    </CalendarProvider>
-  )
+  const { calendar } = useCalendar()
+  return <>{calendar && calendar.date !== '' && <DashBoard />}</>
 }
 
 export default CalendarTemplate
