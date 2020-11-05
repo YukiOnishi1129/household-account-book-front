@@ -19,7 +19,7 @@ import {
 import { initialUser } from '@/utils/inits'
 import { AuthContext } from '@/utils/contexts'
 import { BeforeLoginPage, AfterLoginPage } from '@/utils/consts'
-import { CurrentDate } from '@/utils/date'
+import { CurrentMonth } from '@/utils/date'
 import LayoutTemplate from '@/components/templates/common/LayoutTemplate'
 
 /**
@@ -50,7 +50,7 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
       setIsAuthenticated(!!response.data)
       router.push({
         pathname: `${AfterLoginPage.DASH_BOARD}[date]`,
-        query: { date: CurrentDate() },
+        query: { date: CurrentMonth() },
       })
     } catch (error) {
       if (error.response.status === 401) {
@@ -78,7 +78,7 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
       setIsAuthenticated(!!response.data)
       router.push({
         pathname: `${AfterLoginPage.DASH_BOARD}[date]`,
-        query: { date: CurrentDate() },
+        query: { date: CurrentMonth() },
       })
     } catch (error) {
       if (error.response.status === 401) {
@@ -105,7 +105,7 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
       setIsAuthenticated(!!response.data)
       router.push({
         pathname: `${AfterLoginPage.DASH_BOARD}[date]`,
-        query: { date: CurrentDate() },
+        query: { date: CurrentMonth() },
       })
     } catch (error) {
       if (error.response.status === 401) {
@@ -132,7 +132,7 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
       setIsAuthenticated(!!response.data)
       router.push({
         pathname: `${AfterLoginPage.DASH_BOARD}[date]`,
-        query: { date: CurrentDate() },
+        query: { date: CurrentMonth() },
       })
     } catch (error) {
       if (error.response.status === 401) {
@@ -181,7 +181,7 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
       setIsAuthenticated(!!response.data)
       router.push({
         pathname: `${AfterLoginPage.DASH_BOARD}[date]`,
-        query: { date: CurrentDate() },
+        query: { date: CurrentMonth() },
       })
     } catch (error) {
       if (error.response.status === 401) {
@@ -247,7 +247,7 @@ export default useAuth
 //       case BeforeLoginPage.PATNER_LOGIN:
 //       case BeforeLoginPage.REMIND_PASS_MAIL:
 //       case BeforeLoginPage.REMAIND_PASS_KEY:
-//         router.push(AfterLoginPage.DASH_BOARD + CurrentDate())
+//         router.push(AfterLoginPage.DASH_BOARD + CurrentMonth())
 //         break
 //       default:
 //     }
@@ -323,7 +323,7 @@ export const authRouting = async (
     setIsAuthenticated(!!data)
     // 認証前のページにいる場合
     if (!isLogined) {
-      Router.push(AfterLoginPage.DASH_BOARD + CurrentDate())
+      Router.push(AfterLoginPage.DASH_BOARD + CurrentMonth())
     }
   } else {
     // 認証チェックNG

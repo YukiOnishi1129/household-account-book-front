@@ -3,7 +3,7 @@ import Link from 'next/link'
 import styled from 'styled-components'
 import { LinkStatus, BeforeLoginPage, AfterLoginPage } from '@/utils/consts'
 import useAuth from '@/contexts/auth'
-import { CurrentDate } from '@/utils/date'
+import { CurrentMonth } from '@/utils/date'
 
 const Header: FC = () => {
   const { isAuthenticated } = useAuth()
@@ -45,14 +45,14 @@ export const AfterLoginHeader: FC = () => {
     <>
       <Link
         href={`${AfterLoginPage.DASH_BOARD}[date]`}
-        as={`${AfterLoginPage.DASH_BOARD}${CurrentDate()}`}
+        as={`${AfterLoginPage.DASH_BOARD}${CurrentMonth()}`}
       >
         <TopLogo src="/top_logo.png" />
       </Link>
       <Nav>
         <Link
           href={`${AfterLoginPage.DASH_BOARD}[date]`}
-          as={`${AfterLoginPage.DASH_BOARD}${CurrentDate()}`}
+          as={`${AfterLoginPage.DASH_BOARD}${CurrentMonth()}`}
         >
           <NavLink state={LinkStatus.TOP}>TOP</NavLink>
         </Link>

@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
 import { AfterLoginPage } from '@/utils/consts'
-import { CurrentDate } from '@/utils/date'
+import { CurrentMonth } from '@/utils/date'
 
 const Sidebar: FC = () => {
   return (
@@ -10,7 +10,7 @@ const Sidebar: FC = () => {
       <Nav>
         <Link
           href={`${AfterLoginPage.DASH_BOARD}[date]`}
-          as={`${AfterLoginPage.DASH_BOARD}${CurrentDate()}`}
+          as={`${AfterLoginPage.DASH_BOARD}${CurrentMonth()}`}
         >
           <Navlink>TOP</Navlink>
         </Link>
